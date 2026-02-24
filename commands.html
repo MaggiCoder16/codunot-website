@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Codunot - Command Center</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="nav-wrap">
+    <nav class="nav container">
+      <a class="brand" href="index.html"><img src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot logo" />Codunot</a>
+      <div class="links">
+        <a href="index.html">Home</a>
+        <a href="features.html">Features</a>
+        <a class="active" href="commands.html">Command Center</a>
+        <a href="stats.html">Stats</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="faq.html">FAQ</a>
+        <a href="premium.html">Premium</a>
+        <a href="support.html">Support</a>
+        <a href="terms.html">ToS</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a class="login-btn" href="https://discord.com/oauth2/authorize?client_id=1435987186502733878&integration_type=1&scope=applications.commands" target="_blank" rel="noopener">Authorize App</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container section">
+    <h1>Command Center</h1>
+    <p class="muted">Main commands and triggers in plain language.</p>
+    <table class="table">
+      <thead><tr><th>Command / Trigger</th><th>What it does</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td><code>@Codunot your message</code></td><td>Chat with Codunot in server channels.</td><td>Mention</td></tr>
+        <tr><td><code>!codunot_help</code></td><td>Shows full help and command usage.</td><td>Prefix</td></tr>
+        <tr><td><code>!funmode</code> / <code>/funmode</code></td><td>Switch to fun mode.</td><td>Prefix + Slash</td></tr>
+        <tr><td><code>!roastmode</code> / <code>/roastmode</code></td><td>Switch to roast mode.</td><td>Prefix + Slash</td></tr>
+        <tr><td><code>!seriousmode</code> / <code>/seriousmode</code></td><td>Switch to serious mode.</td><td>Prefix + Slash</td></tr>
+        <tr><td><code>!teachmerizz online|irl</code> / <code>/teachmerizz</code></td><td>Start rizz coach mode.</td><td>Prefix + Slash</td></tr>
+        <tr><td><code>!chessmode</code> / <code>/chessmode</code></td><td>Start chess mode.</td><td>Prefix + Slash</td></tr>
+        <tr><td><code>/generate_image</code></td><td>Generate an image from text.</td><td>Slash</td></tr>
+        <tr><td><code>/generate_video</code></td><td>Generate a video from text.</td><td>Slash</td></tr>
+        <tr><td><code>/generate_tts</code> (text-to-speech)</td><td>Generate text-to-speech audio.</td><td>Slash</td></tr>
+        <tr><td>Attach image + instruction</td><td>Edit an uploaded image.</td><td>Message flow</td></tr>
+        <tr><td>Send 2+ images + merge word</td><td>Merge multiple images into one.</td><td>Message flow</td></tr>
+        <tr><td><code>/transcribe &lt;video_url&gt;</code></td><td>Extract text from supported video links.</td><td>Slash</td></tr>
+        <tr><td><code>/hug /kiss /kick /slap /meme /bet</code></td><td>Fun and interaction commands.</td><td>Slash</td></tr>
+      </tbody>
+    </table>
+  </main>
+
+  <footer class="footer"><div class="container">&copy; <span id="year"></span> Codunot</div></footer>
+  <script src="script.js"></script>
+</body>
+</html>

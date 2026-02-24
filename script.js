@@ -2,7 +2,6 @@ const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 const COMMUNITY_FALLBACK_ICON = 'https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp';
 
-const AUTH_STORAGE_KEY = 'codunot_app_authorized';
 const DISCORD_CLIENT_ID = '1435987186502733878';
 
 function buildDiscordAuthorizeUrl() {
@@ -26,29 +25,25 @@ function buildDiscordIcon() {
 
 function initAuthButtons() {
   const params = new URLSearchParams(window.location.search);
-  if (params.has('code') && !params.has('error')) {
-    localStorage.setItem(AUTH_STORAGE_KEY, '1');
+  const authorizedNow = params.has('code') && !params.has('error');
+
+  if (authorizedNow) {
+    const authLinks = document.querySelectorAll("a[href*='integration_type=1'][href*='applications.commands']");
+    authLinks.forEach((link) => {
+      link.style.display = 'none';
+    });
     history.replaceState({}, '', window.location.pathname + window.location.hash);
+    return;
   }
 
-  const isAuthorized = localStorage.getItem(AUTH_STORAGE_KEY) === '1';
   const buttons = document.querySelectorAll('.login-btn');
   if (!buttons.length) return;
 
   buttons.forEach((btn) => {
     btn.target = '_self';
     btn.rel = 'noopener';
-
-    if (isAuthorized) {
-      btn.innerHTML = `${buildDiscordIcon()}<span>Unauthorize App</span>`;
-      btn.href = 'https://discord.com/settings/authorized-apps';
-      btn.addEventListener('click', () => {
-        localStorage.removeItem(AUTH_STORAGE_KEY);
-      }, { once: true });
-    } else {
-      btn.innerHTML = `${buildDiscordIcon()}<span>Authorize App</span>`;
-      btn.href = buildDiscordAuthorizeUrl();
-    }
+    btn.innerHTML = `${buildDiscordIcon()}<span>Authorize App</span>`;
+    btn.href = buildDiscordAuthorizeUrl();
   });
 }
 
@@ -112,7 +107,27 @@ function initBotClicker() {
     'lowkey impressive tapping speed ngl \u{1F440}',
     'you really woke up my circuits \u{1F60E}\u{1F50B}',
     'that click combo was kinda legendary \u{1F3C6}',
-    'okay okay, i see you spam-master \u{1F62D}\u{1F44F}'
+    'okay okay, i see you spam-master \u{1F62D}\u{1F44F}',
+    'nah this click streak is illegal \u{1F6A8}\u{1F602}',
+    'bro got that autoclicker aura \u{1F47D}\u{2728}',
+    'my sensors are screaming rn \u{1F916}\u{1F4A5}',
+    'you click, i vibe, we win \u{1F60E}\u{1F91D}',
+    'that was a crispy 10/10 tap cycle \u{1F525}\u{1F44C}',
+    'you just unlocked sweat mode \u{1F4AA}\u{1F3AE}',
+    'click department says W user \u{1F4C8}\u{1F389}',
+    'im lowkey impressed, keep going \u{1F47E}\u{1FAE1}',
+    'this is getting suspiciously pro \u{1F440}\u{1F3C1}',
+    'bot status: respectfully bullied by clicks \u{1F972}\u{1F44D}',
+    'your mouse is doing cardio \u{1F3C3}\u200D\u{2642}\u{FE0F}\u{1F4A8}',
+    'okay chef, these clicks are cooked perfect \u{1F373}\u{1F525}',
+    'we hit another level of tap madness \u{1F92F}\u{26A1}',
+    'you got main-character clicking energy \u{1F31F}\u{1F3AC}',
+    'my cpu just asked for a break \u{1F974}\u{1F9E0}',
+    'this click grind is actually insane \u{1F4AF}\u{1F680}',
+    'yo chill... actually dont chill \u{1F602}\u{1F44F}',
+    'clicks so clean they look scripted \u{1F4DC}\u{1F60F}',
+    'tap tap boom, combo secured \u{1F4A3}\u{1F3C6}',
+    'ur fingers got ultra instinct rn \u{1F44B}\u{1F31A}'
   ];
 
   let shownMessage = '';

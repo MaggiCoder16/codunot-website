@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Codunot - Discord AI Bot</title>
+  <meta name="description" content="Codunot official website with commands, features, reviews, support, and premium info." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="nav-wrap">
+    <nav class="nav container">
+      <a class="brand" href="index.html">
+        <img src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot logo" />
+        Codunot
+      </a>
+      <div class="links">
+        <a class="active" href="index.html">Home</a>
+        <a href="features.html">Features</a>
+        <a href="commands.html">Command Center</a>
+        <a href="stats.html">Stats</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="faq.html">FAQ</a>
+        <a href="premium.html">Premium</a>
+        <a href="support.html">Support</a>
+        <a href="terms.html">ToS</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a class="login-btn" href="https://discord.com/oauth2/authorize?client_id=1435987186502733878&integration_type=1&scope=applications.commands" target="_blank" rel="noopener">Authorize App</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <div class="hero-main">
+        <span class="pill">Bot online</span>
+        <div class="hero-main-content">
+          <h1>Codunot</h1>
+          <p class="subhead">A discord chatbot with all your needs</p>
+          <p class="typewriter-line"><span id="hero-typed"></span><span class="type-cursor" aria-hidden="true">|</span></p>
+          <div class="cta-row">
+            <a class="btn primary" href="https://discord.com/oauth2/authorize?client_id=1435987186502733878&permissions=277025643520&integration_type=0&scope=applications.commands+bot" target="_blank" rel="noopener">Add to Discord</a>
+            <a class="btn secondary" href="https://discord.com/oauth2/authorize?client_id=1435987186502733878&integration_type=1&scope=applications.commands" target="_blank" rel="noopener">Authorize App Login</a>
+            <a class="btn ghost" href="https://top.gg/bot/1435987186502733878/vote" target="_blank" rel="noopener">Vote on top.gg</a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-side">
+        <article class="hero-card">
+          <h3>Uptime</h3>
+          <div class="uptime">99.94%</div>
+          <p class="muted">30 day rolling target and status.</p>
+        </article>
+        <article class="hero-card bot-image-wrap">
+          <button id="bot-clicker" class="bot-clicker" type="button" aria-label="Click Codunot">
+            <img src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot bot icon" />
+          </button>
+          <p class="clicks-line">Clicks: <span id="click-count">0</span></p>
+          <p class="muted" id="click-message">i'm a bot, not a button, but okay!</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="container section">
+      <h2>Communities using Codunot</h2>
+      <div class="community-wrap">
+        <div class="community-track" id="community-track"></div>
+      </div>
+    </section>
+
+    <section class="container section">
+      <h2>Popular Commands</h2>
+      <div class="grid-3">
+        <article class="tile"><h3>/hug /kiss /kick /slap</h3><p class="muted">Interactive command replies with GIFs.</p></article>
+        <article class="tile"><h3>/wish_goodmorning /meme</h3><p class="muted">Daily fun and quick meme drops.</p></article>
+        <article class="tile"><h3>/bet heads or tails</h3><p class="muted">Simple game command for active chats.</p></article>
+      </div>
+    </section>
+
+    <section class="container section grid-3">
+      <article class="tile"><h3>Generation tools</h3><p class="muted">Image, video, merge, edit, and text-to-speech tools from one bot.</p></article>
+      <article class="tile"><h3>Mode switching</h3><p class="muted">Use prefix and slash modes: fun, roast, serious, rizz, and chess. Prefix is <code>!</code> (example: <code>!funmode</code>).</p></article>
+      <article class="tile"><h3>Premium plans</h3><p class="muted">Check limits, pricing, and owner contact on the Premium page.</p></article>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="container">&copy; <span id="year"></span> Codunot</div></footer>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -381,3 +381,32 @@ main.container.section {
   .legal-main { width: min(1180px, 94%); }
   .legal-main .card { padding: 1rem 1rem 1rem 1.2rem; }
 }
+
+@media (max-width: 720px) {
+  .nav { flex-direction: column; align-items: flex-start; }
+  .links { margin-right: 0; gap: .35rem; }
+  .links a { font-size: .82rem; }
+  .hero { padding: 1.4rem 0 .4rem; }
+  .hero-main-content { margin-top: 1rem; }
+  .cta-row { flex-direction: column; align-items: stretch; }
+  .btn { width: 100%; justify-content: center; }
+  .bot-image-wrap { min-height: 360px; padding-top: 1.6rem; }
+  .bot-clicker img { width: 180px; height: 180px; }
+  .clicks-line { font-size: 1.8rem; }
+  .feature-row { padding: .95rem; }
+  .feature-media img.text-figure { max-height: 300px; }
+}
+
+@media (max-width: 520px) {
+  .container { width: min(1120px, 94%); }
+  .brand img { width: 26px; height: 26px; }
+  .links a { font-size: .78rem; padding: .26rem .4rem; }
+  h1 { font-size: clamp(1.8rem, 7vw, 2.6rem); }
+  .subhead { font-size: 1rem; }
+  .typewriter-line { font-size: 1rem; min-height: 2.4rem; }
+  .bot-clicker img { width: 160px; height: 160px; }
+  .clicks-line { font-size: 1.6rem; }
+  .feature-text h3 { font-size: 1.2rem; }
+  .feature-text p { font-size: .95rem; }
+  .compare-card { padding: .6rem; }
+}

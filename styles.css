@@ -220,6 +220,9 @@ h1 { font-size: clamp(2rem, 4.5vw, 3.4rem); margin: .45rem 0 .7rem; line-height:
   background: linear-gradient(180deg, var(--surface), var(--surface-2));
   padding: 1.2rem;
 }
+.feature-row.media-wide {
+  grid-template-columns: .9fr 1.1fr;
+}
 .feature-row:last-child { margin-bottom: 0; }
 .feature-text h3 { margin: 0 0 .4rem; font-size: 1.35rem; }
 .feature-text p { margin: 0 0 .6rem; color: var(--muted); }
@@ -228,6 +231,12 @@ h1 { font-size: clamp(2rem, 4.5vw, 3.4rem); margin: .45rem 0 .7rem; line-height:
   border-radius: 14px;
   border: 1px solid var(--line);
   display: block;
+}
+.feature-media img.text-figure {
+  max-height: 360px;
+  object-fit: contain;
+  padding: .6rem;
+  background: #211006;
 }
 .feature-media audio {
   width: 100%;

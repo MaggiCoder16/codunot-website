@@ -34,58 +34,134 @@
   <main class="container section">
     <h1>Feature Hub</h1>
 
-    <section class="grid-2">
-      <article class="card">
-        <h3>Core Chat</h3>
-        <ul>
-          <li>Talk in servers with <code>@Codunot your message</code>.</li>
-          <li>DM directly with no mention.</li>
-          <li><code>!codunot_help</code> for full quick help.</li>
-        </ul>
-      </article>
-      <article class="card">
-        <h3>Modes</h3>
-        <ul>
-          <li><code>!funmode</code> or <code>/funmode</code></li>
-          <li><code>!roastmode</code> or <code>/roastmode</code></li>
-          <li><code>!seriousmode</code> or <code>/seriousmode</code></li>
-          <li><code>!teachmerizz online|irl</code> or <code>/teachmerizz</code></li>
-          <li><code>!chessmode</code> or <code>/chessmode</code></li>
-        </ul>
-      </article>
-      <article class="card">
-        <h3>Generation and Tools</h3>
-        <ul>
-          <li>Image generation</li>
-          <li>Video generation</li>
-          <li>Image editing</li>
-          <li>Image merging</li>
-          <li>Text-to-speech</li>
-          <li>Video transcription</li>
-          <li>File reading and summaries</li>
-        </ul>
-      </article>
-      <article class="card">
-        <h3>Merge keywords</h3>
-        <p>Merge keywords - your message must contain the keywords listed below and 2 or more images.</p>
-        <p><strong>Keywords:</strong></p>
-        <p><code>"merge", "combine", "in one image", "put them together", "blend", and "mix"</code></p>
-      </article>
-      <article class="card">
-        <h3>Music Playback</h3>
-        <ul>
-          <li>Join a voice channel, then use <code>/play [song name or URL]</code>.</li>
-          <li>Supports YouTube and SoundCloud songs and playlists.</li>
-          <li>Songs queue automatically — first track plays, rest are queued.</li>
-          <li>HD audio for free users, 320kbps for Premium/Gold.</li>
-          <li>Bot auto-disconnects after 10 minutes of inactivity.</li>
-          <li>Requires an active Top.gg vote.</li>
-        </ul>
-      </article>
+    <section class="card section">
+      <h2>🤖 Automatic Features</h2>
+      <p class="muted">These features work without any commands — just interact naturally.</p>
+
+      <h3>💬 AI Chat &amp; Conversation</h3>
+      <ul>
+        <li>Mention <code>@Codunot</code> in servers or reply to Codunot messages</li>
+        <li>DM Codunot directly — no mention needed</li>
+        <li><code>!codunot_help</code> for full quick help</li>
+      </ul>
+      <p><span class="badge free">Free</span></p>
+
+      <h3>🔍 Smart Web Search</h3>
+      <ul>
+        <li>Automatically searches the web when your query needs current or real-time information</li>
+      </ul>
+      <p><span class="badge free">Free</span></p>
+
+      <h3>📄 File Reading</h3>
+      <ul>
+        <li>Upload PDF, DOCX, or TXT files and get instant content extraction and summaries</li>
+      </ul>
+      <p><span class="badge vote">Vote Required</span></p>
+
+      <h3>🖼️ Image Analysis</h3>
+      <ul>
+        <li>Send any image for AI-powered descriptions and analysis</li>
+      </ul>
+      <p><span class="badge vote">Vote Required</span></p>
+
+      <h3>🌐 URL Content Extraction</h3>
+      <ul>
+        <li>Share links and Codunot will automatically fetch &amp; summarize webpage content</li>
+      </ul>
+      <p><span class="badge free">Free</span></p>
+
+      <h3>🧪 Code Auto-Testing</h3>
+      <ul>
+        <li>When code is generated in conversation, it's automatically tested before being sent to you</li>
+      </ul>
+      <p><span class="badge free">Free</span></p>
+
+      <h3>✏️ Image Editing</h3>
+      <ul>
+        <li>Attach an image and describe the edits you want for AI-powered modifications</li>
+      </ul>
+      <p><span class="badge vote">Vote Required</span></p>
+
+      <h3>🔗 Image Merging</h3>
+      <ul>
+        <li>Attach 2+ images and say "merge", "combine", or "blend" to merge them into one</li>
+      </ul>
+      <p><span class="badge vote">Vote Required</span></p>
     </section>
 
-    <section class="section">
-      <div class="notice">Generation features and interactive fun commands require an active vote unlock.</div>
+    <section class="card section">
+      <h2>⚡ Command-Based Features</h2>
+      <p class="muted">Explicit commands for specific functionality</p>
+
+      <h3>🎭 Mode &amp; Personality Commands</h3>
+      <ul>
+        <li><code>/funmode</code> - Playful, Gen Z vibes with emojis and humor</li>
+        <li><code>/seriousmode</code> - Professional, structured, fact-based responses</li>
+        <li><code>/roastmode</code> - Playful savage burns and roasts</li>
+        <li><code>/teachmerizz online</code> - Dating/texting coach for online conversations</li>
+        <li><code>/teachmerizz irl</code> - Real-life social coaching and confidence tips</li>
+        <li><code>/chessmode</code> - Play chess against Codunot AI</li>
+      </ul>
+      <p><span class="badge free">All Free</span></p>
+
+      <h3>🎨 Creative Generation (Vote Required)</h3>
+      <ul>
+        <li><code>/generate_image [prompt]</code> - AI-generated images with enhanced prompts</li>
+        <li><code>/generate_video [prompt]</code> - Text-to-video generation (~1 min render time)</li>
+        <li><code>/generate_tts [text] [language] [voice]</code> - Text-to-speech with 20+ voices, 8 languages (min 20 chars)</li>
+      </ul>
+      <p><span class="badge vote">Vote Required</span></p>
+
+      <h3>🎵 Music &amp; Audio (Vote Required)</h3>
+      <ul>
+        <li><code>/play [song/URL]</code> - Play music with audio filters (bass boost, nightcore, slowed, 8D, lofi, etc.)</li>
+        <li><code>/queue</code> - View current music queue</li>
+        <li>Music controls: Pause/Resume, Skip, Previous, Stop, Volume buttons</li>
+      </ul>
+      <p><span class="badge vote">Vote Required</span></p>
+
+      <h3>🔧 Developer &amp; Utility Tools</h3>
+      <ul>
+        <li><code>/test_code [code]</code> - Validate code, get summaries, auto-fix errors</li>
+        <li><code>/browse [URL]</code> - Explicitly fetch and analyze webpage content</li>
+        <li><code>/google_maps [location] [query]</code> - Search for places with ratings, reviews, hours, and directions</li>
+        <li><code>/transcribe [video_url]</code> - Transcribe YouTube/Twitch/X/Kick videos (max 30 mins)</li>
+        <li><code>/guessage @user</code> - Estimate user's age from message patterns</li>
+      </ul>
+      <p><code>/test_code</code>, <code>/browse</code>, <code>/google_maps</code> = <span class="badge free">Free</span></p>
+      <p><code>/transcribe</code>, <code>/guessage</code> = <span class="badge vote">Vote Required</span></p>
+
+      <h3>🎉 Fun &amp; Social Commands</h3>
+      <ul>
+        <li><code>/hug @user</code>, <code>/kiss @user</code>, <code>/kick @user</code>, <code>/slap @user</code></li>
+        <li><code>/wish_goodmorning @user</code></li>
+        <li><code>/bet [heads/tails]</code> - Coin flip betting</li>
+        <li><code>/meme</code> - Random meme generator</li>
+      </ul>
+      <p><span class="badge free">All Free</span></p>
+
+      <h3>⚙️ Server Configuration (Owner Only)</h3>
+      <ul>
+        <li><code>/configure server</code> - Allow Codunot in all channels</li>
+        <li><code>/configure channels</code> - Restrict to specific channels</li>
+      </ul>
+      <p><span class="badge free">Free</span></p>
+    </section>
+
+    <section class="card section">
+      <h2>🗳️ Vote-Required Features</h2>
+      <p>Vote on Top.gg every 12 hours to unlock premium features for free!</p>
+      <ul>
+        <li>✅ Image generation, editing, and merging</li>
+        <li>✅ Video generation</li>
+        <li>✅ Text-to-speech (20+ voices, 8 languages)</li>
+        <li>✅ Music playback with audio filters</li>
+        <li>✅ Video transcription (YouTube/Twitch/X/Kick)</li>
+        <li>✅ File reading (PDF/DOCX/TXT)</li>
+        <li>✅ Image analysis</li>
+        <li>✅ Age estimation</li>
+      </ul>
+      <a href="https://top.gg/bot/1435987186502733878/vote" class="btn primary" target="_blank">Vote Now</a>
     </section>
   </main>
 

@@ -33,27 +33,111 @@
 
   <main class="container section">
     <h1>Command Center</h1>
-    <p class="muted">Main commands and triggers in plain language.</p>
-    <table class="table">
-      <thead><tr><th>Command / Trigger</th><th>What it does</th><th>Type</th></tr></thead>
-      <tbody>
-        <tr><td><code>@Codunot your message</code></td><td>Chat with Codunot in server channels.</td><td>Mention</td></tr>
-        <tr><td><code>!codunot_help</code></td><td>Shows full help and command usage.</td><td>Prefix</td></tr>
-        <tr><td><code>!funmode</code> / <code>/funmode</code></td><td>Switch to fun mode.</td><td>Prefix + Slash</td></tr>
-        <tr><td><code>!roastmode</code> / <code>/roastmode</code></td><td>Switch to roast mode.</td><td>Prefix + Slash</td></tr>
-        <tr><td><code>!seriousmode</code> / <code>/seriousmode</code></td><td>Switch to serious mode.</td><td>Prefix + Slash</td></tr>
-        <tr><td><code>!teachmerizz online|irl</code> / <code>/teachmerizz</code></td><td>Start rizz coach mode.</td><td>Prefix + Slash</td></tr>
-        <tr><td><code>!chessmode</code> / <code>/chessmode</code></td><td>Start chess mode.</td><td>Prefix + Slash</td></tr>
-        <tr><td><code>/generate_image</code></td><td>Generate an image from text.</td><td>Slash</td></tr>
-        <tr><td><code>/generate_video</code></td><td>Generate a video from text.</td><td>Slash</td></tr>
-        <tr><td><code>/generate_tts</code> (text-to-speech)</td><td>Generate text-to-speech audio.</td><td>Slash</td></tr>
-        <tr><td>Attach image + instruction</td><td>Edit an uploaded image.</td><td>Message flow</td></tr>
-        <tr><td>Send 2+ images + merge word</td><td>Merge multiple images into one.</td><td>Message flow</td></tr>
-        <tr><td><code>/transcribe &lt;video_url&gt;</code></td><td>Extract text from supported video links.</td><td>Slash</td></tr>
-        <tr><td><code>/hug /kiss /kick /slap /meme /bet</code></td><td>Fun and interaction commands.</td><td>Slash</td></tr>
-        <tr><td><code>/play [song name or URL]</code></td><td>Play music in a voice channel from YouTube or SoundCloud. Supports queuing and playlists.</td><td>Slash</td></tr>
-      </tbody>
-    </table>
+    <p class="muted">Complete command reference organized by category.</p>
+
+    <section class="card section">
+      <h2>🎭 Mode &amp; Personality Commands</h2>
+      <p class="muted">Switch between different conversation personalities. <span class="badge free">All Free</span></p>
+      <table class="table">
+        <thead><tr><th>Command</th><th>What it does</th><th>Type</th></tr></thead>
+        <tbody>
+          <tr><td><code>/funmode</code></td><td>Playful, Gen Z vibes with emojis and humor.</td><td>Slash</td></tr>
+          <tr><td><code>/seriousmode</code></td><td>Professional, structured, fact-based responses.</td><td>Slash</td></tr>
+          <tr><td><code>/roastmode</code></td><td>Playful savage burns and roasts.</td><td>Slash</td></tr>
+          <tr><td><code>/teachmerizz online</code></td><td>Dating/texting coach for online conversations.</td><td>Slash</td></tr>
+          <tr><td><code>/teachmerizz irl</code></td><td>Real-life social coaching and confidence tips.</td><td>Slash</td></tr>
+          <tr><td><code>/chessmode</code></td><td>Play chess against Codunot AI.</td><td>Slash</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card section">
+      <h2>🎨 Creative Generation</h2>
+      <p class="muted">AI-powered content creation tools. <span class="badge vote">Vote Required</span></p>
+      <table class="table">
+        <thead><tr><th>Command</th><th>What it does</th><th>Type</th></tr></thead>
+        <tbody>
+          <tr><td><code>/generate_image [prompt]</code></td><td>AI-generated images with enhanced prompts.</td><td>Slash</td></tr>
+          <tr><td><code>/generate_video [prompt]</code></td><td>Text-to-video generation (~1 min render time).</td><td>Slash</td></tr>
+          <tr><td><code>/generate_tts [text] [language] [voice]</code></td><td>Text-to-speech with 20+ voices, 8 languages (min 20 chars).</td><td>Slash</td></tr>
+          <tr><td>Attach image + describe edits</td><td>AI-powered image editing and modifications.</td><td>Message flow</td></tr>
+          <tr><td>Attach 2+ images + say "merge"</td><td>Merge multiple images into one coherent scene.</td><td>Message flow</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card section">
+      <h2>🎵 Music &amp; Audio</h2>
+      <p class="muted">Voice channel music playback with audio filters. <span class="badge vote">Vote Required</span></p>
+      <table class="table">
+        <thead><tr><th>Command</th><th>What it does</th><th>Type</th></tr></thead>
+        <tbody>
+          <tr><td><code>/play [song/URL]</code></td><td>Play music with audio filters (bass boost, nightcore, slowed, 8D, lofi, etc.). Supports YouTube and SoundCloud.</td><td>Slash</td></tr>
+          <tr><td><code>/queue</code></td><td>View current music queue.</td><td>Slash</td></tr>
+          <tr><td>Music controls</td><td>Pause/Resume, Skip, Previous, Stop, Volume buttons on the player embed.</td><td>Buttons</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card section">
+      <h2>🔧 Developer &amp; Utility Tools</h2>
+      <p class="muted">Code testing, web browsing, and location tools.</p>
+      <table class="table">
+        <thead><tr><th>Command</th><th>What it does</th><th>Access</th></tr></thead>
+        <tbody>
+          <tr><td><code>/test_code [code]</code></td><td>Validate code, get summaries, auto-fix errors.</td><td><span class="badge free">Free</span></td></tr>
+          <tr><td><code>/browse [URL]</code></td><td>Explicitly fetch and analyze webpage content.</td><td><span class="badge free">Free</span></td></tr>
+          <tr><td><code>/google_maps [location] [query]</code></td><td>Search for places with ratings, reviews, hours, and directions.</td><td><span class="badge free">Free</span></td></tr>
+          <tr><td><code>/transcribe [video_url]</code></td><td>Transcribe YouTube/Twitch/X/Kick videos (max 30 mins).</td><td><span class="badge vote">Vote Required</span></td></tr>
+          <tr><td><code>/guessage @user</code></td><td>Estimate user's age from message patterns.</td><td><span class="badge vote">Vote Required</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card section">
+      <h2>🎉 Fun &amp; Social Commands</h2>
+      <p class="muted">Interactive fun commands for community engagement. <span class="badge free">All Free</span></p>
+      <table class="table">
+        <thead><tr><th>Command</th><th>What it does</th><th>Type</th></tr></thead>
+        <tbody>
+          <tr><td><code>/hug @user</code></td><td>Send a hug with an animated GIF.</td><td>Slash</td></tr>
+          <tr><td><code>/kiss @user</code></td><td>Send a kiss with an animated GIF.</td><td>Slash</td></tr>
+          <tr><td><code>/kick @user</code></td><td>Send a playful kick with an animated GIF.</td><td>Slash</td></tr>
+          <tr><td><code>/slap @user</code></td><td>Send a playful slap with an animated GIF.</td><td>Slash</td></tr>
+          <tr><td><code>/wish_goodmorning @user</code></td><td>Send a good morning wish to a user.</td><td>Slash</td></tr>
+          <tr><td><code>/bet [heads/tails]</code></td><td>Coin flip betting game.</td><td>Slash</td></tr>
+          <tr><td><code>/meme</code></td><td>Random meme generator.</td><td>Slash</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card section">
+      <h2>⚙️ Server Configuration</h2>
+      <p class="muted">Server owner only. <span class="badge free">Free</span></p>
+      <table class="table">
+        <thead><tr><th>Command</th><th>What it does</th><th>Type</th></tr></thead>
+        <tbody>
+          <tr><td><code>/configure server</code></td><td>Allow Codunot in all channels.</td><td>Slash</td></tr>
+          <tr><td><code>/configure channels</code></td><td>Restrict Codunot to specific channels.</td><td>Slash</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card section">
+      <h2>💬 Chat Triggers (No Commands Needed)</h2>
+      <p class="muted">These work automatically without slash commands.</p>
+      <table class="table">
+        <thead><tr><th>Trigger</th><th>What it does</th><th>Access</th></tr></thead>
+        <tbody>
+          <tr><td><code>@Codunot [message]</code></td><td>Chat with Codunot in server channels.</td><td><span class="badge free">Free</span></td></tr>
+          <tr><td>DM Codunot directly</td><td>Message Codunot in DMs — no mention needed.</td><td><span class="badge free">Free</span></td></tr>
+          <tr><td><code>!codunot_help</code></td><td>Shows full help and command usage.</td><td><span class="badge free">Free</span></td></tr>
+          <tr><td>Send an image</td><td>Get AI-powered image analysis and descriptions.</td><td><span class="badge vote">Vote Required</span></td></tr>
+          <tr><td>Upload a file (PDF/DOCX/TXT)</td><td>Automatic content extraction and summaries.</td><td><span class="badge vote">Vote Required</span></td></tr>
+          <tr><td>Share a URL</td><td>Automatic webpage content extraction and summarization.</td><td><span class="badge free">Free</span></td></tr>
+        </tbody>
+      </table>
+    </section>
   </main>
 
   <footer class="footer"><div class="container">&copy; <span id="year"></span> Codunot</div></footer>

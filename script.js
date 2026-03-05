@@ -5,7 +5,7 @@ const COMMUNITY_FALLBACK_ICON = 'https://cdn.top.gg/icons/799571124189618176/041
 const DISCORD_CLIENT_ID = '1435987186502733878';
 
 function buildDiscordAuthorizeUrl() {
-  const redirectUrl = new URL('index.html', window.location.href);
+  const redirectUrl = new URL('/', window.location.href);
   const url = new URL('https://discord.com/oauth2/authorize');
   url.searchParams.set('client_id', DISCORD_CLIENT_ID);
   url.searchParams.set('integration_type', '1');

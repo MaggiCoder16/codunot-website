@@ -3,9 +3,12 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
 const COMMUNITY_FALLBACK_ICON = 'https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp';
 
 const DISCORD_CLIENT_ID = '1435987186502733878';
+const SITE_BASE = document.currentScript
+  ? new URL('./', document.currentScript.src).href
+  : new URL('./', window.location.href).href;
 
 function buildDiscordAuthorizeUrl() {
-  const redirectUrl = new URL('/', window.location.href);
+  const redirectUrl = new URL(SITE_BASE);
   const url = new URL('https://discord.com/oauth2/authorize');
   url.searchParams.set('client_id', DISCORD_CLIENT_ID);
   url.searchParams.set('integration_type', '1');

@@ -59,7 +59,7 @@
         <tbody>
           <tr><td><code>/generate_image [prompt]</code></td><td>AI-generated images with enhanced prompts.</td><td>Slash</td></tr>
           <tr><td><code>/generate_video [prompt]</code></td><td>Text-to-video generation (~1 min render time).</td><td>Slash</td></tr>
-          <tr><td><code>/generate_tts [text] [language] [voice]</code></td><td>Text-to-speech with 20+ voices, 8 languages (min 20 chars).</td><td>Slash</td></tr>
+          <tr><td><code>/generate_tts [text] [language] [voice]</code></td><td>Text-to-speech with 300+ voices across 40+ languages (min 20 chars).</td><td>Slash</td></tr>
           <tr><td>Attach image + describe edits</td><td>AI-powered image editing and modifications.</td><td>Message flow</td></tr>
           <tr><td>Attach 2+ images + say "merge"</td><td>Merge multiple images into one coherent scene.</td><td>Message flow</td></tr>
         </tbody>
@@ -80,6 +80,28 @@
     </section>
 
     <section class="card section">
+      <h2>🛡️ Moderation Suite</h2>
+      <p class="muted">Server moderation, safety automations, case tracking, and advanced Premium/Gold controls.</p>
+      <table class="table">
+        <thead><tr><th>Command</th><th>What it does</th><th>Access</th></tr></thead>
+        <tbody>
+          <tr><td><code>/setup-moderation</code></td><td>Interactive 6-step setup wizard for AutoMod, logs, mod roles, link policy, anti-spam, and anti-raid.</td><td><span class="badge free">Free</span></td></tr>
+          <tr><td><code>/automod [enable|disable]</code></td><td>Quickly toggle automatic moderation after setup.</td><td><span class="badge free">Free</span></td></tr>
+          <tr><td><code>/warn</code> <code>/warns</code> <code>/clearwarns</code></td><td>Issue warnings, view warning history, and reset warnings for a member.</td><td><span class="badge free">Free</span></td></tr>
+          <tr><td><code>/ban</code> <code>/unban</code> <code>/modkick</code></td><td>Core removal actions for bans, unbans, and kicks.</td><td><span class="badge free">Free</span></td></tr>
+          <tr><td><code>/mute</code> <code>/unmute</code></td><td>Timeout (mute) and untimeout users with reasons and logging.</td><td><span class="badge free">Free</span></td></tr>
+          <tr><td><code>/clear</code> <code>/slowmode</code> <code>/lock</code> <code>/unlock</code></td><td>Channel moderation controls: cleanup, pacing, and lockdown management.</td><td><span class="badge free">Free</span></td></tr>
+          <tr><td><code>/userinfo</code> <code>/case [number]</code></td><td>Inspect member moderation details and look up logged cases by case number.</td><td><span class="badge free">Free</span></td></tr>
+          <tr><td><code>/tempban [duration]</code></td><td>Temporary bans with automatic scheduled unban (examples: 30m, 6h, 7d).</td><td><span class="badge premium">Premium / Gold</span></td></tr>
+          <tr><td><code>/massban</code></td><td>Ban up to 10 users at once using an ID modal.</td><td><span class="badge premium">Premium / Gold</span></td></tr>
+          <tr><td><code>/modstats</code></td><td>Detailed moderation analytics (actions, top warned users, active moderators).</td><td><span class="badge premium">Premium / Gold</span></td></tr>
+          <tr><td><code>/note add</code> <code>/note view</code> <code>/note clear</code></td><td>Private moderator notes per member for internal staff context.</td><td><span class="badge premium">Premium / Gold</span></td></tr>
+          <tr><td><code>More Premium/Gold mod commands</code></td><td>Advanced moderation features are expanding regularly for Premium and Gold servers.</td><td><span class="badge gold">Premium / Gold 👑</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card section">
       <h2>🔧 Developer &amp; Utility Tools</h2>
       <p class="muted">Code testing, web browsing, and location tools.</p>
       <table class="table">
@@ -87,7 +109,6 @@
         <tbody>
           <tr><td><code>/test_code [code]</code></td><td>Validate code, get summaries, auto-fix errors.</td><td><span class="badge free">Free</span></td></tr>
           <tr><td><code>/browse [URL]</code></td><td>Explicitly fetch and analyze webpage content.</td><td><span class="badge free">Free</span></td></tr>
-          <tr><td><code>/google_maps [location] [query]</code></td><td>Search for places with ratings, reviews, hours, and directions.</td><td><span class="badge free">Free</span></td></tr>
           <tr><td><code>/transcribe [video_url]</code></td><td>Transcribe YouTube/Twitch/X/Kick videos (max 30 mins).</td><td><span class="badge vote">Vote Required</span></td></tr>
           <tr><td><code>/guessage @user</code></td><td>Estimate user's age from message patterns.</td><td><span class="badge vote">Vote Required</span></td></tr>
         </tbody>
@@ -144,7 +165,6 @@
   <script src="../script.js"></script>
 </body>
 </html>
-
 
 
 

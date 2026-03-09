@@ -191,6 +191,92 @@ function initHeroTypedLine() {
 
 initHeroTypedLine();
 
+function initLocalizationSwitcher() {
+  const navLinks = document.querySelector('.links');
+  if (!navLinks) return;
+
+  const localization = [
+    { code: 'en', label: 'English' },
+    { code: 'es', label: 'Español' },
+    { code: 'fr', label: 'Français' },
+    { code: 'de', label: 'Deutsch' },
+    { code: 'pt', label: 'Português' },
+    { code: 'it', label: 'Italiano' },
+    { code: 'nl', label: 'Nederlands' },
+    { code: 'pl', label: 'Polski' },
+    { code: 'tr', label: 'Türkçe' },
+    { code: 'ru', label: 'Русский' },
+    { code: 'uk', label: 'Українська' },
+    { code: 'ar', label: 'العربية' },
+    { code: 'he', label: 'עברית' },
+    { code: 'hi', label: 'हिन्दी' },
+    { code: 'bn', label: 'বাংলা' },
+    { code: 'id', label: 'Bahasa Indonesia' },
+    { code: 'ms', label: 'Bahasa Melayu' },
+    { code: 'vi', label: 'Tiếng Việt' },
+    { code: 'th', label: 'ไทย' },
+    { code: 'ja', label: '日本語' },
+    { code: 'ko', label: '한국어' },
+    { code: 'zh-CN', label: '中文（简体）' },
+    { code: 'zh-TW', label: '中文（繁體）' },
+    { code: 'sw', label: 'Kiswahili' },
+    { code: 'fa', label: 'فارسی' }
+  ];
+
+  const select = document.createElement('select');
+  select.className = 'language-switcher';
+  select.setAttribute('aria-label', 'Translate website language');
+  select.innerHTML = localization.map((lang) => `<option value="${lang.code}">${lang.label}</option>`).join('');
+
+  const getLangFromCookie = () => {
+    const match = document.cookie.match(/(?:^|; )googtrans=\/[^/]+\/([^;]+)/);
+    return match ? decodeURIComponent(match[1]) : 'en';
+  };
+
+  const updateGoogleTranslateCookie = (lang) => {
+    const value = `/en/${lang}`;
+    const maxAge = 60 * 60 * 24 * 365;
+    document.cookie = `googtrans=${value};path=/;max-age=${maxAge}`;
+    document.cookie = `googtrans=${value};path=/;domain=.${window.location.hostname};max-age=${maxAge}`;
+  };
+
+  const activeLang = getLangFromCookie();
+  const hasActiveLang = localization.some((lang) => lang.code === activeLang);
+  select.value = hasActiveLang ? activeLang : 'en';
+
+  select.addEventListener('change', (event) => {
+    const selectedLang = event.target.value;
+    updateGoogleTranslateCookie(selectedLang);
+    window.location.reload();
+  });
+
+  navLinks.appendChild(select);
+
+  if (!window.googleTranslateElementInit) {
+    window.googleTranslateElementInit = () => {
+      if (document.getElementById('google_translate_element')) return;
+      const hiddenContainer = document.createElement('div');
+      hiddenContainer.id = 'google_translate_element';
+      hiddenContainer.className = 'google-translate-hidden';
+      document.body.appendChild(hiddenContainer);
+      new window.google.translate.TranslateElement({
+        pageLanguage: 'en',
+        autoDisplay: false
+      }, 'google_translate_element');
+    };
+  }
+
+  if (!document.querySelector("script[data-google-translate='true']")) {
+    const script = document.createElement('script');
+    script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    script.async = true;
+    script.dataset.googleTranslate = 'true';
+    document.body.appendChild(script);
+  }
+}
+
+initLocalizationSwitcher();
+
 function initSnowToggle() {
   const body = document.body;
   if (!body) return;

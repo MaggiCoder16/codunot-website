@@ -505,3 +505,34 @@ main,
     transition: none !important;
   }
 }
+
+.language-switcher {
+  border: 1px solid rgba(255, 215, 150, .35);
+  background: rgba(255, 205, 130, .12);
+  color: var(--text);
+  border-radius: 999px;
+  padding: .33rem .62rem;
+  font-size: .8rem;
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
+}
+.language-switcher option {
+  color: #1c0d05;
+}
+.google-translate-hidden,
+.goog-logo-link,
+.goog-te-gadget span,
+.goog-te-banner-frame.skiptranslate,
+body > .skiptranslate {
+  display: none !important;
+}
+body {
+  top: 0 !important;
+}
+
+@media (max-width: 980px) {
+  .language-switcher {
+    margin-top: .35rem;
+  }
+}

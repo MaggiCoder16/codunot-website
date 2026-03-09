@@ -190,3 +190,112 @@ function initHeroTypedLine() {
 }
 
 initHeroTypedLine();
+
+function initSnowToggle() {
+  const body = document.body;
+  if (!body) return;
+
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const stored = window.localStorage.getItem('codunot_snow_enabled');
+  const enabled = stored === null ? !prefersReduced : stored === 'true';
+
+  const canvas = document.createElement('canvas');
+  canvas.className = 'snow-canvas';
+  canvas.setAttribute('aria-hidden', 'true');
+  body.prepend(canvas);
+
+  const toggle = document.createElement('button');
+  toggle.className = 'snow-toggle';
+  toggle.type = 'button';
+  toggle.setAttribute('aria-pressed', String(enabled));
+
+  const label = (state) => state ? '❄️ Snow: On' : '❄️ Snow: Off';
+  toggle.textContent = label(enabled);
+
+  const navLinks = document.querySelector('.links');
+  if (navLinks) {
+    navLinks.appendChild(toggle);
+  } else {
+    body.appendChild(toggle);
+  }
+
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  const flakes = [];
+  const density = () => Math.max(24, Math.floor(window.innerWidth / 28));
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  function spawnFlakes() {
+    flakes.length = 0;
+    for (let i = 0; i < density(); i += 1) {
+      flakes.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: 1 + Math.random() * 3,
+        s: 0.4 + Math.random() * 1.6,
+        w: (Math.random() * 0.8) - 0.4
+      });
+    }
+  }
+
+  let snowEnabled = enabled;
+  let rafId = null;
+
+  function render() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (!snowEnabled) return;
+
+    ctx.fillStyle = 'rgba(255,255,255,0.85)';
+    for (const f of flakes) {
+      f.y += f.s;
+      f.x += Math.sin(f.y * 0.01) * 0.5 + f.w;
+      if (f.y > canvas.height + 5) {
+        f.y = -8;
+        f.x = Math.random() * canvas.width;
+      }
+      if (f.x > canvas.width + 5) f.x = -5;
+      if (f.x < -5) f.x = canvas.width + 5;
+
+      ctx.beginPath();
+      ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    rafId = window.requestAnimationFrame(render);
+  }
+
+  function setState(state) {
+    snowEnabled = state;
+    canvas.style.display = state ? 'block' : 'none';
+    toggle.setAttribute('aria-pressed', String(state));
+    toggle.textContent = label(state);
+    window.localStorage.setItem('codunot_snow_enabled', String(state));
+
+    if (!state && rafId) {
+      window.cancelAnimationFrame(rafId);
+      rafId = null;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+    if (state && !rafId) render();
+  }
+
+  window.addEventListener('resize', () => {
+    resize();
+    spawnFlakes();
+  });
+
+  toggle.addEventListener('click', () => {
+    setState(!snowEnabled);
+  });
+
+  resize();
+  spawnFlakes();
+  setState(snowEnabled);
+}
+
+initSnowToggle();

@@ -441,3 +441,67 @@ main.container.section {
   .feature-text p { font-size: .95rem; }
   .compare-card { padding: .6rem; }
 }
+
+.badge.premium {
+  background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+  color: #fff;
+}
+.badge.gold {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  color: #2b1700;
+}
+
+.snow-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.55;
+}
+
+.nav-wrap,
+main,
+.footer {
+  position: relative;
+  z-index: 2;
+}
+
+.snow-toggle {
+  border: 1px solid rgba(255, 215, 150, .35);
+  background: rgba(255, 205, 130, .12);
+  color: var(--text);
+  border-radius: 999px;
+  padding: .35rem .65rem;
+  font-size: .8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .15s ease, background .2s ease;
+}
+.snow-toggle:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 205, 130, .2);
+}
+
+.tile {
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.tile:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 177, 79, .6);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, .25);
+}
+
+@media (max-width: 980px) {
+  .snow-toggle {
+    margin-top: .35rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .snow-canvas,
+  .tile,
+  .snow-toggle {
+    animation: none !important;
+    transition: none !important;
+  }
+}

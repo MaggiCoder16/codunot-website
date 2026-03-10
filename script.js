@@ -207,31 +207,47 @@ function initBotClicker() {
   });
 }
 
-function initHeroTypedLine() {
+function initHeroTypedLine(lang = 'en') {
   const el = document.getElementById('hero-typed');
   if (!el) return;
 
-  const text = 'Personality modes · image generation · video generation · text-to-speech · transcription · interactive fun commands';
+  const typedByLang = {
+    en: 'Personality modes · image generation · video generation · text-to-speech · transcription',
+    es: 'Modos de personalidad · generación de imágenes · generación de video · texto a voz · transcripción',
+    fr: 'Modes de personnalité · génération d’images · génération vidéo · synthèse vocale · transcription',
+    de: 'Persönlichkeitsmodi · Bildgenerierung · Videogenerierung · Text-zu-Sprache · Transkription',
+    pt: 'Modos de personalidade · geração de imagens · geração de vídeo · texto para fala · transcrição',
+    hi: 'पर्सनैलिटी मोड्स · इमेज जनरेशन · वीडियो जनरेशन · टेक्स्ट-टू-स्पीच · ट्रांसक्रिप्शन',
+    ja: 'パーソナリティモード · 画像生成 · 動画生成 · 音声読み上げ · 文字起こし'
+  };
+
+  const text = typedByLang[lang] || typedByLang.en;
+  if (window.__heroTypeTimer) window.clearTimeout(window.__heroTypeTimer);
+  const runId = String(Date.now());
+  el.dataset.typeRun = runId;
+
   let index = 0;
   let deleting = false;
 
   function tick() {
+    if (el.dataset.typeRun != runId) return;
+
     if (!deleting) {
       index += 1;
       el.textContent = text.slice(0, index);
       if (index === text.length) {
         deleting = true;
-        window.setTimeout(tick, 1200);
+        window.__heroTypeTimer = window.setTimeout(tick, 1200);
         return;
       }
-      window.setTimeout(tick, 24);
+      window.__heroTypeTimer = window.setTimeout(tick, 24);
       return;
     }
 
     index -= 1;
     el.textContent = text.slice(0, index);
     if (index === 0) deleting = false;
-    window.setTimeout(tick, deleting ? 12 : 500);
+    window.__heroTypeTimer = window.setTimeout(tick, deleting ? 12 : 500);
   }
 
   tick();
@@ -264,7 +280,13 @@ function initLocalizationSwitcher() {
       'A discord chatbot with all your needs': 'Un chatbot de Discord para todo lo que necesitas',
       'Add to Discord': 'Agregar a Discord',
       'Authorize App Login': 'Autorizar inicio de app',
-      'Vote on top.gg': 'Votar en top.gg'
+      'Vote on top.gg': 'Votar en top.gg',
+      'Personality modes': 'Modos de personalidad',
+      'Image generation': 'Generación de imágenes',
+      'Moderation suite': 'Suite de moderación',
+      'Fun, serious, roast, rizz coach, and chess mode.': 'Modo divertido, serio, roast, coach de rizz y modo ajedrez.',
+      'Generate, edit, and merge visuals from prompts.': 'Genera, edita y combina imágenes desde prompts.',
+      '/setup-moderation, automod, anti-spam, anti-raid.': '/setup-moderation, automod, anti-spam, anti-raid.'
     },
     fr: {
       'Home': 'Accueil',
@@ -278,7 +300,13 @@ function initLocalizationSwitcher() {
       'A discord chatbot with all your needs': 'Un chatbot Discord pour tous vos besoins',
       'Add to Discord': 'Ajouter à Discord',
       'Authorize App Login': 'Autoriser la connexion',
-      'Vote on top.gg': 'Voter sur top.gg'
+      'Vote on top.gg': 'Voter sur top.gg',
+      'Personality modes': 'Modes de personnalité',
+      'Image generation': 'Génération d’images',
+      'Moderation suite': 'Suite de modération',
+      'Fun, serious, roast, rizz coach, and chess mode.': 'Mode fun, sérieux, roast, coach rizz et mode échecs.',
+      'Generate, edit, and merge visuals from prompts.': 'Générez, modifiez et fusionnez des visuels à partir de prompts.',
+      '/setup-moderation, automod, anti-spam, anti-raid.': '/setup-moderation, automod, anti-spam, anti-raid.'
     },
     de: {
       'Home': 'Startseite',
@@ -292,7 +320,13 @@ function initLocalizationSwitcher() {
       'A discord chatbot with all your needs': 'Ein Discord-Chatbot für alles, was du brauchst',
       'Add to Discord': 'Zu Discord hinzufügen',
       'Authorize App Login': 'App-Login autorisieren',
-      'Vote on top.gg': 'Auf top.gg abstimmen'
+      'Vote on top.gg': 'Auf top.gg abstimmen',
+      'Personality modes': 'Persönlichkeitsmodi',
+      'Image generation': 'Bildgenerierung',
+      'Moderation suite': 'Moderations-Suite',
+      'Fun, serious, roast, rizz coach, and chess mode.': 'Fun-, Serious-, Roast-, Rizz-Coach- und Schachmodus.',
+      'Generate, edit, and merge visuals from prompts.': 'Erzeuge, bearbeite und kombiniere Bilder aus Prompts.',
+      '/setup-moderation, automod, anti-spam, anti-raid.': '/setup-moderation, automod, anti-spam, anti-raid.'
     },
     pt: {
       'Home': 'Início',
@@ -306,7 +340,13 @@ function initLocalizationSwitcher() {
       'A discord chatbot with all your needs': 'Um chatbot do Discord para tudo que você precisa',
       'Add to Discord': 'Adicionar ao Discord',
       'Authorize App Login': 'Autorizar login do app',
-      'Vote on top.gg': 'Votar no top.gg'
+      'Vote on top.gg': 'Votar no top.gg',
+      'Personality modes': 'Modos de personalidade',
+      'Image generation': 'Geração de imagens',
+      'Moderation suite': 'Suite de moderação',
+      'Fun, serious, roast, rizz coach, and chess mode.': 'Modo divertido, sério, roast, coach de rizz e modo xadrez.',
+      'Generate, edit, and merge visuals from prompts.': 'Gere, edite e mescle visuais a partir de prompts.',
+      '/setup-moderation, automod, anti-spam, anti-raid.': '/setup-moderation, automod, anti-spam, anti-raid.'
     },
     hi: {
       'Home': 'होम',
@@ -320,7 +360,13 @@ function initLocalizationSwitcher() {
       'A discord chatbot with all your needs': 'आपकी सभी ज़रूरतों के लिए एक Discord चैटबॉट',
       'Add to Discord': 'Discord में जोड़ें',
       'Authorize App Login': 'ऐप लॉगिन अधिकृत करें',
-      'Vote on top.gg': 'top.gg पर वोट करें'
+      'Vote on top.gg': 'top.gg पर वोट करें',
+      'Personality modes': 'पर्सनैलिटी मोड्स',
+      'Image generation': 'इमेज जनरेशन',
+      'Moderation suite': 'मॉडरेशन सूट',
+      'Fun, serious, roast, rizz coach, and chess mode.': 'फन, सीरियस, रोस्ट, रिज़ कोच और चेस मोड।',
+      'Generate, edit, and merge visuals from prompts.': 'प्रॉम्प्ट से विज़ुअल बनाएं, एडिट करें और मर्ज करें।',
+      '/setup-moderation, automod, anti-spam, anti-raid.': '/setup-moderation, automod, anti-spam, anti-raid.'
     },
     ja: {
       'Home': 'ホーム',
@@ -334,7 +380,13 @@ function initLocalizationSwitcher() {
       'A discord chatbot with all your needs': '必要な機能を備えたDiscordチャットボット',
       'Add to Discord': 'Discordに追加',
       'Authorize App Login': 'アプリログインを認証',
-      'Vote on top.gg': 'top.ggで投票'
+      'Vote on top.gg': 'top.ggで投票',
+      'Personality modes': 'パーソナリティモード',
+      'Image generation': '画像生成',
+      'Moderation suite': 'モデレーションスイート',
+      'Fun, serious, roast, rizz coach, and chess mode.': 'Fun/Serious/Roast/Rizz coach/Chess モード。',
+      'Generate, edit, and merge visuals from prompts.': 'プロンプトから画像を生成・編集・合成。',
+      '/setup-moderation, automod, anti-spam, anti-raid.': '/setup-moderation, automod, anti-spam, anti-raid.'
     }
   };
 
@@ -348,13 +400,22 @@ function initLocalizationSwitcher() {
 
   const translateDocument = (lang) => {
     const dictionary = translations[lang] || {};
-    document.querySelectorAll('a, button, .subhead').forEach((el) => {
+    document.querySelectorAll('a, .subhead, .hero-mini-card strong, .hero-mini-card p').forEach((el) => {
+      if (el.children.length > 0) return;
       const base = el.dataset.i18nBase || el.textContent.trim();
       if (!el.dataset.i18nBase) el.dataset.i18nBase = base;
       el.textContent = dictionary[base] || base;
     });
 
+    const authLabel = document.querySelector('.login-btn span');
+    if (authLabel) {
+      const base = authLabel.dataset.i18nBase || authLabel.textContent.trim();
+      if (!authLabel.dataset.i18nBase) authLabel.dataset.i18nBase = base;
+      authLabel.textContent = dictionary[base] || base;
+    }
+
     document.documentElement.lang = lang;
+    initHeroTypedLine(lang);
   };
 
   select.addEventListener('change', (event) => {
@@ -474,7 +535,6 @@ function initSnowToggle() {
 initAuthButtons();
 loadCommunities();
 initBotClicker();
-initHeroTypedLine();
 initLocalizationSwitcher();
 initSnowToggle();
 initCursorEffects();

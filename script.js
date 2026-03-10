@@ -207,21 +207,11 @@ function initBotClicker() {
   });
 }
 
-function initHeroTypedLine(lang = 'en') {
+function initHeroTypedLine() {
   const el = document.getElementById('hero-typed');
   if (!el) return;
 
-  const typedByLang = {
-    en: 'Personality modes · image generation · video generation · text-to-speech · transcription',
-    es: 'Modos de personalidad · generación de imágenes · generación de video · texto a voz · transcripción',
-    fr: 'Modes de personnalité · génération d’images · génération vidéo · synthèse vocale · transcription',
-    de: 'Persönlichkeitsmodi · Bildgenerierung · Videogenerierung · Text-zu-Sprache · Transkription',
-    pt: 'Modos de personalidade · geração de imagens · geração de vídeo · texto para fala · transcrição',
-    hi: 'पर्सनैलिटी मोड्स · इमेज जनरेशन · वीडियो जनरेशन · टेक्स्ट-टू-स्पीच · ट्रांसक्रिप्शन',
-    ja: 'パーソナリティモード · 画像生成 · 動画生成 · 音声読み上げ · 文字起こし'
-  };
-
-  const text = typedByLang[lang] || typedByLang.en;
+  const text = 'Personality modes · image generation · video generation · text-to-speech · transcription';
   if (window.__heroTypeTimer) window.clearTimeout(window.__heroTypeTimer);
   const runId = String(Date.now());
   el.dataset.typeRun = runId;
@@ -251,181 +241,6 @@ function initHeroTypedLine(lang = 'en') {
   }
 
   tick();
-}
-
-function initLocalizationSwitcher() {
-  const navLinks = document.querySelector('.links');
-  if (!navLinks) return;
-
-  const localization = [
-    { code: 'en', label: 'English' },
-    { code: 'es', label: 'Español' },
-    { code: 'fr', label: 'Français' },
-    { code: 'de', label: 'Deutsch' },
-    { code: 'pt', label: 'Português' },
-    { code: 'hi', label: 'हिन्दी' },
-    { code: 'ja', label: '日本語' }
-  ];
-
-  const translations = {
-    es: {
-      'Home': 'Inicio',
-      'Features': 'Funciones',
-      'Command Center': 'Centro de comandos',
-      'Stats': 'Estadísticas',
-      'Reviews': 'Reseñas',
-      'Support': 'Soporte',
-      'Privacy Policy': 'Política de privacidad',
-      'Authorize App': 'Autorizar app',
-      'A discord chatbot with all your needs': 'Un chatbot de Discord para todo lo que necesitas',
-      'Add to Discord': 'Agregar a Discord',
-      'Authorize App Login': 'Autorizar inicio de app',
-      'Vote on top.gg': 'Votar en top.gg',
-      'Personality modes': 'Modos de personalidad',
-      'Image generation': 'Generación de imágenes',
-      'Moderation suite': 'Suite de moderación',
-      'Fun, serious, roast, rizz coach, and chess mode.': 'Modo divertido, serio, roast, coach de rizz y modo ajedrez.',
-      'Generate, edit, and merge visuals from prompts.': 'Genera, edita y combina imágenes desde prompts.',
-      '/setup-moderation, automod, anti-spam, anti-raid.': '/setup-moderation, automod, anti-spam, anti-raid.'
-    },
-    fr: {
-      'Home': 'Accueil',
-      'Features': 'Fonctionnalités',
-      'Command Center': 'Centre de commandes',
-      'Stats': 'Statistiques',
-      'Reviews': 'Avis',
-      'Support': 'Support',
-      'Privacy Policy': 'Politique de confidentialité',
-      'Authorize App': 'Autoriser l’app',
-      'A discord chatbot with all your needs': 'Un chatbot Discord pour tous vos besoins',
-      'Add to Discord': 'Ajouter à Discord',
-      'Authorize App Login': 'Autoriser la connexion',
-      'Vote on top.gg': 'Voter sur top.gg',
-      'Personality modes': 'Modes de personnalité',
-      'Image generation': 'Génération d’images',
-      'Moderation suite': 'Suite de modération',
-      'Fun, serious, roast, rizz coach, and chess mode.': 'Mode fun, sérieux, roast, coach rizz et mode échecs.',
-      'Generate, edit, and merge visuals from prompts.': 'Générez, modifiez et fusionnez des visuels à partir de prompts.',
-      '/setup-moderation, automod, anti-spam, anti-raid.': '/setup-moderation, automod, anti-spam, anti-raid.'
-    },
-    de: {
-      'Home': 'Startseite',
-      'Features': 'Funktionen',
-      'Command Center': 'Befehlszentrale',
-      'Stats': 'Statistiken',
-      'Reviews': 'Bewertungen',
-      'Support': 'Support',
-      'Privacy Policy': 'Datenschutz',
-      'Authorize App': 'App autorisieren',
-      'A discord chatbot with all your needs': 'Ein Discord-Chatbot für alles, was du brauchst',
-      'Add to Discord': 'Zu Discord hinzufügen',
-      'Authorize App Login': 'App-Login autorisieren',
-      'Vote on top.gg': 'Auf top.gg abstimmen',
-      'Personality modes': 'Persönlichkeitsmodi',
-      'Image generation': 'Bildgenerierung',
-      'Moderation suite': 'Moderations-Suite',
-      'Fun, serious, roast, rizz coach, and chess mode.': 'Fun-, Serious-, Roast-, Rizz-Coach- und Schachmodus.',
-      'Generate, edit, and merge visuals from prompts.': 'Erzeuge, bearbeite und kombiniere Bilder aus Prompts.',
-      '/setup-moderation, automod, anti-spam, anti-raid.': '/setup-moderation, automod, anti-spam, anti-raid.'
-    },
-    pt: {
-      'Home': 'Início',
-      'Features': 'Recursos',
-      'Command Center': 'Central de comandos',
-      'Stats': 'Estatísticas',
-      'Reviews': 'Avaliações',
-      'Support': 'Suporte',
-      'Privacy Policy': 'Política de privacidade',
-      'Authorize App': 'Autorizar app',
-      'A discord chatbot with all your needs': 'Um chatbot do Discord para tudo que você precisa',
-      'Add to Discord': 'Adicionar ao Discord',
-      'Authorize App Login': 'Autorizar login do app',
-      'Vote on top.gg': 'Votar no top.gg',
-      'Personality modes': 'Modos de personalidade',
-      'Image generation': 'Geração de imagens',
-      'Moderation suite': 'Suite de moderação',
-      'Fun, serious, roast, rizz coach, and chess mode.': 'Modo divertido, sério, roast, coach de rizz e modo xadrez.',
-      'Generate, edit, and merge visuals from prompts.': 'Gere, edite e mescle visuais a partir de prompts.',
-      '/setup-moderation, automod, anti-spam, anti-raid.': '/setup-moderation, automod, anti-spam, anti-raid.'
-    },
-    hi: {
-      'Home': 'होम',
-      'Features': 'फ़ीचर्स',
-      'Command Center': 'कमांड सेंटर',
-      'Stats': 'आँकड़े',
-      'Reviews': 'रिव्यू',
-      'Support': 'सपोर्ट',
-      'Privacy Policy': 'प्राइवेसी पॉलिसी',
-      'Authorize App': 'ऐप अधिकृत करें',
-      'A discord chatbot with all your needs': 'आपकी सभी ज़रूरतों के लिए एक Discord चैटबॉट',
-      'Add to Discord': 'Discord में जोड़ें',
-      'Authorize App Login': 'ऐप लॉगिन अधिकृत करें',
-      'Vote on top.gg': 'top.gg पर वोट करें',
-      'Personality modes': 'पर्सनैलिटी मोड्स',
-      'Image generation': 'इमेज जनरेशन',
-      'Moderation suite': 'मॉडरेशन सूट',
-      'Fun, serious, roast, rizz coach, and chess mode.': 'फन, सीरियस, रोस्ट, रिज़ कोच और चेस मोड।',
-      'Generate, edit, and merge visuals from prompts.': 'प्रॉम्प्ट से विज़ुअल बनाएं, एडिट करें और मर्ज करें।',
-      '/setup-moderation, automod, anti-spam, anti-raid.': '/setup-moderation, automod, anti-spam, anti-raid.'
-    },
-    ja: {
-      'Home': 'ホーム',
-      'Features': '機能',
-      'Command Center': 'コマンドセンター',
-      'Stats': '統計',
-      'Reviews': 'レビュー',
-      'Support': 'サポート',
-      'Privacy Policy': 'プライバシーポリシー',
-      'Authorize App': 'アプリを認証',
-      'A discord chatbot with all your needs': '必要な機能を備えたDiscordチャットボット',
-      'Add to Discord': 'Discordに追加',
-      'Authorize App Login': 'アプリログインを認証',
-      'Vote on top.gg': 'top.ggで投票',
-      'Personality modes': 'パーソナリティモード',
-      'Image generation': '画像生成',
-      'Moderation suite': 'モデレーションスイート',
-      'Fun, serious, roast, rizz coach, and chess mode.': 'Fun/Serious/Roast/Rizz coach/Chess モード。',
-      'Generate, edit, and merge visuals from prompts.': 'プロンプトから画像を生成・編集・合成。',
-      '/setup-moderation, automod, anti-spam, anti-raid.': '/setup-moderation, automod, anti-spam, anti-raid.'
-    }
-  };
-
-  const select = document.createElement('select');
-  select.className = 'language-switcher';
-  select.setAttribute('aria-label', 'Website language');
-  select.innerHTML = localization.map((lang) => `<option value="${lang.code}">${lang.label}</option>`).join('');
-
-  const storedLang = window.localStorage.getItem('codunot_lang') || 'en';
-  select.value = localization.some((lang) => lang.code === storedLang) ? storedLang : 'en';
-
-  const translateDocument = (lang) => {
-    const dictionary = translations[lang] || {};
-    document.querySelectorAll('a, .subhead, .hero-mini-card strong, .hero-mini-card p').forEach((el) => {
-      if (el.children.length > 0) return;
-      const base = el.dataset.i18nBase || el.textContent.trim();
-      if (!el.dataset.i18nBase) el.dataset.i18nBase = base;
-      el.textContent = dictionary[base] || base;
-    });
-
-    const authLabel = document.querySelector('.login-btn span');
-    if (authLabel) {
-      const base = authLabel.dataset.i18nBase || authLabel.textContent.trim();
-      if (!authLabel.dataset.i18nBase) authLabel.dataset.i18nBase = base;
-      authLabel.textContent = dictionary[base] || base;
-    }
-
-    document.documentElement.lang = lang;
-    initHeroTypedLine(lang);
-  };
-
-  select.addEventListener('change', (event) => {
-    const selectedLang = event.target.value;
-    window.localStorage.setItem('codunot_lang', selectedLang);
-    translateDocument(selectedLang);
-  });
-
-  navLinks.appendChild(select);
-  translateDocument(select.value);
 }
 
 function initSnowToggle() {
@@ -535,7 +350,7 @@ function initSnowToggle() {
 initAuthButtons();
 loadCommunities();
 initBotClicker();
-initLocalizationSwitcher();
+initHeroTypedLine();
 initSnowToggle();
 initCursorEffects();
 initRevealAnimations();

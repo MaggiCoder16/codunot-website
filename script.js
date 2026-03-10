@@ -211,7 +211,7 @@ function initHeroTypedLine() {
   const el = document.getElementById('hero-typed');
   if (!el) return;
 
-  const text = 'Personality modes · image generation · video generation · text-to-speech · transcription';
+  const text = 'Personality modes · image generation · video generation · text-to-speech · transcription · image merging · image editing · moderation · fun commands';
   if (window.__heroTypeTimer) window.clearTimeout(window.__heroTypeTimer);
   const runId = String(Date.now());
   el.dataset.typeRun = runId;

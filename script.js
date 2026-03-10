@@ -216,15 +216,17 @@ function initHeroTypedLine() {
   let deleting = false;
 
   function tick() {
+    if (el.dataset.typeRun != runId) return;
+
     if (!deleting) {
       index += 1;
       el.textContent = text.slice(0, index);
       if (index === text.length) {
         deleting = true;
-        window.setTimeout(tick, 1200);
+        window.__heroTypeTimer = window.setTimeout(tick, 1200);
         return;
       }
-      window.setTimeout(tick, 24);
+      window.__heroTypeTimer = window.setTimeout(tick, 24);
       return;
     }
 

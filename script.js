@@ -1,7 +1,7 @@
-﻿const yearEl = document.getElementById('year');
+const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
-const COMMUNITY_FALLBACK_ICON = 'https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp';
 
+const COMMUNITY_FALLBACK_ICON = 'https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp';
 const DISCORD_CLIENT_ID = '1435987186502733878';
 const SITE_BASE = document.currentScript
   ? new URL('./', document.currentScript.src).href
@@ -50,18 +50,97 @@ function initAuthButtons() {
   });
 }
 
-initAuthButtons();
+function initCursorEffects() {
+  if (window.matchMedia('(pointer: coarse)').matches) return;
 
-async function loadCommunities() {
+  const cursor = document.createElement('div');
+  cursor.className = 'cursor-dot';
+  const ring = document.createElement('div');
+  ring.className = 'cursor-ring';
+  document.body.append(cursor, ring);
+
+  let mx = 0;
+  let my = 0;
+  let rx = 0;
+  let ry = 0;
+
+  document.addEventListener('mousemove', (event) => {
+    mx = event.clientX;
+    my = event.clientY;
+    cursor.style.left = `${mx}px`;
+    cursor.style.top = `${my}px`;
+  });
+
+  function animateRing() {
+    rx += (mx - rx) * 0.14;
+    ry += (my - ry) * 0.14;
+    ring.style.left = `${rx}px`;
+    ring.style.top = `${ry}px`;
+    window.requestAnimationFrame(animateRing);
+  }
+
+  window.requestAnimationFrame(animateRing);
+
+  const interactiveSelector = 'a, button, .btn, .tile, .card, .hero-card, .feature-row, .community-card';
+  document.querySelectorAll(interactiveSelector).forEach((el) => {
+    el.addEventListener('mouseenter', () => {
+      cursor.classList.add('is-hover');
+      ring.classList.add('is-hover');
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.classList.remove('is-hover');
+      ring.classList.remove('is-hover');
+    });
+  });
+
+  document.addEventListener('click', (event) => {
+    const ripple = document.createElement('div');
+    ripple.className = 'click-ripple';
+    ripple.style.left = `${event.clientX}px`;
+    ripple.style.top = `${event.clientY}px`;
+    document.body.appendChild(ripple);
+    window.setTimeout(() => ripple.remove(), 560);
+  });
+}
+
+function initRevealAnimations() {
+  const targets = document.querySelectorAll('.section, .tile, .feature-row, .hero-card, .community-card');
+  if (!targets.length) return;
+
+  targets.forEach((el) => el.classList.add('reveal'));
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('visible');
+      obs.unobserve(entry.target);
+    });
+  }, { threshold: 0.12 });
+
+  targets.forEach((el) => observer.observe(el));
+}
+
+function initCardSpotlight() {
+  document.querySelectorAll('.tile, .card, .hero-card, .feature-row').forEach((card) => {
+    card.addEventListener('mousemove', (event) => {
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty('--mx', `${((event.clientX - rect.left) / rect.width) * 100}%`);
+      card.style.setProperty('--my', `${((event.clientY - rect.top) / rect.height) * 100}%`);
+    });
+  });
+}
+
+function loadCommunities() {
   const track = document.getElementById('community-track');
   if (!track) return;
 
-  try {
-    const res = await fetch('communities.json', { cache: 'no-store' });
-    if (!res.ok) throw new Error('Failed to load communities.json');
-    const communities = await res.json();
-
-    const cards = communities.map((c) => `
+  fetch('communities.json', { cache: 'no-store' })
+    .then((res) => {
+      if (!res.ok) throw new Error('Failed to load communities.json');
+      return res.json();
+    })
+    .then((communities) => {
+      const cards = communities.map((c) => `
       <a class="community-card" href="${c.invite}" target="_blank" rel="noopener">
         <img src="${c.icon}" alt="${c.name} icon" onerror="this.onerror=null;this.src='${COMMUNITY_FALLBACK_ICON}';" />
         <div>
@@ -74,11 +153,13 @@ async function loadCommunities() {
       </a>
     `);
 
-    track.innerHTML = [...cards, ...cards].join('');
-  } catch {
-    track.innerHTML = `
+      track.innerHTML = [...cards, ...cards].join('');
+      initRevealAnimations();
+    })
+    .catch(() => {
+      track.innerHTML = `
       <a class="community-card" href="https://discord.gg/GVuFk5gxtW" target="_blank" rel="noopener">
-        <img src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot" />
+        <img src="${COMMUNITY_FALLBACK_ICON}" alt="Codunot" />
         <div>
           <div class="community-name">Official Codunot Server</div>
           <div class="community-row">
@@ -88,10 +169,9 @@ async function loadCommunities() {
         </div>
       </a>
     `;
-  }
+      initRevealAnimations();
+    });
 }
-
-loadCommunities();
 
 function initBotClicker() {
   const clicker = document.getElementById('bot-clicker');
@@ -101,48 +181,18 @@ function initBotClicker() {
 
   let clicks = 0;
   const messages = [
-    "i'm a bot, not a button, but okay! \u{1F916}",
-    'yo those clicks are clean, keep cooking \u{1F525}',
-    'you got turbo fingers fr \u{1F62E}\u200D\u{1F4A8}\u{26A1}',
-    'bro is farming clicks like xp \u{1F602}',
-    'sheesh, this is elite click energy \u{1F4AF}',
-    'click count going crazy rn \u{1F635}\u200D\u{1F4AB}\u{1F4C8}',
-    'lowkey impressive tapping speed ngl \u{1F440}',
-    'you really woke up my circuits \u{1F60E}\u{1F50B}',
-    'that click combo was kinda legendary \u{1F3C6}',
-    'okay okay, i see you spam-master \u{1F62D}\u{1F44F}',
-    'nah this click streak is illegal \u{1F6A8}\u{1F602}',
-    'bro got that autoclicker aura \u{1F47D}\u{2728}',
-    'my sensors are screaming rn \u{1F916}\u{1F4A5}',
-    'you click, i vibe, we win \u{1F60E}\u{1F91D}',
-    'that was a crispy 10/10 tap cycle \u{1F525}\u{1F44C}',
-    'you just unlocked sweat mode \u{1F4AA}\u{1F3AE}',
-    'click department says W user \u{1F4C8}\u{1F389}',
-    'im lowkey impressed, keep going \u{1F47E}\u{1FAE1}',
-    'this is getting suspiciously pro \u{1F440}\u{1F3C1}',
-    'bot status: respectfully bullied by clicks \u{1F972}\u{1F44D}',
-    'your mouse is doing cardio \u{1F3C3}\u200D\u{2642}\u{FE0F}\u{1F4A8}',
-    'okay chef, these clicks are cooked perfect \u{1F373}\u{1F525}',
-    'we hit another level of tap madness \u{1F92F}\u{26A1}',
-    'you got main-character clicking energy \u{1F31F}\u{1F3AC}',
-    'my cpu just asked for a break \u{1F974}\u{1F9E0}',
-    'this click grind is actually insane \u{1F4AF}\u{1F680}',
-    'yo chill... actually dont chill \u{1F602}\u{1F44F}',
-    'clicks so clean they look scripted \u{1F4DC}\u{1F60F}',
-    'tap tap boom, combo secured \u{1F4A3}\u{1F3C6}',
-    'ur fingers got ultra instinct rn \u{1F44B}\u{1F31A}'
+    "i'm a bot, not a button, but okay! 🤖",
+    'yo those clicks are clean, keep cooking 🔥',
+    'bro is farming clicks like xp 😂',
+    'that click combo was legendary 🏆',
+    'click department says W user 📈🎉'
   ];
 
   let shownMessage = '';
   messageEl.textContent = '';
 
   function randomMessage() {
-    if (!shownMessage) {
-      shownMessage = messages[Math.floor(Math.random() * messages.length)];
-      messageEl.textContent = shownMessage;
-      return;
-    }
-    const options = messages.filter((m) => m !== shownMessage);
+    const options = messages.filter((message) => message !== shownMessage);
     shownMessage = options[Math.floor(Math.random() * options.length)];
     messageEl.textContent = shownMessage;
   }
@@ -157,13 +207,11 @@ function initBotClicker() {
   });
 }
 
-initBotClicker();
-
 function initHeroTypedLine() {
   const el = document.getElementById('hero-typed');
   if (!el) return;
 
-  const text = 'Various personality modes ~ Image generation, editing, and merging ~ Video generation ~ Text-To-Speech ~ Transcription ~ Interactive fun commands';
+  const text = 'Personality modes · image generation · moderation suite · video generation · text-to-speech · transcription';
   let index = 0;
   let deleting = false;
 
@@ -183,13 +231,11 @@ function initHeroTypedLine() {
     index -= 1;
     el.textContent = text.slice(0, index);
     if (index === 0) deleting = false;
-    window.setTimeout(tick, deleting ? 13 : 500);
+    window.setTimeout(tick, deleting ? 12 : 500);
   }
 
   tick();
 }
-
-initHeroTypedLine();
 
 function initLocalizationSwitcher() {
   const navLinks = document.querySelector('.links');
@@ -201,81 +247,125 @@ function initLocalizationSwitcher() {
     { code: 'fr', label: 'Français' },
     { code: 'de', label: 'Deutsch' },
     { code: 'pt', label: 'Português' },
-    { code: 'it', label: 'Italiano' },
-    { code: 'nl', label: 'Nederlands' },
-    { code: 'pl', label: 'Polski' },
-    { code: 'tr', label: 'Türkçe' },
-    { code: 'ru', label: 'Русский' },
-    { code: 'uk', label: 'Українська' },
-    { code: 'ar', label: 'العربية' },
-    { code: 'he', label: 'עברית' },
     { code: 'hi', label: 'हिन्दी' },
-    { code: 'bn', label: 'বাংলা' },
-    { code: 'id', label: 'Bahasa Indonesia' },
-    { code: 'ms', label: 'Bahasa Melayu' },
-    { code: 'vi', label: 'Tiếng Việt' },
-    { code: 'th', label: 'ไทย' },
-    { code: 'ja', label: '日本語' },
-    { code: 'ko', label: '한국어' },
-    { code: 'zh-CN', label: '中文（简体）' },
-    { code: 'zh-TW', label: '中文（繁體）' },
-    { code: 'sw', label: 'Kiswahili' },
-    { code: 'fa', label: 'فارسی' }
+    { code: 'ja', label: '日本語' }
   ];
+
+  const translations = {
+    es: {
+      'Home': 'Inicio',
+      'Features': 'Funciones',
+      'Command Center': 'Centro de comandos',
+      'Stats': 'Estadísticas',
+      'Reviews': 'Reseñas',
+      'Support': 'Soporte',
+      'Privacy Policy': 'Política de privacidad',
+      'Authorize App': 'Autorizar app',
+      'A discord chatbot with all your needs': 'Un chatbot de Discord para todo lo que necesitas',
+      'Add to Discord': 'Agregar a Discord',
+      'Authorize App Login': 'Autorizar inicio de app',
+      'Vote on top.gg': 'Votar en top.gg'
+    },
+    fr: {
+      'Home': 'Accueil',
+      'Features': 'Fonctionnalités',
+      'Command Center': 'Centre de commandes',
+      'Stats': 'Statistiques',
+      'Reviews': 'Avis',
+      'Support': 'Support',
+      'Privacy Policy': 'Politique de confidentialité',
+      'Authorize App': 'Autoriser l’app',
+      'A discord chatbot with all your needs': 'Un chatbot Discord pour tous vos besoins',
+      'Add to Discord': 'Ajouter à Discord',
+      'Authorize App Login': 'Autoriser la connexion',
+      'Vote on top.gg': 'Voter sur top.gg'
+    },
+    de: {
+      'Home': 'Startseite',
+      'Features': 'Funktionen',
+      'Command Center': 'Befehlszentrale',
+      'Stats': 'Statistiken',
+      'Reviews': 'Bewertungen',
+      'Support': 'Support',
+      'Privacy Policy': 'Datenschutz',
+      'Authorize App': 'App autorisieren',
+      'A discord chatbot with all your needs': 'Ein Discord-Chatbot für alles, was du brauchst',
+      'Add to Discord': 'Zu Discord hinzufügen',
+      'Authorize App Login': 'App-Login autorisieren',
+      'Vote on top.gg': 'Auf top.gg abstimmen'
+    },
+    pt: {
+      'Home': 'Início',
+      'Features': 'Recursos',
+      'Command Center': 'Central de comandos',
+      'Stats': 'Estatísticas',
+      'Reviews': 'Avaliações',
+      'Support': 'Suporte',
+      'Privacy Policy': 'Política de privacidade',
+      'Authorize App': 'Autorizar app',
+      'A discord chatbot with all your needs': 'Um chatbot do Discord para tudo que você precisa',
+      'Add to Discord': 'Adicionar ao Discord',
+      'Authorize App Login': 'Autorizar login do app',
+      'Vote on top.gg': 'Votar no top.gg'
+    },
+    hi: {
+      'Home': 'होम',
+      'Features': 'फ़ीचर्स',
+      'Command Center': 'कमांड सेंटर',
+      'Stats': 'आँकड़े',
+      'Reviews': 'रिव्यू',
+      'Support': 'सपोर्ट',
+      'Privacy Policy': 'प्राइवेसी पॉलिसी',
+      'Authorize App': 'ऐप अधिकृत करें',
+      'A discord chatbot with all your needs': 'आपकी सभी ज़रूरतों के लिए एक Discord चैटबॉट',
+      'Add to Discord': 'Discord में जोड़ें',
+      'Authorize App Login': 'ऐप लॉगिन अधिकृत करें',
+      'Vote on top.gg': 'top.gg पर वोट करें'
+    },
+    ja: {
+      'Home': 'ホーム',
+      'Features': '機能',
+      'Command Center': 'コマンドセンター',
+      'Stats': '統計',
+      'Reviews': 'レビュー',
+      'Support': 'サポート',
+      'Privacy Policy': 'プライバシーポリシー',
+      'Authorize App': 'アプリを認証',
+      'A discord chatbot with all your needs': '必要な機能を備えたDiscordチャットボット',
+      'Add to Discord': 'Discordに追加',
+      'Authorize App Login': 'アプリログインを認証',
+      'Vote on top.gg': 'top.ggで投票'
+    }
+  };
 
   const select = document.createElement('select');
   select.className = 'language-switcher';
-  select.setAttribute('aria-label', 'Translate website language');
+  select.setAttribute('aria-label', 'Website language');
   select.innerHTML = localization.map((lang) => `<option value="${lang.code}">${lang.label}</option>`).join('');
 
-  const getLangFromCookie = () => {
-    const match = document.cookie.match(/(?:^|; )googtrans=\/[^/]+\/([^;]+)/);
-    return match ? decodeURIComponent(match[1]) : 'en';
-  };
+  const storedLang = window.localStorage.getItem('codunot_lang') || 'en';
+  select.value = localization.some((lang) => lang.code === storedLang) ? storedLang : 'en';
 
-  const updateGoogleTranslateCookie = (lang) => {
-    const value = `/en/${lang}`;
-    const maxAge = 60 * 60 * 24 * 365;
-    document.cookie = `googtrans=${value};path=/;max-age=${maxAge}`;
-    document.cookie = `googtrans=${value};path=/;domain=.${window.location.hostname};max-age=${maxAge}`;
-  };
+  const translateDocument = (lang) => {
+    const dictionary = translations[lang] || {};
+    document.querySelectorAll('a, button, .subhead').forEach((el) => {
+      const base = el.dataset.i18nBase || el.textContent.trim();
+      if (!el.dataset.i18nBase) el.dataset.i18nBase = base;
+      el.textContent = dictionary[base] || base;
+    });
 
-  const activeLang = getLangFromCookie();
-  const hasActiveLang = localization.some((lang) => lang.code === activeLang);
-  select.value = hasActiveLang ? activeLang : 'en';
+    document.documentElement.lang = lang;
+  };
 
   select.addEventListener('change', (event) => {
     const selectedLang = event.target.value;
-    updateGoogleTranslateCookie(selectedLang);
-    window.location.reload();
+    window.localStorage.setItem('codunot_lang', selectedLang);
+    translateDocument(selectedLang);
   });
 
   navLinks.appendChild(select);
-
-  if (!window.googleTranslateElementInit) {
-    window.googleTranslateElementInit = () => {
-      if (document.getElementById('google_translate_element')) return;
-      const hiddenContainer = document.createElement('div');
-      hiddenContainer.id = 'google_translate_element';
-      hiddenContainer.className = 'google-translate-hidden';
-      document.body.appendChild(hiddenContainer);
-      new window.google.translate.TranslateElement({
-        pageLanguage: 'en',
-        autoDisplay: false
-      }, 'google_translate_element');
-    };
-  }
-
-  if (!document.querySelector("script[data-google-translate='true']")) {
-    const script = document.createElement('script');
-    script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
-    script.async = true;
-    script.dataset.googleTranslate = 'true';
-    document.body.appendChild(script);
-  }
+  translateDocument(select.value);
 }
-
-initLocalizationSwitcher();
 
 function initSnowToggle() {
   const body = document.body;
@@ -295,15 +385,12 @@ function initSnowToggle() {
   toggle.type = 'button';
   toggle.setAttribute('aria-pressed', String(enabled));
 
-  const label = (state) => state ? '❄️ Snow: On' : '❄️ Snow: Off';
+  const label = (state) => (state ? '❄️ Snow: On' : '❄️ Snow: Off');
   toggle.textContent = label(enabled);
 
   const navLinks = document.querySelector('.links');
-  if (navLinks) {
-    navLinks.appendChild(toggle);
-  } else {
-    body.appendChild(toggle);
-  }
+  if (navLinks) navLinks.appendChild(toggle);
+  else body.appendChild(toggle);
 
   const ctx = canvas.getContext('2d');
   if (!ctx) return;
@@ -384,4 +471,12 @@ function initSnowToggle() {
   setState(snowEnabled);
 }
 
+initAuthButtons();
+loadCommunities();
+initBotClicker();
+initHeroTypedLine();
+initLocalizationSwitcher();
 initSnowToggle();
+initCursorEffects();
+initRevealAnimations();
+initCardSpotlight();

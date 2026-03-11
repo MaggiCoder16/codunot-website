@@ -64,7 +64,7 @@ function initAuthButtons() {
 }
 
 function initRevealAnimations() {
-  const targets = document.querySelectorAll('.section, .tile, .feature-row, .hero-card, .community-card');
+  const targets = document.querySelectorAll('main > .section, .section > .tile, .feature-row, .hero-card, .community-card');
   if (!targets.length) return;
 
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
@@ -250,22 +250,83 @@ function initAmbientModeControl() {
     scene.classList.remove('is-hidden');
     scene.dataset.mode = nextMode;
 
-    const total = nextMode === 'snow' ? 78 : 44;
-    const glyphs = nextMode === 'snow' ? ['❄', '❅', '✻'] : ['•', '•', '·'];
+    const configs = {
+      snow: {
+        total: 108,
+        glyphs: ['❄', '❅', '✻'],
+        sizeMin: 0.64,
+        sizeRange: 0.82,
+        alphaMin: 0.45,
+        alphaRange: 0.45,
+        durationMin: 11,
+        durationRange: 10,
+        driftMin: -18,
+        driftRange: 36,
+        jitterPattern: 7,
+        jitterStep: 0.65,
+        className: ''
+      },
+      embers: {
+        total: 72,
+        glyphs: ['✦', '•', '✧'],
+        sizeMin: 0.5,
+        sizeRange: 0.62,
+        alphaMin: 0.62,
+        alphaRange: 0.32,
+        durationMin: 8,
+        durationRange: 6,
+        driftMin: -16,
+        driftRange: 32,
+        jitterPattern: 6,
+        jitterStep: 0.55,
+        className: 'ember'
+      },
+      stardust: {
+        total: 84,
+        glyphs: ['✦', '·', '•'],
+        sizeMin: 0.36,
+        sizeRange: 0.36,
+        alphaMin: 0.32,
+        alphaRange: 0.28,
+        durationMin: 14,
+        durationRange: 12,
+        driftMin: -10,
+        driftRange: 20,
+        jitterPattern: 8,
+        jitterStep: 0.42,
+        className: 'stardust'
+      },
+      rain: {
+        total: 92,
+        glyphs: ['|', '|', '│'],
+        sizeMin: 0.78,
+        sizeRange: 0.5,
+        alphaMin: 0.24,
+        alphaRange: 0.2,
+        durationMin: 5,
+        durationRange: 4,
+        driftMin: -6,
+        driftRange: 12,
+        jitterPattern: 9,
+        jitterStep: 0.3,
+        className: 'rain'
+      }
+    };
+    const config = configs[nextMode] || configs.snow;
 
-    for (let index = 0; index < total; index += 1) {
+    for (let index = 0; index < config.total; index += 1) {
       const particle = document.createElement('span');
-      const baseLeft = ((index + 0.5) / total) * 100;
-      const jitter = nextMode === 'snow' ? ((index % 5) - 2) * 0.9 : ((index % 7) - 3) * 0.7;
+      const baseLeft = ((index + 0.5) / config.total) * 100;
+      const jitter = ((index % config.jitterPattern) - ((config.jitterPattern - 1) / 2)) * config.jitterStep;
 
-      particle.className = `snowflake ${nextMode === 'embers' ? 'ember' : ''}`;
-      particle.textContent = glyphs[index % glyphs.length];
+      particle.className = `snowflake ${config.className}`.trim();
+      particle.textContent = config.glyphs[index % config.glyphs.length];
       particle.style.setProperty('--left', `${clamp(baseLeft + jitter, 1, 99)}%`);
-      particle.style.setProperty('--size', `${nextMode === 'snow' ? 0.62 + (Math.random() * 0.72) : 0.38 + (Math.random() * 0.44)}rem`);
-      particle.style.setProperty('--alpha', `${nextMode === 'snow' ? 0.38 + (Math.random() * 0.42) : 0.3 + (Math.random() * 0.35)}`);
-      particle.style.setProperty('--duration', `${nextMode === 'snow' ? 11 + (Math.random() * 10) : 9 + (Math.random() * 7)}s`);
+      particle.style.setProperty('--size', `${config.sizeMin + (Math.random() * config.sizeRange)}rem`);
+      particle.style.setProperty('--alpha', `${config.alphaMin + (Math.random() * config.alphaRange)}`);
+      particle.style.setProperty('--duration', `${config.durationMin + (Math.random() * config.durationRange)}s`);
       particle.style.setProperty('--delay', `${Math.random() * -18}s`);
-      particle.style.setProperty('--drift', `${nextMode === 'snow' ? -18 + (Math.random() * 36) : -10 + (Math.random() * 20)}px`);
+      particle.style.setProperty('--drift', `${config.driftMin + (Math.random() * config.driftRange)}px`);
       scene.appendChild(particle);
     }
   }
@@ -281,6 +342,8 @@ function initAmbientModeControl() {
   [
     ['snow', 'Snow'],
     ['embers', 'Embers'],
+    ['stardust', 'Stardust'],
+    ['rain', 'Rain'],
     ['off', 'Off']
   ].forEach(([value, label]) => {
     const option = document.createElement('option');

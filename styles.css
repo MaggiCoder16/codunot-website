@@ -15,7 +15,7 @@
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
 html {
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='8' fill='%23ff7a18' fill-opacity='.18'/%3E%3Ccircle cx='12' cy='12' r='5.2' fill='%23ff9e42' fill-opacity='.34'/%3E%3Ccircle cx='12' cy='12' r='3.1' fill='%23fff5ec' stroke='%23ff7a18' stroke-width='1.6'/%3E%3C/svg%3E") 12 12, auto;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Ccircle cx='14' cy='14' r='10.5' fill='%23ff7a18' fill-opacity='.14'/%3E%3Ccircle cx='14' cy='14' r='7.2' fill='%23ff9e42' fill-opacity='.24'/%3E%3Ccircle cx='14' cy='14' r='4.4' fill='%23fff5ec' fill-opacity='.96'/%3E%3Ccircle cx='14' cy='14' r='4.9' fill='none' stroke='%23ff7a18' stroke-width='1.5'/%3E%3Ccircle cx='14' cy='14' r='1.6' fill='%23ff7a18'/%3E%3C/svg%3E") 14 14, auto;
 }
 body {
   color: var(--text);
@@ -35,7 +35,7 @@ button,
 .feature-row,
 .community-card,
 summary {
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Ccircle cx='13' cy='13' r='9' fill='%23ff7a18' fill-opacity='.16'/%3E%3Ccircle cx='13' cy='13' r='6.2' fill='%23ffbf7a' fill-opacity='.34'/%3E%3Ccircle cx='13' cy='13' r='3.4' fill='%23fff5ec' stroke='%23ff7a18' stroke-width='1.8'/%3E%3C/svg%3E") 13 13, pointer;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Ccircle cx='15' cy='15' r='11.5' fill='%23ff7a18' fill-opacity='.18'/%3E%3Ccircle cx='15' cy='15' r='8.3' fill='%23ffbf7a' fill-opacity='.26'/%3E%3Ccircle cx='15' cy='15' r='5.2' fill='%23fff5ec' fill-opacity='.98'/%3E%3Ccircle cx='15' cy='15' r='5.8' fill='none' stroke='%23ff7a18' stroke-width='1.8'/%3E%3Ccircle cx='15' cy='15' r='1.9' fill='%23ff7a18'/%3E%3C/svg%3E") 15 15, pointer;
 }
 .container { width: min(1180px, 92%); margin: auto; }
 .nav.container { width: min(1880px, 99.6%); }
@@ -779,9 +779,21 @@ h1, h2, h3, .brand, .mega, .subhead {
 }
 
 .snowflake.ember {
-  color: rgba(255, 188, 120, var(--alpha, .55));
-  text-shadow: 0 0 10px rgba(255, 122, 24, .24);
+  color: rgba(255, 196, 128, var(--alpha, .8));
+  text-shadow: 0 0 10px rgba(255, 122, 24, .38), 0 0 22px rgba(255, 166, 84, .22);
   animation-name: emberRise;
+}
+
+.snowflake.stardust {
+  color: rgba(214, 232, 255, var(--alpha, .5));
+  text-shadow: 0 0 8px rgba(173, 217, 255, .2);
+  animation-name: stardustDrift;
+}
+
+.snowflake.rain {
+  color: rgba(171, 214, 255, var(--alpha, .36));
+  text-shadow: none;
+  animation-name: rainFall;
 }
 
 .snow-scene.is-hidden {
@@ -857,6 +869,34 @@ h1, h2, h3, .brand, .mega, .subhead {
   100% {
     transform: translate3d(var(--drift, 12px), -12vh, 0);
     opacity: 0;
+  }
+}
+
+@keyframes stardustDrift {
+  0% {
+    transform: translate3d(0, -6vh, 0);
+    opacity: 0;
+  }
+  10% {
+    opacity: .9;
+  }
+  100% {
+    transform: translate3d(var(--drift, 10px), 108vh, 0);
+    opacity: .2;
+  }
+}
+
+@keyframes rainFall {
+  0% {
+    transform: translate3d(0, -12vh, 0);
+    opacity: 0;
+  }
+  8% {
+    opacity: .9;
+  }
+  100% {
+    transform: translate3d(var(--drift, 6px), 112vh, 0);
+    opacity: .18;
   }
 }
 

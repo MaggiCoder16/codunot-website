@@ -6,6 +6,20 @@ const DISCORD_CLIENT_ID = '1435987186502733878';
 const SITE_BASE = document.currentScript
   ? new URL('./', document.currentScript.src).href
   : new URL('./', window.location.href).href;
+const GENERATION_PAGES = [
+  ['Generation Hub', 'generation/'],
+  ['Image Generation', 'generation/image-generation.html'],
+  ['Video Generation', 'generation/video-generation.html'],
+  ['Text-to-speech', 'generation/text-to-speech.html'],
+  ['Video Transcription', 'generation/video-transcription.html'],
+  ['Image Editing', 'generation/image-editing.html'],
+  ['Image Merging', 'generation/image-merging.html'],
+  ['Music Playback', 'generation/music-playback.html']
+];
+
+function buildSiteUrl(path) {
+  return new URL(path, SITE_BASE).href;
+}
 
 function setPageData() {
   if (!document.body) return;
@@ -60,6 +74,81 @@ function initAuthButtons() {
     btn.rel = 'noopener';
     btn.innerHTML = `${buildDiscordIcon()}<span>Authorize App</span>`;
     btn.href = buildDiscordAuthorizeUrl();
+  });
+}
+
+function initGenerationNav() {
+  const links = document.querySelector('.links');
+  if (!links || links.querySelector('.nav-dropdown')) return;
+
+  const commandLink = Array.from(links.children).find((node) => (
+    node instanceof HTMLAnchorElement && /commands\/?$/.test(node.getAttribute('href') || '')
+  ));
+
+  const dropdown = document.createElement('div');
+  dropdown.className = 'nav-dropdown';
+
+  const trigger = document.createElement('button');
+  trigger.className = 'nav-dropdown-trigger';
+  trigger.type = 'button';
+  trigger.setAttribute('aria-expanded', 'false');
+  trigger.innerHTML = 'Generation <span class="nav-chevron" aria-hidden="true">▾</span>';
+
+  const menu = document.createElement('div');
+  menu.className = 'nav-submenu';
+
+  const pathName = window.location.pathname.toLowerCase();
+  if (pathName.includes('/generation/')) dropdown.classList.add('is-current');
+
+  GENERATION_PAGES.forEach(([label, path]) => {
+    const link = document.createElement('a');
+    link.href = buildSiteUrl(path);
+    link.textContent = label;
+    if (pathName.endsWith(path.toLowerCase())) link.classList.add('active');
+    menu.appendChild(link);
+  });
+
+  dropdown.appendChild(trigger);
+  dropdown.appendChild(menu);
+
+  if (commandLink) links.insertBefore(dropdown, commandLink);
+  else links.appendChild(dropdown);
+
+  const isCompact = () => window.matchMedia('(max-width: 980px)').matches;
+  const closeMenu = () => {
+    dropdown.classList.remove('open');
+    trigger.setAttribute('aria-expanded', 'false');
+  };
+  const openMenu = () => {
+    dropdown.classList.add('open');
+    trigger.setAttribute('aria-expanded', 'true');
+  };
+
+  trigger.addEventListener('click', (event) => {
+    if (!isCompact()) {
+      window.location.href = buildSiteUrl('generation/');
+      return;
+    }
+
+    event.preventDefault();
+    if (dropdown.classList.contains('open')) closeMenu();
+    else openMenu();
+  });
+
+  dropdown.addEventListener('mouseenter', () => {
+    if (!isCompact()) openMenu();
+  });
+
+  dropdown.addEventListener('mouseleave', () => {
+    if (!isCompact()) closeMenu();
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!dropdown.contains(event.target)) closeMenu();
+  });
+
+  menu.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => closeMenu());
   });
 }
 
@@ -241,157 +330,7 @@ function initAmbientModeControl() {
     return Math.min(Math.max(value, min), max);
   }
 
-  function renderParticles(nextMode) {
-    scene.innerHTML = '';
-
-    if (nextMode === 'off') {
-      scene.classList.add('is-hidden');
-      scene.dataset.mode = 'off';
-      return;
-    }
-
-    scene.classList.remove('is-hidden');
-    scene.dataset.mode = nextMode;
-
-    const configs = {
-      snow: {
-        total: 108,
-        glyphs: ['❄', '❅', '✻'],
-        sizeMin: 0.82,
-        sizeRange: 1.02,
-        alphaMin: 0.45,
-        alphaRange: 0.45,
-        durationMin: 11,
-        durationRange: 10,
-        driftMin: -18,
-        driftRange: 36,
-        jitterPattern: 7,
-        jitterStep: 0.65,
-        className: ''
-      },
-      embers: {
-        total: 72,
-        glyphs: ['✦', '•', '✧'],
-        sizeMin: 0.74,
-        sizeRange: 0.84,
-        alphaMin: 0.62,
-        alphaRange: 0.32,
-        durationMin: 8,
-        durationRange: 6,
-        driftMin: -16,
-        driftRange: 32,
-        jitterPattern: 6,
-        jitterStep: 0.55,
-        className: 'ember'
-      },
-      stardust: {
-        total: 84,
-        glyphs: ['✦', '·', '•'],
-        sizeMin: 0.94,
-        sizeRange: 0.82,
-        alphaMin: 0.44,
-        alphaRange: 0.3,
-        durationMin: 14,
-        durationRange: 12,
-        driftMin: -10,
-        driftRange: 20,
-        jitterPattern: 8,
-        jitterStep: 0.42,
-        className: 'stardust'
-      },
-      fireflies: {
-        total: 58,
-        glyphs: ['•', '•', '·'],
-        sizeMin: 1,
-        sizeRange: 0.66,
-        alphaMin: 0.28,
-        alphaRange: 0.32,
-        durationMin: 10,
-        durationRange: 8,
-        driftMin: -18,
-        driftRange: 36,
-        jitterPattern: 7,
-        jitterStep: 0.7,
-        className: 'firefly'
-      },
-      petals: {
-        total: 46,
-        glyphs: ['✦', '✧', '•'],
-        sizeMin: 1.18,
-        sizeRange: 0.82,
-        alphaMin: 0.34,
-        alphaRange: 0.24,
-        durationMin: 13,
-        durationRange: 9,
-        driftMin: -34,
-        driftRange: 68,
-        jitterPattern: 6,
-        jitterStep: 0.82,
-        className: 'petal'
-      },
-      comets: {
-        total: 34,
-        glyphs: ['✦', '✶', '•'],
-        sizeMin: 1.08,
-        sizeRange: 0.9,
-        alphaMin: 0.34,
-        alphaRange: 0.28,
-        durationMin: 8,
-        durationRange: 6,
-        driftMin: -42,
-        driftRange: 84,
-        jitterPattern: 6,
-        jitterStep: 0.9,
-        className: 'comet'
-      },
-      orbs: {
-        total: 28,
-        glyphs: ['•', '●', '•'],
-        sizeMin: 1.26,
-        sizeRange: 1.02,
-        alphaMin: 0.2,
-        alphaRange: 0.24,
-        durationMin: 16,
-        durationRange: 10,
-        driftMin: -26,
-        driftRange: 52,
-        jitterPattern: 5,
-        jitterStep: 1.08,
-        className: 'orb'
-      },
-      lanterns: {
-        total: 30,
-        glyphs: ['✦', '•', '✧'],
-        sizeMin: 1.12,
-        sizeRange: 0.74,
-        alphaMin: 0.3,
-        alphaRange: 0.26,
-        durationMin: 12,
-        durationRange: 8,
-        driftMin: -18,
-        driftRange: 36,
-        jitterPattern: 6,
-        jitterStep: 0.94,
-        className: 'lantern'
-      },
-      rain: {
-        total: 92,
-        glyphs: ['|', '|', '│'],
-        sizeMin: 1,
-        sizeRange: 0.66,
-        alphaMin: 0.24,
-        alphaRange: 0.2,
-        durationMin: 5,
-        durationRange: 4,
-        driftMin: -6,
-        driftRange: 12,
-        jitterPattern: 9,
-        jitterStep: 0.3,
-        className: 'rain'
-      }
-    };
-    const config = configs[nextMode] || configs.snow;
-
+  function renderParticles(config) {
     for (let index = 0; index < config.total; index += 1) {
       const particle = document.createElement('span');
       const baseLeft = ((index + 0.5) / config.total) * 100;
@@ -409,6 +348,191 @@ function initAmbientModeControl() {
     }
   }
 
+  function renderAurora() {
+    const shell = document.createElement('div');
+    shell.className = 'ambient-shell ambient-aurora';
+    for (let index = 0; index < 3; index += 1) {
+      const band = document.createElement('span');
+      band.className = 'ambient-band';
+      band.style.setProperty('--x', `${10 + (index * 26)}%`);
+      band.style.setProperty('--y', `${8 + (index * 12)}%`);
+      band.style.setProperty('--delay', `${index * -3.4}s`);
+      shell.appendChild(band);
+    }
+    scene.appendChild(shell);
+  }
+
+  function renderConstellation() {
+    const shell = document.createElement('div');
+    shell.className = 'ambient-shell ambient-constellation';
+
+    for (let index = 0; index < 22; index += 1) {
+      const star = document.createElement('span');
+      star.className = 'ambient-star';
+      star.style.left = `${6 + ((index * 91) % 88)}%`;
+      star.style.top = `${8 + ((index * 37) % 74)}%`;
+      star.style.setProperty('--delay', `${(index % 5) * -1.2}s`);
+      shell.appendChild(star);
+    }
+
+    for (let index = 0; index < 10; index += 1) {
+      const line = document.createElement('span');
+      line.className = 'ambient-line';
+      line.style.left = `${8 + ((index * 13) % 72)}%`;
+      line.style.top = `${14 + ((index * 17) % 64)}%`;
+      line.style.width = `${90 + ((index * 19) % 70)}px`;
+      line.style.transform = `rotate(${18 + (index * 17)}deg)`;
+      shell.appendChild(line);
+    }
+
+    scene.appendChild(shell);
+  }
+
+  function renderGrid() {
+    const shell = document.createElement('div');
+    shell.className = 'ambient-shell ambient-grid-mode';
+    shell.innerHTML = '<span class="ambient-grid-layer"></span><span class="ambient-grid-glow"></span>';
+    scene.appendChild(shell);
+  }
+
+  function renderOrbit() {
+    const shell = document.createElement('div');
+    shell.className = 'ambient-shell ambient-orbit';
+
+    for (let index = 0; index < 3; index += 1) {
+      const ring = document.createElement('span');
+      ring.className = 'ambient-ring';
+      ring.style.setProperty('--scale', `${1 + (index * 0.22)}`);
+      ring.style.setProperty('--delay', `${index * -3.2}s`);
+      shell.appendChild(ring);
+    }
+
+    for (let index = 0; index < 3; index += 1) {
+      const orb = document.createElement('span');
+      orb.className = 'ambient-orbiter';
+      orb.style.setProperty('--delay', `${index * -2.4}s`);
+      orb.style.setProperty('--radius', `${94 + (index * 34)}px`);
+      shell.appendChild(orb);
+    }
+
+    scene.appendChild(shell);
+  }
+
+  function renderAmbient(nextMode) {
+    scene.innerHTML = '';
+
+    if (nextMode === 'off') {
+      scene.classList.add('is-hidden');
+      scene.dataset.mode = 'off';
+      return;
+    }
+
+    scene.classList.remove('is-hidden');
+    scene.dataset.mode = nextMode;
+
+    const configs = {
+      snow: {
+        type: 'particles',
+        total: 108,
+        glyphs: ['❄', '❅', '✻'],
+        sizeMin: 0.92,
+        sizeRange: 1.18,
+        alphaMin: 0.45,
+        alphaRange: 0.45,
+        durationMin: 11,
+        durationRange: 10,
+        driftMin: -18,
+        driftRange: 36,
+        jitterPattern: 7,
+        jitterStep: 0.65,
+        className: ''
+      },
+      embers: {
+        type: 'particles',
+        total: 72,
+        glyphs: ['✦', '•', '✧'],
+        sizeMin: 0.74,
+        sizeRange: 0.84,
+        alphaMin: 0.62,
+        alphaRange: 0.32,
+        durationMin: 8,
+        durationRange: 6,
+        driftMin: -16,
+        driftRange: 32,
+        jitterPattern: 6,
+        jitterStep: 0.55,
+        className: 'ember'
+      },
+      stardust: {
+        type: 'particles',
+        total: 84,
+        glyphs: ['✦', '·', '•'],
+        sizeMin: 1.08,
+        sizeRange: 0.96,
+        alphaMin: 0.44,
+        alphaRange: 0.3,
+        durationMin: 14,
+        durationRange: 12,
+        driftMin: -10,
+        driftRange: 20,
+        jitterPattern: 8,
+        jitterStep: 0.42,
+        className: 'stardust'
+      },
+      rain: {
+        type: 'particles',
+        total: 92,
+        glyphs: ['|', '|', '│'],
+        sizeMin: 1,
+        sizeRange: 0.66,
+        alphaMin: 0.24,
+        alphaRange: 0.2,
+        durationMin: 5,
+        durationRange: 4,
+        driftMin: -6,
+        driftRange: 12,
+        jitterPattern: 9,
+        jitterStep: 0.3,
+        className: 'rain'
+      },
+      aurora: {
+        type: 'aurora'
+      },
+      constellation: {
+        type: 'constellation'
+      },
+      grid: {
+        type: 'grid'
+      },
+      orbit: {
+        type: 'orbit'
+      }
+    };
+    const config = configs[nextMode] || configs.snow;
+
+    if (config.type === 'aurora') {
+      renderAurora();
+      return;
+    }
+
+    if (config.type === 'constellation') {
+      renderConstellation();
+      return;
+    }
+
+    if (config.type === 'grid') {
+      renderGrid();
+      return;
+    }
+
+    if (config.type === 'orbit') {
+      renderOrbit();
+      return;
+    }
+
+    renderParticles(config);
+  }
+
   const wrapper = document.createElement('label');
   wrapper.className = 'ambient-control';
   wrapper.innerHTML = '<span>Background</span>';
@@ -421,12 +545,11 @@ function initAmbientModeControl() {
     ['snow', 'Snow'],
     ['embers', 'Embers'],
     ['stardust', 'Stardust'],
-    ['fireflies', 'Fireflies'],
-    ['petals', 'Petals'],
-    ['comets', 'Comets'],
-    ['orbs', 'Orbs'],
-    ['lanterns', 'Lanterns'],
     ['rain', 'Rain'],
+    ['aurora', 'Aurora'],
+    ['constellation', 'Constellation'],
+    ['grid', 'Grid'],
+    ['orbit', 'Orbit'],
     ['off', 'Off']
   ].forEach(([value, label]) => {
     const option = document.createElement('option');
@@ -443,7 +566,7 @@ function initAmbientModeControl() {
 
   function setMode(nextMode) {
     select.value = nextMode;
-    renderParticles(nextMode);
+    renderAmbient(nextMode);
     window.localStorage.setItem('codunot_background_mode', nextMode);
     window.localStorage.setItem('codunot_snow_enabled', String(nextMode === 'snow'));
   }
@@ -515,6 +638,7 @@ function initHamburgerMenu() {
 }
 
 setPageData();
+initGenerationNav();
 initHamburgerMenu();
 initAuthButtons();
 loadCommunities();

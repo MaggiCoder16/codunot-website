@@ -105,10 +105,10 @@
 
       <h3>Automatic Features (No Commands Required)</h3>
       <ul>
-        <li><strong>AI Chat &amp; Conversation:</strong> Mention or reply to Codunot in servers, or message directly in DMs for AI responses</li>
-        <li><strong>Web Search Integration:</strong> Automatically triggered when queries need current/real-time information</li>
+        <li><strong>AI Chat &amp; Conversation:</strong> Mention or reply to Codunot in servers, or message directly in DMs for AI responses. Remembers up to 60 messages per channel/DM, understands Discord reply chains, automatic fallback to secondary model, slang normalization, and humanized responses</li>
+        <li><strong>Web Search Integration:</strong> Automatically triggered via DuckDuckGo when queries need current/real-time information</li>
         <li><strong>Image Analysis:</strong> Send images to get AI-powered descriptions and analysis (vote required)</li>
-        <li><strong>File Reading:</strong> Upload PDF, DOCX, or TXT files for automatic content extraction and summaries (vote required)</li>
+        <li><strong>File Reading:</strong> Upload PDF, DOCX, or TXT files (max 8MB) for automatic content extraction and summaries (vote required)</li>
         <li><strong>URL Content Extraction:</strong> Share links and Codunot will automatically fetch and summarize webpage content (free)</li>
         <li><strong>Code Auto-Testing:</strong> When code is generated in conversation, it's automatically tested before being sent to you (free)</li>
         <li><strong>Image Editing:</strong> Attach image + describe edits for AI-powered modifications (vote required)</li>
@@ -117,14 +117,16 @@
 
       <h3>Command-Based Features</h3>
       <ul>
-        <li><strong>Mode Commands:</strong> /funmode, /seriousmode, /roastmode, /teachmerizz, /chessmode (all free)</li>
-        <li><strong>Creative Generation:</strong> /generate_image, /generate_video, /generate_tts (vote required)</li>
-        <li><strong>Music Playback:</strong> /play [song/URL] with audio filters, /queue (vote required)</li>
+        <li><strong>Mode Commands:</strong> /funmode, /seriousmode, /roastmode, /teachmerizz (online &amp; IRL), /chessmode (all free)</li>
+        <li><strong>Creative Generation:</strong> /generate_image, /generate_video, /generate_tts with 300+ voices across 60+ languages (vote required)</li>
+        <li><strong>Music Playback:</strong> /play [song/URL] with audio filters (Normal, Bass Boost, Nightcore, Slowed, 8D, Treble, Lo-Fi, Vaporwave), /queue, /volume_up, /volume_down, /autoplay, /lyrics. Supports YouTube, SoundCloud, and Spotify via Lavalink (vote required)</li>
         <li><strong>Developer Tools:</strong> /test_code, /browse [URL] (all free)</li>
         <li><strong>Transcription:</strong> /transcribe for YouTube/Twitch/X/Kick videos max 30 mins (vote required)</li>
         <li><strong>Age Estimation:</strong> /guessage @user (vote required)</li>
         <li><strong>Fun Actions:</strong> /hug, /kiss, /kick, /slap, /wish_goodmorning, /bet, /meme (all free)</li>
         <li><strong>Server Config:</strong> /configure server, /configure channels (server owner only, free)</li>
+        <li><strong>Natural Language Moderation:</strong> Mention the bot with plain English to perform moderation actions (e.g. "@Codunot timeout @user 10m for spamming")</li>
+        <li><strong>Chess:</strong> Full chess engine integration with legal move validation, SAN/UCI support, castling, promotions, en passant, resign detection, and AI hints during games</li>
       </ul>
 
       <h3>Free Features (No Vote Required)</h3>
@@ -150,8 +152,8 @@
         <li>Image merging (attach 2+ + say "merge")</li>
         <li>Image analysis (attach image + ask question)</li>
         <li>Video generation (/generate_video)</li>
-        <li>Text-to-speech (/generate_tts with 20+ voices, 8 languages)</li>
-        <li>Music playback (/play with audio filters)</li>
+        <li>Text-to-speech (/generate_tts with 300+ voices across 60+ languages)</li>
+        <li>Music playback (/play with audio filters, YouTube/SoundCloud/Spotify)</li>
         <li>Video transcription (/transcribe for YouTube/Twitch/X/Kick)</li>
         <li>File reading (PDF, DOCX, TXT uploads)</li>
         <li>Age estimation (/guessage)</li>
@@ -306,7 +308,44 @@
     </section>
   </main>
 
-  <footer class="footer"><div class="container">&copy; <span id="year"></span> Codunot &nbsp;|&nbsp; <a href="../terms/">Terms of Service</a> &nbsp;|&nbsp; <a href="../privacy/">Privacy Policy</a></div></footer>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-col">
+          <a class="footer-brand" href="../">
+            <img src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot logo" />
+            Codunot
+          </a>
+          <p class="muted" style="font-size:.85rem;margin:.35rem 0 0;">AI that lives inside Discord.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="../features/">Features</a>
+          <a href="../commands/">Commands</a>
+          <a href="../premium/">Premium</a>
+          <a href="../stats/">Stats</a>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <a href="../faq/">FAQ</a>
+          <a href="../reviews/">Reviews</a>
+          <a href="../roadmap/">Roadmap</a>
+          <a href="../support/">Support</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="../terms/">Terms of Service</a>
+          <a href="../privacy/">Privacy Policy</a>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <a href="https://discord.gg/b8Cv7eC3En" target="_blank" rel="noopener">Discord Server</a>
+          <a href="https://top.gg/bot/1435987186502733878" target="_blank" rel="noopener">Top.gg</a>
+        </div>
+      </div>
+      <div class="footer-bottom">&copy; <span id="year"></span> Codunot &mdash; All rights reserved.</div>
+    </div>
+  </footer>
   <script src="../script.js"></script>
 </body>
 </html>

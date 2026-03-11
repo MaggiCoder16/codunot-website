@@ -351,6 +351,39 @@ function initSnowToggle() {
   setState(snowEnabled);
 }
 
+function initHamburgerMenu() {
+  const nav = document.querySelector('.nav');
+  const links = document.querySelector('.links');
+  if (!nav || !links) return;
+
+  const existing = nav.querySelector('.hamburger');
+  if (existing) return;
+
+  const btn = document.createElement('button');
+  btn.className = 'hamburger';
+  btn.type = 'button';
+  btn.setAttribute('aria-label', 'Toggle navigation');
+  btn.setAttribute('aria-expanded', 'false');
+  btn.textContent = '☰';
+
+  nav.insertBefore(btn, links);
+
+  btn.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(open));
+    btn.textContent = open ? '✕' : '☰';
+  });
+
+  links.querySelectorAll('a').forEach((a) => {
+    a.addEventListener('click', () => {
+      links.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.textContent = '☰';
+    });
+  });
+}
+
+initHamburgerMenu();
 initAuthButtons();
 loadCommunities();
 initBotClicker();

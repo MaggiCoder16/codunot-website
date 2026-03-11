@@ -166,7 +166,109 @@ function initHeroTypedLine() {
   const el = document.getElementById('hero-typed');
   if (!el) return;
 
-  el.textContent = 'model switching · 7 AI models · image generation · video generation · image editing · image merging · text-to-speech voices · /image_search · music controls · moderation · fun commands · and more';
+  const phrases = [
+    'Channel-based model control, media generation, moderation, and more...',
+    'Seven AI models, text-to-speech, image search, and more...',
+    'Music tools, image editing, smart automation, and more...'
+  ];
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    el.textContent = phrases[0];
+    return;
+  }
+
+  if (window.__heroTypeTimer) window.clearTimeout(window.__heroTypeTimer);
+  const runId = String(Date.now());
+  el.dataset.typeRun = runId;
+
+  let phraseIndex = 0;
+  let charIndex = 0;
+  let deleting = false;
+
+  function tick() {
+    if (el.dataset.typeRun !== runId) return;
+
+    const current = phrases[phraseIndex];
+
+    if (!deleting) {
+      charIndex += 1;
+      el.textContent = current.slice(0, charIndex);
+
+      if (charIndex === current.length) {
+        deleting = true;
+        window.__heroTypeTimer = window.setTimeout(tick, 1400);
+        return;
+      }
+
+      window.__heroTypeTimer = window.setTimeout(tick, 36);
+      return;
+    }
+
+    charIndex -= 1;
+    el.textContent = current.slice(0, charIndex);
+
+    if (charIndex === 0) {
+      deleting = false;
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+      window.__heroTypeTimer = window.setTimeout(tick, 260);
+      return;
+    }
+
+    window.__heroTypeTimer = window.setTimeout(tick, 18);
+  }
+
+  tick();
+}
+
+function initSnowToggle() {
+  const body = document.body;
+  if (!body) return;
+
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const stored = window.localStorage.getItem('codunot_snow_enabled');
+  const enabled = stored === null ? !prefersReduced : stored === 'true';
+
+  const scene = document.createElement('div');
+  scene.className = 'snow-scene';
+  scene.setAttribute('aria-hidden', 'true');
+  body.prepend(scene);
+
+  const flakes = ['❄', '❅', '✻'];
+  const total = 34;
+
+  for (let index = 0; index < total; index += 1) {
+    const flake = document.createElement('span');
+    flake.className = 'snowflake';
+    flake.textContent = flakes[index % flakes.length];
+    flake.style.setProperty('--left', `${Math.random() * 100}%`);
+    flake.style.setProperty('--size', `${0.7 + (Math.random() * 0.9)}rem`);
+    flake.style.setProperty('--alpha', `${0.35 + (Math.random() * 0.5)}`);
+    flake.style.setProperty('--duration', `${10 + (Math.random() * 12)}s`);
+    flake.style.setProperty('--delay', `${Math.random() * -16}s`);
+    flake.style.setProperty('--drift', `${-22 + Math.random() * 44}px`);
+    scene.appendChild(flake);
+  }
+
+  const toggle = document.createElement('button');
+  toggle.className = 'snow-toggle';
+  toggle.type = 'button';
+
+  const navLinks = document.querySelector('.links');
+  if (navLinks) navLinks.appendChild(toggle);
+  else body.appendChild(toggle);
+
+  function setState(state) {
+    scene.classList.toggle('is-hidden', !state);
+    toggle.setAttribute('aria-pressed', String(state));
+    toggle.textContent = state ? 'Snow: On' : 'Snow: Off';
+    window.localStorage.setItem('codunot_snow_enabled', String(state));
+  }
+
+  toggle.addEventListener('click', () => {
+    setState(scene.classList.contains('is-hidden'));
+  });
+
+  setState(enabled);
 }
 
 function initHamburgerMenu() {
@@ -207,4 +309,5 @@ initAuthButtons();
 loadCommunities();
 initBotClicker();
 initHeroTypedLine();
+initSnowToggle();
 initRevealAnimations();

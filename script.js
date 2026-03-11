@@ -8,13 +8,13 @@ const SITE_BASE = document.currentScript
   : new URL('./', window.location.href).href;
 const GENERATION_PAGES = [
   ['Generation Hub', 'generation/'],
-  ['Image Generation', 'generation/image-generation.html'],
-  ['Video Generation', 'generation/video-generation.html'],
-  ['Text-to-speech', 'generation/text-to-speech.html'],
-  ['Video Transcription', 'generation/video-transcription.html'],
-  ['Image Editing', 'generation/image-editing.html'],
-  ['Image Merging', 'generation/image-merging.html'],
-  ['Music Playback', 'generation/music-playback.html']
+  ['Image Generation', 'generation/image-generation'],
+  ['Video Generation', 'generation/video-generation'],
+  ['Text-to-speech', 'generation/text-to-speech'],
+  ['Video Transcription', 'generation/video-transcription'],
+  ['Image Editing', 'generation/image-editing'],
+  ['Image Merging', 'generation/image-merging'],
+  ['Music Playback', 'generation/music-playback']
 ];
 
 function buildSiteUrl(path) {
@@ -104,7 +104,8 @@ function initGenerationNav() {
     const link = document.createElement('a');
     link.href = buildSiteUrl(path);
     link.textContent = label;
-    if (pathName.endsWith(path.toLowerCase())) link.classList.add('active');
+    const cleanPath = pathName.replace(/\.html$/, '').replace(/\/index$/, '/');
+    if (cleanPath.endsWith(path.toLowerCase().replace(/\.html$/, ''))) link.classList.add('active');
     menu.appendChild(link);
   });
 

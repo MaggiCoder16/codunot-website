@@ -215,7 +215,7 @@ function initHeroTypedLine() {
   const el = document.getElementById('hero-typed');
   if (!el) return;
 
-  const text = 'model switching · 7 AI models · image generation · video generation · image editing · image merging · edge TTS voices · /image_search · music controls · moderation · fun commands & more';
+  const text = 'model switching · 7 AI models · image generation · video generation · image editing · image merging · edge TTS voices · /image_search · music controls · moderation · fun commands · & more';
   if (window.__heroTypeTimer) window.clearTimeout(window.__heroTypeTimer);
   const runId = String(Date.now());
   el.dataset.typeRun = runId;

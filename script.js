@@ -134,7 +134,8 @@ function initBotClicker() {
   const messageEl = document.getElementById('click-message');
   if (!clicker || !countEl || !messageEl) return;
 
-  let clicks = 0;
+  const storedClicks = Number.parseInt(window.localStorage.getItem('codunot_click_count') || '0', 10);
+  let clicks = Number.isNaN(storedClicks) ? 0 : storedClicks;
   const messages = [
     "i'm a bot, not a button, but okay! 🤖",
     'yo those clicks are clean, keep cooking 🔥',
@@ -144,7 +145,8 @@ function initBotClicker() {
   ];
 
   let shownMessage = '';
-  messageEl.textContent = '';
+  countEl.textContent = String(clicks);
+  messageEl.textContent = clicks > 0 ? `saved clicks: ${clicks}` : '';
 
   function randomMessage() {
     const options = messages.filter((message) => message !== shownMessage);
@@ -155,6 +157,7 @@ function initBotClicker() {
   clicker.addEventListener('click', () => {
     clicks += 1;
     countEl.textContent = String(clicks);
+    window.localStorage.setItem('codunot_click_count', String(clicks));
     if (clicks >= 10 && clicks % 10 === 0) randomMessage();
 
     clicker.classList.add('is-clicked');

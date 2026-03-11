@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="../styles.css" />
 </head>
 <body data-page="features">
-  <header class="nav-wrap">
+  <meta charset="UTF-8" />
     <nav class="nav container">
       <a class="brand" href="../"><img src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot logo" />Codunot</a>
       <div class="links">
@@ -169,120 +169,53 @@
         <li>✅ Video transcription (YouTube/Twitch/X/Kick)</li>
         <li>✅ File reading (PDF/DOCX/TXT)</li>
         <li>✅ Image analysis</li>
-          <div class="feature-head"><h3>💬 AI Chat &amp; Conversation</h3><span class="badge free">Free</span></div>
-          <ul>
-            <li>Mention <code>@Codunot</code> in servers or reply to Codunot messages</li>
-            <li>DM Codunot directly — no mention needed</li>
-            <li><code>!codunot_help</code> for full quick help</li>
-            <li><code>/model</code> lets you switch the AI model per channel or DM (switching clears memory for a fresh start)</li>
-            <li>Conversation memory — remembers up to 60 messages per channel/DM</li>
-            <li>Reply context — understands Discord reply chains</li>
-            <li>Automatic fallback — falls back to secondary model if primary is overloaded</li>
-            <li>Slang normalization — understands and mirrors user slang</li>
-            <li>Humanized responses — occasional typos and natural phrasing for realism</li>
-          </ul>
+        <li>✅ Age estimation</li>
+      </ul>
+      <a href="https://top.gg/bot/1435987186502733878/vote" class="btn primary" target="_blank" rel="noopener">Vote Now</a>
+    </section>
+  </main>
 
-          <div class="feature-head"><h3>🔍 Smart Web Search</h3><span class="badge free">Free</span></div>
-          <ul>
-            <li>Automatically searches the web via DuckDuckGo when your query needs current or real-time information</li>
-          </ul>
-
-          <div class="feature-head"><h3>📄 File Reading</h3><span class="badge vote">Vote Required</span></div>
-          <ul>
-            <li>Upload PDF, DOCX, or TXT files (max 8MB) and get instant content extraction and summaries</li>
-          </ul>
-
-          <div class="feature-head"><h3>🖼️ Image Analysis</h3><span class="badge vote">Vote Required</span></div>
-          <ul>
-            <li>Send any image for AI-powered descriptions and analysis</li>
-          </ul>
-
-          <div class="feature-head"><h3>🌐 URL Content Extraction</h3><span class="badge free">Free</span></div>
-          <ul>
-            <li>Share links and Codunot will automatically fetch &amp; summarize webpage content</li>
-          </ul>
-
-          <div class="feature-head"><h3>🧪 Code Auto-Testing</h3><span class="badge free">Free</span></div>
-          <ul>
-            <li>When code is generated in conversation, it's automatically tested before being sent to you</li>
-          </ul>
-
-          <div class="feature-head"><h3>✏️ Image Editing</h3><span class="badge vote">Vote Required</span></div>
-          <ul>
-            <li>Attach an image and describe the edits you want for AI-powered modifications</li>
-          </ul>
-
-          <div class="feature-head"><h3>🔗 Image Merging</h3><span class="badge vote">Vote Required</span></div>
-          <ul>
-            <li>Attach 2+ images and say "merge", "combine", or "blend" to merge them into one</li>
-          </ul>
-
-
-
-
-
-          <div class="feature-head"><h3>🎭 Mode &amp; Personality Commands</h3><span class="badge free">All Free</span></div>
-          <ul>
-            <li><code>/funmode</code> - Casual, lighthearted responses with emojis and humor</li>
-            <li><code>/seriousmode</code> - Professional, structured, fact-based responses</li>
-            <li><code>/roastmode</code> - Humorous, lighthearted roasts and comebacks</li>
-            <li><code>/teachmerizz online</code> - Dating/texting coach for online conversations</li>
-            <li><code>/teachmerizz irl</code> - Real-life social coaching and confidence tips</li>
-            <li><code>/chessmode</code> - Play chess against Codunot AI (full engine with legal move validation, SAN/UCI support, castling, promotions, en passant, resign detection, and AI hints during games)</li>
-          </ul>
-
-          <div class="feature-head"><h3>🎨 Creative Generation</h3><span class="badge vote">Vote Required</span></div>
-          <ul>
-            <li><code>/generate_image [prompt]</code> - AI-generated images with enhanced prompts</li>
-            <li><code>/generate_video [prompt]</code> - Text-to-video generation (~1 min render time)</li>
-            <li><code>/generate_tts [text] [language] [voice]</code> - Text-to-speech with 300+ voices across 60+ languages and readable picker names like English, Hindi, and Arabic</li>
-          </ul>
-
-          <div class="feature-head"><h3>🎵 Music &amp; Audio</h3><span class="badge vote">Vote Required</span></div>
-          <ul>
-            <li><code>/play [song/URL]</code> - Play music with audio filters (Normal, Bass Boost, Nightcore, Slowed, 8D, Treble, Lo-Fi, Vaporwave)</li>
-            <li>Supports YouTube, SoundCloud, and Spotify (songs, playlists, and albums via Lavalink)</li>
-            <li><code>/queue</code> - View current music queue with position tracking</li>
-            <li><code>/volume_up</code> and <code>/volume_down</code> - Fine-tune playback volume quickly</li>
-            <li><code>/autoplay</code> - Toggle whether playback continues after queue end</li>
-            <li><code>/lyrics</code> - Fetch full lyrics for the currently playing track</li>
-            <li>Music controls: Previous, Pause/Resume, Skip/Next, Stop, and inline 🔉/🔊 buttons on player UI</li>
-            <li>Auto-disconnect after 10 minutes of inactivity</li>
-          </ul>
-
-          <div class="feature-head"><h3>🛡️ Moderation &amp; Safety</h3><div class="feature-badges"><span class="badge free">Core Free</span><span class="badge premium">Premium / Gold</span></div></div>
-          <p class="muted">Advanced moderation includes <code>/tempban</code>, <code>/massban</code>, <code>/modstats</code>, <code>/note</code>, and more rolling out for Premium and Gold.</p>
-          <ul>
-            <li><code>/setup-moderation</code> - 6-step moderation wizard (AutoMod, logs, roles, links, anti-spam, anti-raid)</li>
-            <li><code>/automod</code> - Toggle AutoMod on/off post-setup</li>
-            <li><code>/warn</code>, <code>/warns</code>, <code>/clearwarns</code>, <code>/case</code> - Warning and case-management workflow</li>
-            <li><code>/ban</code>, <code>/unban</code>, <code>/modkick</code>, <code>/mute</code>, <code>/unmute</code> - Core staff moderation actions</li>
-            <li><code>/clear</code>, <code>/slowmode</code>, <code>/lock</code>, <code>/unlock</code>, <code>/userinfo</code> - Channel and moderation utilities</li>
-            <li><strong>Natural Language Moderation:</strong> Mention the bot with plain English, e.g. <code>@Codunot timeout @user 10m for spamming</code>, <code>@Codunot ban @user for raiding</code>, <code>@Codunot clear 20</code></li>
-          </ul>
-
-          <div class="feature-head"><h3>🔧 Developer &amp; Utility Tools</h3><div class="feature-badges"><span class="badge free">/test_code, /browse</span><span class="badge vote">/transcribe, /guessage</span></div></div>
-          <ul>
-            <li><code>/test_code [code]</code> - Validate code, get summaries, auto-fix errors</li>
-            <li><code>/browse [URL]</code> - Explicitly fetch and analyze webpage content</li>
-            <li><code>/image_search [query]</code> - Free image search via Wikimedia Commons and Openverse with top result + more links</li>
-            <li><code>/transcribe [video_url]</code> - Transcribe YouTube/Twitch/X/Kick videos (max 30 mins)</li>
-            <li><code>/guessage @user</code> - Estimate user's age from message patterns</li>
-          </ul>
-
-          <div class="feature-head"><h3>🎉 Fun &amp; Social Commands</h3><span class="badge free">All Free</span></div>
-          <ul>
-            <li><code>/hug @user</code>, <code>/kiss @user</code>, <code>/kick @user</code>, <code>/slap @user</code></li>
-            <li><code>/wish_goodmorning @user</code></li>
-            <li><code>/bet [heads/tails]</code> - Coin flip betting</li>
-            <li><code>/meme</code> - Random meme generator</li>
-          </ul>
-
-          <div class="feature-head"><h3>⚙️ Server Configuration</h3><span class="badge free">Owner Only</span></div>
-          <ul>
-            <li><code>/configure server</code> - Allow Codunot in all channels</li>
-            <li><code>/configure channels</code> - Restrict to specific channels</li>
-          </ul>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-col">
+          <a class="footer-brand" href="../">
+            <img src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot logo" />
+            Codunot
+          </a>
+          <p class="muted" style="font-size:.85rem;margin:.35rem 0 0;">AI that lives inside Discord.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="../features/">Features</a>
+          <a href="../commands/">Commands</a>
+          <a href="../premium/">Premium</a>
+          <a href="../stats/">Stats</a>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <a href="../faq/">FAQ</a>
+          <a href="../reviews/">Reviews</a>
+          <a href="../roadmap/">Roadmap</a>
+          <a href="../support/">Support</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="../terms/">Terms of Service</a>
+          <a href="../privacy/">Privacy Policy</a>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <a href="https://discord.gg/b8Cv7eC3En" target="_blank" rel="noopener">Discord Server</a>
+          <a href="https://top.gg/bot/1435987186502733878" target="_blank" rel="noopener">Top.gg</a>
+        </div>
+      </div>
+      <div class="footer-bottom">&copy; <span id="year"></span> Codunot &mdash; All rights reserved.</div>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>
 
 
 

@@ -375,6 +375,33 @@ function initAmbientModeControl() {
   setMode(mode);
 }
 
+function initGlowCursor() {
+  if (window.matchMedia('(pointer: coarse)').matches) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const cursor = document.createElement('div');
+  cursor.className = 'cursor-glow';
+  document.body.appendChild(cursor);
+
+  const interactiveSelector = 'a, button, .btn, .badge, summary, .community-card, .bot-clicker';
+
+  document.addEventListener('mousemove', (event) => {
+    cursor.style.left = `${event.clientX}px`;
+    cursor.style.top = `${event.clientY}px`;
+    cursor.classList.add('is-visible');
+  }, { passive: true });
+
+  document.addEventListener('mouseleave', () => {
+    cursor.classList.remove('is-visible');
+    cursor.classList.remove('is-active');
+  });
+
+  document.querySelectorAll(interactiveSelector).forEach((el) => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('is-active'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('is-active'));
+  });
+}
+
 function initHamburgerMenu() {
   const nav = document.querySelector('.nav');
   const links = document.querySelector('.links');
@@ -414,4 +441,5 @@ loadCommunities();
 initBotClicker();
 initHeroTypedLine();
 initAmbientModeControl();
+initGlowCursor();
 initRevealAnimations();

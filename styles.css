@@ -431,8 +431,9 @@ h1 { font-size: clamp(2rem, 4.5vw, 3.4rem); margin: .45rem 0 .7rem; line-height:
   color: white;
 }
 .badge.vote {
-  background: #f59e0b;
-  color: white;
+  background: linear-gradient(135deg, #ff8a00, #ff5a1f);
+  color: #fff7ef;
+  box-shadow: 0 0 0 1px rgba(255, 170, 98, .18);
 }
 .feature-head {
   display: flex;

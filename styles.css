@@ -683,21 +683,3 @@ h1, h2, h3, .brand, .mega {
 .hero-card:hover::before, .card:hover::before, .tile:hover::before, .feature-row:hover::before {
   opacity: 1;
 }
-
-/* Homepage polish refinements */
-.nav-wrap {
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
-}
-.hero {
-  padding-top: 2.6rem;
-}
-.section h2 {
-  letter-spacing: -0.02em;
-}
-.hero-card, .tile, .feature-row {
-  border-color: rgba(120, 154, 195, 0.34);
-  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.22);
-}
-.btn.primary {
-  box-shadow: 0 12px 32px rgba(255, 122, 24, 0.25);
-}

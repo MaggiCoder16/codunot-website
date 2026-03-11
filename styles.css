@@ -546,6 +546,8 @@ main.container.section {
   main.container.section { width: min(1240px, 92%); }
   .legal-main { width: min(1180px, 92%); }
   .legal-main .card { padding: 1rem 1rem 1rem 1.2rem; }
+  .hero-side { max-width: 480px; }
+  .bot-image-wrap { min-height: auto; padding-top: 1.6rem; }
 }
 
 @media (max-width: 720px) {
@@ -1794,7 +1796,8 @@ body[data-page="generation"] main .page-link-card:visited {
   }
 
   .nav-submenu {
-    position: static;
+    position: relative;
+    z-index: 10;
     min-width: 0;
     margin-top: .25rem;
     opacity: 1;
@@ -1803,10 +1806,17 @@ body[data-page="generation"] main .page-link-card:visited {
     display: none;
     box-shadow: none;
     border-radius: 12px;
+    background: linear-gradient(135deg, rgba(60, 30, 10, .95), rgba(45, 20, 5, .92));
+    border-color: rgba(255, 160, 60, .3);
   }
 
   .nav-dropdown.open .nav-submenu {
     display: grid;
+  }
+
+  .nav-submenu a {
+    position: relative;
+    z-index: 11;
   }
 
   .gen-page-grid {

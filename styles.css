@@ -856,6 +856,24 @@ h1, h2, h3, .brand, .mega, .subhead {
   animation-name: petalDrift;
 }
 
+.snowflake.comet {
+  color: rgba(214, 236, 255, var(--alpha, .46));
+  text-shadow: 0 0 12px rgba(143, 205, 255, .28), 0 0 26px rgba(143, 205, 255, .16), 14px 0 30px rgba(143, 205, 255, .1);
+  animation-name: cometSweep;
+}
+
+.snowflake.orb {
+  color: rgba(255, 236, 184, var(--alpha, .32));
+  text-shadow: 0 0 18px rgba(255, 210, 120, .26), 0 0 36px rgba(255, 210, 120, .14);
+  animation-name: orbFloat;
+}
+
+.snowflake.lantern {
+  color: rgba(255, 196, 122, var(--alpha, .38));
+  text-shadow: 0 0 12px rgba(255, 140, 51, .32), 0 0 26px rgba(255, 140, 51, .16);
+  animation-name: lanternRise;
+}
+
 .snowflake.rain {
   color: rgba(171, 214, 255, var(--alpha, .36));
   text-shadow: none;
@@ -981,6 +999,52 @@ h1, h2, h3, .brand, .mega, .subhead {
   100% {
     transform: translate3d(var(--drift, 28px), 108vh, 0) rotate(220deg);
     opacity: .14;
+  }
+}
+
+@keyframes cometSweep {
+  0% {
+    transform: translate3d(-8vw, -10vh, 0) scale(.92);
+    opacity: 0;
+  }
+  12% {
+    opacity: .92;
+  }
+  100% {
+    transform: translate3d(var(--drift, 60px), 108vh, 0) scale(1.04);
+    opacity: 0;
+  }
+}
+
+@keyframes orbFloat {
+  0% {
+    transform: translate3d(0, 108vh, 0) scale(.9);
+    opacity: 0;
+  }
+  14% {
+    opacity: .82;
+  }
+  50% {
+    transform: translate3d(calc(var(--drift, 20px) * .5), 48vh, 0) scale(1.06);
+    opacity: .54;
+  }
+  100% {
+    transform: translate3d(var(--drift, 20px), -10vh, 0) scale(.94);
+    opacity: 0;
+  }
+}
+
+@keyframes lanternRise {
+  0% {
+    transform: translate3d(0, 110vh, 0) rotate(0deg);
+    opacity: 0;
+  }
+  12% {
+    opacity: .9;
+  }
+  100% {
+    transform: translate3d(var(--drift, 18px), -12vh, 0) rotate(12deg);
+    opacity: 0;
   }
 }
 
@@ -1242,6 +1306,195 @@ h1 {
   font-size: 1.6rem;
   margin-bottom: .5rem;
   display: block;
+}
+
+/* ─── Shared layout cleanup ─── */
+.container {
+  width: min(1180px, 86%);
+}
+
+.nav.container {
+  width: min(1420px, 94%);
+}
+
+.nav-wrap {
+  background: rgba(8, 12, 18, 0.94);
+}
+
+.nav {
+  gap: .9rem;
+  padding: .8rem 0;
+}
+
+.links {
+  gap: .22rem;
+  margin-right: 0;
+}
+
+.links a {
+  padding: .38rem .58rem;
+  font-size: .86rem;
+}
+
+body::before {
+  opacity: .08;
+  background-size: 4px 4px;
+}
+
+.hero {
+  gap: 1.5rem;
+  padding: 3.2rem 0 1.2rem;
+  align-items: stretch;
+}
+
+.hero-main-content {
+  margin-top: 6rem;
+  max-width: 58rem;
+}
+
+.hero-mini-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .85rem;
+  margin: .5rem 0 1.25rem;
+}
+
+.hero-mini-card {
+  padding: .95rem 1rem;
+  border-radius: 14px;
+}
+
+.hero-mini-card p,
+.lead,
+.subhead,
+.card p,
+.card li,
+.feature-text p,
+.table th,
+.table td,
+.faq details,
+.notice {
+  line-height: 1.62;
+}
+
+.hero-card,
+.card,
+.tile {
+  padding: 1.35rem 1.4rem;
+  border-radius: 18px;
+}
+
+.section {
+  padding: 3rem 0;
+}
+
+.section h2 {
+  margin: 0 0 .72rem;
+}
+
+.section-title {
+  margin-bottom: 1.45rem;
+}
+
+.grid-3,
+.grid-2 {
+  gap: 1.15rem;
+}
+
+.feature-row {
+  gap: 1.55rem;
+  margin-bottom: 1.25rem;
+  padding: 1.7rem;
+  border-radius: 18px;
+}
+
+.compare-grid {
+  gap: 1.15rem;
+}
+
+.community-wrap {
+  border-radius: 18px;
+  padding: 1rem 0;
+}
+
+.community-track {
+  gap: 1rem;
+}
+
+.community-card {
+  min-width: 320px;
+  padding: .85rem .95rem;
+}
+
+main.container.section {
+  width: min(1180px, 86%);
+}
+
+.legal-main {
+  width: min(1080px, 84%);
+}
+
+.legal-main .card {
+  padding: 1.55rem 1.6rem 1.55rem 1.9rem;
+}
+
+.footer {
+  margin-top: 3rem;
+  padding: 1.3rem 0 2rem;
+}
+
+.footer-inner {
+  gap: 1.5rem 2.2rem;
+  padding: 2.2rem 0 1.15rem;
+}
+
+.tile:hover,
+.feature-row:hover,
+.card:hover,
+.hero-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+}
+
+@media (max-width: 1180px) {
+  .container,
+  main.container.section {
+    width: min(1180px, 90%);
+  }
+
+  .hero-mini-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nav.container {
+    width: min(1320px, 95%);
+  }
+}
+
+@media (max-width: 720px) {
+  .container,
+  main.container.section,
+  .legal-main {
+    width: min(1120px, 92%);
+  }
+
+  .section {
+    padding: 2.3rem 0;
+  }
+
+  .hero {
+    padding: 1.7rem 0 .6rem;
+  }
+
+  .hero-main-content {
+    margin-top: 1.15rem;
+  }
+
+  .hero-card,
+  .card,
+  .tile,
+  .feature-row {
+    padding: 1.05rem 1.05rem;
+  }
 }
 .feature-highlight h4 {
   margin: 0 0 .3rem;

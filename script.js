@@ -167,9 +167,9 @@ function initHeroTypedLine() {
   if (!el) return;
 
   const phrases = [
-    'Channel-based model control, media generation, moderation, and more...',
-    'Seven AI models, text-to-speech, image search, and more...',
-    'Music tools, image editing, smart automation, and more...'
+    'Channel-based model control, image generation, music tools, moderation, and more...',
+    'Seven AI models, text-to-speech, image search, smart replies, and more...',
+    'Video generation, image editing, automation, community tools, and more...'
   ];
 
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -220,55 +220,93 @@ function initHeroTypedLine() {
   tick();
 }
 
-function initSnowToggle() {
+function initAmbientModeControl() {
   const body = document.body;
   if (!body) return;
 
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const stored = window.localStorage.getItem('codunot_snow_enabled');
-  const enabled = stored === null ? !prefersReduced : stored === 'true';
+  const legacySnow = window.localStorage.getItem('codunot_snow_enabled');
+  const stored = window.localStorage.getItem('codunot_background_mode');
+  const mode = stored || (legacySnow === 'true' ? 'snow' : (prefersReduced ? 'off' : 'snow'));
 
   const scene = document.createElement('div');
   scene.className = 'snow-scene';
   scene.setAttribute('aria-hidden', 'true');
   body.prepend(scene);
 
-  const flakes = ['❄', '❅', '✻'];
-  const total = 34;
-
-  for (let index = 0; index < total; index += 1) {
-    const flake = document.createElement('span');
-    flake.className = 'snowflake';
-    flake.textContent = flakes[index % flakes.length];
-    flake.style.setProperty('--left', `${Math.random() * 100}%`);
-    flake.style.setProperty('--size', `${0.7 + (Math.random() * 0.9)}rem`);
-    flake.style.setProperty('--alpha', `${0.35 + (Math.random() * 0.5)}`);
-    flake.style.setProperty('--duration', `${10 + (Math.random() * 12)}s`);
-    flake.style.setProperty('--delay', `${Math.random() * -16}s`);
-    flake.style.setProperty('--drift', `${-22 + Math.random() * 44}px`);
-    scene.appendChild(flake);
+  function clamp(value, min, max) {
+    return Math.min(Math.max(value, min), max);
   }
 
-  const toggle = document.createElement('button');
-  toggle.className = 'snow-toggle';
-  toggle.type = 'button';
+  function renderParticles(nextMode) {
+    scene.innerHTML = '';
 
-  const navLinks = document.querySelector('.links');
-  if (navLinks) navLinks.appendChild(toggle);
-  else body.appendChild(toggle);
+    if (nextMode === 'off') {
+      scene.classList.add('is-hidden');
+      scene.dataset.mode = 'off';
+      return;
+    }
 
-  function setState(state) {
-    scene.classList.toggle('is-hidden', !state);
-    toggle.setAttribute('aria-pressed', String(state));
-    toggle.textContent = state ? 'Snow: On' : 'Snow: Off';
-    window.localStorage.setItem('codunot_snow_enabled', String(state));
+    scene.classList.remove('is-hidden');
+    scene.dataset.mode = nextMode;
+
+    const total = nextMode === 'snow' ? 78 : 44;
+    const glyphs = nextMode === 'snow' ? ['❄', '❅', '✻'] : ['•', '•', '·'];
+
+    for (let index = 0; index < total; index += 1) {
+      const particle = document.createElement('span');
+      const baseLeft = ((index + 0.5) / total) * 100;
+      const jitter = nextMode === 'snow' ? ((index % 5) - 2) * 0.9 : ((index % 7) - 3) * 0.7;
+
+      particle.className = `snowflake ${nextMode === 'embers' ? 'ember' : ''}`;
+      particle.textContent = glyphs[index % glyphs.length];
+      particle.style.setProperty('--left', `${clamp(baseLeft + jitter, 1, 99)}%`);
+      particle.style.setProperty('--size', `${nextMode === 'snow' ? 0.62 + (Math.random() * 0.72) : 0.38 + (Math.random() * 0.44)}rem`);
+      particle.style.setProperty('--alpha', `${nextMode === 'snow' ? 0.38 + (Math.random() * 0.42) : 0.3 + (Math.random() * 0.35)}`);
+      particle.style.setProperty('--duration', `${nextMode === 'snow' ? 11 + (Math.random() * 10) : 9 + (Math.random() * 7)}s`);
+      particle.style.setProperty('--delay', `${Math.random() * -18}s`);
+      particle.style.setProperty('--drift', `${nextMode === 'snow' ? -18 + (Math.random() * 36) : -10 + (Math.random() * 20)}px`);
+      scene.appendChild(particle);
+    }
   }
 
-  toggle.addEventListener('click', () => {
-    setState(scene.classList.contains('is-hidden'));
+  const wrapper = document.createElement('label');
+  wrapper.className = 'ambient-control';
+  wrapper.innerHTML = '<span>Background</span>';
+
+  const select = document.createElement('select');
+  select.className = 'ambient-select';
+  select.setAttribute('aria-label', 'Background animation');
+
+  [
+    ['snow', 'Snow'],
+    ['embers', 'Embers'],
+    ['off', 'Off']
+  ].forEach(([value, label]) => {
+    const option = document.createElement('option');
+    option.value = value;
+    option.textContent = label;
+    select.appendChild(option);
   });
 
-  setState(enabled);
+  wrapper.appendChild(select);
+
+  const navLinks = document.querySelector('.links');
+  if (navLinks) navLinks.appendChild(wrapper);
+  else body.appendChild(wrapper);
+
+  function setMode(nextMode) {
+    select.value = nextMode;
+    renderParticles(nextMode);
+    window.localStorage.setItem('codunot_background_mode', nextMode);
+    window.localStorage.setItem('codunot_snow_enabled', String(nextMode === 'snow'));
+  }
+
+  select.addEventListener('change', () => {
+    setMode(select.value);
+  });
+
+  setMode(mode);
 }
 
 function initHamburgerMenu() {
@@ -309,5 +347,5 @@ initAuthButtons();
 loadCommunities();
 initBotClicker();
 initHeroTypedLine();
-initSnowToggle();
+initAmbientModeControl();
 initRevealAnimations();

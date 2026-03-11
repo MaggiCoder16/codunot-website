@@ -371,6 +371,7 @@ h1 { font-size: clamp(2rem, 4.5vw, 3.4rem); margin: .45rem 0 .7rem; line-height:
 .community-track {
   display: flex; gap: .9rem; width: max-content; padding: 0 .8rem;
   animation: marquee 18s linear infinite;
+  will-change: transform;
 }
 .community-wrap:hover .community-track { animation-play-state: paused; }
 .community-card {
@@ -522,6 +523,7 @@ main.container.section {
   pointer-events: none;
   z-index: 1;
   opacity: 0.55;
+  will-change: contents;
 }
 
 .nav-wrap,
@@ -613,8 +615,10 @@ h1, h2, h3, .brand, .mega {
 .cursor-dot,
 .cursor-ring {
   position: fixed;
+  top: 0;
+  left: 0;
   pointer-events: none;
-  transform: translate(-50%, -50%);
+  will-change: transform;
   z-index: 9999;
 }
 .cursor-dot {
@@ -733,6 +737,7 @@ h1, h2, h3, .brand, .mega, .subhead {
   filter: blur(12px);
   animation: orbFloat 7s ease-in-out infinite;
   pointer-events: none;
+  will-change: transform;
 }
 .hero-mini-card,
 .tile,
@@ -806,6 +811,7 @@ h1, h2, h3, .brand, .mega, .subhead {
   width: 100%;
   background: linear-gradient(90deg, transparent, rgba(255, 122, 24, 0.8), transparent);
   animation: navScan 4.8s linear infinite;
+  will-change: transform, opacity;
 }
 
 @keyframes uiPulse {

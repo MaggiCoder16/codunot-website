@@ -67,15 +67,13 @@ function initCursorEffects() {
   document.addEventListener('mousemove', (event) => {
     mx = event.clientX;
     my = event.clientY;
-    cursor.style.left = `${mx}px`;
-    cursor.style.top = `${my}px`;
+    cursor.style.transform = `translate(${mx}px, ${my}px) translate(-50%, -50%)`;
   });
 
   function animateRing() {
     rx += (mx - rx) * 0.14;
     ry += (my - ry) * 0.14;
-    ring.style.left = `${rx}px`;
-    ring.style.top = `${ry}px`;
+    ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
     window.requestAnimationFrame(animateRing);
   }
 
@@ -122,10 +120,16 @@ function initRevealAnimations() {
 
 function initCardSpotlight() {
   document.querySelectorAll('.tile, .card, .hero-card, .feature-row').forEach((card) => {
+    let ticking = false;
     card.addEventListener('mousemove', (event) => {
-      const rect = card.getBoundingClientRect();
-      card.style.setProperty('--mx', `${((event.clientX - rect.left) / rect.width) * 100}%`);
-      card.style.setProperty('--my', `${((event.clientY - rect.top) / rect.height) * 100}%`);
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(() => {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--mx', `${((event.clientX - rect.left) / rect.width) * 100}%`);
+        card.style.setProperty('--my', `${((event.clientY - rect.top) / rect.height) * 100}%`);
+        ticking = false;
+      });
     });
   });
 }
@@ -211,7 +215,7 @@ function initHeroTypedLine() {
   const el = document.getElementById('hero-typed');
   if (!el) return;
 
-  const text = 'model switching · 7 AI models · edge TTS voices · /image_search · advanced music controls · moderation · fun commands';
+  const text = 'model switching · 7 AI models · image generation · video generation · image editing · image merging · edge TTS voices · /image_search · music controls · moderation · fun commands & more';
   if (window.__heroTypeTimer) window.clearTimeout(window.__heroTypeTimer);
   const runId = String(Date.now());
   el.dataset.typeRun = runId;
@@ -272,7 +276,7 @@ function initSnowToggle() {
   if (!ctx) return;
 
   const flakes = [];
-  const density = () => Math.max(24, Math.floor(window.innerWidth / 28));
+  const density = () => Math.max(16, Math.floor(window.innerWidth / 48));
 
   function resize() {
     canvas.width = window.innerWidth;

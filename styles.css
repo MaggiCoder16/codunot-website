@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Syne:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Syne:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;700;800&family=DM+Mono:wght@400;500&display=swap');
 
 :root {
   --bg: #130904;
@@ -71,6 +71,7 @@ body {
 }
 
 .hero { display: grid; grid-template-columns: 1.08fr .92fr; gap: .9rem; padding: 2.1rem 0 .8rem; align-items: start; }
+.hero { position: relative; overflow: hidden; }
 .hero-main {
   min-height: 0;
   display: flex;
@@ -682,4 +683,155 @@ h1, h2, h3, .brand, .mega {
 }
 .hero-card:hover::before, .card:hover::before, .tile:hover::before, .feature-row:hover::before {
   opacity: 1;
+}
+
+/* 2026 refresh */
+:root {
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'Plus Jakarta Sans', 'Manrope', sans-serif;
+}
+body {
+  font-family: var(--font-body);
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .2;
+  background-image: radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
+  background-size: 3px 3px;
+  z-index: 0;
+}
+h1, h2, h3, .brand, .mega, .subhead {
+  font-family: var(--font-display);
+  font-weight: 800;
+}
+.nav-wrap {
+  background: rgba(8, 12, 18, 0.88);
+  border-bottom: 1px solid rgba(255, 122, 24, 0.35);
+}
+.links a {
+  font-weight: 700;
+}
+.hero {
+  padding-top: 2.8rem;
+}
+.hero-main-content {
+  margin-top: 8rem;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  right: 6%;
+  top: 12%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 122, 24, 0.26), transparent 70%);
+  filter: blur(12px);
+  animation: orbFloat 7s ease-in-out infinite;
+  pointer-events: none;
+}
+.hero-mini-card,
+.tile,
+.hero-card,
+.feature-row,
+.card {
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.22);
+}
+.tile,
+.feature-row,
+.card,
+.hero-card {
+  transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+}
+.tile:hover,
+.feature-row:hover,
+.card:hover,
+.hero-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.32);
+  border-color: rgba(255, 122, 24, 0.55);
+}
+
+.music-player-ui {
+  margin-top: .7rem;
+  border: 1px solid rgba(255, 191, 122, 0.35);
+  border-radius: 12px;
+  background: linear-gradient(160deg, rgba(19, 30, 48, 0.95), rgba(15, 22, 34, 0.95));
+  padding: .75rem;
+  animation: uiPulse 2.8s ease-in-out infinite;
+}
+
+.music-player-top {
+  display: flex;
+  justify-content: space-between;
+  gap: .7rem;
+  margin-bottom: .55rem;
+  font-size: .84rem;
+  color: var(--muted);
+}
+
+.music-player-controls {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: .45rem;
+}
+
+.music-player-controls button {
+  border: 1px solid rgba(255, 191, 122, 0.35);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+  border-radius: 10px;
+  padding: .42rem .2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform .2s ease, background .2s ease, border-color .2s ease;
+}
+
+.music-player-controls button:hover {
+  transform: translateY(-2px) scale(1.04);
+  background: rgba(255, 122, 24, 0.2);
+  border-color: rgba(255, 191, 122, 0.7);
+}
+
+.nav-wrap::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 122, 24, 0.8), transparent);
+  animation: navScan 4.8s linear infinite;
+}
+
+@keyframes uiPulse {
+  0%, 100% { box-shadow: 0 0 0 rgba(255, 122, 24, 0.1); }
+  50% { box-shadow: 0 0 24px rgba(255, 122, 24, 0.22); }
+}
+
+@keyframes navScan {
+  0% { transform: translateX(-50%); opacity: .2; }
+  50% { transform: translateX(0); opacity: .9; }
+  100% { transform: translateX(50%); opacity: .2; }
+}
+
+@keyframes orbFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+.badge {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+code {
+  font-family: 'DM Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-weight: 500;
+}
+@media (max-width: 980px) {
+  .hero-main-content { margin-top: 1.4rem; }
 }

@@ -47,6 +47,7 @@
           <tr><td><code>/teachmerizz online</code></td><td>Dating/texting coach for online conversations.</td><td>Slash</td></tr>
           <tr><td><code>/teachmerizz irl</code></td><td>Real-life social coaching and confidence tips.</td><td>Slash</td></tr>
           <tr><td><code>/chessmode</code></td><td>Play chess against Codunot AI.</td><td>Slash</td></tr>
+          <tr><td><code>/model [name]</code></td><td>Switch the AI model for current channel or DM. Changing model clears memory context for a clean start.</td><td>Slash</td></tr>
         </tbody>
       </table>
     </section>
@@ -59,7 +60,7 @@
         <tbody>
           <tr><td><code>/generate_image [prompt]</code></td><td>AI-generated images with enhanced prompts.</td><td>Slash</td></tr>
           <tr><td><code>/generate_video [prompt]</code></td><td>Text-to-video generation (~1 min render time).</td><td>Slash</td></tr>
-          <tr><td><code>/generate_tts [text] [language] [voice]</code></td><td>Text-to-speech with 300+ voices across 40+ languages (min 20 chars).</td><td>Slash</td></tr>
+          <tr><td><code>/generate_tts [text] [language] [voice]</code></td><td>Text-to-speech with 300+ voices across 40+ languages. Expanded with Microsoft Edge TTS and readable language names in the picker.</td><td>Slash</td></tr>
           <tr><td>Attach image + describe edits</td><td>AI-powered image editing and modifications.</td><td>Message flow</td></tr>
           <tr><td>Attach 2+ images + say "merge"</td><td>Merge multiple images into one coherent scene.</td><td>Message flow</td></tr>
         </tbody>
@@ -74,7 +75,10 @@
         <tbody>
           <tr><td><code>/play [song/URL]</code></td><td>Play music with audio filters (bass boost, nightcore, slowed, 8D, lofi, etc.). Supports YouTube and SoundCloud.</td><td>Slash</td></tr>
           <tr><td><code>/queue</code></td><td>View current music queue.</td><td>Slash</td></tr>
-          <tr><td>Music controls</td><td>Pause/Resume, Skip, Previous, Stop, Volume buttons on the player embed.</td><td>Buttons</td></tr>
+          <tr><td><code>/volume_up</code> / <code>/volume_down</code></td><td>Increase or decrease player volume quickly.</td><td>Slash</td></tr>
+          <tr><td><code>/autoplay</code></td><td>Toggle automatic playback when queue ends.</td><td>Slash</td></tr>
+          <tr><td><code>/lyrics</code></td><td>Fetch full lyrics for the currently playing track.</td><td>Slash</td></tr>
+          <tr><td>Music controls</td><td>Pause/Resume, Skip, Previous, Stop, plus inline 🔉 and 🔊 volume buttons on the player embed.</td><td>Buttons</td></tr>
         </tbody>
       </table>
     </section>
@@ -109,6 +113,7 @@
         <tbody>
           <tr><td><code>/test_code [code]</code></td><td>Validate code, get summaries, auto-fix errors.</td><td><span class="badge free">Free</span></td></tr>
           <tr><td><code>/browse [URL]</code></td><td>Explicitly fetch and analyze webpage content.</td><td><span class="badge free">Free</span></td></tr>
+          <tr><td><code>/image_search [query]</code></td><td>Free image search from Wikimedia Commons + Openverse with top result and more links.</td><td><span class="badge free">Free</span></td></tr>
           <tr><td><code>/transcribe [video_url]</code></td><td>Transcribe YouTube/Twitch/X/Kick videos (max 30 mins).</td><td><span class="badge vote">Vote Required</span></td></tr>
           <tr><td><code>/guessage @user</code></td><td>Estimate user's age from message patterns.</td><td><span class="badge vote">Vote Required</span></td></tr>
         </tbody>
@@ -159,11 +164,27 @@
         </tbody>
       </table>
     </section>
+
+    <section class="card section">
+      <h2>🧠 AI Models for <code>/model</code></h2>
+      <p class="muted">Default model: <strong>GPT-OSS-120B</strong>.</p>
+      <table class="table">
+        <thead><tr><th>Model ID</th><th>Label</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td><code>openai/gpt-oss-120b</code></td><td>GPT-OSS-120B</td><td>Default</td></tr>
+          <tr><td><code>moonshotai/kimi-k2-instruct</code></td><td>Kimi K2 Instruct</td><td>Alternative</td></tr>
+          <tr><td><code>allam-2-7b</code></td><td>Allam 2 7B</td><td>Alternative</td></tr>
+          <tr><td><code>qwen/qwen3-32b</code></td><td>Qwen3 32B</td><td>Alternative</td></tr>
+          <tr><td><code>llama-3.3-70b-versatile</code></td><td>Llama 3.3 70B Versatile</td><td>Alternative</td></tr>
+          <tr><td><code>meta-llama/llama-4-scout-17b-16e-instruct</code></td><td>Llama 4 Scout 17B</td><td>Alternative</td></tr>
+          <tr><td><code>llama-3.1-8b-instant</code></td><td>Llama 3.1 8B Instant</td><td>Alternative</td></tr>
+        </tbody>
+      </table>
+    </section>
+
   </main>
 
   <footer class="footer"><div class="container">&copy; <span id="year"></span> Codunot &nbsp;|&nbsp; <a href="../terms/">Terms of Service</a> &nbsp;|&nbsp; <a href="../privacy/">Privacy Policy</a></div></footer>
   <script src="../script.js"></script>
 </body>
-</html
-
-
+</html>

@@ -41,23 +41,23 @@
         <span class="pill">Bot online</span>
         <div class="hero-main-content">
           <h1>Codunot</h1>
-          <p class="subhead">A discord chatbot with all your needs</p>
+          <p class="subhead">AI that lives inside Discord — now faster, bolder, and more customizable.</p>
           <p class="typewriter-line"><span id="hero-typed"></span><span class="type-cursor" aria-hidden="true">|</span></p>
           <div class="hero-mini-grid" aria-label="Top Codunot features">
             <article class="hero-mini-card">
-              <span class="hero-mini-icon">🎭</span>
-              <strong>Personality modes</strong>
-              <p>Fun, serious, roast, rizz coach, and chess mode.</p>
+              <span class="hero-mini-icon">🧠</span>
+              <strong>Model switching</strong>
+              <p>Use <code>/model</code> per channel/DM across 7 AI models.</p>
             </article>
             <article class="hero-mini-card">
-              <span class="hero-mini-icon">🎨</span>
-              <strong>Image generation</strong>
-              <p>Generate, edit, and merge visuals from prompts.</p>
+              <span class="hero-mini-icon">🎵</span>
+              <strong>Music controls</strong>
+              <p>New <code>/volume_up</code>, <code>/volume_down</code>, <code>/autoplay</code>, and <code>/lyrics</code>.</p>
             </article>
             <article class="hero-mini-card">
-              <span class="hero-mini-icon">🛡️</span>
-              <strong>Moderation suite</strong>
-              <p>/setup-moderation, automod, anti-spam, anti-raid.</p>
+              <span class="hero-mini-icon">🌍</span>
+              <strong>Edge TTS expansion</strong>
+              <p>More languages and readable picker names like English, Hindi, and Arabic.</p>
             </article>
           </div>
           <div class="cta-row">
@@ -191,8 +191,66 @@
         </div>
         <div class="feature-media">
           <img class="text-figure" src="https://i.ibb.co/r2R3sLR9/Screenshot-2026-03-03-183820.png" alt="Music playback /play command example" loading="lazy" />
+          <div class="music-player-ui" aria-label="Music player controls preview">
+            <div class="music-player-top">
+              <strong>Now Playing</strong>
+              <span>/play Midnight Drive</span>
+            </div>
+            <div class="music-player-controls">
+              <button type="button" aria-label="Volume down">🔉</button>
+              <button type="button" aria-label="Pause">⏸️</button>
+              <button type="button" aria-label="Skip">⏭️</button>
+              <button type="button" aria-label="Volume up">🔊</button>
+            </div>
+          </div>
         </div>
       </article>
+    </section>
+
+
+    <section class="container section">
+      <div class="section-title">
+        <h2 class="mega">🚀 New in this release</h2>
+        <p class="muted">Major upgrades to AI model control, TTS, music, and image search — plus a sharper modern UI.</p>
+      </div>
+      <div class="grid-3">
+        <article class="tile">
+          <h3>🧠 /model switching</h3>
+          <p class="muted">Switch AI model per channel or DM. Changing model wipes that channel memory for a fresh start.</p>
+          <p><span class="badge free">7 Models Available</span></p>
+        </article>
+        <article class="tile">
+          <h3>🌍 Edge TTS expansion</h3>
+          <p class="muted">Massive voice and language expansion powered by Microsoft Edge TTS with human-readable language labels.</p>
+          <p><span class="badge vote">Vote Required</span></p>
+        </article>
+        <article class="tile">
+          <h3>🎵 Music upgrades</h3>
+          <p class="muted">New volume slash commands, inline 🔉/🔊 buttons, autoplay toggle, and full lyrics for the active track.</p>
+          <p><span class="badge vote">Vote Required</span></p>
+        </article>
+        <article class="tile">
+          <h3>🖼️ /image_search</h3>
+          <p class="muted">Free image search from Wikimedia Commons and Openverse with top result preview + more links.</p>
+          <p><span class="badge free">No Vote Needed</span></p>
+        </article>
+      </div>
+    </section>
+
+    <section class="container section">
+      <h2>🧠 Available AI Models</h2>
+      <p class="muted">Use <code>/model</code> in channels or DMs. Default model is GPT-OSS-120B.</p>
+      <div class="card">
+        <ul>
+          <li><code>openai/gpt-oss-120b</code> — <strong>GPT-OSS-120B (default)</strong></li>
+          <li><code>moonshotai/kimi-k2-instruct</code></li>
+          <li><code>allam-2-7b</code></li>
+          <li><code>qwen/qwen3-32b</code></li>
+          <li><code>llama-3.3-70b-versatile</code></li>
+          <li><code>meta-llama/llama-4-scout-17b-16e-instruct</code></li>
+          <li><code>llama-3.1-8b-instant</code></li>
+        </ul>
+      </div>
     </section>
 
     <section class="container section">
@@ -213,9 +271,9 @@
       <p class="muted">Explicit commands for specific functionality.</p>
       <div class="grid-3">
         <article class="tile"><h3>🎨 Creative Generation</h3><p class="muted">/generate_image, /generate_video, /generate_tts <span class="badge vote">Vote Required</span></p></article>
-        <article class="tile"><h3>🎵 Music Player</h3><p class="muted">/play with audio filters like bass boost, nightcore, lo-fi. <span class="badge vote">Vote Required</span></p></article>
+        <article class="tile"><h3>🎵 Music Player</h3><p class="muted">/play with filters plus <code>/volume_up</code>, <code>/volume_down</code>, <code>/autoplay</code>, <code>/lyrics</code>, and inline 🔉/🔊 controls. <span class="badge vote">Vote Required</span></p></article>
         <article class="tile"><h3>🔧 Code Testing</h3><p class="muted">/test_code to validate and debug your code.</p></article>
-        <article class="tile"><h3>🌐 Web Browser</h3><p class="muted">/browse [URL] to extract webpage content.</p></article>
+        <article class="tile"><h3>🌐 Web Browser</h3><p class="muted">/browse [URL] to extract webpage content and <code>/image_search [query]</code> for free image lookup.</p></article>
         <article class="tile"><h3>♟️ Chess Mode</h3><p class="muted">/chessmode to play chess against me.</p></article>
         <article class="tile"><h3>🎭 Multiple Personalities</h3><p class="muted">/funmode, /seriousmode, /roastmode, /teachmerizz.</p></article>
         <article class="tile"><h3>🎉 Fun Commands</h3><p class="muted">/hug, /kiss, /kick, /slap, /meme, /bet and more.</p></article>

@@ -287,10 +287,10 @@ function initAmbientModeControl() {
       stardust: {
         total: 84,
         glyphs: ['✦', '·', '•'],
-        sizeMin: 0.36,
-        sizeRange: 0.36,
-        alphaMin: 0.32,
-        alphaRange: 0.28,
+        sizeMin: 0.62,
+        sizeRange: 0.54,
+        alphaMin: 0.44,
+        alphaRange: 0.3,
         durationMin: 14,
         durationRange: 12,
         driftMin: -10,
@@ -298,6 +298,36 @@ function initAmbientModeControl() {
         jitterPattern: 8,
         jitterStep: 0.42,
         className: 'stardust'
+      },
+      fireflies: {
+        total: 58,
+        glyphs: ['•', '•', '·'],
+        sizeMin: 0.72,
+        sizeRange: 0.46,
+        alphaMin: 0.28,
+        alphaRange: 0.32,
+        durationMin: 10,
+        durationRange: 8,
+        driftMin: -18,
+        driftRange: 36,
+        jitterPattern: 7,
+        jitterStep: 0.7,
+        className: 'firefly'
+      },
+      petals: {
+        total: 46,
+        glyphs: ['✦', '✧', '•'],
+        sizeMin: 0.88,
+        sizeRange: 0.54,
+        alphaMin: 0.34,
+        alphaRange: 0.24,
+        durationMin: 13,
+        durationRange: 9,
+        driftMin: -34,
+        driftRange: 68,
+        jitterPattern: 6,
+        jitterStep: 0.82,
+        className: 'petal'
       },
       rain: {
         total: 92,
@@ -346,6 +376,8 @@ function initAmbientModeControl() {
     ['snow', 'Snow'],
     ['embers', 'Embers'],
     ['stardust', 'Stardust'],
+    ['fireflies', 'Fireflies'],
+    ['petals', 'Petals'],
     ['rain', 'Rain'],
     ['off', 'Off']
   ].forEach(([value, label]) => {

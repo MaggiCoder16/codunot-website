@@ -839,9 +839,21 @@ h1, h2, h3, .brand, .mega, .subhead {
 }
 
 .snowflake.stardust {
-  color: rgba(214, 232, 255, var(--alpha, .5));
-  text-shadow: 0 0 8px rgba(173, 217, 255, .2);
+  color: rgba(228, 239, 255, var(--alpha, .64));
+  text-shadow: 0 0 10px rgba(173, 217, 255, .28), 0 0 22px rgba(214, 234, 255, .18);
   animation-name: stardustDrift;
+}
+
+.snowflake.firefly {
+  color: rgba(255, 224, 148, var(--alpha, .52));
+  text-shadow: 0 0 10px rgba(255, 192, 91, .34), 0 0 24px rgba(255, 214, 122, .24);
+  animation-name: fireflyFloat;
+}
+
+.snowflake.petal {
+  color: rgba(255, 214, 232, var(--alpha, .44));
+  text-shadow: 0 0 10px rgba(255, 205, 224, .18);
+  animation-name: petalDrift;
 }
 
 .snowflake.rain {
@@ -937,6 +949,38 @@ h1, h2, h3, .brand, .mega, .subhead {
   100% {
     transform: translate3d(var(--drift, 10px), 108vh, 0);
     opacity: .2;
+  }
+}
+
+@keyframes fireflyFloat {
+  0% {
+    transform: translate3d(0, 110vh, 0) scale(.9);
+    opacity: 0;
+  }
+  12% {
+    opacity: .95;
+  }
+  50% {
+    transform: translate3d(calc(var(--drift, 16px) * .45), 46vh, 0) scale(1.08);
+    opacity: .72;
+  }
+  100% {
+    transform: translate3d(var(--drift, 16px), -12vh, 0) scale(.92);
+    opacity: 0;
+  }
+}
+
+@keyframes petalDrift {
+  0% {
+    transform: translate3d(0, -10vh, 0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: .82;
+  }
+  100% {
+    transform: translate3d(var(--drift, 28px), 108vh, 0) rotate(220deg);
+    opacity: .14;
   }
 }
 

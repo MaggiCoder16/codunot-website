@@ -105,7 +105,7 @@ function initGenerationNav() {
     link.href = buildSiteUrl(path);
     link.textContent = label;
     const cleanPath = pathName.replace(/\.html$/, '').replace(/\/index$/, '/');
-    if (cleanPath.endsWith(path.toLowerCase().replace(/\.html$/, ''))) link.classList.add('active');
+    if (cleanPath.endsWith(path.toLowerCase())) link.classList.add('active');
     menu.appendChild(link);
   });
 

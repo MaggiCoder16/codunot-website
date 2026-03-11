@@ -43,6 +43,7 @@
         <li>Mention <code>@Codunot</code> in servers or reply to Codunot messages</li>
         <li>DM Codunot directly — no mention needed</li>
         <li><code>!codunot_help</code> for full quick help</li>
+        <li><code>/model</code> lets you switch the AI model per channel or DM (switching clears memory for a fresh start)</li>
       </ul>
       <p><span class="badge free">Free</span></p>
 
@@ -108,7 +109,7 @@
       <ul>
         <li><code>/generate_image [prompt]</code> - AI-generated images with enhanced prompts</li>
         <li><code>/generate_video [prompt]</code> - Text-to-video generation (~1 min render time)</li>
-        <li><code>/generate_tts [text] [language] [voice]</code> - Text-to-speech with 300+ voices across 40+ languages (min 20 chars)</li>
+        <li><code>/generate_tts [text] [language] [voice]</code> - Text-to-speech with 300+ voices across 40+ languages. Expanded with Microsoft Edge TTS and readable picker names like English, Hindi, Arabic</li>
       </ul>
       <p><span class="badge vote">Vote Required</span></p>
 
@@ -116,7 +117,10 @@
       <ul>
         <li><code>/play [song/URL]</code> - Play music with audio filters (bass boost, nightcore, slowed, 8D, lofi, etc.)</li>
         <li><code>/queue</code> - View current music queue</li>
-        <li>Music controls: Pause/Resume, Skip, Previous, Stop, Volume buttons</li>
+        <li><code>/volume_up</code> and <code>/volume_down</code> - Fine-tune playback volume quickly</li>
+        <li><code>/autoplay</code> - Toggle whether playback continues after queue end</li>
+        <li><code>/lyrics</code> - Fetch full lyrics for the currently playing track</li>
+        <li>Music controls: Pause/Resume, Skip, Previous, Stop, and inline 🔉/🔊 buttons on player UI</li>
       </ul>
       <p><span class="badge vote">Vote Required</span></p>
 
@@ -135,6 +139,7 @@
       <ul>
         <li><code>/test_code [code]</code> - Validate code, get summaries, auto-fix errors</li>
         <li><code>/browse [URL]</code> - Explicitly fetch and analyze webpage content</li>
+        <li><code>/image_search [query]</code> - Free image search via Wikimedia Commons and Openverse with top result + more links</li>
         <li><code>/transcribe [video_url]</code> - Transcribe YouTube/Twitch/X/Kick videos (max 30 mins)</li>
         <li><code>/guessage @user</code> - Estimate user's age from message patterns</li>
       </ul>
@@ -164,7 +169,7 @@
       <ul>
         <li>✅ Image generation, editing, and merging</li>
         <li>✅ Video generation</li>
-        <li>✅ Text-to-speech (300+ voices, 40+ languages)</li>
+        <li>✅ Text-to-speech (massively expanded Edge TTS voices and language names)</li>
         <li>✅ Music playback with audio filters</li>
         <li>✅ Video transcription (YouTube/Twitch/X/Kick)</li>
         <li>✅ File reading (PDF/DOCX/TXT)</li>
@@ -179,7 +184,6 @@
   <script src="../script.js"></script>
 </body>
 </html>
-
 
 
 

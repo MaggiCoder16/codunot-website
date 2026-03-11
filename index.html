@@ -1,94 +1,84 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Codunot - Discord AI Bot</title>
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png" />
-  <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/favicon-192.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png" />
-  <link rel="manifest" href="site.webmanifest" />
-<meta name="description" content="Codunot official website with commands, features, reviews, support, and premium info." />
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Codunot — AI That Lives Inside Discord</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico" />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="assets/icons/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png" />
+<link rel="manifest" href="site.webmanifest" />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=Cabinet+Grotesk:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--orange:#FF6B00;--orange-dim:#FF6B0022;--orange-glow:#FF6B0044;--gold:#FFB800;--teal:#00D4AA;--blue:#5865F2;--bg:#080B0F;--surface:#141B24;--surface2:#1A2333;--border:#1E2D3D;--border2:#243347;--text:#E8EDF4;--text-dim:#7A8A9A;--text-muted:#3D5166;--font-display:'Syne',sans-serif;--font-body:'Cabinet Grotesk',sans-serif;--font-mono:'DM Mono',monospace}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{background:var(--bg);color:var(--text);font-family:var(--font-body);line-height:1.6;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:1;opacity:.35}
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:rgba(8,11,15,.82);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--orange);text-decoration:none}.nav-links{display:flex;gap:22px;align-items:center}
+.nav-links a{color:var(--text-dim);text-decoration:none;font-size:14px;position:relative;transition:color .2s}.nav-links a::after{content:'';position:absolute;left:0;right:0;bottom:-4px;height:1px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .3s}.nav-links a:hover{color:var(--text)}.nav-links a:hover::after{transform:scaleX(1)}
+.nav-cta{background:var(--orange);color:#000!important;padding:8px 16px;border-radius:8px;font-weight:700!important}.nav-cta::after{display:none}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 24px 80px;position:relative;overflow:hidden;z-index:2}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 50% at 50% -10%,rgba(255,107,0,.15) 0%,transparent 60%),radial-gradient(ellipse 40% 40% at 20% 80%,rgba(88,101,242,.08) 0%,transparent 50%),radial-gradient(ellipse 40% 40% at 80% 80%,rgba(0,212,170,.06) 0%,transparent 50%)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:60px 60px;opacity:.3;mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,black 0%,transparent 100%)}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border2);border-radius:100px;padding:6px 16px;font-size:13px;color:var(--text-dim);margin-bottom:28px}.dot{width:6px;height:6px;background:var(--teal);border-radius:50%;animation:pulse 2s infinite}@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+h1{font-family:var(--font-display);font-size:clamp(44px,8vw,92px);font-weight:800;line-height:.95;letter-spacing:-2px;margin-bottom:20px}h1 .l2{color:var(--orange)}h1 .l3{display:block;color:var(--text-dim);font-size:.38em;margin-top:8px}
+.hero-desc{max-width:760px;color:var(--text-dim);font-size:18px;margin-bottom:34px}.hero-actions{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-bottom:52px}
+.btn{padding:14px 28px;border-radius:10px;text-decoration:none;font-weight:700;transition:.2s}.btn-p{background:var(--orange);color:#000}.btn-s{background:var(--surface);color:var(--text);border:1px solid var(--border2)}.btn:hover{transform:translateY(-2px)}
+.stats-bar{display:flex;background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden}.stat{padding:20px 34px;border-right:1px solid var(--border)}.stat:last-child{border-right:none}.stat-num{font-family:var(--font-display);font-size:26px;font-weight:800;display:block}.stat-label{font-size:12px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px}
+section{padding:92px 24px;max-width:1200px;margin:0 auto;position:relative;z-index:2}.divider{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:0 24px}.stag{font-family:var(--font-mono);font-size:12px;color:var(--orange);text-transform:uppercase;letter-spacing:3px;margin-bottom:12px}h2{font-family:var(--font-display);font-size:clamp(32px,5vw,52px);line-height:1.05;margin-bottom:12px}.sdesc{color:var(--text-dim);font-size:17px;max-width:700px;margin-bottom:42px}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;transition:.3s}.card:hover{transform:translateY(-4px);border-color:var(--border2)}.card-icon{font-size:26px;display:block;margin-bottom:12px}.card h3{font-family:var(--font-display);font-size:19px}.card p{color:var(--text-dim);font-size:14px;margin-top:6px}.badge{display:inline-block;font-size:11px;padding:3px 10px;border-radius:100px;margin-top:14px}.bf{background:rgba(0,212,170,.12);color:var(--teal)}.bv{background:rgba(88,101,242,.12);color:#8b97ff}.bn{background:rgba(255,107,0,.12);color:var(--orange)}
+.cmd-list{display:flex;flex-direction:column;gap:7px}.ci{display:flex;gap:16px;padding:12px 16px;background:var(--surface);border:1px solid var(--border);border-radius:10px}.ci code{min-width:240px;color:var(--orange);font-family:var(--font-mono)}.ci span{color:var(--text-dim)}
+.links-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.lc{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;text-decoration:none;transition:.3s}.lc:hover{transform:translateY(-3px);border-color:var(--border2)}.lt{font-family:var(--font-display);font-size:18px;color:var(--text)}.ld{font-size:14px;color:var(--text-dim)}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s,transform .6s}.reveal.visible{opacity:1;transform:none}
+footer{border-top:1px solid var(--border);padding:42px 24px;text-align:center;color:var(--text-muted)}footer a{color:var(--orange);text-decoration:none}
+@media(max-width:900px){.nav-links{display:none}nav{padding:14px 18px}.stats-bar{flex-direction:column}.stat{border-right:none;border-bottom:1px solid var(--border)}.links-grid{grid-template-columns:1fr}.ci{flex-direction:column}.ci code{min-width:0}}
+</style>
 </head>
 <body>
-  <header class="nav-wrap">
-    <nav class="nav container">
-      <a class="brand" href="./">
-        <img src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot logo" />
-        Codunot
-      </a>
-      <div class="links">
-        <a class="active" href="./">Home</a>
-        <a href="features/">Features</a>
-        <a href="commands/">Command Center</a>
-        <a href="stats/">Stats</a>
-        <a href="reviews/">Reviews</a>
-        <a href="faq/">FAQ</a>
-        <a href="premium/">Premium</a>
-        <a href="support/">Support</a>
-        <a href="terms/">ToS</a>
-        <a href="privacy/">Privacy Policy</a>
-        <a class="login-btn" href="https://discord.com/oauth2/authorize?client_id=1435987186502733878&integration_type=1&scope=applications.commands" target="_blank" rel="noopener">Authorize App</a>
-      </div>
-    </nav>
-  </header>
+<nav>
+  <a href="#" class="nav-logo">Codunot</a>
+  <div class="nav-links">
+    <a href="#features">Features</a>
+    <a href="#commands">Commands</a>
+    <a href="#links">Links</a>
+    <a href="features/">More Pages</a>
+    <a href="https://discord.com/oauth2/authorize?client_id=1435987186502733878&permissions=277025643520&integration_type=0&scope=applications.commands+bot" class="nav-cta">Add to Server</a>
+  </div>
+</nav>
 
-  <main>
-    <section class="hero container">
-      <div class="hero-main">
-        <span class="pill">Bot online</span>
-        <div class="hero-main-content">
-          <h1>Codunot</h1>
-          <p class="subhead">A discord chatbot with all your needs</p>
-          <p class="typewriter-line"><span id="hero-typed"></span><span class="type-cursor" aria-hidden="true">|</span></p>
-          <div class="hero-mini-grid" aria-label="Top Codunot features">
-            <article class="hero-mini-card">
-              <span class="hero-mini-icon">🎭</span>
-              <strong>Personality modes</strong>
-              <p>Fun, serious, roast, rizz coach, and chess mode.</p>
-            </article>
-            <article class="hero-mini-card">
-              <span class="hero-mini-icon">🎨</span>
-              <strong>Image generation</strong>
-              <p>Generate, edit, and merge visuals from prompts.</p>
-            </article>
-            <article class="hero-mini-card">
-              <span class="hero-mini-icon">🛡️</span>
-              <strong>Moderation suite</strong>
-              <p>/setup-moderation, automod, anti-spam, anti-raid.</p>
-            </article>
-          </div>
-          <div class="cta-row">
-            <a class="btn primary" href="https://discord.com/oauth2/authorize?client_id=1435987186502733878&permissions=277025643520&integration_type=0&scope=applications.commands+bot" target="_blank" rel="noopener">Add to Discord</a>
-            <a class="btn secondary" href="https://discord.com/oauth2/authorize?client_id=1435987186502733878&integration_type=1&scope=applications.commands" target="_blank" rel="noopener">Authorize App Login</a>
-            <a class="btn ghost" href="https://top.gg/bot/1435987186502733878/vote" target="_blank" rel="noopener">Vote on top.gg</a>
-          </div>
-        </div>
-      </div>
-      <div class="hero-side">
-        <article class="hero-card">
-          <h3>Uptime</h3>
-          <div class="uptime">99.94%</div>
-          <p class="muted">30 day rolling target and status.</p>
-        </article>
-        <article class="hero-card bot-image-wrap">
-          <button id="bot-clicker" class="bot-clicker" type="button" aria-label="Click Codunot">
-            <img src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot bot icon" />
-          </button>
-          <p class="clicks-line">Clicks: <span id="click-count">0</span></p>
-          <p class="muted" id="click-message">i'm a bot, not a button, but okay!</p>
-        </article>
-      </div>
-    </section>
+<div class="hero">
+  <div class="hero-bg"></div><div class="hero-grid"></div>
+  <div class="hero-badge"><div class="dot"></div>New update live: model switch + expanded TTS + music controls + image search</div>
+  <h1><span>AI That Lives</span> <span class="l2">Inside Discord</span><span class="l3">Modern, fast, and built for communities</span></h1>
+  <p class="hero-desc">Codunot now supports per-channel model switching, huge TTS language expansion, better music controls, and free image search — all inside Discord without app switching.</p>
+  <div class="hero-actions">
+    <a class="btn btn-p" href="https://discord.com/oauth2/authorize?client_id=1435987186502733878&permissions=277025643520&integration_type=0&scope=applications.commands+bot">➕ Add to Server</a>
+    <a class="btn btn-s" href="https://discord.com/oauth2/authorize?client_id=1435987186502733878&integration_type=1&scope=applications.commands">💬 Add to DMs</a>
+    <a class="btn btn-s" href="https://discord.gg/GVuFk5gxtW">🌍 Official Server</a>
+  </div>
+  <div class="stats-bar">
+    <div class="stat"><span class="stat-num">7</span><span class="stat-label">AI Models</span></div>
+    <div class="stat"><span class="stat-num">100+</span><span class="stat-label">TTS Voices</span></div>
+    <div class="stat"><span class="stat-num">45+</span><span class="stat-label">TTS Languages</span></div>
+    <div class="stat"><span class="stat-num">Free</span><span class="stat-label">Image Search</span></div>
+  </div>
+</div>
 
-    <section class="container section">
-      <h2>Communities using Codunot</h2>
-      <div class="community-wrap">
-        <div class="community-track" id="community-track"></div>
-      </div>
-    </section>
+<div class="divider"></div>
+<section id="features">
+  <div class="stag reveal">Features</div>
+  <h2 class="reveal">New updates, redesigned UI, smoother animations.</h2>
+  <p class="sdesc reveal">Everything you listed is now reflected on the homepage with cleaner visuals, motion reveals, and updated command coverage.</p>
+  <div class="cards-grid">
+    <div class="card reveal"><span class="card-icon">🧠</span><h3>Model Switching</h3><p>Use <code>/model</code> to switch AI per channel or DM. Includes 7 choices with <strong>llama-3.1-8b-instant</strong> newly added. Switching model clears that channel's memory for a clean context.</p><span class="badge bn">New</span></div>
+    <div class="card reveal"><span class="card-icon">🌍</span><h3>TTS Expansion</h3><p>Microsoft Edge TTS now powers massively more languages and voices. Picker now uses readable names like English, Hindi, and Arabic.</p><span class="badge bv">Updated</span></div>
+    <div class="card reveal"><span class="card-icon">🎵</span><h3>Music Control Upgrade</h3><p>New <code>/volume_up</code>, <code>/volume_down</code>, in-player volume buttons 🔉🔊, <code>/autoplay</code>, and <code>/lyrics</code> for full current-song lyrics.</p><span class="badge bv">Updated</span></div>
+    <div class="card reveal"><span class="card-icon">🖼️</span><h3>Image Search</h3><p><code>/image_search</code> is free (no vote needed). Searches Wikimedia Commons + Openverse and returns top match with more links.</p><span class="badge bf">Always Free</span></div>
+    <div class="card reveal"><span class="card-icon">🛡️</span><h3>Moderation + Utility</h3><p>Keep full moderation features, automod workflows, and all your old command surface while adding the new tools above.</p><span class="badge bf">Core</span></div>
+    <div class="card reveal"><span class="card-icon">✨</span><h3>Modern Experience</h3><p>Refreshed gradients, glassy nav, animated reveal on scroll, hover-lift cards, and stronger information hierarchy.</p><span class="badge bn">Redesigned</span></div>
+  </div>
+</section>
 
 
     <section class="container section gen-features" id="generation-features">
@@ -97,28 +87,21 @@
         <p class="muted">Create images, audio, and video outputs directly from prompts.</p>
       </div>
 
-      <article class="feature-row media-wide">
-        <div class="feature-text">
-          <h3>Image Generation</h3>
-          <p>Create original images from simple text prompts. Ideal for thumbnails, concepts, and fast creative drafts.</p>
-        </div>
-        <div class="feature-media">
-          <img class="text-figure" src="https://i.ibb.co/CKcRX4Fz/Screenshot-2026-02-25-104307.png" alt="Image generation example showing BMW and Lamborghini" loading="lazy" />
-        </div>
-      </article>
+<div class="divider"></div>
+<section id="links">
+  <div class="stag reveal">Links</div>
+  <h2 class="reveal">Ship it on your server.</h2>
+  <div class="links-grid">
+    <a class="lc reveal" href="https://discord.com/oauth2/authorize?client_id=1435987186502733878&permissions=277025643520&integration_type=0&scope=applications.commands+bot"><div class="lt">Add to Server</div><div class="ld">Invite Codunot with full bot permissions.</div></a>
+    <a class="lc reveal" href="https://discord.com/oauth2/authorize?client_id=1435987186502733878&integration_type=1&scope=applications.commands"><div class="lt">Add to DMs</div><div class="ld">Use Codunot in personal chats.</div></a>
+    <a class="lc reveal" href="https://discord.gg/GVuFk5gxtW"><div class="lt">Official Server</div><div class="ld">Support, feedback, and premium info.</div></a>
+  </div>
+</section>
 
-      <article class="feature-row">
-        <div class="feature-text">
-          <h3>Video Generation</h3>
-          <p>Generate short cinematic clips from a prompt. Perfect for quick previews, mood shots, and concept tests.</p>
-        </div>
-        <div class="feature-media">
-          <div class="video-frame">
-            <iframe src="https://player.vimeo.com/video/1167989667?title=0&byline=0&portrait=0&badge=0&autopause=0&loop=1&dnt=1" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Video generation demo"></iframe>
-          </div>
-          <p class="muted media-note">Audio is included in the video player.</p>
-        </div>
-      </article>
+<footer>
+  <p style="font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--orange)">Codunot</p>
+  <p>Built with ❤️ by @aarav_2022 · <a href="terms/">Terms</a> · <a href="privacy/">Privacy</a></p>
+</footer>
 
       <article class="feature-row">
         <div class="feature-text">

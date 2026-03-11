@@ -46,7 +46,7 @@
           <tr><td><code>/roastmode</code></td><td>Humorous, lighthearted roasts and comebacks.</td><td>Slash</td></tr>
           <tr><td><code>/teachmerizz online</code></td><td>Dating/texting coach for online conversations.</td><td>Slash</td></tr>
           <tr><td><code>/teachmerizz irl</code></td><td>Real-life social coaching and confidence tips.</td><td>Slash</td></tr>
-          <tr><td><code>/chessmode</code></td><td>Play chess against Codunot AI.</td><td>Slash</td></tr>
+          <tr><td><code>/chessmode</code></td><td>Play chess against Codunot AI. Full engine with legal move validation, SAN/UCI support, castling, promotions, en passant, resign detection, and AI hints.</td><td>Slash</td></tr>
           <tr><td><code>/model [name]</code></td><td>Switch the AI model for current channel or DM. Changing model clears memory context for a clean start.</td><td>Slash</td></tr>
         </tbody>
       </table>
@@ -60,7 +60,7 @@
         <tbody>
           <tr><td><code>/generate_image [prompt]</code></td><td>AI-generated images with enhanced prompts.</td><td>Slash</td></tr>
           <tr><td><code>/generate_video [prompt]</code></td><td>Text-to-video generation (~1 min render time).</td><td>Slash</td></tr>
-          <tr><td><code>/generate_tts [text] [language] [voice]</code></td><td>Text-to-speech with 300+ voices across 40+ languages. Expanded with Microsoft Edge TTS and readable language names in the picker.</td><td>Slash</td></tr>
+          <tr><td><code>/generate_tts [text] [language] [voice]</code></td><td>Text-to-speech with 300+ voices across 60+ languages. Expanded with Microsoft Edge TTS and readable language names in the picker.</td><td>Slash</td></tr>
           <tr><td>Attach image + describe edits</td><td>AI-powered image editing and modifications.</td><td>Message flow</td></tr>
           <tr><td>Attach 2+ images + say "merge"</td><td>Merge multiple images into one coherent scene.</td><td>Message flow</td></tr>
         </tbody>
@@ -73,7 +73,7 @@
       <table class="table">
         <thead><tr><th>Command</th><th>What it does</th><th>Type</th></tr></thead>
         <tbody>
-          <tr><td><code>/play [song/URL]</code></td><td>Play music with audio filters (bass boost, nightcore, slowed, 8D, lofi, etc.). Supports YouTube and SoundCloud.</td><td>Slash</td></tr>
+          <tr><td><code>/play [song/URL]</code></td><td>Play music with audio filters (Normal, Bass Boost, Nightcore, Slowed, 8D, Treble, Lo-Fi, Vaporwave). Supports YouTube, SoundCloud, and Spotify via Lavalink.</td><td>Slash</td></tr>
           <tr><td><code>/queue</code></td><td>View current music queue.</td><td>Slash</td></tr>
           <tr><td><code>/volume_up</code> / <code>/volume_down</code></td><td>Increase or decrease player volume quickly.</td><td>Slash</td></tr>
           <tr><td><code>/autoplay</code></td><td>Toggle automatic playback when queue ends.</td><td>Slash</td></tr>
@@ -101,6 +101,7 @@
           <tr><td><code>/modstats</code></td><td>Detailed moderation analytics (actions, top warned users, active moderators).</td><td><span class="badge premium">Premium / Gold</span></td></tr>
           <tr><td><code>/note add</code> <code>/note view</code> <code>/note clear</code></td><td>Private moderator notes per member for internal staff context.</td><td><span class="badge premium">Premium / Gold</span></td></tr>
           <tr><td><code>More Premium/Gold mod commands</code></td><td>Advanced moderation features are expanding regularly for Premium and Gold servers.</td><td><span class="badge gold">Premium / Gold 👑</span></td></tr>
+          <tr><td><code>@Codunot [mod action]</code></td><td>Natural language moderation — mention the bot with plain English, e.g. "timeout @user 10m for spamming", "ban @user for raiding", "clear 20".</td><td><span class="badge free">Free</span></td></tr>
         </tbody>
       </table>
     </section>
@@ -184,7 +185,44 @@
 
   </main>
 
-  <footer class="footer"><div class="container">&copy; <span id="year"></span> Codunot &nbsp;|&nbsp; <a href="../terms/">Terms of Service</a> &nbsp;|&nbsp; <a href="../privacy/">Privacy Policy</a></div></footer>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-col">
+          <a class="footer-brand" href="../">
+            <img src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot logo" />
+            Codunot
+          </a>
+          <p class="muted" style="font-size:.85rem;margin:.35rem 0 0;">AI that lives inside Discord.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="../features/">Features</a>
+          <a href="../commands/">Commands</a>
+          <a href="../premium/">Premium</a>
+          <a href="../stats/">Stats</a>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <a href="../faq/">FAQ</a>
+          <a href="../reviews/">Reviews</a>
+          <a href="../roadmap/">Roadmap</a>
+          <a href="../support/">Support</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="../terms/">Terms of Service</a>
+          <a href="../privacy/">Privacy Policy</a>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <a href="https://discord.gg/b8Cv7eC3En" target="_blank" rel="noopener">Discord Server</a>
+          <a href="https://top.gg/bot/1435987186502733878" target="_blank" rel="noopener">Top.gg</a>
+        </div>
+      </div>
+      <div class="footer-bottom">&copy; <span id="year"></span> Codunot &mdash; All rights reserved.</div>
+    </div>
+  </footer>
   <script src="../script.js"></script>
 </body>
 </html>

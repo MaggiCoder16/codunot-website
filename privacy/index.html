@@ -70,6 +70,9 @@
         <li><strong>Configuration data:</strong> server/channel configuration choices made by authorized admins.</li>
         <li><strong>OAuth and app auth data:</strong> authorization response parameters returned by Discord for app authorization.</li>
         <li><strong>Website OAuth parameters:</strong> temporary authorization response parameters returned to the redirect page.</li>
+        <li><strong>Music and audio data:</strong> song names, URLs, and audio filter preferences for music playback via YouTube, SoundCloud, and Spotify.</li>
+        <li><strong>Chess game data:</strong> chess moves, game state, and board positions during chess mode sessions.</li>
+        <li><strong>Moderation data:</strong> moderation actions, warnings, cases, notes, and configuration choices.</li>
         <li><strong>Operational diagnostics:</strong> error logs, model/API errors, and system health events.</li>
         <li><strong>Location queries:</strong> location names, search terms, and place preferences you submit for mapping features.</li>
         <li><strong>Web URLs:</strong> URLs shared in messages for automatic or explicit content extraction.</li>
@@ -130,6 +133,7 @@
       <h2>6. Music Playback</h2>
       <p>
         Codunot streams audio temporarily for playback within Discord voice channels.
+        Music sources include YouTube, SoundCloud, and Spotify via Lavalink.
       </p>
       <p>
         The bot does not download, store, cache, or redistribute copyrighted audio content.
@@ -182,7 +186,8 @@
         <li>Mapping and location service providers (for place search and directions).</li>
         <li>Web scraping and content extraction services.</li>
         <li>Code execution sandbox environments.</li>
-        <li>Web search providers (for real-time information retrieval).</li>
+        <li>Web search providers (DuckDuckGo for real-time information retrieval).</li>
+        <li>Music streaming infrastructure providers (Lavalink for YouTube, SoundCloud, Spotify playback).</li>
       </ul>
       <p>
         Each third party processes data under its own terms and privacy practices.
@@ -221,6 +226,9 @@
           <tr><td>Web URLs and extracted content</td><td>Temporary processing only</td><td>Content extraction and summarization</td></tr>
           <tr><td>Code test submissions</td><td>Not stored after execution</td><td>Real-time testing and validation</td></tr>
           <tr><td>Web search queries</td><td>Temporary processing only</td><td>Real-time information retrieval</td></tr>
+          <tr><td>Chess game state</td><td>Session duration only</td><td>Real-time game tracking</td></tr>
+          <tr><td>Moderation records (warnings, cases, notes)</td><td>Until cleared or server removed</td><td>Moderation history and accountability</td></tr>
+          <tr><td>Music playback history</td><td>Session duration only</td><td>Queue management and playback</td></tr>
         </tbody>
       </table>
     </section>
@@ -318,7 +326,44 @@
     </section>
   </main>
 
-  <footer class="footer"><div class="container">&copy; <span id="year"></span> Codunot &nbsp;|&nbsp; <a href="../terms/">Terms of Service</a> &nbsp;|&nbsp; <a href="../privacy/">Privacy Policy</a></div></footer>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-col">
+          <a class="footer-brand" href="../">
+            <img src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot logo" />
+            Codunot
+          </a>
+          <p class="muted" style="font-size:.85rem;margin:.35rem 0 0;">AI that lives inside Discord.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="../features/">Features</a>
+          <a href="../commands/">Commands</a>
+          <a href="../premium/">Premium</a>
+          <a href="../stats/">Stats</a>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <a href="../faq/">FAQ</a>
+          <a href="../reviews/">Reviews</a>
+          <a href="../roadmap/">Roadmap</a>
+          <a href="../support/">Support</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="../terms/">Terms of Service</a>
+          <a href="../privacy/">Privacy Policy</a>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <a href="https://discord.gg/b8Cv7eC3En" target="_blank" rel="noopener">Discord Server</a>
+          <a href="https://top.gg/bot/1435987186502733878" target="_blank" rel="noopener">Top.gg</a>
+        </div>
+      </div>
+      <div class="footer-bottom">&copy; <span id="year"></span> Codunot &mdash; All rights reserved.</div>
+    </div>
+  </footer>
   <script src="../script.js"></script>
 </body>
 </html>

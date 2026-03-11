@@ -7,6 +7,19 @@ const SITE_BASE = document.currentScript
   ? new URL('./', document.currentScript.src).href
   : new URL('./', window.location.href).href;
 
+function setPageData() {
+  if (!document.body) return;
+
+  const parts = window.location.pathname.split('/').filter(Boolean);
+  let page = parts.length ? parts[parts.length - 1].toLowerCase() : 'home';
+
+  if (page === 'index.html') {
+    page = parts.length > 1 ? parts[parts.length - 2].toLowerCase() : 'home';
+  }
+
+  document.body.dataset.page = page || 'home';
+}
+
 function buildDiscordAuthorizeUrl() {
   const redirectUrl = new URL(SITE_BASE);
   const url = new URL('https://discord.com/oauth2/authorize');
@@ -50,60 +63,14 @@ function initAuthButtons() {
   });
 }
 
-function initCursorEffects() {
-  if (window.matchMedia('(pointer: coarse)').matches) return;
-
-  const cursor = document.createElement('div');
-  cursor.className = 'cursor-dot';
-  const ring = document.createElement('div');
-  ring.className = 'cursor-ring';
-  document.body.append(cursor, ring);
-
-  let mx = 0;
-  let my = 0;
-  let rx = 0;
-  let ry = 0;
-
-  document.addEventListener('mousemove', (event) => {
-    mx = event.clientX;
-    my = event.clientY;
-    cursor.style.transform = `translate(${mx}px, ${my}px) translate(-50%, -50%)`;
-  });
-
-  function animateRing() {
-    rx += (mx - rx) * 0.14;
-    ry += (my - ry) * 0.14;
-    ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
-    window.requestAnimationFrame(animateRing);
-  }
-
-  window.requestAnimationFrame(animateRing);
-
-  const interactiveSelector = 'a, button, .btn, .tile, .card, .hero-card, .feature-row, .community-card';
-  document.querySelectorAll(interactiveSelector).forEach((el) => {
-    el.addEventListener('mouseenter', () => {
-      cursor.classList.add('is-hover');
-      ring.classList.add('is-hover');
-    });
-    el.addEventListener('mouseleave', () => {
-      cursor.classList.remove('is-hover');
-      ring.classList.remove('is-hover');
-    });
-  });
-
-  document.addEventListener('click', (event) => {
-    const ripple = document.createElement('div');
-    ripple.className = 'click-ripple';
-    ripple.style.left = `${event.clientX}px`;
-    ripple.style.top = `${event.clientY}px`;
-    document.body.appendChild(ripple);
-    window.setTimeout(() => ripple.remove(), 560);
-  });
-}
-
 function initRevealAnimations() {
   const targets = document.querySelectorAll('.section, .tile, .feature-row, .hero-card, .community-card');
   if (!targets.length) return;
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+    targets.forEach((el) => el.classList.add('visible'));
+    return;
+  }
 
   targets.forEach((el) => el.classList.add('reveal'));
 
@@ -118,27 +85,11 @@ function initRevealAnimations() {
   targets.forEach((el) => observer.observe(el));
 }
 
-function initCardSpotlight() {
-  document.querySelectorAll('.tile, .card, .hero-card, .feature-row').forEach((card) => {
-    let ticking = false;
-    card.addEventListener('mousemove', (event) => {
-      if (ticking) return;
-      ticking = true;
-      window.requestAnimationFrame(() => {
-        const rect = card.getBoundingClientRect();
-        card.style.setProperty('--mx', `${((event.clientX - rect.left) / rect.width) * 100}%`);
-        card.style.setProperty('--my', `${((event.clientY - rect.top) / rect.height) * 100}%`);
-        ticking = false;
-      });
-    });
-  });
-}
-
 function loadCommunities() {
   const track = document.getElementById('community-track');
   if (!track) return;
 
-  fetch('communities.json', { cache: 'no-store' })
+  fetch('communities.json')
     .then((res) => {
       if (!res.ok) throw new Error('Failed to load communities.json');
       return res.json();
@@ -215,140 +166,7 @@ function initHeroTypedLine() {
   const el = document.getElementById('hero-typed');
   if (!el) return;
 
-  const text = 'model switching · 7 AI models · image generation · video generation · image editing · image merging · edge TTS voices · /image_search · music controls · moderation · fun commands · & more';
-  if (window.__heroTypeTimer) window.clearTimeout(window.__heroTypeTimer);
-  const runId = String(Date.now());
-  el.dataset.typeRun = runId;
-
-  let index = 0;
-  let deleting = false;
-
-  function tick() {
-    if (el.dataset.typeRun != runId) return;
-
-    if (!deleting) {
-      index += 1;
-      el.textContent = text.slice(0, index);
-      if (index === text.length) {
-        deleting = true;
-        window.__heroTypeTimer = window.setTimeout(tick, 1200);
-        return;
-      }
-      window.__heroTypeTimer = window.setTimeout(tick, 24);
-      return;
-    }
-
-    index -= 1;
-    el.textContent = text.slice(0, index);
-    if (index === 0) deleting = false;
-    window.__heroTypeTimer = window.setTimeout(tick, deleting ? 12 : 500);
-  }
-
-  tick();
-}
-
-function initSnowToggle() {
-  const body = document.body;
-  if (!body) return;
-
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const stored = window.localStorage.getItem('codunot_snow_enabled');
-  const enabled = stored === null ? !prefersReduced : stored === 'true';
-
-  const canvas = document.createElement('canvas');
-  canvas.className = 'snow-canvas';
-  canvas.setAttribute('aria-hidden', 'true');
-  body.prepend(canvas);
-
-  const toggle = document.createElement('button');
-  toggle.className = 'snow-toggle';
-  toggle.type = 'button';
-  toggle.setAttribute('aria-pressed', String(enabled));
-
-  const label = (state) => (state ? '❄️ Snow: On' : '❄️ Snow: Off');
-  toggle.textContent = label(enabled);
-
-  const navLinks = document.querySelector('.links');
-  if (navLinks) navLinks.appendChild(toggle);
-  else body.appendChild(toggle);
-
-  const ctx = canvas.getContext('2d');
-  if (!ctx) return;
-
-  const flakes = [];
-  const density = () => Math.max(16, Math.floor(window.innerWidth / 48));
-
-  function resize() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }
-
-  function spawnFlakes() {
-    flakes.length = 0;
-    for (let i = 0; i < density(); i += 1) {
-      flakes.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        r: 1 + Math.random() * 3,
-        s: 0.4 + Math.random() * 1.6,
-        w: (Math.random() * 0.8) - 0.4
-      });
-    }
-  }
-
-  let snowEnabled = enabled;
-  let rafId = null;
-
-  function render() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    if (!snowEnabled) return;
-
-    ctx.fillStyle = 'rgba(255,255,255,0.85)';
-    for (const f of flakes) {
-      f.y += f.s;
-      f.x += Math.sin(f.y * 0.01) * 0.5 + f.w;
-      if (f.y > canvas.height + 5) {
-        f.y = -8;
-        f.x = Math.random() * canvas.width;
-      }
-      if (f.x > canvas.width + 5) f.x = -5;
-      if (f.x < -5) f.x = canvas.width + 5;
-
-      ctx.beginPath();
-      ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
-      ctx.fill();
-    }
-
-    rafId = window.requestAnimationFrame(render);
-  }
-
-  function setState(state) {
-    snowEnabled = state;
-    canvas.style.display = state ? 'block' : 'none';
-    toggle.setAttribute('aria-pressed', String(state));
-    toggle.textContent = label(state);
-    window.localStorage.setItem('codunot_snow_enabled', String(state));
-
-    if (!state && rafId) {
-      window.cancelAnimationFrame(rafId);
-      rafId = null;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-    }
-    if (state && !rafId) render();
-  }
-
-  window.addEventListener('resize', () => {
-    resize();
-    spawnFlakes();
-  });
-
-  toggle.addEventListener('click', () => {
-    setState(!snowEnabled);
-  });
-
-  resize();
-  spawnFlakes();
-  setState(snowEnabled);
+  el.textContent = 'model switching · 7 AI models · image generation · video generation · image editing · image merging · text-to-speech voices · /image_search · music controls · moderation · fun commands · and more';
 }
 
 function initHamburgerMenu() {
@@ -383,12 +201,10 @@ function initHamburgerMenu() {
   });
 }
 
+setPageData();
 initHamburgerMenu();
 initAuthButtons();
 loadCommunities();
 initBotClicker();
 initHeroTypedLine();
-initSnowToggle();
-initCursorEffects();
 initRevealAnimations();
-initCardSpotlight();

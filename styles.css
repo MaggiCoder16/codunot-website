@@ -650,6 +650,22 @@ body[data-page="terms"] .legal-main h3 {
   -webkit-text-fill-color: currentColor;
   color: var(--text);
 }
+body[data-page="privacy"] .legal-main,
+body[data-page="terms"] .legal-main,
+body[data-page="privacy"] .legal-main p,
+body[data-page="terms"] .legal-main p,
+body[data-page="privacy"] .legal-main li,
+body[data-page="terms"] .legal-main li,
+body[data-page="privacy"] .legal-main td,
+body[data-page="terms"] .legal-main td,
+body[data-page="privacy"] .legal-main th,
+body[data-page="terms"] .legal-main th {
+  color: var(--text);
+}
+body[data-page="privacy"] .legal-main .muted,
+body[data-page="terms"] .legal-main .muted {
+  color: #c7d5e7;
+}
 h1, h2, h3, .brand, .mega, .subhead {
   font-family: var(--font-display);
   font-weight: 800;

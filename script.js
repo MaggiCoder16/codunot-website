@@ -297,12 +297,15 @@ function formatCommunityMembers(value) {
   return `${formattedCount} member${memberCount === 1 ? '' : 's'}`;
 }
 
+function hasDisplayableCommunityIcon(icon) {
+  return typeof icon === 'string' && /^https:\/\/cdn\.discordapp\.com\/icons\//.test(icon);
+}
+
 function shouldDisplayCommunity(community) {
   const memberCount = Number(community?.members);
   return Boolean(
     community
-    && community.icon
-    && community.icon !== COMMUNITY_FALLBACK_ICON
+    && hasDisplayableCommunityIcon(community.icon)
     && Number.isFinite(memberCount)
     && memberCount >= COMMUNITY_MIN_MEMBERS
   );
@@ -325,7 +328,7 @@ function loadCommunities() {
       const sourceCommunities = featuredCommunities.length ? featuredCommunities : communities;
       const cards = sourceCommunities.map((c) => `
       <a class="community-card" href="${c.invite}" target="_blank" rel="noopener">
-        <img src="${c.icon}" alt="${c.name} icon" onerror="this.onerror=null;this.src='${COMMUNITY_FALLBACK_ICON}';" />
+        <img src="${c.icon}" alt="${c.name} icon" onerror="this.closest('.community-card').remove();" />
         <div>
           <div class="community-name">${c.name}</div>
           <div class="community-row">
@@ -380,7 +383,7 @@ function initBotClicker() {
       const unlocked = clicks >= achievement.threshold;
       return [
         `<article class="achievement-badge${unlocked ? ' is-unlocked' : ''}">`,
-        `<span class="achievement-icon" aria-hidden="true">${achievement.icon}</span>`,
+        `<span class="achievement-icon" aria-hidden="true"><span class="achievement-icon-glyph">${achievement.icon}</span></span>`,
         '<div>',
         `<strong>${achievement.title}</strong>`,
         `<span>${achievement.subtitle}</span>`,

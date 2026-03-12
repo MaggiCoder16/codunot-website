@@ -454,7 +454,7 @@ h1 { font-size: clamp(2rem, 4.5vw, 3.4rem); margin: .45rem 0 .7rem; line-height:
 }
 .community-track {
   display: flex; gap: .9rem; width: max-content; padding: 0 .8rem;
-  animation: marquee 42s linear infinite;
+  animation: marquee 96s linear infinite;
 }
 .community-wrap:hover .community-track { animation-play-state: paused; }
 .community-note {
@@ -1727,6 +1727,13 @@ body::before {
   text-align: center;
   flex-shrink: 0;
   overflow: hidden;
+}
+
+.achievement-icon-glyph {
+  display: block;
+  font-size: 2.2rem;
+  line-height: 1;
+  transform: translateY(.08rem);
   text-shadow: 0 6px 18px rgba(255, 122, 24, .22);
 }
 

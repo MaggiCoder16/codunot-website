@@ -23,6 +23,13 @@ const SECONDARY_NAV_LINKS = [
   'terms/',
   'privacy/'
 ];
+const AUTH_STORAGE_KEY = 'codunot_app_authorized';
+const CLICKER_ACHIEVEMENTS = [
+  { threshold: 10, icon: '✨', title: 'Warmup', subtitle: '10 clicks' },
+  { threshold: 50, icon: '🔥', title: 'Click Streak', subtitle: '50 clicks' },
+  { threshold: 150, icon: '🤖', title: 'Bot Friend', subtitle: '150 clicks' },
+  { threshold: 300, icon: '👑', title: 'Codunot Legend', subtitle: '300 clicks' }
+];
 
 function buildSiteUrl(path) {
   return new URL(path, SITE_BASE).href;
@@ -134,13 +141,18 @@ function buildDiscordIcon() {
 function initAuthButtons() {
   const params = new URLSearchParams(window.location.search);
   const authorizedNow = params.has('code') && !params.has('error');
+  const isAuthorized = authorizedNow || window.localStorage.getItem(AUTH_STORAGE_KEY) === 'true';
 
   if (authorizedNow) {
+    window.localStorage.setItem(AUTH_STORAGE_KEY, 'true');
+  }
+
+  if (isAuthorized) {
     const authLinks = document.querySelectorAll("a[href*='integration_type=1'][href*='applications.commands']");
     authLinks.forEach((link) => {
       link.style.display = 'none';
     });
-    history.replaceState({}, '', window.location.pathname + window.location.hash);
+    if (authorizedNow) history.replaceState({}, '', window.location.pathname + window.location.hash);
     return;
   }
 
@@ -310,7 +322,8 @@ function initBotClicker() {
   const clicker = document.getElementById('bot-clicker');
   const countEl = document.getElementById('click-count');
   const messageEl = document.getElementById('click-message');
-  if (!clicker || !countEl || !messageEl) return;
+  const achievementListEl = document.getElementById('achievement-list');
+  if (!clicker || !countEl || !messageEl || !achievementListEl) return;
 
   const storedClicks = Number.parseInt(window.localStorage.getItem('codunot_click_count') || '0', 10);
   let clicks = Number.isNaN(storedClicks) ? 0 : storedClicks;
@@ -323,8 +336,25 @@ function initBotClicker() {
   ];
 
   let shownMessage = '';
+
+  function renderAchievements() {
+    achievementListEl.innerHTML = CLICKER_ACHIEVEMENTS.map((achievement) => {
+      const unlocked = clicks >= achievement.threshold;
+      return [
+        `<article class="achievement-badge${unlocked ? ' is-unlocked' : ''}">`,
+        `<span class="achievement-icon" aria-hidden="true">${achievement.icon}</span>`,
+        '<div>',
+        `<strong>${achievement.title}</strong>`,
+        `<span>${achievement.subtitle}</span>`,
+        '</div>',
+        '</article>'
+      ].join('');
+    }).join('');
+  }
+
   countEl.textContent = String(clicks);
   messageEl.textContent = clicks > 0 ? `saved clicks: ${clicks}` : '';
+  renderAchievements();
 
   function randomMessage() {
     const options = messages.filter((message) => message !== shownMessage);
@@ -336,6 +366,7 @@ function initBotClicker() {
     clicks += 1;
     countEl.textContent = String(clicks);
     window.localStorage.setItem('codunot_click_count', String(clicks));
+    renderAchievements();
     if (clicks >= 10 && clicks % 10 === 0) randomMessage();
 
     clicker.classList.add('is-clicked');

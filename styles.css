@@ -1153,6 +1153,7 @@ code {
   .links-main,
   .links-utility {
     width: 100%;
+    display: flex;
     flex-direction: column;
     align-items: stretch;
     gap: .2rem;
@@ -1195,6 +1196,12 @@ code {
   .premium-vote-card {
     padding-left: 1.2rem;
     padding-right: 1.2rem;
+  }
+  .hero-card--clicker {
+    min-height: auto;
+  }
+  .achievement-list {
+    grid-template-columns: 1fr;
   }
   .links a:hover, .links .active {
     background: rgba(255, 122, 24, 0.12);
@@ -1419,7 +1426,7 @@ h1 {
 
 .nav {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 1.15rem;
   padding: .9rem 0;
@@ -1439,22 +1446,23 @@ h1 {
 }
 
 .links {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-  gap: .8rem;
-  align-items: center;
-  margin-right: 0;
+  display: contents;
 }
 
 .links-main {
   grid-column: 2;
   justify-self: center;
+  display: flex;
+  align-items: center;
   gap: .2rem;
 }
 
 .links-utility {
   grid-column: 3;
   justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: .55rem;
 }
 
 .links a {
@@ -1559,12 +1567,12 @@ body::before {
 
 .hero-side {
   gap: 1rem;
-  padding-top: 5.8rem;
+  padding-top: 7rem;
   align-content: start;
 }
 
 .hero-card--uptime {
-  margin-top: .3rem;
+  margin-top: .7rem;
   border-radius: 22px;
   background: linear-gradient(160deg, rgba(8, 17, 29, .96), rgba(17, 30, 45, .92));
 }
@@ -1572,6 +1580,87 @@ body::before {
 .hero-card--clicker {
   border-radius: 28px;
   background: linear-gradient(175deg, rgba(10, 20, 34, .98), rgba(17, 29, 44, .94));
+  min-height: 560px;
+}
+
+.clicker-achievements {
+  width: 100%;
+  margin-top: 1.45rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, .08);
+}
+
+.clicker-achievements-head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .65rem;
+  margin-bottom: .9rem;
+}
+
+.clicker-achievements h4 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.achievement-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(255, 208, 154, .24), rgba(255, 122, 24, .3));
+  box-shadow: 0 10px 24px rgba(255, 122, 24, .16);
+}
+
+.achievement-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .65rem;
+}
+
+.achievement-badge {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  padding: .8rem .85rem;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, .07);
+  background: linear-gradient(145deg, rgba(255, 255, 255, .03), rgba(255, 255, 255, .015));
+  text-align: left;
+  opacity: .56;
+}
+
+.achievement-badge.is-unlocked {
+  border-color: rgba(255, 191, 122, .28);
+  background: linear-gradient(145deg, rgba(255, 191, 122, .15), rgba(255, 122, 24, .09));
+  opacity: 1;
+}
+
+.achievement-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, .05);
+  font-size: 1.05rem;
+}
+
+.achievement-badge strong,
+.achievement-badge span {
+  display: block;
+}
+
+.achievement-badge strong {
+  font-size: .88rem;
+}
+
+.achievement-badge span {
+  color: var(--muted);
+  font-size: .74rem;
 }
 
 .model-list {

@@ -1614,9 +1614,8 @@ body::before {
 }
 
 .achievement-logo {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  display: inline-grid;
+  place-items: center;
   position: relative;
   width: 2.4rem;
   height: 2.4rem;
@@ -1626,6 +1625,9 @@ body::before {
   border: 1px solid rgba(255, 232, 204, .72);
   box-shadow: 0 12px 28px rgba(255, 122, 24, .28);
   font-size: 1.05rem;
+  line-height: 1;
+  text-align: center;
+  overflow: hidden;
 }
 
 .achievement-logo::before {
@@ -1664,14 +1666,17 @@ body::before {
 }
 
 .achievement-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  display: inline-grid;
+  place-items: center;
   width: 2.1rem;
   height: 2.1rem;
   border-radius: 12px;
   background: rgba(255, 255, 255, .05);
   font-size: 1.05rem;
+  line-height: 1;
+  text-align: center;
+  flex-shrink: 0;
+  overflow: hidden;
 }
 
 .achievement-badge strong,

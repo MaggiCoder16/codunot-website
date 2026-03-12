@@ -33,7 +33,14 @@ const CLICKER_ACHIEVEMENTS = [
   { threshold: 100, icon: '💫', title: 'Centurion', subtitle: '100 clicks' },
   { threshold: 150, icon: '🤖', title: 'Bot Friend', subtitle: '150 clicks' },
   { threshold: 225, icon: '🚀', title: 'Velocity', subtitle: '225 clicks' },
-  { threshold: 300, icon: '👑', title: 'Codunot Legend', subtitle: '300 clicks' }
+  { threshold: 300, icon: '👑', title: 'Codunot Legend', subtitle: '300 clicks' },
+  { threshold: 500, icon: '🏅', title: 'Half K', subtitle: '500 clicks' },
+  { threshold: 1000, icon: '💎', title: 'One Thousand', subtitle: '1,000 clicks' },
+  { threshold: 2000, icon: '🌠', title: 'Double Orbit', subtitle: '2,000 clicks' },
+  { threshold: 3000, icon: '🛸', title: 'Triple Orbit', subtitle: '3,000 clicks' },
+  { threshold: 4000, icon: '🏆', title: 'Crown Circuit', subtitle: '4,000 clicks' },
+  { threshold: 5000, icon: '🔥', title: 'Five K Flame', subtitle: '5,000 clicks' },
+  { threshold: 10000, icon: '🌌', title: 'Mythic Ten K', subtitle: '10,000 clicks' }
 ];
 
 function buildSiteUrl(path) {

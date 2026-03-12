@@ -1,0 +1,256 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Codunot - Discord AI Bot</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/favicon-192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
+<meta name="description" content="Codunot official website with commands, features, reviews, support, and premium info." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="home">
+  <header class="nav-wrap">
+    <nav class="nav container">
+      <a class="brand" href="./">
+        <img src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot logo" />
+        Codunot
+      </a>
+      <div class="links">
+        <a class="active" href="./">Home</a>
+        <a href="features/">Features</a>
+        <a href="commands/">Command Center</a>
+        <a href="stats/">Stats</a>
+        <a href="reviews/">Reviews</a>
+        <a href="faq/">FAQ</a>
+        <a href="premium/">Premium</a>
+        <a href="support/">Support</a>
+        <a href="terms/">ToS</a>
+        <a href="privacy/">Privacy Policy</a>
+        <a class="login-btn" href="https://discord.com/oauth2/authorize?client_id=1435987186502733878&integration_type=1&scope=applications.commands" target="_blank" rel="noopener">Authorize App</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <div class="hero-main">
+        <span class="pill">Bot online</span>
+        <div class="hero-main-content">
+          <h1>Codunot</h1>
+          <p class="subhead">AI that lives inside Discord, built for smarter chat, media, music, and moderation.</p>
+          <p class="typewriter-line"><span id="hero-typed"></span><span class="type-cursor" aria-hidden="true"></span></p>
+          <div class="hero-mini-grid" aria-label="Top Codunot features">
+            <article class="hero-mini-card">
+              <span class="hero-mini-icon">🧠</span>
+              <strong>Model control</strong>
+              <p>Use <code>/model</code> per channel or DM across 7 AI models for different response styles and workloads.</p>
+            </article>
+            <article class="hero-mini-card">
+              <span class="hero-mini-icon">💬</span>
+              <strong>Natural AI chat</strong>
+              <p>Mention Codunot in servers or DM directly for fast replies, context-aware conversations, and smart follow-ups.</p>
+            </article>
+            <article class="hero-mini-card">
+              <span class="hero-mini-icon">🎵</span>
+              <strong>Music controls</strong>
+              <p>Use <code>/play</code>, <code>/volume_up</code>, <code>/volume_down</code>, <code>/autoplay</code>, and <code>/lyrics</code> with inline controls.</p>
+            </article>
+            <article class="hero-mini-card">
+              <span class="hero-mini-icon">🌍</span>
+              <strong>Text-to-speech voices</strong>
+              <p>Generate speech with 300+ voices across 60+ languages using readable voice names and cleaner language labels.</p>
+            </article>
+            <article class="hero-mini-card">
+              <span class="hero-mini-icon">🎨</span>
+              <strong>Media generation</strong>
+              <p>Create images, videos, edits, and merged compositions directly from prompts or uploaded media.</p>
+            </article>
+            <article class="hero-mini-card">
+              <span class="hero-mini-icon">🛡️</span>
+              <strong>Moderation tools</strong>
+              <p>Run automod, warnings, cases, locks, bans, and advanced staff workflows from one Discord-native system.</p>
+            </article>
+          </div>
+          <div class="cta-row">
+            <a class="btn primary" href="https://discord.com/oauth2/authorize?client_id=1435987186502733878&permissions=277025643520&integration_type=0&scope=applications.commands+bot" target="_blank" rel="noopener">Add to Discord</a>
+            <a class="btn secondary" href="https://discord.com/oauth2/authorize?client_id=1435987186502733878&integration_type=1&scope=applications.commands" target="_blank" rel="noopener">Authorize App Login</a>
+            <a class="btn ghost" href="https://top.gg/bot/1435987186502733878/vote" target="_blank" rel="noopener">Vote on top.gg</a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-side">
+        <article class="hero-card hero-card--uptime">
+          <h3>Uptime</h3>
+          <div class="uptime">99.94%</div>
+          <p class="muted">30 day rolling target and status.</p>
+        </article>
+        <article class="hero-card bot-image-wrap hero-card--clicker">
+          <button id="bot-clicker" class="bot-clicker" type="button" aria-label="Click Codunot">
+            <img src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot bot icon" />
+          </button>
+          <p class="clicks-line">Clicks: <span id="click-count">0</span></p>
+          <p class="muted" id="click-message">i'm a bot, not a button, but okay!</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="container section">
+      <h2>Communities using Codunot</h2>
+      <div class="community-wrap">
+        <div class="community-track" id="community-track"></div>
+      </div>
+    </section>
+
+    <section class="container section gen-features" id="generation-features">
+      <div class="section-title">
+        <h2 class="mega">Generation Features</h2>
+        <p class="muted">The full demos are still part of the site, but each feature now has a dedicated page so the homepage stays cleaner.</p>
+      </div>
+      <div class="feature-highlight-grid generation-grid">
+        <a class="feature-highlight page-link-card" href="generation/image-generation">
+          <span class="fh-icon">🖼️</span>
+          <h4>Image Generation</h4>
+          <p>Original image outputs from prompts, with a dedicated page for the example gallery.</p>
+        </a>
+        <a class="feature-highlight page-link-card" href="generation/video-generation">
+          <span class="fh-icon">🎬</span>
+          <h4>Video Generation</h4>
+          <p>Short cinematic prompt-based clips, now separated into its own page.</p>
+        </a>
+        <a class="feature-highlight page-link-card" href="generation/text-to-speech">
+          <span class="fh-icon">🗣️</span>
+          <h4>Text-to-speech</h4>
+          <p>Speech creation with 300+ voices across 60+ languages.</p>
+        </a>
+        <a class="feature-highlight page-link-card" href="generation/video-transcription">
+          <span class="fh-icon">📝</span>
+          <h4>Video Transcription</h4>
+          <p>Turn supported videos into readable text and searchable notes.</p>
+        </a>
+        <a class="feature-highlight page-link-card" href="generation/image-editing">
+          <span class="fh-icon">✨</span>
+          <h4>Image Editing</h4>
+          <p>Edit uploads with prompt-driven lighting, tone, and style changes.</p>
+        </a>
+        <a class="feature-highlight page-link-card" href="generation/image-merging">
+          <span class="fh-icon">🧩</span>
+          <h4>Image Merging</h4>
+          <p>Blend multiple sources into a single coherent composition.</p>
+        </a>
+        <a class="feature-highlight page-link-card" href="generation/music-playback">
+          <span class="fh-icon">🎵</span>
+          <h4>Music Playback</h4>
+          <p>Queueing, filters, inline controls, and playback details on its own page.</p>
+        </a>
+        <a class="feature-highlight page-link-card" href="generation/">
+          <span class="fh-icon">📚</span>
+          <h4>Generation Hub</h4>
+          <p>Browse every generation and media page from one organized hub.</p>
+        </a>
+      </div>
+
+      <div class="card gen-overview">
+        <div>
+          <h3>Open The Full Generation Hub</h3>
+          <p class="muted">All the demos, previews, prompts, audio, and example outputs are still part of the site. They are just split into dedicated pages so the homepage feels cleaner.</p>
+        </div>
+        <a class="btn primary" href="generation/">Browse Generation Pages</a>
+      </div>
+    </section>
+
+
+    <section class="container section">
+      <h2>🧠 Available AI Models</h2>
+      <p class="muted">Use <code>/model</code> in channels or DMs. Default model is GPT-OSS-120B.</p>
+      <div class="card">
+        <ul>
+          <li><code>openai/gpt-oss-120b</code> — <strong>GPT-OSS-120B (default)</strong></li>
+          <li><code>moonshotai/kimi-k2-instruct</code></li>
+          <li><code>allam-2-7b</code></li>
+          <li><code>qwen/qwen3-32b</code></li>
+          <li><code>llama-3.3-70b-versatile</code></li>
+          <li><code>meta-llama/llama-4-scout-17b-16e-instruct</code></li>
+          <li><code>llama-3.1-8b-instant</code></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="container section">
+      <h2>🤖 Automatic Features</h2>
+      <p class="muted">The detailed list lives on the Features page. This home section keeps the automatic systems readable at a glance.</p>
+      <div class="grid-3">
+        <article class="tile"><h3>Conversation Layer</h3><p class="muted">Server mentions, DMs, reply-context handling, memory, and model fallback for smoother conversations.</p></article>
+        <article class="tile"><h3>Smart Inputs</h3><p class="muted">Links, files, code, and images can be analyzed automatically when the interaction needs it.</p></article>
+        <article class="tile"><h3>Natural Behavior</h3><p class="muted">Search assistance, slang normalization, and more human-sounding responses without command spam.</p></article>
+      </div>
+      <div class="cta-row"><a class="btn secondary" href="features/">Open Full Features Page</a></div>
+    </section>
+
+    <section class="container section">
+      <h2>⚡ Command-Based Features</h2>
+      <p class="muted">Commands are split into cleaner destinations so this page can stay readable while the full catalog remains available.</p>
+      <div class="grid-3">
+        <article class="tile"><h3>AI And Personality</h3><p class="muted">Model switching, personality modes, chess, and coaching tools are grouped in the Command Center.</p></article>
+        <article class="tile"><h3>Generation And Media</h3><p class="muted">Image, video, speech, transcription, and music tools now have cleaner paths through the Generation menu.</p></article>
+        <article class="tile"><h3>Utility And Search</h3><p class="muted">Code testing, browsing, image search, and server tools stay available without crowding the homepage.</p></article>
+      </div>
+      <div class="cta-row"><a class="btn secondary" href="commands/">Open Command Center</a><a class="btn ghost" href="generation/">Open Generation Hub</a></div>
+    </section>
+
+    <section class="container section">
+      <h2>🛡️ Moderation Command Center</h2>
+      <p class="muted">Moderation still has its full command depth, but the home page now summarizes it instead of listing every layer at once.</p>
+      <div class="grid-3">
+        <article class="tile"><h3>Setup And Automation</h3><p class="muted">Wizard-based setup, automod, anti-spam, anti-link rules, and anti-raid protection for faster configuration.</p></article>
+        <article class="tile"><h3>Cases And Staff Actions</h3><p class="muted">Warnings, bans, timeouts, locks, notes, and accountability tools for day-to-day moderation.</p></article>
+        <article class="tile"><h3>Premium Depth</h3><p class="muted">Expanded moderation analytics and advanced staff controls for Premium and Gold servers.</p></article>
+      </div>
+      <div class="cta-row"><a class="btn secondary" href="commands/">See Moderation Commands</a><a class="btn ghost" href="premium/">View Premium Plans</a></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-col">
+          <a class="footer-brand" href="./">
+            <img src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot logo" />
+            Codunot
+          </a>
+          <p class="muted" style="font-size:.85rem;margin:.35rem 0 0;">AI that lives inside Discord.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="features/">Features</a>
+          <a href="commands/">Commands</a>
+          <a href="premium/">Premium</a>
+          <a href="stats/">Stats</a>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <a href="faq/">FAQ</a>
+          <a href="reviews/">Reviews</a>
+          <a href="roadmap/">Roadmap</a>
+          <a href="support/">Support</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="terms/">Terms of Service</a>
+          <a href="privacy/">Privacy Policy</a>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <a href="https://discord.gg/b8Cv7eC3En" target="_blank" rel="noopener">Discord Server</a>
+          <a href="https://top.gg/bot/1435987186502733878" target="_blank" rel="noopener">Top.gg</a>
+        </div>
+      </div>
+      <div class="footer-bottom">&copy; <span id="year"></span> Codunot &mdash; All rights reserved.</div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

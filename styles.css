@@ -6,11 +6,16 @@
   --surface: #2b150a;
   --surface-2: #3a1c0c;
   --text: #fff5ec;
-  --muted: #ffd9bf;
   --orange: #ff8a00;
   --orange-2: #ffc169;
   --line: rgba(255, 190, 130, 0.26);
   --ok: #95ffae;
+}
+.nav-wrap.is-hidden {
+  transform: translateY(calc(-100% - 2px));
+}
+.nav-wrap.is-peeking {
+  box-shadow: 0 10px 26px rgba(0, 0, 0, .22);
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
@@ -23,9 +28,6 @@ body {
     linear-gradient(180deg, var(--bg-soft), var(--bg));
   overflow-x: hidden;
 }
-a,
-button,
-.btn,
 .tile,
 .card,
 .hero-card,
@@ -84,6 +86,8 @@ summary {
   z-index: 50;
   border-bottom: 1px solid var(--line);
   background: rgba(20, 9, 4, 0.82);
+  transition: transform .28s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease;
+  will-change: transform;
 }
 .nav { display: flex; justify-content: space-between; align-items: center; gap: .35rem; padding: .62rem 0; }
 .brand { color: var(--text); text-decoration: none; font-weight: 900; display: flex; gap: .55rem; align-items: center; }
@@ -681,6 +685,10 @@ main,
   .snowflake,
   .cursor-glow {
     animation: none !important;
+    transition: none !important;
+  }
+
+  .nav-wrap {
     transition: none !important;
   }
 }

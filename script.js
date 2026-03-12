@@ -25,9 +25,14 @@ const SECONDARY_NAV_LINKS = [
 ];
 const AUTH_STORAGE_KEY = 'codunot_app_authorized';
 const CLICKER_ACHIEVEMENTS = [
+  { threshold: 1, icon: '⚡', title: 'First Tap', subtitle: '1 click' },
+  { threshold: 5, icon: '🌟', title: 'Getting Started', subtitle: '5 clicks' },
   { threshold: 10, icon: '✨', title: 'Warmup', subtitle: '10 clicks' },
+  { threshold: 25, icon: '🎯', title: 'Sharpshooter', subtitle: '25 clicks' },
   { threshold: 50, icon: '🔥', title: 'Click Streak', subtitle: '50 clicks' },
+  { threshold: 100, icon: '💫', title: 'Centurion', subtitle: '100 clicks' },
   { threshold: 150, icon: '🤖', title: 'Bot Friend', subtitle: '150 clicks' },
+  { threshold: 225, icon: '🚀', title: 'Velocity', subtitle: '225 clicks' },
   { threshold: 300, icon: '👑', title: 'Codunot Legend', subtitle: '300 clicks' }
 ];
 

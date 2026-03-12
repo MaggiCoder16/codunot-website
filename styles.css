@@ -454,7 +454,7 @@ h1 { font-size: clamp(2rem, 4.5vw, 3.4rem); margin: .45rem 0 .7rem; line-height:
 }
 .community-track {
   display: flex; gap: .9rem; width: max-content; padding: 0 .8rem;
-  animation: marquee 78s linear infinite;
+  animation: marquee 68s linear infinite;
 }
 .community-wrap:hover .community-track { animation-play-state: paused; }
 .community-note {

@@ -13,10 +13,7 @@ if not BOT_TOKEN:
     raise SystemExit("Missing DISCORD_BOT_TOKEN environment variable.")
 
 
-FALLBACK_ICON = (
-    "https://cdn.top.gg/icons/799571124189618176/"
-    "041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp"
-)
+MIN_COMMUNITY_MEMBERS = 25
 OUTPUT_PATH = Path(__file__).resolve().parents[1] / "communities.json"
 
 
@@ -59,6 +56,10 @@ async def on_ready() -> None:
     skipped = []
 
     for guild in sorted(bot.guilds, key=lambda item: item.member_count or 0, reverse=True):
+        if not guild.icon or (guild.member_count or 0) < MIN_COMMUNITY_MEMBERS:
+            skipped.append(guild.name)
+            continue
+
         invite_url = await build_invite(guild)
         if not invite_url:
             skipped.append(guild.name)
@@ -69,7 +70,7 @@ async def on_ready() -> None:
                 "id": str(guild.id),
                 "name": guild.name,
                 "members": guild.member_count or 0,
-                "icon": str(guild.icon.url) if guild.icon else FALLBACK_ICON,
+                "icon": str(guild.icon.url),
                 "invite": invite_url,
             }
         )

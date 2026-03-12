@@ -2,6 +2,8 @@ const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 const COMMUNITY_FALLBACK_ICON = 'https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp';
+const COMMUNITY_MIN_MEMBERS = 25;
+const COMMUNITY_MAX_VISIBLE = 18;
 const DISCORD_CLIENT_ID = '1435987186502733878';
 const SITE_BASE = document.currentScript
   ? new URL('./', document.currentScript.src).href
@@ -295,6 +297,17 @@ function formatCommunityMembers(value) {
   return `${formattedCount} member${memberCount === 1 ? '' : 's'}`;
 }
 
+function shouldDisplayCommunity(community) {
+  const memberCount = Number(community?.members);
+  return Boolean(
+    community
+    && community.icon
+    && community.icon !== COMMUNITY_FALLBACK_ICON
+    && Number.isFinite(memberCount)
+    && memberCount >= COMMUNITY_MIN_MEMBERS
+  );
+}
+
 function loadCommunities() {
   const track = document.getElementById('community-track');
   if (!track) return;
@@ -305,7 +318,12 @@ function loadCommunities() {
       return res.json();
     })
     .then((communities) => {
-      const cards = communities.map((c) => `
+      const featuredCommunities = communities
+        .filter(shouldDisplayCommunity)
+        .slice(0, COMMUNITY_MAX_VISIBLE);
+
+      const sourceCommunities = featuredCommunities.length ? featuredCommunities : communities;
+      const cards = sourceCommunities.map((c) => `
       <a class="community-card" href="${c.invite}" target="_blank" rel="noopener">
         <img src="${c.icon}" alt="${c.name} icon" onerror="this.onerror=null;this.src='${COMMUNITY_FALLBACK_ICON}';" />
         <div>

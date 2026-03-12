@@ -441,6 +441,13 @@ h1 { font-size: clamp(2rem, 4.5vw, 3.4rem); margin: .45rem 0 .7rem; line-height:
 .widget { display: flex; justify-content: center; }
 .topgg-widget { max-width: 560px; width: 100%; height: auto; border-radius: 12px; }
 
+.community-showcase {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: stretch;
+}
+
 .community-wrap {
   overflow: hidden; border: 1px solid var(--line); border-radius: 14px;
   background: #2f180b; padding: .8rem 0;
@@ -450,6 +457,24 @@ h1 { font-size: clamp(2rem, 4.5vw, 3.4rem); margin: .45rem 0 .7rem; line-height:
   animation: marquee 42s linear infinite;
 }
 .community-wrap:hover .community-track { animation-play-state: paused; }
+.community-note {
+  display: grid;
+  place-items: center;
+  min-width: 180px;
+  padding: 1rem 1.15rem;
+  border: 1px dashed rgba(255, 191, 122, .24);
+  border-radius: 14px;
+  background: linear-gradient(160deg, rgba(255, 191, 122, .08), rgba(255, 122, 24, .04));
+  color: var(--orange-2);
+  text-align: center;
+}
+
+.community-note span {
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 2vw, 1.45rem);
+  font-weight: 800;
+  letter-spacing: -.03em;
+}
 .community-card {
   display: flex; align-items: center; gap: .8rem;
   min-width: 340px; text-decoration: none; color: var(--text);
@@ -583,6 +608,8 @@ main.container.section {
   .legal-main .card { padding: 1rem 1rem 1rem 1.2rem; }
   .hero-side { max-width: 480px; }
   .bot-image-wrap { min-height: auto; padding: 1.5rem 1.2rem; }
+  .community-showcase { grid-template-columns: 1fr; }
+  .community-note { min-width: 0; }
 }
 
 @media (max-width: 720px) {

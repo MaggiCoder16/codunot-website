@@ -287,6 +287,14 @@ function initRevealAnimations() {
   targets.forEach((el) => observer.observe(el));
 }
 
+function formatCommunityMembers(value) {
+  const memberCount = Number(value);
+  if (!Number.isFinite(memberCount) || memberCount <= 0) return 'Community Online';
+
+  const formattedCount = new Intl.NumberFormat('en-US').format(memberCount);
+  return `${formattedCount} member${memberCount === 1 ? '' : 's'}`;
+}
+
 function loadCommunities() {
   const track = document.getElementById('community-track');
   if (!track) return;
@@ -303,7 +311,7 @@ function loadCommunities() {
         <div>
           <div class="community-name">${c.name}</div>
           <div class="community-row">
-            <div class="community-members">Community Online</div>
+            <div class="community-members">${formatCommunityMembers(c.members)}</div>
             <span class="community-join-btn">Join</span>
           </div>
         </div>

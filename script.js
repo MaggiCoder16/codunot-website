@@ -74,6 +74,8 @@ function attachNavDropdownBehavior(dropdown) {
     else openMenu();
   });
 
+  trigger.addEventListener('focus', () => openMenu());
+
   dropdown.addEventListener('mouseenter', () => {
     if (!isCompact()) openMenu();
   });
@@ -81,6 +83,12 @@ function attachNavDropdownBehavior(dropdown) {
   dropdown.addEventListener('mouseleave', () => {
     if (!isCompact()) closeMenu();
   });
+
+  menu.addEventListener('mouseenter', () => {
+    if (!isCompact()) openMenu();
+  });
+
+  menu.addEventListener('focusin', () => openMenu());
 
   document.addEventListener('click', (event) => {
     if (!dropdown.contains(event.target)) closeMenu();

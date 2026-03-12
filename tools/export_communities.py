@@ -1,15 +1,3 @@
-"""Export bot guilds to communities.json for the website.
-
-Usage:
-  set DISCORD_BOT_TOKEN=...   (Windows)
-  python tools/export_communities.py
-
-Notes:
-  - Requires discord.py in the active environment.
-  - Tries to create a permanent invite in the first accessible text channel.
-    - Skips guilds where no invite can be created.
-"""
-
 from __future__ import annotations
 
 import json

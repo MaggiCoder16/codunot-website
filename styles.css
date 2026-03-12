@@ -454,7 +454,7 @@ h1 { font-size: clamp(2rem, 4.5vw, 3.4rem); margin: .45rem 0 .7rem; line-height:
 }
 .community-track {
   display: flex; gap: .9rem; width: max-content; padding: 0 .8rem;
-  animation: marquee 96s linear infinite;
+  animation: marquee 78s linear infinite;
 }
 .community-wrap:hover .community-track { animation-play-state: paused; }
 .community-note {
@@ -1713,27 +1713,27 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 4.65rem;
-  height: 4.65rem;
-  border-radius: 24px;
-  background:
-    radial-gradient(circle at 30% 28%, rgba(255, 235, 204, .95), rgba(255, 197, 111, .65) 18%, transparent 20%),
-    linear-gradient(155deg, rgba(255, 214, 164, .22), rgba(255, 122, 24, .18));
-  border: 1px solid rgba(255, 210, 163, .24);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .12), 0 12px 24px rgba(0, 0, 0, .16);
-  font-size: 2.2rem;
+  width: auto;
+  height: auto;
+  padding: 0;
+  background: none;
+  border: 0;
+  box-shadow: none;
+  font-size: 0;
   font-family: 'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif;
   line-height: 1;
   text-align: center;
   flex-shrink: 0;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .achievement-icon-glyph {
-  display: block;
-  font-size: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.8rem;
   line-height: 1;
-  transform: translateY(.08rem);
+  transform: none;
   text-shadow: 0 6px 18px rgba(255, 122, 24, .22);
 }
 

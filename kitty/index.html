@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Codunot - Kitty</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="../assets/icons/favicon-192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/icons/apple-touch-icon.png" />
+  <link rel="manifest" href="../site.webmanifest" />
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .kitty-main {
+      width: min(1180px, 88%);
+    }
+
+    .kitty-hero {
+      position: relative;
+      overflow: hidden;
+      padding: 2rem;
+      border-radius: 28px;
+      border: 1px solid rgba(255, 191, 122, .22);
+      background:
+        radial-gradient(circle at top left, rgba(255, 180, 92, .22), transparent 34%),
+        linear-gradient(155deg, rgba(17, 24, 38, .98), rgba(18, 29, 44, .92));
+      box-shadow: 0 24px 48px rgba(0, 0, 0, .22);
+    }
+
+    .kitty-hero h1 {
+      margin-bottom: .45rem;
+    }
+
+    .kitty-hero p {
+      max-width: 56rem;
+      font-size: 1.05rem;
+    }
+
+    .kitty-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      margin-bottom: 1rem;
+      padding: .38rem .72rem;
+      border-radius: 999px;
+      background: rgba(255, 191, 122, .1);
+      border: 1px solid rgba(255, 191, 122, .22);
+      color: var(--orange-2);
+      font-weight: 800;
+      font-size: .82rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .kitty-pill::before {
+      content: '🐾';
+      font-size: .95rem;
+    }
+
+    .kitty-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-top: 1.35rem;
+    }
+
+    .kitty-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      border: 1px solid rgba(255, 191, 122, .18);
+      background: linear-gradient(160deg, rgba(16, 24, 38, .96), rgba(18, 29, 44, .9));
+      padding: .9rem;
+      box-shadow: 0 18px 32px rgba(0, 0, 0, .2);
+    }
+
+    .kitty-card img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 18px;
+      background: rgba(255, 191, 122, .06);
+    }
+
+    .kitty-card h2 {
+      margin: .8rem 0 .2rem;
+      font-size: 1.1rem;
+    }
+
+    .kitty-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    @media (max-width: 980px) {
+      .kitty-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .kitty-main {
+        width: min(1180px, 92%);
+      }
+
+      .kitty-hero {
+        padding: 1.35rem;
+      }
+    }
+  </style>
+</head>
+<body data-page="kitty">
+  <header class="nav-wrap">
+    <nav class="nav container">
+      <a class="brand" href="../">
+        <img src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot logo" />
+        Codunot
+      </a>
+      <div class="links">
+        <a href="../">Home</a>
+        <a href="../features/">Features</a>
+        <a href="../commands/">Command Center</a>
+        <a href="../stats/">Stats</a>
+        <a href="../reviews/">Reviews</a>
+        <a href="../faq/">FAQ</a>
+        <a href="../premium/">Premium</a>
+        <a href="../support/">Support</a>
+        <a href="../terms/">ToS</a>
+        <a href="../privacy/">Privacy Policy</a>
+        <a class="login-btn" href="https://discord.com/oauth2/authorize?client_id=1435987186502733878&integration_type=1&scope=applications.commands" target="_blank" rel="noopener">Authorize App</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container section kitty-main">
+    <section class="kitty-hero">
+      <span class="kitty-pill">Kitty Page</span>
+      <h1>Kitties</h1>
+      <p>this page was made cuz i like kitties and so does my friend @discipline on discord</p>
+    </section>
+
+    <section class="kitty-grid" aria-label="Kitty gallery">
+      <article class="kitty-card">
+        <img src="../assets/icons/kitty-sunbeam.svg" alt="A fluffy orange kitty illustration" />
+        <h2>Sunbeam Kitty</h2>
+        <p>professional napper with excellent sunshine strategy.</p>
+      </article>
+      <article class="kitty-card">
+        <img src="../assets/icons/kitty-night.svg" alt="A sleepy gray kitty illustration" />
+        <h2>Moonlight Kitty</h2>
+        <p>quiet stare, tiny paws, strong loaf energy.</p>
+      </article>
+      <article class="kitty-card">
+        <img src="../assets/icons/kitty-peach.svg" alt="A playful peach-colored kitty illustration" />
+        <h2>Peach Kitty</h2>
+        <p>looks innocent, absolutely planning something chaotic.</p>
+      </article>
+      <article class="kitty-card">
+        <img loading="lazy" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCX_V96b30nBOgZhFziC38qMaEBCtl8cmPIQ&amp;s" alt="A fluffy kitty photo" />
+        <h2>Fluffy Kitty</h2>
+        <p>very polite face, extremely high cuddle potential.</p>
+      </article>
+      <article class="kitty-card">
+        <img loading="lazy" src="data:image/jpeg;base64,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" alt="A cozy kitty photo" />
+        <h2>Cozy Kitty</h2>
+        <p>soft stare, warm vibes, no urgent business at all.</p>
+      </article>
+      <article class="kitty-card">
+        <img loading="lazy" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxVv5885YT2OB5EG4_62DVc-c3QuZB5V3acA&amp;s" alt="Another kitty photo" />
+        <h2>Round Kitty</h2>
+        <p>perfectly shaped, clearly aware of its own greatness.</p>
+      </article>
+      <article class="kitty-card">
+        <img loading="lazy" src="data:image/jpeg;base64,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" alt="Another cozy kitty photo" />
+        <h2>Sleepy Kitty</h2>
+        <p>fully committed to the art of doing nothing.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">kitty page approved.</div>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>

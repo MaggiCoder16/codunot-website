@@ -1,0 +1,231 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Codunot - Command Center</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="../assets/icons/favicon-192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/icons/apple-touch-icon.png" />
+  <link rel="manifest" href="../site.webmanifest" />
+<link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <header class="nav-wrap">
+    <nav class="nav container">
+      <a class="brand" href="../"><img src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot logo" />Codunot</a>
+      <div class="links">
+        <a href="../">Home</a>
+        <a href="../features/">Features</a>
+        <a class="active" href="../commands/">Command Center</a>
+        <a href="../stats/">Stats</a>
+        <a href="../reviews/">Reviews</a>
+        <a href="../faq/">FAQ</a>
+        <a href="../premium/">Premium</a>
+        <a href="../support/">Support</a>
+        <a href="../terms/">ToS</a>
+        <a href="../privacy/">Privacy Policy</a>
+        <a class="login-btn" href="https://discord.com/oauth2/authorize?client_id=1435987186502733878&integration_type=1&scope=applications.commands" target="_blank" rel="noopener">Authorize App</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container section command-center-main">
+    <h1>Command Center</h1>
+    <p class="muted">Complete command reference organized by category.</p>
+
+    <section class="card section">
+      <h2>🎭 Mode &amp; Personality Commands</h2>
+      <p class="muted">Switch between different conversation personalities. <span class="badge free">All Free</span></p>
+      <table class="table">
+        <thead><tr><th>Command</th><th>What it does</th><th>Type</th></tr></thead>
+        <tbody>
+          <tr><td><code>/funmode</code></td><td>Casual, lighthearted responses with emojis and humor.</td><td>Slash</td></tr>
+          <tr><td><code>/seriousmode</code></td><td>Professional, structured, fact-based responses.</td><td>Slash</td></tr>
+          <tr><td><code>/roastmode</code></td><td>Humorous, lighthearted roasts and comebacks.</td><td>Slash</td></tr>
+          <tr><td><code>/teachmerizz online</code></td><td>Dating/texting coach for online conversations.</td><td>Slash</td></tr>
+          <tr><td><code>/teachmerizz irl</code></td><td>Real-life social coaching and confidence tips.</td><td>Slash</td></tr>
+          <tr><td><code>/chessmode</code></td><td>Play chess against Codunot AI. Full engine with legal move validation, SAN/UCI support, castling, promotions, en passant, resign detection, and AI hints.</td><td>Slash</td></tr>
+          <tr><td><code>/model [name]</code></td><td>Switch the AI model for current channel or DM. Changing model clears memory context for a clean start.</td><td>Slash</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card section">
+      <h2>🎨 Creative Generation</h2>
+      <p class="muted">AI-powered content creation tools. <span class="badge vote">Vote Required</span></p>
+      <table class="table">
+        <thead><tr><th>Command</th><th>What it does</th><th>Type</th></tr></thead>
+        <tbody>
+          <tr><td><code>/generate_image [prompt]</code></td><td>AI-generated images with enhanced prompts.</td><td>Slash</td></tr>
+          <tr><td><code>/generate_video [prompt]</code></td><td>Text-to-video generation (~1 min render time).</td><td>Slash</td></tr>
+          <tr><td><code>/generate_tts [text] [language] [voice]</code></td><td>Text-to-speech with 300+ voices across 60+ languages and readable language names in the picker.</td><td>Slash</td></tr>
+          <tr><td>Attach image + describe edits</td><td>AI-powered image editing and modifications.</td><td>Message flow</td></tr>
+          <tr><td>Attach 2+ images + say "merge"</td><td>Merge multiple images into one coherent scene.</td><td>Message flow</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card section">
+      <h2>🎵 Music &amp; Audio</h2>
+      <p class="muted">Voice channel music playback with audio filters. <span class="badge vote">Vote Required</span></p>
+      <table class="table">
+        <thead><tr><th>Command</th><th>What it does</th><th>Type</th></tr></thead>
+        <tbody>
+          <tr><td><code>/play [song/URL]</code></td><td>Play music with audio filters (Normal, Bass Boost, Nightcore, Slowed, 8D, Treble, Lo-Fi, Vaporwave). Supports YouTube, SoundCloud, and Spotify via Lavalink.</td><td>Slash</td></tr>
+          <tr><td><code>/queue</code></td><td>View current music queue.</td><td>Slash</td></tr>
+          <tr><td><code>/volume_up</code> / <code>/volume_down</code></td><td>Increase or decrease player volume quickly.</td><td>Slash</td></tr>
+          <tr><td><code>/autoplay</code></td><td>Toggle automatic playback when queue ends.</td><td>Slash</td></tr>
+          <tr><td><code>/lyrics</code></td><td>Fetch full lyrics for the currently playing track.</td><td>Slash</td></tr>
+          <tr><td><code>/playlistcreate</code></td><td>Create playlists with multiple songs at once.</td><td>Slash</td></tr>
+          <tr><td><code>/playlist</code></td><td>Browse playlists with dropdowns, view tracks, and management actions like play, add, delete, and view.</td><td>Slash</td></tr>
+          <tr><td><code>/loop off</code> / <code>/loop song</code> / <code>/loop queue</code></td><td>Set loop mode to normal playback, repeat the current song, or loop the entire queue.</td><td>Slash</td></tr>
+          <tr><td>Autoplay improvements</td><td>Next tracks load faster (about 1-3 seconds) with duplicate prevention for songs similar to the last five tracks.</td><td>Auto</td></tr>
+          <tr><td>Persistent queues and playlists</td><td>Playlists, queue, and history are saved across bot restarts.</td><td>System</td></tr>
+          <tr><td>Music controls</td><td>Pause/Resume, Skip, Previous, Stop, plus inline 🔉 and 🔊 volume buttons on the player embed.</td><td>Buttons</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card section" id="moderation-commands">
+      <h2>🛡️ Moderation Suite</h2>
+      <p class="muted">Server moderation, safety automations, case tracking, and advanced Premium/Gold controls.</p>
+      <table class="table">
+        <thead><tr><th>Command</th><th>What it does</th><th>Access</th></tr></thead>
+        <tbody>
+          <tr><td><code>/setup-moderation</code></td><td>Interactive 6-step setup wizard for AutoMod, logs, mod roles, link policy, anti-spam, and anti-raid.</td><td><span class="badge free">Free</span></td></tr>
+          <tr><td><code>/automod [enable|disable]</code></td><td>Quickly toggle automatic moderation after setup.</td><td><span class="badge free">Free</span></td></tr>
+          <tr><td><code>/warn</code> <code>/warns</code> <code>/clearwarns</code></td><td>Issue warnings, view warning history, and reset warnings for a member.</td><td><span class="badge free">Free</span></td></tr>
+          <tr><td><code>/ban</code> <code>/unban</code> <code>/modkick</code></td><td>Core removal actions for bans, unbans, and kicks.</td><td><span class="badge free">Free</span></td></tr>
+          <tr><td><code>/mute</code> <code>/unmute</code></td><td>Timeout (mute) and untimeout users with reasons and logging.</td><td><span class="badge free">Free</span></td></tr>
+          <tr><td><code>/clear</code> <code>/slowmode</code> <code>/lock</code> <code>/unlock</code></td><td>Channel moderation controls: cleanup, pacing, and lockdown management.</td><td><span class="badge free">Free</span></td></tr>
+          <tr><td><code>/userinfo</code> <code>/case [number]</code></td><td>Inspect member moderation details and look up logged cases by case number.</td><td><span class="badge free">Free</span></td></tr>
+          <tr><td><code>/tempban [duration]</code></td><td>Temporary bans with automatic scheduled unban (examples: 30m, 6h, 7d).</td><td><span class="badge premium">Premium / Gold</span></td></tr>
+          <tr><td><code>/massban</code></td><td>Ban up to 10 users at once using an ID modal.</td><td><span class="badge premium">Premium / Gold</span></td></tr>
+          <tr><td><code>/modstats</code></td><td>Detailed moderation analytics (actions, top warned users, active moderators).</td><td><span class="badge premium">Premium / Gold</span></td></tr>
+          <tr><td><code>/note add</code> <code>/note view</code> <code>/note clear</code></td><td>Private moderator notes per member for internal staff context.</td><td><span class="badge premium">Premium / Gold</span></td></tr>
+          <tr><td><code>More Premium/Gold mod commands</code></td><td>Advanced moderation features are expanding regularly for Premium and Gold servers.</td><td><span class="badge gold">Premium / Gold 👑</span></td></tr>
+          <tr><td><code>@Codunot [mod action]</code></td><td>Natural language moderation — mention the bot with plain English, e.g. "timeout @user 10m for spamming", "ban @user for raiding", "clear 20".</td><td><span class="badge free">Free</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card section">
+      <h2>🔧 Developer &amp; Utility Tools</h2>
+      <p class="muted">Code testing, web browsing, and location tools.</p>
+      <table class="table">
+        <thead><tr><th>Command</th><th>What it does</th><th>Access</th></tr></thead>
+        <tbody>
+          <tr><td><code>/test_code [code]</code></td><td>Validate code and get error reports only (no AI fix calls).</td><td><span class="badge free">Free</span></td></tr>
+          <tr><td><code>/browse [URL]</code></td><td>Explicitly fetch and analyze webpage content.</td><td><span class="badge free">Free</span></td></tr>
+          <tr><td><code>/image_search [query]</code></td><td>Free image search from Wikimedia Commons + Openverse with top result and more links.</td><td><span class="badge free">Free</span></td></tr>
+          <tr><td><code>/transcribe [video_url]</code></td><td>Transcribe YouTube/Twitch/X/Kick videos (max 30 mins).</td><td><span class="badge vote">Vote Required</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card section">
+      <h2>🎉 Fun &amp; Social Commands</h2>
+      <p class="muted">Interactive fun commands for community engagement. <span class="badge free">All Free</span></p>
+      <table class="table">
+        <thead><tr><th>Command</th><th>What it does</th><th>Type</th></tr></thead>
+        <tbody>
+          <tr><td><code>/hug @user</code></td><td>Send a hug with an animated GIF.</td><td>Slash</td></tr>
+          <tr><td><code>/kiss @user</code></td><td>Send a kiss with an animated GIF.</td><td>Slash</td></tr>
+          <tr><td><code>/kick @user</code></td><td>Send a playful kick with an animated GIF.</td><td>Slash</td></tr>
+          <tr><td><code>/slap @user</code></td><td>Send a playful slap with an animated GIF.</td><td>Slash</td></tr>
+          <tr><td><code>/wish_goodmorning @user</code></td><td>Send a good morning wish to a user.</td><td>Slash</td></tr>
+          <tr><td><code>/bet [heads/tails]</code></td><td>Coin flip betting game.</td><td>Slash</td></tr>
+          <tr><td><code>/meme</code></td><td>Random meme generator.</td><td>Slash</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card section">
+      <h2>⚙️ Server Configuration</h2>
+      <p class="muted">Server owner only. <span class="badge free">Free</span></p>
+      <table class="table">
+        <thead><tr><th>Command</th><th>What it does</th><th>Type</th></tr></thead>
+        <tbody>
+          <tr><td><code>/configure server</code></td><td>Allow Codunot in all channels.</td><td>Slash</td></tr>
+          <tr><td><code>/configure channels</code></td><td>Restrict Codunot to specific channels.</td><td>Slash</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card section">
+      <h2>💬 Chat Triggers (No Commands Needed)</h2>
+      <p class="muted">These work automatically without slash commands.</p>
+      <table class="table">
+        <thead><tr><th>Trigger</th><th>What it does</th><th>Access</th></tr></thead>
+        <tbody>
+          <tr><td><code>@Codunot [message]</code></td><td>Chat with Codunot in server channels.</td><td><span class="badge free">Free</span></td></tr>
+          <tr><td>DM Codunot directly</td><td>Message Codunot in DMs — no mention needed.</td><td><span class="badge free">Free</span></td></tr>
+          <tr><td>Send an image</td><td>Get AI-powered image analysis and descriptions.</td><td><span class="badge vote">Vote Required</span></td></tr>
+          <tr><td>Upload a file (PDF/DOCX/TXT)</td><td>Automatic content extraction and summaries.</td><td><span class="badge vote">Vote Required</span></td></tr>
+          <tr><td>Share a URL</td><td>Automatic webpage content extraction and summarization.</td><td><span class="badge free">Free</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card section">
+      <h2>🧠 AI Models for <code>/model</code></h2>
+      <p class="muted">Default model: <strong>GPT-OSS-120B</strong>.</p>
+      <table class="table">
+        <thead><tr><th>Model ID</th><th>Label</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td><code>openai/gpt-oss-120b</code></td><td>GPT-OSS-120B</td><td>Default</td></tr>
+          <tr><td><code>moonshotai/kimi-k2-instruct</code></td><td>Kimi K2 Instruct</td><td>Alternative</td></tr>
+          <tr><td><code>allam-2-7b</code></td><td>Allam 2 7B</td><td>Alternative</td></tr>
+          <tr><td><code>qwen/qwen3-32b</code></td><td>Qwen3 32B</td><td>Alternative</td></tr>
+          <tr><td><code>llama-3.3-70b-versatile</code></td><td>Llama 3.3 70B Versatile</td><td>Alternative</td></tr>
+          <tr><td><code>meta-llama/llama-4-scout-17b-16e-instruct</code></td><td>Llama 4 Scout 17B</td><td>Alternative</td></tr>
+          <tr><td><code>llama-3.1-8b-instant</code></td><td>Llama 3.1 8B Instant</td><td>Alternative</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-col">
+          <a class="footer-brand" href="../">
+            <img src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot logo" />
+            Codunot
+          </a>
+          <p class="muted" style="font-size:.85rem;margin:.35rem 0 0;">AI that lives inside Discord.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="../features/">Features</a>
+          <a href="../commands/">Commands</a>
+          <a href="../premium/">Premium</a>
+          <a href="../stats/">Stats</a>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <a href="../faq/">FAQ</a>
+          <a href="../reviews/">Reviews</a>
+          <a href="../roadmap/">Roadmap</a>
+          <a href="../support/">Support</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="../terms/">Terms of Service</a>
+          <a href="../privacy/">Privacy Policy</a>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <a href="https://discord.gg/b8Cv7eC3En" target="_blank" rel="noopener">Discord Server</a>
+          <a href="https://top.gg/bot/1435987186502733878" target="_blank" rel="noopener">Top.gg</a>
+        </div>
+      </div>
+      <div class="footer-bottom">&copy; <span id="year"></span> Codunot &mdash; All rights reserved.</div>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>

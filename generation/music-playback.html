@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Codunot - Music Playback</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="../assets/icons/favicon-192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/icons/apple-touch-icon.png" />
+  <link rel="manifest" href="../site.webmanifest" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body data-page="generation">
+  <header class="nav-wrap"><nav class="nav container"><a class="brand" href="../"><img src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot logo" />Codunot</a><div class="links"><a href="../">Home</a><a href="../features/">Features</a><a href="../commands/">Command Center</a><a href="../stats/">Stats</a><a href="../reviews/">Reviews</a><a href="../faq/">FAQ</a><a href="../premium/">Premium</a><a href="../support/">Support</a><a href="../terms/">ToS</a><a href="../privacy/">Privacy Policy</a><a class="login-btn" href="https://discord.com/oauth2/authorize?client_id=1435987186502733878&integration_type=1&scope=applications.commands" target="_blank" rel="noopener">Authorize App</a></div></nav></header>
+  <main class="container section">
+    <h1>Music Playback</h1>
+    <p class="lead">Join a voice channel and use <code>/play</code> for queue-based playback, filters, inline controls, and supported links from YouTube, SoundCloud, and Spotify. Playlists, loop modes, smarter autoplay, and persistence keep sessions flowing. <span class="badge vote">Vote Required</span></p>
+
+    <section class="feature-row media-wide">
+      <div class="feature-text">
+        <h3>Playback, Queue, And Filters</h3>
+        <p>Use <code>/play [song name or URL]</code> to start playback. If something is already playing, the next song is queued automatically.</p>
+        <p>Audio filters include Normal, Bass Boost, Nightcore, Slowed, 8D, Treble, Lo-Fi, and Vaporwave. The bot disconnects after 10 minutes of inactivity.</p>
+        <p>Extra controls include <code>/queue</code>, <code>/volume_up</code>, <code>/volume_down</code>, <code>/autoplay</code>, and <code>/lyrics</code>.</p>
+      </div>
+      <div class="feature-media">
+        <img class="text-figure" src="https://i.ibb.co/r2R3sLR9/Screenshot-2026-03-03-183820.png" alt="Music playback command example" loading="lazy" />
+        <div class="music-player-ui" aria-label="Music player controls preview">
+          <div class="music-player-top"><strong>Now Playing</strong><span>/play Midnight Drive</span></div>
+          <div class="music-player-controls">
+            <button type="button" aria-label="Volume down">🔉</button>
+            <button type="button" aria-label="Pause">⏸️</button>
+            <button type="button" aria-label="Skip">⏭️</button>
+            <button type="button" aria-label="Volume up">🔊</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="feature-row">
+      <div class="feature-text">
+        <h3>Playlists And Loop Modes</h3>
+        <p>Create playlists in one step with <code>/playlistcreate</code>, then browse and manage them using <code>/playlist</code>.</p>
+        <p>Loop control is simple with <code>/loop off</code>, <code>/loop song</code>, and <code>/loop queue</code> to match your listening style.</p>
+        <p>The playlist browser uses clean, modern embeds inspired by Hydra and FredBoat.</p>
+      </div>
+      <div class="feature-media">
+        <div class="compare-card">
+          <span class="compare-label">Playlist Preview</span>
+          <div class="prompt">Dropdown: Late Night Drive</div>
+          <div class="prompt">18 tracks - 1 hr 12 min</div>
+          <div class="feature-badges">
+            <span class="badge vote">Play</span>
+            <span class="badge vote">Add</span>
+            <span class="badge vote">Delete</span>
+            <span class="badge vote">View</span>
+          </div>
+          <p class="muted media-note">Preview only. No live controls.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="feature-row media-wide">
+      <div class="feature-text">
+        <h3>Autoplay And Persistence</h3>
+        <p>Next tracks load faster, typically in about 1-3 seconds, for smoother playback.</p>
+        <p>Duplicate prevention avoids playing songs similar to the last five tracks.</p>
+        <p>Queues, playlists, and history stay saved across bot restarts.</p>
+      </div>
+      <div class="feature-media">
+        <div class="compare-card">
+          <span class="compare-label">Queue Snapshot</span>
+          <div class="prompt">Now: Midnight Drive</div>
+          <div class="prompt">Next: Neon Rain</div>
+          <div class="prompt">Next: Sunset Arcade</div>
+          <p class="muted media-note">Preview only. No live controls.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="container"><div class="footer-inner"><div class="footer-col"><a class="footer-brand" href="../"><img src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot logo" />Codunot</a><p class="muted" style="font-size:.85rem;margin:.35rem 0 0;">AI that lives inside Discord.</p></div><div class="footer-col"><h4>Product</h4><a href="../features/">Features</a><a href="../commands/">Commands</a><a href="../premium/">Premium</a><a href="../stats/">Stats</a></div><div class="footer-col"><h4>Resources</h4><a href="../faq/">FAQ</a><a href="../reviews/">Reviews</a><a href="../roadmap/">Roadmap</a><a href="../support/">Support</a></div><div class="footer-col"><h4>Legal</h4><a href="../terms/">Terms of Service</a><a href="../privacy/">Privacy Policy</a></div><div class="footer-col"><h4>Connect</h4><a href="https://discord.gg/b8Cv7eC3En" target="_blank" rel="noopener">Discord Server</a><a href="https://top.gg/bot/1435987186502733878" target="_blank" rel="noopener">Top.gg</a></div></div><div class="footer-bottom">&copy; <span id="year"></span> Codunot - All rights reserved.</div></div></footer>
+  <script src="../script.js"></script>
+</body>
+</html>

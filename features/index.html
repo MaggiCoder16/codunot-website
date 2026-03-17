@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Codunot - Features</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="../assets/icons/favicon-192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/icons/apple-touch-icon.png" />
+  <link rel="manifest" href="../site.webmanifest" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body data-page="features">
+  <header class="nav-wrap">
+    <nav class="nav container">
+      <a class="brand" href="../"><img src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot logo" />Codunot</a>
+      <div class="links">
+        <a href="../">Home</a>
+        <a class="active" href="../features/">Features</a>
+        <a href="../commands/">Command Center</a>
+        <a href="../stats/">Stats</a>
+        <a href="../reviews/">Reviews</a>
+        <a href="../faq/">FAQ</a>
+        <a href="../premium/">Premium</a>
+        <a href="../support/">Support</a>
+        <a href="../terms/">ToS</a>
+        <a href="../privacy/">Privacy Policy</a>
+        <a class="login-btn" href="https://discord.com/oauth2/authorize?client_id=1435987186502733878&integration_type=1&scope=applications.commands" target="_blank" rel="noopener">Authorize App</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container section">
+    <section class="card section update-section" style="border:2px solid var(--orange);background:rgba(255,138,0,0.08);margin-bottom:2.5rem;box-shadow:0 2px 18px 0 rgba(255,138,0,0.10);">
+      <h1 style="color:var(--orange);margin-bottom:.5rem;">🚨 Codunot Update</h1>
+      <ul style="font-size:1.08rem;line-height:1.7;margin-bottom:.7rem;">
+        <li><b>Shadowban</b> is live <span class="badge premium">Premium / Gold / Enterprise</span> — <code>/shadowban add</code>, <code>/shadowban remove</code>, <code>/shadowban list</code></li>
+        <li><b>Sticky messages</b> are live <span class="badge premium">Premium / Gold / Enterprise</span> — <code>/sticky set</code>, <code>/sticky clear</code>, <code>/sticky list</code></li>
+        <li><b>Adaptive slowmode</b> is live <span class="badge gold">Gold / Enterprise</span> — <code>/adaptive-slowmode</code> auto-activates slowmode when chat is fast, disables when calm</li>
+        <li><b>Enterprise tier</b> added — Custom limits, per-server/channel overrides, custom adaptive slowmode thresholds, and usage overrides from <code>enterprise.txt</code></li>
+        <li><b>Rizz Coach IRL</b> (<code>!teachmerizz irl</code>, <code>/teachmerizz irl</code>) is now <span class="badge premium">Premium / Gold / Enterprise</span> only. <b>Online</b> version remains free.</li>
+        <li><b>Help updates:</b> <code>!codunot_help</code> now shows tier labels, <code>!helpC</code> and <code>/helpc</code> added.</li>
+      </ul>
+      <div style="font-size:.98rem;color:var(--orange-2);margin-bottom:.5rem;">If anything feels off in your server after this update, ping me and I’ll fix it fast.</div>
+      <div style="font-size:.97rem;color:var(--text);opacity:.82;">Shadowban deletes any messages posted by a user you've shadowbanned, and sticky messages stay on the bottom of the chat.</div>
+    </section>
+    <h1>Feature Hub</h1>
+
+    <section class="card section">
+      <h2>🤖 Automatic Features</h2>
+      <p class="muted">These features work without any commands. Just interact naturally.</p>
+
+      <div class="feature-head"><h3>💬 AI Chat &amp; Conversation</h3><span class="badge free">Free</span></div>
+      <ul>
+        <li>Mention <code>@Codunot</code> in servers or reply to Codunot messages</li>
+        <li>DM Codunot directly, no mention needed</li>
+        <li><code>/model</code> lets you switch the AI model per channel or DM and clears memory for a fresh start</li>
+        <li>Conversation memory remembers up to 60 messages per channel or DM</li>
+        <li>Reply context understands Discord reply chains</li>
+        <li>Automatic fallback handles overloaded primary models</li>
+        <li>Slang normalization and more natural responses</li>
+      </ul>
+
+      <div class="feature-head"><h3>🔍 Smart Web Search</h3><span class="badge free">Free</span></div>
+      <ul>
+        <li>Automatically searches the web via DuckDuckGo when a prompt needs current information</li>
+      </ul>
+
+      <div class="feature-head"><h3>📄 File Reading</h3><span class="badge vote">Vote Required</span></div>
+      <ul>
+        <li>Upload PDF, DOCX, or TXT files up to 8MB for instant extraction and summaries</li>
+      </ul>
+
+      <div class="feature-head"><h3>🖼️ Image Analysis</h3><span class="badge vote">Vote Required</span></div>
+      <ul>
+        <li>Send any image for AI-powered descriptions and visual analysis</li>
+      </ul>
+
+      <div class="feature-head"><h3>🌐 URL Content Extraction</h3><span class="badge free">Free</span></div>
+      <ul>
+        <li>Share links and Codunot will automatically fetch and summarize webpage content</li>
+      </ul>
+
+      <div class="feature-head"><h3>🧪 Code Auto-Testing</h3><span class="badge free">Free</span></div>
+      <ul>
+        <li>Generated code is automatically tested and returns error reports only (no AI fix calls)</li>
+      </ul>
+
+      <div class="feature-head"><h3>✏️ Image Editing</h3><span class="badge vote">Vote Required</span></div>
+      <ul>
+        <li>Attach an image and describe the edits you want for AI-powered modifications</li>
+      </ul>
+
+      <div class="feature-head"><h3>🔗 Image Merging</h3><span class="badge vote">Vote Required</span></div>
+      <ul>
+        <li>Attach 2+ images and say "merge", "combine", or "blend" to merge them into one</li>
+      </ul>
+    </section>
+
+    <section class="card section">
+      <h2>⚡ Command-Based Features</h2>
+      <p class="muted">Explicit commands for specific functionality.</p>
+
+      <div class="feature-head"><h3>🎭 Mode &amp; Personality Commands</h3><span class="badge free">Most Free</span></div>
+      <ul>
+        <li><code>/funmode</code> for casual, lighthearted responses with emojis and humor</li>
+        <li><code>/seriousmode</code> for professional, structured, fact-based responses</li>
+        <li><code>/roastmode</code> for humorous, lighthearted roasts and comebacks</li>
+        <li><code>/teachmerizz online</code> for dating and texting coaching <span class="badge free">Free</span></li>
+        <li><code>/teachmerizz irl</code> for real-life social coaching and confidence tips <span class="badge premium">Premium / Gold / Enterprise</span></li>
+        <li><code>/chessmode</code> to play against Codunot AI with legal move validation and hints</li>
+      </ul>
+
+      <div class="feature-head"><h3>🎨 Creative Generation</h3><span class="badge vote">Vote Required</span></div>
+      <ul>
+        <li><code>/generate_image [prompt]</code> for AI-generated images with enhanced prompts</li>
+        <li><code>/generate_video [prompt]</code> for text-to-video generation</li>
+        <li><code>/generate_tts [text] [language] [voice]</code> for text-to-speech with 300+ voices across 60+ languages</li>
+      </ul>
+
+      <div class="feature-head"><h3>🎵 Music &amp; Audio</h3><span class="badge vote">Vote Required</span></div>
+      <ul>
+        <li><code>/play [song/URL]</code> with filters including Bass Boost, Nightcore, Slowed, 8D, Treble, Lo-Fi, and Vaporwave</li>
+        <li>Supports YouTube, SoundCloud, and Spotify songs, playlists, and albums</li>
+        <li><code>/queue</code>, <code>/volume_up</code>, <code>/volume_down</code>, <code>/autoplay</code>, and <code>/lyrics</code></li>
+        <li><code>/playlistcreate</code> to build playlists with multiple songs at once</li>
+        <li><code>/playlist</code> to browse playlists with dropdowns, view tracks, and manage play, add, delete, and view actions</li>
+        <li><code>/loop off</code>, <code>/loop song</code>, and <code>/loop queue</code> for normal playback, single-track repeat, or full-queue looping</li>
+        <li>Autoplay improvements load next tracks faster (about 1-3 seconds) with duplicate prevention across the last five tracks</li>
+        <li>Persistent queues, playlists, and history remain after bot restarts</li>
+        <li>Clean, modern interface inspired by Hydra and FredBoat with embed-style playlist previews and dropdowns</li>
+        <li>Inline player controls plus auto-disconnect after inactivity</li>
+      </ul>
+
+      <div class="feature-head"><h3>🛡️ Moderation &amp; Safety</h3><div class="feature-badges"><span class="badge free">Core Free</span><span class="badge premium">Premium / Gold / Enterprise</span></div></div>
+      <p class="muted">Advanced moderation features are tiered. <span class="badge premium">Premium / Gold / Enterprise</span> unlocks <code>/shadowban</code>, <code>/sticky</code>, <code>/tempban</code>, <code>/massban</code>, <code>/modstats</code>, <code>/note</code>. <span class="badge gold">Gold / Enterprise</span> unlocks <code>/adaptive-slowmode</code>. <span class="badge enterprise">Enterprise</span> unlocks custom overrides.</p>
+      <ul>
+        <li><code>/shadowban add</code>, <code>/shadowban remove</code>, <code>/shadowban list</code> <span class="badge premium">Premium / Gold / Enterprise</span></li>
+        <li><code>/sticky set</code>, <code>/sticky clear</code>, <code>/sticky list</code> <span class="badge premium">Premium / Gold / Enterprise</span></li>
+        <li><code>/adaptive-slowmode</code> <span class="badge gold">Gold / Enterprise</span> — auto slowmode when chat is fast</li>
+        <li><code>/tempban</code>, <code>/massban</code>, <code>/modstats</code>, <code>/note</code> <span class="badge premium">Premium / Gold / Enterprise</span></li>
+        <li><code>/setup-moderation</code>, <code>/automod</code>, <code>/warn</code>, <code>/case</code>, <code>/ban</code>, <code>/mute</code> <span class="badge free">Free</span></li>
+        <li><code>/clear</code>, <code>/slowmode</code>, <code>/lock</code>, <code>/unlock</code>, <code>/userinfo</code> <span class="badge free">Free</span></li>
+        <li>Natural language moderation with plain English staff actions</li>
+      </ul>
+
+      <div class="feature-head"><h3>🔧 Developer &amp; Utility Tools</h3><div class="feature-badges"><span class="badge free">/test_code, /browse</span><span class="badge vote">/transcribe</span></div></div>
+      <ul>
+        <li><code>/test_code [code]</code> validates code and reports errors only (no AI fix calls)</li>
+        <li><code>/browse [URL]</code> fetches and analyzes webpage content</li>
+        <li><code>/image_search [query]</code> gives free image search with a top result and more links</li>
+        <li><code>/transcribe [video_url]</code></li>
+      </ul>
+
+      <div class="feature-head"><h3>🎉 Fun &amp; Social Commands</h3><span class="badge free">All Free</span></div>
+      <ul>
+        <li><code>/hug @user</code>, <code>/kiss @user</code>, <code>/kick @user</code>, and <code>/slap @user</code></li>
+        <li><code>/wish_goodmorning @user</code></li>
+        <li><code>/bet [heads/tails]</code> and <code>/meme</code></li>
+      </ul>
+
+      <div class="feature-head"><h3>⚙️ Server Configuration</h3><span class="badge free">Owner Only</span></div>
+      <ul>
+        <li><code>/configure server</code> allows Codunot in all channels</li>
+        <li><code>/configure channels</code> restricts usage to specific channels</li>
+      </ul>
+    </section>
+
+    <section class="card section">
+      <h2>🗳️ Vote-Required Features</h2>
+      <p>Vote on Top.gg every 12 hours to unlock premium features for free.</p>
+      <ul>
+        <li>✅ Image generation, editing, and merging</li>
+        <li>✅ Video generation</li>
+        <li>✅ Text-to-speech with 300+ voices across 60+ languages</li>
+        <li>✅ Music playback with audio filters</li>
+        <li>✅ Video transcription for YouTube, Twitch, X, and Kick</li>
+        <li>✅ File reading for PDF, DOCX, and TXT</li>
+        <li>✅ Image analysis</li>
+      </ul>
+      <a href="https://top.gg/bot/1435987186502733878/vote" class="btn primary" target="_blank" rel="noopener">Vote Now</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-col">
+          <a class="footer-brand" href="../">
+            <img src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot logo" />
+            Codunot
+          </a>
+          <p class="muted" style="font-size:.85rem;margin:.35rem 0 0;">AI that lives inside Discord.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="../features/">Features</a>
+          <a href="../commands/">Commands</a>
+          <a href="../premium/">Premium</a>
+          <a href="../stats/">Stats</a>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <a href="../faq/">FAQ</a>
+          <a href="../reviews/">Reviews</a>
+          <a href="../roadmap/">Roadmap</a>
+          <a href="../support/">Support</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="../terms/">Terms of Service</a>
+          <a href="../privacy/">Privacy Policy</a>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <a href="https://discord.gg/b8Cv7eC3En" target="_blank" rel="noopener">Discord Server</a>
+          <a href="https://top.gg/bot/1435987186502733878" target="_blank" rel="noopener">Top.gg</a>
+        </div>
+      </div>
+      <div class="footer-bottom">&copy; <span id="year"></span> Codunot - All rights reserved.</div>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>

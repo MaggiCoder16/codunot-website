@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" role="img" aria-labelledby="title desc">
+  <title id="title">Sunbeam Kitty</title>
+  <desc id="desc">An orange kitty sitting in warm sunlight.</desc>
+  <defs>
+    <radialGradient id="bg" cx="25%" cy="20%" r="90%">
+      <stop offset="0%" stop-color="#ffe0b2"/>
+      <stop offset="55%" stop-color="#ffb15f"/>
+      <stop offset="100%" stop-color="#9f4f1e"/>
+    </radialGradient>
+    <radialGradient id="fur" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#fff0cb"/>
+      <stop offset="60%" stop-color="#f7ad4b"/>
+      <stop offset="100%" stop-color="#cb6e1f"/>
+    </radialGradient>
+  </defs>
+  <rect width="640" height="640" rx="72" fill="url(#bg)"/>
+  <circle cx="520" cy="120" r="72" fill="#fff3cf" opacity=".72"/>
+  <ellipse cx="320" cy="380" rx="168" ry="150" fill="url(#fur)"/>
+  <path d="M206 252 148 132l110 52Z" fill="#d77a2f"/>
+  <path d="m434 252 58-120-110 52Z" fill="#d77a2f"/>
+  <path d="M218 248c28-38 63-57 102-58 45-1 82 18 114 58" fill="#f7ad4b"/>
+  <ellipse cx="262" cy="354" rx="18" ry="24" fill="#2c180d"/>
+  <ellipse cx="378" cy="354" rx="18" ry="24" fill="#2c180d"/>
+  <ellipse cx="320" cy="394" rx="24" ry="18" fill="#8b3b29"/>
+  <path d="M320 410c-21 18-41 28-61 31" stroke="#8b3b29" stroke-width="10" stroke-linecap="round" fill="none"/>
+  <path d="M320 410c21 18 41 28 61 31" stroke="#8b3b29" stroke-width="10" stroke-linecap="round" fill="none"/>
+  <path d="M204 396h-76" stroke="#fff3d1" stroke-width="8" stroke-linecap="round"/>
+  <path d="M212 420h-92" stroke="#fff3d1" stroke-width="8" stroke-linecap="round"/>
+  <path d="M436 396h76" stroke="#fff3d1" stroke-width="8" stroke-linecap="round"/>
+  <path d="M428 420h92" stroke="#fff3d1" stroke-width="8" stroke-linecap="round"/>
+  <ellipse cx="252" cy="458" rx="48" ry="30" fill="#f2c072" opacity=".95"/>
+  <ellipse cx="388" cy="458" rx="48" ry="30" fill="#f2c072" opacity=".95"/>
+</svg>

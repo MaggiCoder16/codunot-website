@@ -32,212 +32,194 @@
   </header>
 
   <main class="container section">
-    <section class="card section blended-update-section">
-      <h2>🚨 Recent Codunot Updates</h2>
-      <ul>
-        <li><b>Shadowban</b> is live <span class="badge premium">Premium / Gold / Enterprise</span> — <code>/shadowban add</code>, <code>/shadowban remove</code>, <code>/shadowban list</code></li>
-        <li><b>Sticky messages</b> are live <span class="badge premium">Premium / Gold / Enterprise</span> — <code>/sticky set</code>, <code>/sticky clear</code>, <code>/sticky list</code></li>
-        <li><b>Adaptive slowmode</b> is live <span class="badge gold">Gold / Enterprise</span> — <code>/adaptive-slowmode</code> auto-activates slowmode when chat is fast, disables when calm</li>
-        <li><b>Enterprise tier</b> added — Custom limits, per-server/channel overrides, custom adaptive slowmode thresholds, and usage overrides from <code>enterprise.txt</code></li>
-        <li><b>Rizz Coach IRL</b> (<code>!teachmerizz irl</code>, <code>/teachmerizz irl</code>) is now <span class="badge premium">Premium / Gold / Enterprise</span> only. <b>Online</b> version remains free.</li>
-        <li><b>Help updates:</b> <code>!codunot_help</code> now shows tier labels, <code>!helpC</code> and <code>/helpc</code> added.</li>
-      </ul>
-      <div class="muted" style="margin-bottom:.5rem;">If anything feels off in your server after this update, ping me and I’ll fix it fast.</div>
-      <div class="muted" style="opacity:.82;">Shadowban deletes any messages posted by a user you've shadowbanned, and sticky messages stay on the bottom of the chat.</div>
-    </section>
-    <h1>Feature Hub</h1>
-
     <section class="card section">
-      <h2>🤖 Automatic Features</h2>
-      <p class="muted">These features work without any commands. Just interact naturally.</p>
-
-      <div class="feature-head"><h3>💬 AI Chat &amp; Conversation</h3><span class="badge free">Free</span></div>
-      <ul>
-        <li>Mention <code>@Codunot</code> in servers or reply to Codunot messages</li>
-        <li>DM Codunot directly, no mention needed</li>
-        <li><code>/model</code> lets you switch the AI model per channel or DM and clears memory for a fresh start</li>
-        <li>Conversation memory remembers up to 60 messages per channel or DM</li>
-        <li>Reply context understands Discord reply chains</li>
-        <li>Automatic fallback handles overloaded primary models</li>
-        <li>Slang normalization and more natural responses</li>
-      </ul>
-
-      <div class="feature-head"><h3>🔍 Smart Web Search</h3><span class="badge free">Free</span></div>
-      <ul>
-        <li>Automatically searches the web via DuckDuckGo when a prompt needs current information</li>
-      </ul>
-
-      <div class="feature-head"><h3>📄 File Reading</h3><span class="badge vote">Vote Required</span></div>
-      <ul>
-        <li>Upload PDF, DOCX, or TXT files up to 8MB for instant extraction and summaries</li>
-      </ul>
-
-      <div class="feature-head"><h3>🖼️ Image Analysis</h3><span class="badge vote">Vote Required</span></div>
-      <ul>
-        <li>Send any image for AI-powered descriptions and visual analysis</li>
-      </ul>
-
-      <div class="feature-head"><h3>🌐 URL Content Extraction</h3><span class="badge free">Free</span></div>
-      <ul>
-        <li>Share links and Codunot will automatically fetch and summarize webpage content</li>
-      </ul>
-
-      <div class="feature-head"><h3>🧪 Code Auto-Testing</h3><span class="badge free">Free</span></div>
-      <ul>
-        <li>Generated code is automatically tested and returns error reports only (no AI fix calls)</li>
-      </ul>
-
-      <div class="feature-head"><h3>✏️ Image Editing</h3><span class="badge vote">Vote Required</span></div>
-      <ul>
-        <li>Attach an image and describe the edits you want for AI-powered modifications</li>
-      </ul>
-
-      <div class="feature-head"><h3>🔗 Image Merging</h3><span class="badge vote">Vote Required</span></div>
-      <ul>
-        <li>Attach 2+ images and say "merge", "combine", or "blend" to merge them into one</li>
-      </ul>
-    </section>
-
-    <section class="card section">
-      <h2>⚡ Command-Based Features</h2>
-      <p class="muted">Explicit commands for specific functionality.</p>
-
-      <div class="feature-head"><h3>🎭 Mode &amp; Personality Commands</h3><span class="badge free">Most Free</span></div>
-      <ul>
-        <li><code>/funmode</code> for casual, lighthearted responses with emojis and humor</li>
-        <li><code>/seriousmode</code> for professional, structured, fact-based responses</li>
-        <li><code>/roastmode</code> for humorous, lighthearted roasts and comebacks</li>
-        <li><code>/teachmerizz online</code> for dating and texting coaching <span class="badge free">Free</span></li>
-        <li><code>/teachmerizz irl</code> for real-life social coaching and confidence tips <span class="badge premium">Premium / Gold / Enterprise</span></li>
-        <li><code>/chessmode</code> to play against Codunot AI with legal move validation and hints</li>
-      </ul>
-
-      <div class="feature-head"><h3>🎨 Creative Generation</h3><span class="badge vote">Vote Required</span></div>
-      <ul>
-        <li><code>/generate_image [prompt]</code> for AI-generated images with enhanced prompts</li>
-        <li><code>/generate_video [prompt]</code> for text-to-video generation</li>
-        <li><code>/generate_tts [text] [language] [voice]</code> for text-to-speech with 300+ voices across 60+ languages</li>
-      </ul>
-
-      <div class="feature-head"><h3>🎵 Music &amp; Audio</h3><span class="badge vote">Vote Required</span></div>
-      <ul>
-        <li><code>/play [song/URL]</code> with filters including Bass Boost, Nightcore, Slowed, 8D, Treble, Lo-Fi, and Vaporwave</li>
-        <li>Supports YouTube, SoundCloud, and Spotify songs, playlists, and albums</li>
-        <li><code>/queue</code>, <code>/volume_up</code>, <code>/volume_down</code>, <code>/autoplay</code>, and <code>/lyrics</code></li>
-        <li><code>/playlistcreate</code> to build playlists with multiple songs at once</li>
-        <li><code>/playlist</code> to browse playlists with dropdowns, view tracks, and manage play, add, delete, and view actions</li>
-        <li><code>/loop off</code>, <code>/loop song</code>, and <code>/loop queue</code> for normal playback, single-track repeat, or full-queue looping</li>
-        <li>Autoplay improvements load next tracks faster (about 1-3 seconds) with duplicate prevention across the last five tracks</li>
-        <li>Persistent queues, playlists, and history remain after bot restarts</li>
-        <li>Clean, modern interface inspired by Hydra and FredBoat with embed-style playlist previews and dropdowns</li>
-        <li>Inline player controls plus auto-disconnect after inactivity</li>
-      </ul>
-
-      <div class="feature-head"><h3>🛡️ Moderation &amp; Safety</h3><div class="feature-badges"><span class="badge free">Core Free</span><span class="badge premium">Premium / Gold / Enterprise</span></div></div>
-      <p class="muted">Advanced moderation features are tiered. <span class="badge premium">Premium / Gold / Enterprise</span> unlocks <code>/shadowban</code>, <code>/sticky</code>, <code>/tempban</code>, <code>/massban</code>, <code>/modstats</code>, <code>/note</code>. <span class="badge gold">Gold / Enterprise</span> unlocks <code>/adaptive-slowmode</code>. <span class="badge enterprise">Enterprise</span> unlocks custom overrides.</p>
-      <ul>
-        <li><code>/shadowban add</code>, <code>/shadowban remove</code>, <code>/shadowban list</code> <span class="badge premium">Premium / Gold / Enterprise</span></li>
-        <li><code>/sticky set</code>, <code>/sticky clear</code>, <code>/sticky list</code> <span class="badge premium">Premium / Gold / Enterprise</span></li>
-        <li><code>/adaptive-slowmode</code> <span class="badge gold">Gold / Enterprise</span> — auto slowmode when chat is fast</li>
-        <li><code>/tempban</code>, <code>/massban</code>, <code>/modstats</code>, <code>/note</code> <span class="badge premium">Premium / Gold / Enterprise</span></li>
-        <li><code>/setup-moderation</code>, <code>/automod</code>, <code>/warn</code>, <code>/case</code>, <code>/ban</code>, <code>/mute</code> <span class="badge free">Free</span></li>
-        <li><code>/clear</code>, <code>/slowmode</code>, <code>/lock</code>, <code>/unlock</code>, <code>/userinfo</code> <span class="badge free">Free</span></li>
-        <li>Natural language moderation with plain English staff actions</li>
-      </ul>
-
-      <div class="feature-head"><h3>🔧 Developer &amp; Utility Tools</h3><div class="feature-badges"><span class="badge free">/test_code, /browse</span><span class="badge vote">/transcribe</span></div></div>
-      <ul>
-        <li><code>/test_code [code]</code> validates code and reports errors only (no AI fix calls)</li>
-        <li><code>/browse [URL]</code> fetches and analyzes webpage content</li>
-        <li><code>/image_search [query]</code> gives free image search with a top result and more links</li>
-        <li><code>/transcribe [video_url]</code></li>
-      </ul>
-
-      <div class="feature-head"><h3>🎉 Fun &amp; Social Commands</h3><span class="badge free">All Free</span></div>
-      <ul>
-        <li><code>/hug @user</code>, <code>/kiss @user</code>, <code>/kick @user</code>, and <code>/slap @user</code></li>
-        <li><code>/wish_goodmorning @user</code></li>
-        <li><code>/bet [heads/tails]</code> and <code>/meme</code></li>
-      </ul>
-
-      <div class="feature-head"><h3>⚙️ Server Configuration</h3><span class="badge free">Owner Only</span></div>
-      <ul>
-        <li><code>/configure server</code> allows Codunot in all channels</li>
-        <li><code>/configure channels</code> restricts usage to specific channels</li>
-      </ul>
-    </section>
-
-    <section class="card section">
-      <h2>🗳️ Vote-Required Features</h2>
-      <p>Vote on Top.gg every 12 hours to unlock premium features for free.</p>
-      <ul>
-        <li>✅ Image generation, editing, and merging</li>
-        <li>✅ Video generation</li>
-        <li>✅ Text-to-speech with 300+ voices across 60+ languages</li>
-        <li>✅ Music playback with audio filters</li>
-        <li>✅ Video transcription for YouTube, Twitch, X, and Kick</li>
-        <li>✅ File reading for PDF, DOCX, and TXT</li>
-        <li>✅ Image analysis</li>
-      </ul>
-      <a href="https://top.gg/bot/1435987186502733878/vote" class="btn primary" target="_blank" rel="noopener">Vote Now</a>
-    </section>
-    <section class="card section tier-features">
-      <h2>🌟 Tier Features Comparison</h2>
-      <div class="tier-grid">
-        <div class="tier-box basic">
-          <h3>🟢 Basic</h3>
-          <ul>
-            <li>Core moderation commands: /warn, /warns, /clearwarns, /ban, /unban, /modkick, /mute, /unmute, /clear, /slowmode, /lock, /unlock, /userinfo, /case</li>
-            <li>Playlist limit: 20 tracks per playlist</li>
-            <li>Music quality label: HD</li>
-            <li>Voice bitrate target: 96 kbps</li>
-            <li>Usage limits: 50 messages/day, 7 attachments/day, 30 attachments per rolling 60 days</li>
-            <li>teachmerizz online mode is available, IRL mode locked for paid tiers</li>
-            <li>No effects</li>
-          </ul>
-        </div>
-        <div class="tier-box premium">
-          <h3>🔵 Premium <span class="badge premium">Recommended</span></h3>
-          <ul>
-            <li>Includes everything in Basic, plus paid moderation set: /tempban, /massban, /modstats, /note</li>
-            <li>Shadowban cap: 5</li>
-            <li>Sticky message cap: 1</li>
-            <li>Playlist limit: 35 tracks</li>
-            <li>Music quality label: 320kbps</li>
-            <li>Voice bitrate target: 128 kbps</li>
-            <li>Usage limits: unlimited messages/day, 25 attachments/day, 75 attachments per rolling 60 days</li>
-            <li>IRL rizz mode available (/teachmerizz irl)</li>
-            <li>Some effects</li>
-          </ul>
-        </div>
-        <div class="tier-box gold">
-          <h3>🟡 Gold <span class="badge gold">More Effects</span></h3>
-          <ul>
-            <li>Includes everything in Premium, plus:</li>
-            <li>Shadowban cap: 20</li>
-            <li>Sticky message cap: 5</li>
-            <li>Playlist limit: 60 tracks</li>
-            <li>Adaptive slowmode access (/adaptive-slowmode) with default threshold values</li>
-            <li>Music quality label: 320kbps</li>
-            <li>Voice bitrate: dynamic by server boost/channel cap, up to 384 kbps in logic</li>
-            <li>Usage limits: unlimited messages/day, unlimited attachments/day, 200 attachments per rolling 60 days</li>
-            <li>More effects</li>
-          </ul>
-        </div>
-        <div class="tier-box enterprise">
-          <h3>💎 Enterprise <span class="badge enterprise">Most Beautiful</span></h3>
-          <ul>
-            <li>Includes everything in Gold, plus:</li>
-            <li>Shadowban cap: unlimited</li>
-            <li>Sticky message cap: unlimited</li>
-            <li>Playlist limit: unlimited</li>
-            <li>Adaptive slowmode with custom thresholds (messages/seconds/slowmode/cooldown) is Enterprise-only</li>
-            <li>Usage limits: unlimited messages/day, unlimited attachments/day, unlimited 60-day attachment cap</li>
-            <li>Supports per-server/channel enterprise override config for custom usage limits</li>
-            <li>Most effects, most beautiful visuals</li>
-          </ul>
-        </div>
+      <h1>Everything You Can Do With Codunot</h1>
+      <p class="muted">This page is written from your point of view as a server owner, moderator, or community member. You can quickly see what each feature does, which tier unlocks it, and what limits apply.</p>
+      <div class="feature-badges">
+        <span class="badge free">All tiers include core chat + commands</span>
+        <span class="badge vote">Some media features require Top.gg vote</span>
+        <span class="badge premium">Premium / Gold / Enterprise unlock extra moderation tools</span>
       </div>
+    </section>
+
+    <section class="card section">
+      <h2>Plans &amp; Limits</h2>
+      <p class="muted">Attachment-based commands consume both your daily attachment limit and your rolling 2-month attachment limit.</p>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Tier</th>
+            <th>Daily messages</th>
+            <th>Daily attachments</th>
+            <th>Rolling 2-month attachment cap</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Basic</strong></td>
+            <td>40</td>
+            <td>6</td>
+            <td>20</td>
+          </tr>
+          <tr>
+            <td><strong>Premium</strong></td>
+            <td>Unlimited</td>
+            <td>25</td>
+            <td>75</td>
+          </tr>
+          <tr>
+            <td><strong>Gold</strong></td>
+            <td>Unlimited</td>
+            <td>Unlimited</td>
+            <td>120</td>
+          </tr>
+          <tr>
+            <td><strong>Enterprise</strong></td>
+            <td>Unlimited (customizable)</td>
+            <td>Unlimited (customizable)</td>
+            <td>Unlimited by default (customizable)</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card section">
+      <h2>Chat Experience (No Complex Setup Needed)</h2>
+      <ul>
+        <li>Chat in DMs or by mentioning Codunot in your server.</li>
+        <li>Switch response style anytime with <code>/funmode</code>, <code>/seriousmode</code>, <code>/roastmode</code>, <code>/teachmerizz</code>, and <code>/chessmode</code>.</li>
+        <li>Choose a chat model per channel or DM using <code>/model</code>.</li>
+        <li>View available models using <code>/models</code>.</li>
+        <li>Send images during normal chat for image-aware responses.</li>
+      </ul>
+
+      <h3>Available chat models</h3>
+      <ul>
+        <li><code>openai/gpt-oss-120b</code> (default)</li>
+        <li><code>qwen/qwen3-32b</code></li>
+        <li><code>llama-3.3-70b-versatile</code></li>
+        <li><code>meta-llama/llama-4-scout-17b-16e-instruct</code></li>
+        <li><code>llama-3.1-8b-instant</code></li>
+      </ul>
+    </section>
+
+    <section class="card section">
+      <h2>Generation &amp; Media Tools</h2>
+      <p class="muted">These commands are available to all tiers, but generation/media features may require a Top.gg vote first.</p>
+      <table class="table">
+        <thead><tr><th>Command</th><th>What you can do</th><th>Availability</th></tr></thead>
+        <tbody>
+          <tr><td><code>/generate_image</code></td><td>Create an AI image from your prompt.</td><td>All tiers (vote gate + attachment limits)</td></tr>
+          <tr><td><code>/edit_image</code></td><td>Upload one image and describe edits.</td><td>All tiers (vote gate + attachment limits)</td></tr>
+          <tr><td><code>/analyse_image</code></td><td>Upload one image and get visual analysis.</td><td>All tiers (vote gate + attachment limits)</td></tr>
+          <tr><td><code>/merge_image</code></td><td>Merge 2 to 4 uploaded images into one result.</td><td>All tiers (vote gate + attachment limits)</td></tr>
+          <tr><td><code>/generate_video</code></td><td>Generate an AI video from text.</td><td>All tiers (vote gate + attachment limits)</td></tr>
+          <tr><td><code>/generate_tts</code></td><td>Convert text to speech with selected voice/language.</td><td>All tiers (vote gate + attachment limits)</td></tr>
+          <tr><td><code>/transcribe</code></td><td>Transcribe supported video URLs (up to 30 minutes).</td><td>All tiers (vote gate + attachment limits)</td></tr>
+          <tr><td><code>/image_search</code></td><td>Find free images by text query.</td><td>All tiers</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card section">
+      <h2>Music, Queue, and Playlists</h2>
+      <table class="table">
+        <thead><tr><th>Command</th><th>What you can do</th><th>Availability</th></tr></thead>
+        <tbody>
+          <tr><td><code>/play</code></td><td>Play a song/playlist URL or search query in voice. Includes audio filter selection.</td><td>All tiers</td></tr>
+          <tr><td><code>/queue</code></td><td>View current queue.</td><td>All tiers</td></tr>
+          <tr><td><code>/volume_up</code> / <code>/volume_down</code></td><td>Adjust playback volume by 10%.</td><td>All tiers</td></tr>
+          <tr><td><code>/autoplay</code></td><td>Toggle autoplay when queue ends.</td><td>All tiers</td></tr>
+          <tr><td><code>/lyrics</code></td><td>Get lyrics for the current track (when available).</td><td>All tiers</td></tr>
+          <tr><td><code>/loop</code></td><td>Set loop mode: off, song, or queue.</td><td>All tiers</td></tr>
+          <tr><td><code>/playlistcreate</code></td><td>Create a server playlist from URLs or searches.</td><td>All tiers (tier-based track cap)</td></tr>
+          <tr><td><code>/playlist</code></td><td>Browse, play, and manage saved server playlists.</td><td>All tiers (tier-based track cap)</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Playlist track caps by tier</h3>
+      <ul>
+        <li><strong>Basic:</strong> 20</li>
+        <li><strong>Premium:</strong> 35</li>
+        <li><strong>Gold:</strong> 60</li>
+        <li><strong>Enterprise:</strong> Unlimited</li>
+      </ul>
+    </section>
+
+    <section class="card section">
+      <h2>Moderation &amp; Safety</h2>
+      <p class="muted">From basic moderation to advanced tools for large communities.</p>
+
+      <h3>Core moderation (all tiers)</h3>
+      <ul>
+        <li><code>/setup-moderation</code>, <code>/automod</code>, <code>/warn</code>, <code>/warns</code>, <code>/clearwarns</code></li>
+        <li><code>/ban</code>, <code>/unban</code>, <code>/modkick</code>, <code>/mute</code>, <code>/unmute</code></li>
+        <li><code>/clear</code>, <code>/slowmode</code>, <code>/lock</code>, <code>/unlock</code></li>
+        <li><code>/userinfo</code>, <code>/case</code></li>
+      </ul>
+
+      <h3>Premium / Gold / Enterprise</h3>
+      <ul>
+        <li><code>/tempban</code>, <code>/massban</code>, <code>/modstats</code></li>
+        <li><code>/shadowban add</code>, <code>/shadowban remove</code>, <code>/shadowban list</code></li>
+        <li><code>/sticky set</code>, <code>/sticky clear</code>, <code>/sticky list</code></li>
+        <li><code>/note add</code>, <code>/note view</code>, <code>/note clear</code></li>
+      </ul>
+
+      <h3>Gold / Enterprise</h3>
+      <ul>
+        <li><code>/adaptive-slowmode</code> for burst-aware slowmode behavior.</li>
+      </ul>
+
+      <h3>Enterprise extras</h3>
+      <ul>
+        <li>Custom moderation thresholds and slowmode timing.</li>
+        <li>Optional AI moderation toggle support.</li>
+      </ul>
+    </section>
+
+    <section class="card section">
+      <h2>Utility, Setup, and Everyday Commands</h2>
+      <table class="table">
+        <thead><tr><th>Command</th><th>What you can do</th><th>Availability</th></tr></thead>
+        <tbody>
+          <tr><td><code>/configure server</code></td><td>Allow bot chat in all channels (guild owner use case).</td><td>All tiers</td></tr>
+          <tr><td><code>/configure channels</code></td><td>Restrict bot chat to selected channels.</td><td>All tiers</td></tr>
+          <tr><td><code>/browse</code></td><td>Fetch readable text content from a URL.</td><td>All tiers</td></tr>
+          <tr><td><code>/test_code</code></td><td>Run/validate Python snippets in a restricted sandbox and return output/errors.</td><td>All tiers</td></tr>
+          <tr><td><code>/helpc</code></td><td>Open help, commands, and tier overview.</td><td>All tiers</td></tr>
+          <tr><td><code>/shard</code></td><td>Show shard details for the server.</td><td>All tiers</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card section">
+      <h2>Fun &amp; Social Commands</h2>
+      <ul>
+        <li><code>/hug</code>, <code>/kiss</code>, <code>/kick</code>, <code>/slap</code>, <code>/wish_goodmorning</code></li>
+        <li><code>/bet</code> and <code>/meme</code></li>
+      </ul>
+      <p class="muted">All available on every tier.</p>
+    </section>
+
+    <section class="card section">
+      <h2>Prefix Commands Also Available</h2>
+      <p class="muted">You can also use these classic prefix commands:</p>
+      <ul>
+        <li><code>!codunot_help</code></li>
+        <li><code>!helpC</code></li>
+        <li><code>!funmode</code></li>
+        <li><code>!seriousmode</code></li>
+        <li><code>!roastmode</code></li>
+        <li><code>!teachmerizz</code></li>
+        <li><code>!chessmode</code></li>
+      </ul>
+    </section>
+
+    <section class="card section">
+      <h2>Complete Slash Command Index</h2>
+      <p class="muted">Everything currently exposed to users in slash command format:</p>
+      <p><code>/configure server</code>, <code>/configure channels</code>, <code>/shard</code>, <code>/queue</code>, <code>/volume_up</code>, <code>/volume_down</code>, <code>/autoplay</code>, <code>/lyrics</code>, <code>/image_search</code>, <code>/models</code>, <code>/model</code>, <code>/play</code>, <code>/helpc</code>, <code>/funmode</code>, <code>/seriousmode</code>, <code>/roastmode</code>, <code>/teachmerizz</code>, <code>/chessmode</code>, <code>/generate_image</code>, <code>/edit_image</code>, <code>/analyse_image</code>, <code>/merge_image</code>, <code>/generate_video</code>, <code>/generate_tts</code>, <code>/transcribe</code>, <code>/hug</code>, <code>/kiss</code>, <code>/kick</code>, <code>/slap</code>, <code>/wish_goodmorning</code>, <code>/bet</code>, <code>/meme</code>, <code>/test_code</code>, <code>/playlistcreate</code>, <code>/playlist</code>, <code>/loop</code>, <code>/browse</code>, <code>/setup-moderation</code>, <code>/automod</code>, <code>/adaptive-slowmode</code>, <code>/warn</code>, <code>/warns</code>, <code>/clearwarns</code>, <code>/ban</code>, <code>/unban</code>, <code>/modkick</code>, <code>/mute</code>, <code>/unmute</code>, <code>/clear</code>, <code>/slowmode</code>, <code>/lock</code>, <code>/unlock</code>, <code>/userinfo</code>, <code>/case</code>, <code>/tempban</code>, <code>/massban</code>, <code>/modstats</code>, <code>/shadowban add</code>, <code>/shadowban remove</code>, <code>/shadowban list</code>, <code>/sticky set</code>, <code>/sticky clear</code>, <code>/sticky list</code>, <code>/note add</code>, <code>/note view</code>, <code>/note clear</code>.</p>
     </section>
   </main>
 
@@ -276,7 +258,7 @@
           <a href="https://top.gg/bot/1435987186502733878" target="_blank" rel="noopener">Top.gg</a>
         </div>
       </div>
-      <div class="footer-bottom">&copy; <span id="year"></span> Codunot - All rights reserved.</div>
+      <div class="footer-bottom">&copy; <span id="year"></span> Codunot &mdash; All rights reserved.</div>
     </div>
   </footer>
   <script src="../script.js"></script>

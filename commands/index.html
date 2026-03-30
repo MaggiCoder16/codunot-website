@@ -36,39 +36,41 @@
     <p class="muted">Complete command reference organized by category.</p>
 
     <section class="card section">
-      <h2>🎭 Mode &amp; Personality Commands</h2>
-      <p class="muted">Switch between different conversation personalities. <span class="badge free">All Free</span></p>
+      <h2>Mode &amp; Personality Commands</h2>
+      <p class="muted">Switch conversation style and model behavior. <span class="badge free">All Free</span></p>
       <table class="table">
         <thead><tr><th>Command</th><th>What it does</th><th>Type</th></tr></thead>
         <tbody>
-          <tr><td><code>/funmode</code></td><td>Casual, lighthearted responses with emojis and humor.</td><td>Slash</td></tr>
+          <tr><td><code>/funmode</code></td><td>Use an informal conversational style.</td><td>Slash</td></tr>
           <tr><td><code>/seriousmode</code></td><td>Professional, structured, fact-based responses.</td><td>Slash</td></tr>
-          <tr><td><code>/roastmode</code></td><td>Humorous, lighthearted roasts and comebacks.</td><td>Slash</td></tr>
+          <tr><td><code>/roastmode</code></td><td>Use a humorous and playful response style.</td><td>Slash</td></tr>
           <tr><td><code>/teachmerizz online</code></td><td>Dating/texting coach for online conversations.</td><td>Slash</td></tr>
           <tr><td><code>/teachmerizz irl</code></td><td>Real-life social coaching and confidence tips.</td><td>Slash</td></tr>
           <tr><td><code>/chessmode</code></td><td>Play chess against Codunot AI. Full engine with legal move validation, SAN/UCI support, castling, promotions, en passant, resign detection, and AI hints.</td><td>Slash</td></tr>
+          <tr><td><code>/models</code></td><td>List available models for chat usage.</td><td>Slash</td></tr>
           <tr><td><code>/model [name]</code></td><td>Switch the AI model for current channel or DM. Changing model clears memory context for a clean start.</td><td>Slash</td></tr>
         </tbody>
       </table>
     </section>
 
     <section class="card section">
-      <h2>🎨 Creative Generation</h2>
+      <h2>Creative Generation</h2>
       <p class="muted">AI-powered content creation tools. <span class="badge vote">Vote Required</span></p>
       <table class="table">
         <thead><tr><th>Command</th><th>What it does</th><th>Type</th></tr></thead>
         <tbody>
           <tr><td><code>/generate_image [prompt]</code></td><td>AI-generated images with enhanced prompts.</td><td>Slash</td></tr>
+          <tr><td><code>/edit_image</code></td><td>Upload one image and describe targeted edits.</td><td>Slash</td></tr>
+          <tr><td><code>/analyse_image</code></td><td>Upload one image and receive a visual analysis.</td><td>Slash</td></tr>
+          <tr><td><code>/merge_image</code></td><td>Combine 2 to 4 uploaded images into one output.</td><td>Slash</td></tr>
           <tr><td><code>/generate_video [prompt]</code></td><td>Text-to-video generation (~1 min render time).</td><td>Slash</td></tr>
           <tr><td><code>/generate_tts [text] [language] [voice]</code></td><td>Text-to-speech with 300+ voices across 60+ languages and readable language names in the picker.</td><td>Slash</td></tr>
-          <tr><td>Attach image + describe edits</td><td>AI-powered image editing and modifications.</td><td>Message flow</td></tr>
-          <tr><td>Attach 2+ images + say "merge"</td><td>Merge multiple images into one coherent scene.</td><td>Message flow</td></tr>
         </tbody>
       </table>
     </section>
 
     <section class="card section">
-      <h2>🎵 Music &amp; Audio</h2>
+      <h2>Music &amp; Audio</h2>
       <p class="muted">Voice channel music playback with audio filters. <span class="badge vote">Vote Required</span></p>
       <table class="table">
         <thead><tr><th>Command</th><th>What it does</th><th>Type</th></tr></thead>
@@ -89,7 +91,7 @@
     </section>
 
     <section class="card section" id="moderation-commands">
-      <h2>🛡️ Moderation Suite</h2>
+      <h2>Moderation Suite</h2>
       <p class="muted">Server moderation, safety automations, case tracking, and advanced Premium/Gold controls.</p>
       <table class="table">
         <thead><tr><th>Command</th><th>What it does</th><th>Access</th></tr></thead>
@@ -104,19 +106,23 @@
           <tr><td><code>/tempban [duration]</code></td><td>Temporary bans with automatic scheduled unban (examples: 30m, 6h, 7d).</td><td><span class="badge premium">Premium / Gold / Enterprise</span></td></tr>
           <tr><td><code>/massban</code></td><td>Ban up to 10 users at once using an ID modal.</td><td><span class="badge premium">Premium / Gold / Enterprise</span></td></tr>
           <tr><td><code>/modstats</code></td><td>Detailed moderation analytics (actions, top warned users, active moderators).</td><td><span class="badge premium">Premium / Gold / Enterprise</span></td></tr>
+          <tr><td><code>/adaptive-slowmode</code></td><td>Enable burst-aware channel pacing for high-traffic moments.</td><td><span class="badge premium">Gold / Enterprise</span></td></tr>
           <tr><td><code>/note add</code> <code>/note view</code> <code>/note clear</code></td><td>Private moderator notes per member for team context.</td><td><span class="badge premium">Premium / Gold / Enterprise</span></td></tr>
-          <tr><td><code>/shadowban</code> and <code>/sticky</code></td><td>Use advanced moderation workflows for silent enforcement and sticky channel messages.</td><td><span class="badge premium">Premium / Gold / Enterprise</span></td></tr>
+          <tr><td><code>/shadowban add</code> <code>/shadowban remove</code> <code>/shadowban list</code></td><td>Run silent-enforcement workflows and review current shadowban entries.</td><td><span class="badge premium">Premium / Gold / Enterprise</span></td></tr>
+          <tr><td><code>/sticky set</code> <code>/sticky clear</code> <code>/sticky list</code></td><td>Manage sticky channel messages with explicit set/clear/list controls.</td><td><span class="badge premium">Premium / Gold / Enterprise</span></td></tr>
           <tr><td><code>@Codunot [mod action]</code></td><td>Natural language moderation — mention the bot with plain English, e.g. "timeout @user 10m for spamming", "ban @user for raiding", "clear 20".</td><td><span class="badge free">Free</span></td></tr>
         </tbody>
       </table>
     </section>
 
     <section class="card section">
-      <h2>🔧 Developer &amp; Utility Tools</h2>
+      <h2>Developer &amp; Utility Tools</h2>
       <p class="muted">Code testing, web browsing, and location tools.</p>
       <table class="table">
         <thead><tr><th>Command</th><th>What it does</th><th>Access</th></tr></thead>
         <tbody>
+          <tr><td><code>/helpc</code></td><td>Open help and tier overview information.</td><td><span class="badge free">Free</span></td></tr>
+          <tr><td><code>/shard</code></td><td>Show shard details for the current server.</td><td><span class="badge free">Free</span></td></tr>
           <tr><td><code>/test_code [code]</code></td><td>Validate code and get error reports only (no AI fix calls).</td><td><span class="badge free">Free</span></td></tr>
           <tr><td><code>/browse [URL]</code></td><td>Explicitly fetch and analyze webpage content.</td><td><span class="badge free">Free</span></td></tr>
           <tr><td><code>/image_search [query]</code></td><td>Free image search from Wikimedia Commons + Openverse with top result and more links.</td><td><span class="badge free">Free</span></td></tr>
@@ -126,7 +132,7 @@
     </section>
 
     <section class="card section">
-      <h2>🎉 Fun &amp; Social Commands</h2>
+      <h2>Community Interaction Commands</h2>
       <p class="muted">Interactive fun commands for community engagement. <span class="badge free">All Free</span></p>
       <table class="table">
         <thead><tr><th>Command</th><th>What it does</th><th>Type</th></tr></thead>
@@ -143,7 +149,7 @@
     </section>
 
     <section class="card section">
-      <h2>⚙️ Server Configuration</h2>
+      <h2>Server Configuration</h2>
       <p class="muted">Server owner only. <span class="badge free">Free</span></p>
       <table class="table">
         <thead><tr><th>Command</th><th>What it does</th><th>Type</th></tr></thead>
@@ -155,7 +161,7 @@
     </section>
 
     <section class="card section">
-      <h2>💬 Chat Triggers (No Commands Needed)</h2>
+      <h2>Chat Triggers (No Commands Needed)</h2>
       <p class="muted">These work automatically without slash commands.</p>
       <table class="table">
         <thead><tr><th>Trigger</th><th>What it does</th><th>Access</th></tr></thead>
@@ -170,7 +176,7 @@
     </section>
 
     <section class="card section">
-      <h2>🧠 AI Models for <code>/model</code></h2>
+      <h2>AI Models for <code>/model</code></h2>
       <p class="muted">Default model: <strong>GPT-OSS-120B</strong>.</p>
       <table class="table">
         <thead><tr><th>Model ID</th><th>Label</th><th>Notes</th></tr></thead>
@@ -182,6 +188,12 @@
           <tr><td><code>llama-3.1-8b-instant</code></td><td>Llama 3.1 8B Instant</td><td>Alternative</td></tr>
         </tbody>
       </table>
+    </section>
+
+    <section class="card section">
+      <h2>Complete Slash Command Index</h2>
+      <p class="muted">This index mirrors the Features tab for one-to-one command coverage.</p>
+      <p><code>/configure server</code>, <code>/configure channels</code>, <code>/shard</code>, <code>/queue</code>, <code>/volume_up</code>, <code>/volume_down</code>, <code>/autoplay</code>, <code>/lyrics</code>, <code>/image_search</code>, <code>/models</code>, <code>/model</code>, <code>/play</code>, <code>/helpc</code>, <code>/funmode</code>, <code>/seriousmode</code>, <code>/roastmode</code>, <code>/teachmerizz</code>, <code>/chessmode</code>, <code>/generate_image</code>, <code>/edit_image</code>, <code>/analyse_image</code>, <code>/merge_image</code>, <code>/generate_video</code>, <code>/generate_tts</code>, <code>/transcribe</code>, <code>/hug</code>, <code>/kiss</code>, <code>/kick</code>, <code>/slap</code>, <code>/wish_goodmorning</code>, <code>/bet</code>, <code>/meme</code>, <code>/test_code</code>, <code>/playlistcreate</code>, <code>/playlist</code>, <code>/loop</code>, <code>/browse</code>, <code>/setup-moderation</code>, <code>/automod</code>, <code>/adaptive-slowmode</code>, <code>/warn</code>, <code>/warns</code>, <code>/clearwarns</code>, <code>/ban</code>, <code>/unban</code>, <code>/modkick</code>, <code>/mute</code>, <code>/unmute</code>, <code>/clear</code>, <code>/slowmode</code>, <code>/lock</code>, <code>/unlock</code>, <code>/userinfo</code>, <code>/case</code>, <code>/tempban</code>, <code>/massban</code>, <code>/modstats</code>, <code>/shadowban add</code>, <code>/shadowban remove</code>, <code>/shadowban list</code>, <code>/sticky set</code>, <code>/sticky clear</code>, <code>/sticky list</code>, <code>/note add</code>, <code>/note view</code>, <code>/note clear</code>.</p>
     </section>
 
   </main>

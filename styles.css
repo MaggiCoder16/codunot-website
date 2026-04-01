@@ -110,7 +110,7 @@ summary {
 .nav-wrap {
   position: sticky;
   top: 0;
-  z-index: 50;
+  z-index: 220;
   border-bottom: 1px solid var(--line);
   background: rgba(20, 9, 4, 0.82);
   transition: transform .28s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease;
@@ -686,7 +686,7 @@ main.container.section {
 .nav-wrap {
   position: sticky;
   top: 0;
-  z-index: 80;
+  z-index: 220;
 }
 
 main,
@@ -3356,10 +3356,9 @@ html[data-motion="reduced"] * {
     transform: none;
     width: 100%;
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: flex-start;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    overflow: visible;
     padding: .2rem;
     gap: .32rem;
   }

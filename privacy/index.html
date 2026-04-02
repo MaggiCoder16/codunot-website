@@ -63,8 +63,8 @@
       <ul>
         <li><strong>Discord identifiers:</strong> user IDs, guild IDs, channel IDs, and message IDs.</li>
         <li><strong>Message content:</strong> messages sent to Codunot in DMs or when Codunot is mentioned/replied to.</li>
-        <li><strong>Command and interaction data:</strong> command names, modes selected, and feature usage events.</li>
-        <li><strong>Attachments and media:</strong> images, files, and other content you submit for bot features.</li>
+        <li><strong>Command and interaction data:</strong> command names, modes selected, model selection state, and feature usage events.</li>
+        <li><strong>Attachments and media:</strong> images, files, and other content you submit for bot features, including optional avatar uploads used for <code>/customise_bot_profile</code>.</li>
         <li><strong>Usage and limits data:</strong> counters for message limits, attachment limits, and tier usage.</li>
         <li><strong>Vote unlock data:</strong> vote status checks and vote unlock timestamps for gated features.</li>
         <li><strong>Configuration data:</strong> server/channel configuration choices made by authorized admins.</li>
@@ -78,7 +78,8 @@
         <li><strong>Location queries:</strong> location names, search terms, and place preferences you submit for mapping features.</li>
         <li><strong>Web URLs:</strong> URLs shared in messages for automatic or explicit content extraction.</li>
         <li><strong>Code submissions:</strong> code snippets submitted for testing and validation.</li>
-        <li><strong>Web search queries:</strong> questions and topics that trigger automatic web search.</li>
+        <li><strong>Web search and browse queries:</strong> questions, topics, and URLs submitted through <code>/browse</code> or enabled search integrations.</li>
+        <li><strong>Transcription routing metadata:</strong> temporary channel/user delivery targets (including DM flag) needed to return completed transcripts.</li>
       </ul>
       <p>
         We do <strong>not</strong> receive raw user IP addresses from normal Discord bot message events.
@@ -95,13 +96,13 @@
         The bot retrieves recent messages from the active channel solely to provide conversational context.
       </p>
       <p>
-        Message content is processed in real-time and is not permanently stored, archived, or logged in a database.
+        We store a limited rolling window of recent channel/DM context (encrypted at rest) to improve reply continuity, and overwrite older context as new messages arrive.
       </p>
       <p>
         Codunot does not use user messages to train AI models.
       </p>
       <p>
-        Conversation context is processed only in temporary memory during the reply generation process and is automatically discarded after the response is produced.
+        This rolling context may include recent messages, timestamps, and active mode/model state for the current channel or DM.
       </p>
     </section>
 
@@ -119,14 +120,13 @@
     <section class="card section">
       <h2>5. Code Execution Environment</h2>
       <p>
-        The /test_code feature executes user-submitted code within a temporary isolated sandbox environment.
+        The /test_code feature executes user-submitted code with time limits and blocked patterns.
       </p>
       <p>
         It only runs the submitted code and returns error reports (no AI fix calls).
       </p>
       <p>
-        The sandbox has no network access, restricted system permissions, limited execution time,
-        and is automatically destroyed after each execution.
+        We do not guarantee complete runtime isolation for every submission.
       </p>
       <p>
         No submitted code persists beyond its execution session.
@@ -152,15 +152,15 @@
         <li>Run generation features (images, video, text-to-speech, transcription, editing, merging).</li>
         <li>Enforce daily and periodic usage limits.</li>
         <li>Apply vote-based access controls and unlock durations.</li>
-        <li>Provide short-lived conversational context for reply continuity (not stored permanently).</li>
+        <li>Provide a limited rolling encrypted conversational context window for reply continuity.</li>
         <li>Remember website preferences and cookie consent choices.</li>
         <li>Maintain reliability, security, abuse prevention, and service quality.</li>
         <li>Troubleshoot bugs and improve feature performance.</li>
         <li>Comply with legal obligations and platform requirements.</li>
         <li>Provide location and place search results via mapping services.</li>
         <li>Extract and summarize web content from shared URLs.</li>
-        <li>Test, validate, and debug code submissions in secure sandboxed environments.</li>
-        <li>Automatically trigger web searches when queries need current information.</li>
+        <li>Test, validate, and debug code submissions using guardrails (such as blocked patterns and time limits).</li>
+        <li>Retrieve web content via explicit <code>/browse</code> requests and any enabled search integrations.</li>
         <li>Detect and prevent abuse, spam, or misuse of the service.</li>
       </ul>
     </section>
@@ -184,15 +184,13 @@
       </p>
       <p>Examples may include:</p>
       <ul>
-        <li>AI model and generation providers.</li>
+        <li>AI model and generation providers (including Groq, Google AI Studio, Hugging Face, and Replicate).</li>
         <li>Transcription and media processing providers.</li>
-        <li>Vote verification service providers (for vote-gated access).</li>
-        <li>Hosting and operational infrastructure providers.</li>
-        <li>Mapping and location service providers (for place search and directions).</li>
-        <li>Web scraping and content extraction services.</li>
-        <li>Code execution sandbox environments.</li>
-        <li>Web search providers (DuckDuckGo for real-time information retrieval).</li>
-        <li>Music streaming infrastructure providers (Lavalink for YouTube, SoundCloud, Spotify playback).</li>
+        <li>Vote verification providers (including Top.gg for vote-gated access).</li>
+        <li>Hosting and operational infrastructure providers (including deAPI where applicable).</li>
+        <li>Mapping and location service providers (such as Google Maps/Places API).</li>
+        <li>Web content extraction/search providers (including enabled browse/search integrations).</li>
+        <li>Music infrastructure providers (including Lavalink, Spotify integrations, and yt-dlp ecosystem sources).</li>
       </ul>
       <p>
         Each third party processes data under its own terms and privacy practices.
@@ -221,18 +219,20 @@
           <tr><th>Data Type</th><th>Typical Retention</th><th>Reason</th></tr>
         </thead>
         <tbody>
-          <tr><td>Conversation context</td><td>Short-lived, replaced each session</td><td>Reply continuity (not permanently stored)</td></tr>
-          <tr><td>Usage counters and tier data</td><td>Rolling windows / operational duration</td><td>Limit enforcement and abuse prevention</td></tr>
-          <tr><td>Vote unlock timestamps</td><td>Short-term, tied to unlock duration</td><td>Feature access gating</td></tr>
-          <tr><td>Guild/channel configuration</td><td>Until changed or removed</td><td>Server setup behavior</td></tr>
+          <tr><td>Conversation context (messages/timestamps/mode/model)</td><td>Limited rolling window per channel/DM; older entries overwritten</td><td>Reply continuity</td></tr>
+          <tr><td>Usage counters, attachment history, and tier data</td><td>Daily + rolling windows / operational duration</td><td>Limit enforcement and abuse prevention</td></tr>
+          <tr><td>Vote unlock timestamps</td><td>Short-term, tied to unlock duration windows</td><td>Feature access gating</td></tr>
+          <tr><td>Guild/channel configuration and chat scope settings</td><td>Until changed or removed</td><td>Server setup behavior</td></tr>
           <tr><td>Operational logs and errors</td><td>Limited operational period</td><td>Monitoring, debugging, security</td></tr>
           <tr><td>Website local auth flag</td><td>Until browser clears it or user action resets</td><td>UI state only</td></tr>
           <tr><td>Location search queries</td><td>Not stored persistently</td><td>Real-time API pass-through only</td></tr>
           <tr><td>Web URLs and extracted content</td><td>Temporary processing only</td><td>Content extraction and summarization</td></tr>
-          <tr><td>Code test submissions</td><td>Not stored after execution</td><td>Real-time testing and validation</td></tr>
-          <tr><td>Web search queries</td><td>Temporary processing only</td><td>Real-time information retrieval</td></tr>
+          <tr><td>Code test submissions</td><td>Not retained after execution output is returned</td><td>Real-time testing and validation</td></tr>
+          <tr><td>Web browse/search requests</td><td>Temporary processing only</td><td>Real-time information retrieval</td></tr>
           <tr><td>Chess game state</td><td>Session duration only</td><td>Real-time game tracking</td></tr>
           <tr><td>Moderation records (warnings, cases, notes)</td><td>Until cleared or server removed</td><td>Moderation history and accountability</td></tr>
+          <tr><td>Bot profile customization inputs (nickname/avatar)</td><td>Until changed or removed by authorized admins</td><td>Apply <code>/customise_bot_profile</code> settings</td></tr>
+          <tr><td>Transcription routing metadata</td><td>Temporary, removed after delivery</td><td>Deliver transcript to the intended channel or DM</td></tr>
           <tr><td>Music playback history</td><td>Session duration only</td><td>Queue management and playback</td></tr>
         </tbody>
       </table>
@@ -248,8 +248,8 @@
         Users should avoid sharing highly sensitive personal information in bot prompts or file uploads.
         Location searches are passed to third-party mapping services and should not include sensitive addresses
         or personal locations you wish to keep private. URLs submitted for browsing are accessed and may be logged
-        by destination websites. Code submissions are executed in isolated sandboxed environments with restricted
-        network and file system access.
+        by destination websites. Code submissions are processed with runtime guardrails (such as blocked patterns
+        and time limits), but complete isolation is not guaranteed.
       </p>
     </section>
 

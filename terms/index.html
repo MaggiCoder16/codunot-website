@@ -106,7 +106,7 @@
       <h3>Automatic Features (No Commands Required)</h3>
       <ul>
         <li><strong>AI Chat &amp; Conversation:</strong> Mention or reply to Codunot in servers, or message directly in DMs for AI responses. Remembers up to 60 messages per channel/DM, understands Discord reply chains, automatic fallback to secondary model, slang normalization, and humanized responses</li>
-        <li><strong>Web Search Integration:</strong> Automatically triggered via DuckDuckGo when queries need current/real-time information</li>
+        <li><strong>Web Retrieval:</strong> Web content retrieval can occur via explicit <code>/browse</code> and any enabled search integrations</li>
         <li><strong>Image Analysis:</strong> Send images to get AI-powered descriptions and analysis (vote required)</li>
         <li><strong>File Reading:</strong> Upload PDF, DOCX, or TXT files (max 8MB) for automatic content extraction and summaries (vote required)</li>
         <li><strong>URL Content Extraction:</strong> Share links and Codunot will automatically fetch and summarize webpage content (free)</li>
@@ -117,13 +117,14 @@
 
       <h3>Command-Based Features</h3>
       <ul>
-        <li><strong>Mode Commands:</strong> /funmode, /seriousmode, /roastmode, /teachmerizz (online &amp; IRL), /chessmode (all free)</li>
+        <li><strong>Mode Commands:</strong> /funmode, /seriousmode, /roastmode, /teachmerizz online, /teachmerizz irl, /chessmode (<code>/teachmerizz online</code> is free; <code>/teachmerizz irl</code> requires Premium/Gold/Enterprise)</li>
         <li><strong>Creative Generation:</strong> /generate_image, /generate_video, and /generate_tts for text-to-speech with 300+ voices across 60+ languages (vote required)</li>
         <li><strong>Music Playback:</strong> /play [song/URL] with audio filters (Normal, Bass Boost, Nightcore, Slowed, 8D, Treble, Lo-Fi, Vaporwave), /queue, /volume_up, /volume_down, /autoplay, /lyrics. Supports YouTube, SoundCloud, and Spotify via Lavalink (vote required)</li>
         <li><strong>Developer Tools:</strong> /test_code (error reports only, no AI fix calls), /browse [URL] (all free)</li>
         <li><strong>Transcription:</strong> /transcribe for YouTube/Twitch/X/Kick videos max 30 mins (vote required)</li>
         <li><strong>Fun Actions:</strong> /hug, /kiss, /kick, /slap, /wish_goodmorning, /bet, /meme (all free)</li>
         <li><strong>Server Config:</strong> /configure server, /configure channels (server owner only, free)</li>
+        <li><strong>Bot Profile Customization:</strong> /customise_bot_profile (Gold/Enterprise only). Supports server nickname overrides and optional avatar image updates; Discord may apply avatar behavior globally depending on platform handling.</li>
         <li><strong>Natural Language Moderation:</strong> Mention the bot with plain English to perform moderation actions (e.g. "@Codunot timeout @user 10m for spamming")</li>
         <li><strong>Chess:</strong> Full chess engine integration with legal move validation, SAN/UCI support, castling, promotions, en passant, resign detection, and AI hints during games</li>
       </ul>
@@ -131,8 +132,8 @@
       <h3>Free Features (No Vote Required)</h3>
       <p>The following features are completely free with no vote requirements or usage limits:</p>
       <ul>
-        <li>AI chat and conversation (all modes)</li>
-        <li>Web search integration (automatic)</li>
+        <li>AI chat and conversation (except paid-tier mode variants such as <code>/teachmerizz irl</code>)</li>
+        <li>Web retrieval via <code>/browse</code> and enabled search integrations</li>
         <li>URL content extraction and browsing (/browse and automatic)</li>
         <li>Code testing and validation (/test_code, error reporting only, no AI fix calls)</li>
         <li>All fun action commands (/hug, /kiss, /kick, /slap, /wish_goodmorning, /bet, /meme)</li>
@@ -158,7 +159,7 @@
       </ul>
 
       <p>
-        Vote unlock duration, feature availability, and access conditions may be updated as needed.
+        Vote unlock duration, feature availability, deployment configuration, and access conditions may be updated as needed.
         Attempting to bypass vote checks or abuse unlock mechanisms is prohibited and may lead to access termination.
       </p>
     </section>
@@ -175,6 +176,7 @@
         </thead>
         <tbody>
           <tr><td>Tier Upgrade</td><td>Time-based</td><td>Higher limits and expanded feature use</td></tr>
+          <tr><td>Gold/Enterprise Bot Profile Customization</td><td>Included with eligible tier</td><td><code>/customise_bot_profile</code> access (nickname + optional avatar updates)</td></tr>
           <tr><td>Premium Access Window</td><td>Fixed duration</td><td>Enhanced usage for selected period</td></tr>
           <tr><td>Custom/Manual Upgrade</td><td>Case-by-case</td><td>As explicitly agreed with owner/support</td></tr>
         </tbody>
@@ -235,7 +237,7 @@
       <h2>12. Third-Party Services</h2>
       <p>
         Codunot relies on third-party model providers, infrastructure vendors, API processors,
-        location/mapping services (such as Google Maps/Places API), web content sources, and code execution environments.
+        location/mapping services (such as Google Maps/Places API), web content sources, and code execution tooling. Known integrations may include Top.gg, deAPI, Groq, Google AI Studio, Hugging Face, Replicate, Lavalink/Spotify, and yt-dlp ecosystem sources.
         Service quality may be affected by third-party limits, outages, or policy changes.
       </p>
       <p>
@@ -244,8 +246,7 @@
       <p>
         When using location-based features, results are provided by third-party mapping services
         and should be independently verified for accuracy. Web browsing features extract publicly available
-        content and may be subject to website restrictions or access limitations. Code execution occurs in
-        sandboxed environments with security restrictions.
+        content and may be subject to website restrictions or access limitations. Code execution is enforced with runtime guardrails (such as blocked patterns and time limits), but complete isolation is not guaranteed.
       </p>
     </section>
 

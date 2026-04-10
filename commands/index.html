@@ -33,7 +33,7 @@
 
   <main class="container section command-center-main">
     <h1>Command Center</h1>
-    <p class="muted">Complete command reference organized by category.</p>
+    <p class="muted">Browse every command your community can use, organized by category.</p>
 
     <section class="card section">
       <h2>Mode &amp; Personality Commands</h2>
@@ -71,28 +71,32 @@
 
     <section class="card section">
       <h2>Music &amp; Audio</h2>
-      <p class="muted">Voice channel music playback with audio filters. <span class="badge vote">Vote Required</span></p>
+      <p class="muted">Play music in voice channels, manage queue flow, and apply audio filters. <span class="badge vote">Vote Required</span></p>
       <table class="table">
         <thead><tr><th>Command</th><th>What it does</th><th>Type</th></tr></thead>
         <tbody>
-          <tr><td><code>/play [song/URL]</code></td><td>Play music with audio filters (Normal, Bass Boost, Nightcore, Slowed, 8D, Treble, Lo-Fi, Vaporwave). Supports YouTube, SoundCloud, and Spotify via Lavalink.</td><td>Slash</td></tr>
+          <tr><td><code>/play [song/URL]</code></td><td>Search and play a song or playlist in your current voice channel.</td><td>Slash</td></tr>
           <tr><td><code>/queue</code></td><td>View current music queue.</td><td>Slash</td></tr>
-          <tr><td><code>/volume_up</code> / <code>/volume_down</code></td><td>Increase or decrease player volume quickly.</td><td>Slash</td></tr>
+          <tr><td><code>/skip</code> / <code>/stop</code></td><td>Skip the current track or stop playback and disconnect.</td><td>Slash</td></tr>
+          <tr><td><code>/nowplaying</code></td><td>Show the active track with progress status.</td><td>Slash</td></tr>
+          <tr><td><code>/shuffle</code></td><td>Shuffle tracks in the queue.</td><td>Slash</td></tr>
+          <tr><td><code>/volume [0-200]</code></td><td>Set an exact playback volume.</td><td>Slash</td></tr>
+          <tr><td><code>/remove [position]</code></td><td>Remove a queued track by number.</td><td>Slash</td></tr>
           <tr><td><code>/autoplay</code></td><td>Toggle automatic playback when queue ends.</td><td>Slash</td></tr>
           <tr><td><code>/lyrics</code></td><td>Fetch full lyrics for the currently playing track.</td><td>Slash</td></tr>
+          <tr><td><code>/bitrate</code></td><td>Show current music quality tier for your server plan.</td><td>Slash</td></tr>
+          <tr><td><code>/history</code></td><td>Show the most recently played songs in the server.</td><td>Slash</td></tr>
           <tr><td><code>/playlistcreate</code></td><td>Create playlists with multiple songs at once.</td><td>Slash</td></tr>
           <tr><td><code>/playlist</code></td><td>Browse playlists with dropdowns, view tracks, and management actions like play, add, delete, and view.</td><td>Slash</td></tr>
-          <tr><td><code>/loop off</code> / <code>/loop song</code> / <code>/loop queue</code></td><td>Set loop mode to normal playback, repeat the current song, or loop the entire queue.</td><td>Slash</td></tr>
-          <tr><td>Autoplay improvements</td><td>Next tracks load faster (about 1-3 seconds) with duplicate prevention for songs similar to the last five tracks.</td><td>Auto</td></tr>
-          <tr><td>Persistent queues and playlists</td><td>Playlists, queue, and history are saved across bot restarts.</td><td>System</td></tr>
-          <tr><td>Music controls</td><td>Pause/Resume, Skip, Previous, Stop, plus inline 🔉 and 🔊 volume buttons on the player embed.</td><td>Buttons</td></tr>
+          <tr><td><code>/loop off</code> / <code>/loop track</code> / <code>/loop queue</code></td><td>Set loop mode to normal playback, repeat the current song, or loop the entire queue.</td><td>Slash</td></tr>
+          <tr><td><code>/bassboost</code> <code>/nightcore</code> <code>/slow</code> <code>/eightd</code> <code>/treble</code> <code>/lofi</code> <code>/vaporwave</code> <code>/resetfilters</code></td><td>Apply or remove audio filters (vote required).</td><td>Slash</td></tr>
         </tbody>
       </table>
     </section>
 
     <section class="card section" id="moderation-commands">
       <h2>Moderation Suite</h2>
-      <p class="muted">Server moderation, safety automations, case tracking, and advanced Premium/Gold controls.</p>
+      <p class="muted">Keep your server safe with moderation controls, automations, and case tracking.</p>
       <table class="table">
         <thead><tr><th>Command</th><th>What it does</th><th>Access</th></tr></thead>
         <tbody>
@@ -111,6 +115,23 @@
           <tr><td><code>/shadowban add</code> <code>/shadowban remove</code> <code>/shadowban list</code></td><td>Run silent-enforcement workflows and review current shadowban entries.</td><td><span class="badge premium">Premium / Gold / Enterprise</span></td></tr>
           <tr><td><code>/sticky set</code> <code>/sticky clear</code> <code>/sticky list</code></td><td>Manage sticky channel messages with explicit set/clear/list controls.</td><td><span class="badge premium">Premium / Gold / Enterprise</span></td></tr>
           <tr><td><code>@Codunot [mod action]</code></td><td>Natural language moderation — mention the bot with plain English, e.g. "timeout @user 10m for spamming", "ban @user for raiding", "clear 20".</td><td><span class="badge free">Free</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card section" id="ticketing-commands">
+      <h2>Ticketing System</h2>
+      <p class="muted">Run cleaner support workflows with private tickets, queue controls, and staff claim tools.</p>
+      <table class="table">
+        <thead><tr><th>Command / Feature</th><th>What it does</th><th>Access</th></tr></thead>
+        <tbody>
+          <tr><td><code>/ticketing-setup</code></td><td>Launch ticketing wizard to set staff role, ticket panel channel, and logging channel.</td><td><span class="badge free">All tiers</span></td></tr>
+          <tr><td>Open Ticket Button</td><td>Users open one private support ticket at a time from the panel.</td><td><span class="badge free">All tiers</span></td></tr>
+          <tr><td>🔒 Close Ticket</td><td>Staff-only close button that removes the ticket channel after confirmation.</td><td><span class="badge free">All tiers</span></td></tr>
+          <tr><td>⏫ Prioritize this ticket + 📋 Queue</td><td>Move tickets in queue and view current queue positions.</td><td><span class="badge premium">Premium / Gold / Enterprise</span></td></tr>
+          <tr><td>🧑‍✈️ Claim Ticket</td><td>Assign ticket ownership to a specific staff member.</td><td><span class="badge premium">Gold / Enterprise</span></td></tr>
+          <tr><td>Ticket Categories</td><td>Collect category type in the ticket modal for better routing.</td><td><span class="badge premium">Gold / Enterprise</span></td></tr>
+          <tr><td>Custom Requirements Prompt</td><td>Show custom instructions to users before ticket creation.</td><td><span class="badge premium">Enterprise</span></td></tr>
         </tbody>
       </table>
     </section>
@@ -186,7 +207,7 @@
           <tr><td><code>allam-2-7b</code></td><td>Allam 2 7B</td><td>Alternative</td></tr>
           <tr><td><code>qwen/qwen3-32b</code></td><td>Qwen3 32B</td><td>Alternative</td></tr>
           <tr><td><code>llama-3.3-70b-versatile</code></td><td>Llama 3.3 70B Versatile</td><td>Alternative</td></tr>
-          <tr><td><code>meta-llama/llama-4-scout-17b-16e</code></td><td>Llama 4 Scout 17B 16E</td><td>Default</td></tr>
+          <tr><td><code>meta-llama/llama-4-scout-17b-16e-instruct</code></td><td>Llama 4 Scout 17B 16E</td><td>Default</td></tr>
           <tr><td><code>llama-3.1-8b-instant</code></td><td>Llama 3.1 8B Instant</td><td>Alternative</td></tr>
         </tbody>
       </table>
@@ -195,7 +216,7 @@
     <section class="card section">
       <h2>Complete Slash Command Index</h2>
       <p class="muted">This index mirrors the Features tab for one-to-one command coverage.</p>
-      <p><code>/configure server</code>, <code>/configure channels</code>, <code>/shard</code>, <code>/queue</code>, <code>/volume_up</code>, <code>/volume_down</code>, <code>/autoplay</code>, <code>/lyrics</code>, <code>/image_search</code>, <code>/models</code>, <code>/model</code>, <code>/play</code>, <code>/helpc</code>, <code>/funmode</code>, <code>/seriousmode</code>, <code>/roastmode</code>, <code>/teachmerizz</code>, <code>/chessmode</code>, <code>/generate_image</code>, <code>/edit_image</code>, <code>/analyse_image</code>, <code>/merge_image</code>, <code>/generate_video</code>, <code>/generate_tts</code>, <code>/transcribe</code>, <code>/hug</code>, <code>/kiss</code>, <code>/kick</code>, <code>/slap</code>, <code>/wish_goodmorning</code>, <code>/bet</code>, <code>/meme</code>, <code>/test_code</code>, <code>/playlistcreate</code>, <code>/playlist</code>, <code>/loop</code>, <code>/browse</code>, <code>/setup-moderation</code>, <code>/automod</code>, <code>/adaptive-slowmode</code>, <code>/warn</code>, <code>/warns</code>, <code>/clearwarns</code>, <code>/ban</code>, <code>/unban</code>, <code>/modkick</code>, <code>/mute</code>, <code>/unmute</code>, <code>/clear</code>, <code>/slowmode</code>, <code>/lock</code>, <code>/unlock</code>, <code>/userinfo</code>, <code>/case</code>, <code>/tempban</code>, <code>/massban</code>, <code>/modstats</code>, <code>/shadowban add</code>, <code>/shadowban remove</code>, <code>/shadowban list</code>, <code>/sticky set</code>, <code>/sticky clear</code>, <code>/sticky list</code>, <code>/note add</code>, <code>/note view</code>, <code>/note clear</code>.</p>
+      <p><code>/configure server</code>, <code>/configure channels</code>, <code>/shard</code>, <code>/models</code>, <code>/model</code>, <code>/funmode</code>, <code>/seriousmode</code>, <code>/roastmode</code>, <code>/teachmerizz</code>, <code>/chessmode</code>, <code>/helpc</code>, <code>/play</code>, <code>/queue</code>, <code>/skip</code>, <code>/stop</code>, <code>/nowplaying</code>, <code>/shuffle</code>, <code>/loop</code>, <code>/volume</code>, <code>/remove</code>, <code>/autoplay</code>, <code>/lyrics</code>, <code>/bitrate</code>, <code>/history</code>, <code>/bassboost</code>, <code>/nightcore</code>, <code>/slow</code>, <code>/eightd</code>, <code>/treble</code>, <code>/lofi</code>, <code>/vaporwave</code>, <code>/resetfilters</code>, <code>/playlistcreate</code>, <code>/playlist</code>, <code>/generate_image</code>, <code>/edit_image</code>, <code>/analyse_image</code>, <code>/merge_image</code>, <code>/generate_video</code>, <code>/generate_tts</code>, <code>/transcribe</code>, <code>/browse</code>, <code>/image_search</code>, <code>/test_code</code>, <code>/setup-moderation</code>, <code>/automod</code>, <code>/warn</code>, <code>/warns</code>, <code>/clearwarns</code>, <code>/ban</code>, <code>/unban</code>, <code>/modkick</code>, <code>/mute</code>, <code>/unmute</code>, <code>/clear</code>, <code>/clear_all</code>, <code>/slowmode</code>, <code>/lock</code>, <code>/unlock</code>, <code>/userinfo</code>, <code>/case</code>, <code>/ticketing-setup</code>, <code>/tempban</code>, <code>/massban</code>, <code>/modstats</code>, <code>/note add</code>, <code>/note view</code>, <code>/note clear</code>, <code>/shadowban add</code>, <code>/shadowban remove</code>, <code>/shadowban list</code>, <code>/sticky set</code>, <code>/sticky clear</code>, <code>/sticky list</code>, <code>/adaptive-slowmode</code>, <code>/customise_bot_profile</code>.</p>
     </section>
 
   </main>

@@ -32,8 +32,8 @@
   </header>
 
   <main class="container section">
-    <h1>Premium Plans</h1>
-    <p class="muted">Unlock higher limits and expanded features. Contact the owner directly to upgrade.</p>
+    <h1>Plans &amp; Upgrades</h1>
+    <p class="muted">Choose the plan that fits your community, from free essentials to enterprise-grade automation.</p>
 
     <section class="pricing-grid tier-grid" style="margin-top:1.5rem;">
       <article class="pricing-card">
@@ -41,13 +41,13 @@
         <div class="tier-name">🟢 Basic</div>
         <div class="tier-price">$0<span class="period"> / forever</span></div>
         <ul>
-          <li>Core moderation commands: /warn, /warns, /clearwarns, /ban, /unban, /modkick, /mute, /unmute, /clear, /slowmode, /lock, /unlock, /userinfo, /case</li>
-          <li>Playlist limit: 20 tracks per playlist</li>
-          <li>Music quality label: HD</li>
-          <li>Voice bitrate target: 96 kbps</li>
-          <li>Usage limits: 50 messages/day, 7 attachments/day, 30 attachments per rolling 60 days</li>
-          <li>teachmerizz online mode is available, IRL mode locked for paid tiers</li>
-          <li>No effects</li>
+          <li>50 messages per day</li>
+          <li>7 attachments per day</li>
+          <li>30 attachments per 2 months</li>
+          <li>Music quality: Normal quality audio</li>
+          <li>5 playlists per server, up to 20 tracks each</li>
+          <li>Rizz Coach (Online), Chess Mode, and all core chat modes</li>
+          <li>Core moderation + ticket setup included</li>
         </ul>
       </article>
       <article class="pricing-card featured">
@@ -55,55 +55,101 @@
         <div class="tier-name">🔵 Premium <span class="badge premium">Recommended</span></div>
         <div class="tier-price">$10<span class="period"> / 2 months</span></div>
         <ul>
-          <li>Includes everything in Basic, plus paid moderation set: /tempban, /massban, /modstats, /note</li>
-          <li>Shadowban cap: 5 users</li>
-          <li>Sticky message cap: 1 message</li>
-          <li>Playlist limit: 35 tracks</li>
-          <li>Voice bitrate target: 128 kbps</li>
-          <li>Usage limits: unlimited messages/day, 25 attachments/day, 75 attachments per rolling 60 days</li>
-          <li>IRL rizz mode available (/teachmerizz irl), along with rizz mode online and other features</li>
+          <li>Unlimited messages</li>
+          <li>25 attachments per day</li>
+          <li>75 attachments per 2 months</li>
+          <li>Music quality: Good quality audio</li>
+          <li>20 playlists per server, up to 35 tracks each</li>
+          <li>Shadowban slots: 5</li>
+          <li>Sticky messages: 1</li>
+          <li>Rizz Coach (IRL) unlocked</li>
+          <li>Priority ticket queue unlocked</li>
+          <li>Premium moderation tools: <code>/tempban</code>, <code>/massban</code>, <code>/modstats</code>, notes</li>
         </ul>
       </article>
       <article class="pricing-card">
         <span class="tier-badge gold">Gold 🏁</span>
-        <div class="tier-name">🟡 Gold <span class="badge gold"></span></div>
+        <div class="tier-name">🟡 Gold</div>
         <div class="tier-price">$15<span class="period"> / 2 months</span></div>
         <ul>
-          <li>Includes everything in Premium, plus:</li>
-          <li>Shadowban cap: 20 users</li>
-          <li>Sticky message cap: 5 messages</li>
-          <li>Playlist limit: 60 tracks</li>
-          <li>Adaptive slowmode access (/adaptive-slowmode) with default threshold values</li>
-          <li>Voice bitrate: dynamic by server boost/channel cap, up to 384 kbps</li>
-          <li>Usage limits: unlimited messages/day, unlimited attachments/day, 120 attachments per rolling 60 days</li>
+          <li>Unlimited messages</li>
+          <li>Unlimited attachments per day</li>
+          <li>120 attachments per 2 months</li>
+          <li>Music quality: Great quality audio (better than Premium)</li>
+          <li>50 playlists per server, up to 60 tracks each</li>
+          <li>Shadowban slots: 20</li>
+          <li>Sticky messages: 5</li>
+          <li>Ticket claim button + ticket categories unlocked</li>
+          <li>Adaptive slowmode: enable/disable</li>
+          <li>Bot nickname and profile image customization</li>
         </ul>
       </article>
       <article class="pricing-card">
         <span class="tier-badge enterprise">Enterprise</span>
-        <div class="tier-name">💎 Enterprise <span class="badge enterprise"></span></div>
+        <div class="tier-name">💎 Enterprise</div>
         <div class="tier-price">Custom</div>
         <ul>
-          <li>Includes everything in Gold, plus:</li>
-          <li>Shadowban cap: unlimited users</li>
-          <li>Sticky message cap: unlimited messages</li>
-          <li>Playlist limit: unlimited songs</li>
-          <li>Adaptive slowmode with custom thresholds (messages/seconds/slowmode/cooldown) is Enterprise-only</li>
-          <li>Usage limits: unlimited messages/day, unlimited attachments/day, unlimited 60-day attachment cap</li>
-          <li>Supports per-server/channel enterprise override config for custom usage limits</li>
-          <li>Voice bitrate: dynamic by server boost/channel cap, up to 384 kbps</li>
+          <li>Unlimited messages and attachments</li>
+          <li>Unlimited attachment allowance per 2 months</li>
+          <li>Music quality: Best quality audio</li>
+          <li>100 playlists per server with unlimited tracks per playlist</li>
+          <li>Unlimited shadowban + sticky slots</li>
+          <li>Ticket custom requirements prompt</li>
+          <li>Adaptive slowmode with full custom thresholds</li>
+          <li>AI Moderation (opt-in)</li>
+          <li>Ticketing and moderation controls at full capacity</li>
         </ul>
       </article>
     </section>
 
     <hr class="section-glow" />
 
+    <section class="card section">
+      <h2>Tier Comparison</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Basic</th>
+            <th>Premium</th>
+            <th>Gold</th>
+            <th>Enterprise</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Messages/day</td><td>50</td><td>Unlimited</td><td>Unlimited</td><td>Unlimited</td></tr>
+          <tr><td>Attachments/day</td><td>7</td><td>25</td><td>Unlimited</td><td>Unlimited</td></tr>
+          <tr><td>Attachments per 2 months</td><td>30</td><td>75</td><td>120</td><td>Unlimited</td></tr>
+          <tr><td>Music quality</td><td>Normal quality audio</td><td>Good quality audio</td><td>Great quality audio</td><td>Best quality audio</td></tr>
+          <tr><td>Playlist tracks (per playlist)</td><td>20</td><td>35</td><td>60</td><td>Unlimited</td></tr>
+          <tr><td>Playlists (per server)</td><td>5</td><td>20</td><td>50</td><td>100</td></tr>
+          <tr><td>Shadowban slots</td><td>❌</td><td>5</td><td>20</td><td>Unlimited</td></tr>
+          <tr><td>Sticky messages</td><td>❌</td><td>1</td><td>5</td><td>Unlimited</td></tr>
+          <tr><td>Rizz Coach (IRL)</td><td>❌</td><td>✅</td><td>✅</td><td>✅</td></tr>
+          <tr><td>Ticket priority queue</td><td>❌</td><td>✅</td><td>✅</td><td>✅</td></tr>
+          <tr><td>Ticket claim button</td><td>❌</td><td>❌</td><td>✅</td><td>✅</td></tr>
+          <tr><td>Ticket categories</td><td>❌</td><td>❌</td><td>✅</td><td>✅</td></tr>
+          <tr><td>Custom requirements prompt</td><td>❌</td><td>❌</td><td>❌</td><td>✅</td></tr>
+          <tr><td>Adaptive slowmode</td><td>❌</td><td>❌</td><td>Enable / disable</td><td>Full custom controls</td></tr>
+          <tr><td>AI Moderation (opt-in)</td><td>❌</td><td>❌</td><td>❌</td><td>✅</td></tr>
+          <tr><td>Bot nickname &amp; profile image</td><td>❌</td><td>❌</td><td>✅</td><td>✅</td></tr>
+        </tbody>
+      </table>
+    </section>
+
     <section class="card section premium-vote-card">
-      <h2>🗳️ Vote System</h2>
-      <p>Vote on <a href="https://top.gg/bot/1435987186502733878/vote" target="_blank" rel="noopener">Top.gg</a> every 12 hours to unlock all bonus features like image gen, video gen, TTS, and more! Automatically tracks vote status with persistent unlock storage across sessions.</p>
+      <h2>🗳️ Vote to Unlock (Free, Every 12 Hours)</h2>
+      <p>A Top.gg vote unlocks <code>/play</code>, audio filters, image generation, image editing, image analysis, image merging, video generation, text-to-speech, transcription, and file reading for the next 12 hours.</p>
+      <p><a href="https://top.gg/bot/1435987186502733878/vote" target="_blank" rel="noopener">Vote on Top.gg</a></p>
+    </section>
+
+    <section class="card section">
+      <h2>Upgrade &amp; Billing</h2>
+      <p class="muted">Upgrade plans at <a href="https://codunot.app/premium" target="_blank" rel="noopener">codunot.app/premium</a> or contact <strong>@aarav_2022</strong> on Discord for custom enterprise onboarding.</p>
     </section>
 
     <section class="section">
-      <a class="btn primary" href="https://discordapp.com/users/1220934047794987048" target="_blank" rel="noopener">Contact Owner to Upgrade</a>
+      <a class="btn primary" href="https://discordapp.com/users/1220934047794987048" target="_blank" rel="noopener">Contact for Upgrades</a>
     </section>
   </main>
 
@@ -148,7 +194,6 @@
   <script src="../script.js"></script>
 </body>
 </html>
-
 
 
 

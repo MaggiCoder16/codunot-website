@@ -6,17 +6,32 @@
   <title>Codunot - Docs Hub</title>
   <link rel="stylesheet" href="../styles.css" />
 </head>
-<body>
+<body data-page="docs">
+  <header class="nav-wrap">
+    <nav class="nav container">
+      <a class="brand" href="../"><img src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot logo" />Codunot</a>
+      <div class="links">
+        <a href="../">Home</a>
+        <a href="../features/">Features</a>
+        <a class="active" href="../docs/">Docs</a>
+        <a href="../tutorials/">Tutorials</a>
+        <a href="../premium/">Premium</a>
+      </div>
+    </nav>
+  </header>
+
   <main class="container section">
     <a class="btn ghost" href="../">← Back to Home</a>
     <section class="card section">
-      <h1>Documentation Hub</h1>
-      <p class="muted">Read the full command documentation and walkthrough tutorials.</p>
-      <div class="cta-row">
-        <a class="btn primary" href="../commands/">Open Command Docs</a>
-        <a class="btn secondary" href="../tutorials/">Open Tutorials</a>
+      <h1>Codunot Docs Hub</h1>
+      <p class="muted">Browse command documentation and sectioned guides for AI, moderation, ticketing, music, and media workflows.</p>
+      <div class="docs-command-grid">
+        <article class="docs-command-card"><h3>Full Command Documentation</h3><p>All command categories, command parameters, limits, and official links in one long-form page.</p><a class="btn primary" href="../commands/">Open full docs</a></article>
+        <article class="docs-command-card"><h3>Tutorial Library</h3><p>Step-by-step onboarding, moderation, voting, music, ticketing, and tier planning guides.</p><a class="btn secondary" href="../tutorials/">Open tutorials</a></article>
       </div>
     </section>
   </main>
+
+  <script src="../script.js"></script>
 </body>
 </html>

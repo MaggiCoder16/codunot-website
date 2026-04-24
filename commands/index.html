@@ -11,7 +11,7 @@
   <link rel="manifest" href="../site.webmanifest" />
   <link rel="stylesheet" href="../styles.css" />
 </head>
-<body>
+<body data-page="docs">
   <header class="nav-wrap">
     <nav class="nav container">
       <a class="brand" href="../"><img src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot logo" />Codunot</a>
@@ -20,6 +20,9 @@
         <a href="../features/">Features</a>
         <a class="active" href="../commands/">Docs</a>
         <a href="../tutorials/">Tutorials</a>
+        <a href="../stats/">Stats</a>
+        <a href="../reviews/">Reviews</a>
+        <a href="../faq/">FAQ</a>
         <a href="../premium/">Premium</a>
         <a href="../support/">Support</a>
         <a href="../terms/">ToS</a>
@@ -33,16 +36,17 @@
     <aside class="docs-sidebar card">
       <a class="btn ghost" href="../">← Back to Home</a>
       <h3>Codunot Documentation</h3>
-      <p class="muted">Navigation</p>
-      <a href="#introduction">Introduction</a>
+      <p class="muted">Navigate sections</p>
+      <a href="#overview">Overview</a>
       <a href="#official-links">Official Links</a>
-      <a href="#commands">Commands</a>
+      <a href="#personas">AI Personas & Models</a>
+      <a href="#chat-tools">Chat, Utility & Roleplay</a>
       <a href="#media">AI Media & Vision</a>
       <a href="#music">Music System</a>
-      <a href="#moderation">Moderation</a>
-      <a href="#ticketing">Ticketing</a>
+      <a href="#moderation">Moderation & AutoMod</a>
+      <a href="#ticketing">Ticketing & Config</a>
       <a href="#tiers">Tiers & Limits</a>
-      <a href="#voting">Voting System</a>
+      <a href="#voting">Voting Unlocks</a>
       <div class="docs-quick-actions">
         <h4>Quick Actions</h4>
         <a class="btn primary" href="https://discord.com/oauth2/authorize?client_id=1435987186502733878&permissions=277025643520&integration_type=0&scope=applications.commands+bot" target="_blank" rel="noopener">Invite Bot</a>
@@ -52,8 +56,8 @@
     </aside>
 
     <section class="docs-main">
-      <h1 id="introduction">Codunot Documentation</h1>
-      <p class="muted">Everything users, customers, and visitors need to know about Codunot AI commands and features.</p>
+      <h1 id="overview">Codunot Documentation</h1>
+      <p class="muted">Explore every major Codunot command system, setup flow, and feature category from one place.</p>
 
       <article class="card section" id="official-links">
         <h2>Official Links & Resources</h2>
@@ -62,97 +66,98 @@
           <li><strong>Support Server:</strong> <a href="https://discord.gg/GVuFk5gxtW" target="_blank" rel="noopener">https://discord.gg/GVuFk5gxtW</a></li>
           <li><strong>Top.gg Vote:</strong> <a href="https://top.gg/bot/1435987186502733878/vote" target="_blank" rel="noopener">https://top.gg/bot/1435987186502733878/vote</a></li>
           <li><strong>Premium:</strong> <a href="https://codunot.app/premium/" target="_blank" rel="noopener">https://codunot.app/premium/</a></li>
+          <li><strong>Terms:</strong> <a href="https://codunot.app/terms" target="_blank" rel="noopener">https://codunot.app/terms</a></li>
+          <li><strong>Privacy:</strong> <a href="https://codunot.app/privacy/" target="_blank" rel="noopener">https://codunot.app/privacy/</a></li>
         </ul>
       </article>
 
-      <article class="card section" id="commands">
-        <h2>AI Personas, Modes & Models</h2>
+      <article class="card section" id="personas">
+        <h2>1) AI Personas, Modes & Models</h2>
         <div class="docs-command-grid">
-          <div class="docs-command-card"><h4><code>/funmode</code></h4><p>Fun mode (default): playful, witty, and expressive responses.</p></div>
-          <div class="docs-command-card"><h4><code>/seriousmode</code></h4><p>Professional and fact-focused responses for work and study.</p></div>
-          <div class="docs-command-card"><h4><code>/roastmode</code></h4><p>Savage roast mode with high-energy banter.</p></div>
-          <div class="docs-command-card"><h4><code>/teachmerizz online</code></h4><p>Online DM/texting social coach.</p></div>
-          <div class="docs-command-card"><h4><code>/teachmerizz irl</code></h4><p>IRL social coaching (Premium, Gold, Enterprise).</p></div>
-          <div class="docs-command-card"><h4><code>/chessmode</code></h4><p>Play live chess with Codunot (you are White, bot is Black).</p></div>
-          <div class="docs-command-card"><h4><code>/models</code></h4><p>Lists currently available models.</p></div>
-          <div class="docs-command-card"><h4><code>/model model:&lt;choice&gt;</code></h4><p>Switch active model per channel/DM and reset short context memory.</p></div>
+          <div class="docs-command-card"><h4><code>/funmode</code></h4><p>Default personality with playful tone, emojis, and energetic replies.</p></div>
+          <div class="docs-command-card"><h4><code>/seriousmode</code></h4><p>Direct and professional voice for coding, school, and research.</p></div>
+          <div class="docs-command-card"><h4><code>/roastmode</code></h4><p>High-energy roast personality for joking banter.</p></div>
+          <div class="docs-command-card"><h4><code>/teachmerizz online</code></h4><p>Social coaching for DMs and texting scenarios.</p></div>
+          <div class="docs-command-card"><h4><code>/teachmerizz irl</code></h4><p>IRL social coaching for Premium, Gold, and Enterprise tiers.</p></div>
+          <div class="docs-command-card"><h4><code>/chessmode</code></h4><p>Play a live chess match with algebraic notation.</p></div>
+          <div class="docs-command-card"><h4><code>/models</code></h4><p>View currently available AI model options.</p></div>
+          <div class="docs-command-card"><h4><code>/model model:&lt;choice&gt;</code></h4><p>Switch active model per channel/DM and refresh short-term memory context.</p></div>
         </div>
-        <p><strong>Model choices:</strong> Llama 4 Scout 17B (default, required for vision), GPT-OSS-120B, Kimi K2 Instruct, Allam 2 7B, Qwen3 32B, Llama 3.3 70B, Llama 3.1 8B.</p>
+        <p><strong>Model choices:</strong> Llama 4 Scout 17B (default/vision), GPT-OSS-120B, Kimi K2 Instruct, Allam 2 7B, Qwen3 32B, Llama 3.3 70B, and Llama 3.1 8B.</p>
       </article>
 
-      <article class="card section">
-        <h2>General Chat, Tools & Roleplay</h2>
-        <p>Natural chat via mention and DMs, reply-context reading, and file reading for <code>.txt</code>, <code>.pdf</code>, and <code>.docx</code>.</p>
-        <p><strong>Core utility commands:</strong> <code>/helpc</code>, <code>/shard</code>, <code>/browse url:&lt;required&gt;</code>, <code>/test_code</code>, <code>/image_search query:&lt;required&gt;</code>, <code>/customise_bot_profile</code> (Gold and Enterprise).</p>
-        <p><strong>Action commands:</strong> <code>/hug</code>, <code>/kiss</code>, <code>/kick</code>, <code>/slap</code>, <code>/wish_goodmorning</code> (requires <code>target_user</code>), <code>/bet side:&lt;heads|tails&gt;</code>, <code>/meme</code>.</p>
+      <article class="card section" id="chat-tools">
+        <h2>2) General Chat, Utility & Roleplay</h2>
+        <p><strong>Core usage:</strong> mention <code>@Codunot AI</code> in server chat, use DMs directly, reply to a message to include additional context, or upload <code>.txt</code>, <code>.pdf</code>, and <code>.docx</code> files for AI reading.</p>
+        <p><strong>Utility commands:</strong> <code>/helpc</code>, <code>/shard</code>, <code>/browse url:&lt;required&gt;</code>, <code>/test_code</code>, <code>/image_search query:&lt;required&gt;</code>, and <code>/customise_bot_profile</code> (Gold/Enterprise).</p>
+        <p><strong>Action commands:</strong> <code>/hug</code>, <code>/kiss</code>, <code>/kick</code>, <code>/slap</code>, <code>/wish_goodmorning</code>, <code>/bet side:&lt;heads|tails&gt;</code>, and <code>/meme</code>.</p>
       </article>
 
       <article class="card section" id="media">
-        <h2>AI Media & Vision (Vote Required)</h2>
+        <h2>3) AI Media & Vision (Vote Required)</h2>
         <p><strong>Attachment quotas:</strong> Free 7/day, Premium 25/day, Gold/Enterprise unlimited.</p>
         <ul>
-          <li><code>/generate_image prompt:&lt;required&gt;</code> — prompt boosted then rendered 1:1.</li>
-          <li><code>/edit_image image:&lt;required&gt; prompt:&lt;required&gt;</code>.</li>
-          <li><code>/analyse_image image:&lt;required&gt; prompt:&lt;optional&gt;</code> (default model required).</li>
-          <li><code>/merge_image image1 image2</code> (+ optional image3/image4/prompt). Hidden shortcut: upload 2+ images and type “merge”.</li>
-          <li><code>/generate_video prompt:&lt;required&gt;</code> — cinematic video generation.</li>
-          <li><code>/transcribe video_url:&lt;required&gt;</code> — max 30 mins.</li>
-          <li><code>/generate_tts text language voice</code> — 70+ languages.</li>
+          <li><code>/generate_image prompt:&lt;required&gt;</code> — boosted prompt flow for cinematic 1:1 generation.</li>
+          <li><code>/edit_image image:&lt;required&gt; prompt:&lt;required&gt;</code> — transform uploaded images with text instructions.</li>
+          <li><code>/analyse_image image:&lt;required&gt; prompt:&lt;optional&gt;</code> — image Q&amp;A using the default vision-compatible model.</li>
+          <li><code>/merge_image image1 image2 image3? image4? prompt?</code> — blend 2-4 images into one output.</li>
+          <li><code>/generate_video prompt:&lt;required&gt;</code> — AI video generation pipeline.</li>
+          <li><code>/transcribe video_url:&lt;required&gt;</code> — text transcript from supported video sources (up to 30 minutes).</li>
+          <li><code>/generate_tts text language voice</code> — MP3 TTS generation across 70+ languages.</li>
         </ul>
       </article>
 
       <article class="card section" id="music">
-        <h2>Advanced Music System</h2>
-        <p>Powered by 5 load-balanced Lavalink nodes. Tier-based audio quality from 64 kbps to 160 kbps.</p>
-        <p><strong>Playback:</strong> <code>/play</code>, <code>/stop</code>, <code>/skip</code>, <code>/queue</code>, <code>/history</code>, <code>/nowplaying</code>, <code>/volume level:0-200</code>, <code>/remove index</code>, <code>/shuffle</code>, <code>/loop mode:track|queue|off</code>, <code>/autoplay</code>, <code>/lyrics</code>, <code>/bitrate</code>.</p>
-        <p><strong>Filters (vote required):</strong> <code>/bassboost</code>, <code>/nightcore</code>, <code>/slow</code>, <code>/eightd</code>, <code>/treble</code>, <code>/lofi</code>, <code>/vaporwave</code>, <code>/resetfilters</code>.</p>
-        <p><strong>Playlists:</strong> <code>/playlistcreate</code> and <code>/playlist</code>.</p>
+        <h2>4) Advanced Music System</h2>
+        <p>Audio playback runs on redundant Lavalink infrastructure with tier-based quality from 64 kbps to 160 kbps.</p>
+        <p><strong>Playback controls:</strong> <code>/play</code>, <code>/stop</code>, <code>/skip</code>, <code>/queue</code>, <code>/history</code>, <code>/nowplaying</code>, <code>/volume</code>, <code>/remove</code>, <code>/shuffle</code>, <code>/loop</code>, <code>/autoplay</code>, <code>/lyrics</code>, <code>/bitrate</code>.</p>
+        <p><strong>Filters:</strong> <code>/bassboost</code>, <code>/nightcore</code>, <code>/slow</code>, <code>/eightd</code>, <code>/treble</code>, <code>/lofi</code>, <code>/vaporwave</code>, and <code>/resetfilters</code>.</p>
+        <p><strong>Server playlists:</strong> <code>/playlistcreate</code> and <code>/playlist</code> for persistent queue workflows.</p>
       </article>
 
       <article class="card section" id="moderation">
-        <h2>Moderation, AutoMod & Security</h2>
-        <p>Natural moderation is supported (example: <code>@Codunot AI timeout @User 10m for spamming</code>).</p>
-        <p><strong>Free moderation:</strong> <code>/warn</code>, <code>/warns</code>, <code>/clearwarns</code>, <code>/modkick</code>, <code>/ban</code>, <code>/unban</code>, <code>/mute</code>, <code>/unmute</code>, <code>/clear</code>, <code>/clear_all</code>, <code>/lock</code>, <code>/unlock</code>, <code>/slowmode</code>, <code>/userinfo</code>, <code>/case</code>.</p>
-        <p><strong>Premium+ moderation:</strong> <code>/tempban</code>, <code>/massban</code>, <code>/modstats</code>, <code>/note add|view|clear</code>, <code>/shadowban add|remove|list</code>, <code>/sticky set|clear|list</code>.</p>
-        <p><strong>Gold+:</strong> <code>/adaptive-slowmode</code> (Enterprise includes advanced threshold controls).</p>
-        <p><strong>Setup:</strong> <code>/setup-moderation</code> provides a 7-step wizard. <code>/automod action:enable|disable</code> is the quick toggle.</p>
+        <h2>5) Moderation, AutoMod & Security</h2>
+        <p><strong>Natural moderation:</strong> plain-language moderation requests can be issued by mentioning Codunot (for example, timeout/ban/warn flows).</p>
+        <p><strong>Core moderation commands:</strong> <code>/warn</code>, <code>/warns</code>, <code>/clearwarns</code>, <code>/modkick</code>, <code>/ban</code>, <code>/unban</code>, <code>/mute</code>, <code>/unmute</code>, <code>/clear</code>, <code>/clear_all</code>, <code>/lock</code>, <code>/unlock</code>, <code>/slowmode</code>, <code>/userinfo</code>, and <code>/case</code>.</p>
+        <p><strong>Advanced moderation:</strong> <code>/tempban</code>, <code>/massban</code>, <code>/modstats</code>, <code>/note add|view|clear</code>, <code>/shadowban add|remove|list</code>, <code>/sticky set|clear|list</code>, and <code>/adaptive-slowmode</code>.</p>
+        <p><strong>Setup wizard:</strong> <code>/setup-moderation</code> guides bad words, mod logs, mod roles, link policy, anti-spam, anti-raid, and exemption setup.</p>
       </article>
 
       <article class="card section" id="ticketing">
-        <h2>Ticketing System & Server Configuration</h2>
-        <p><code>/configure server</code> allows bot chat in all channels. <code>/configure channels</code> restricts bot chat to specific channels.</p>
-        <p><code>/ticketing-setup</code> provides the full wizard for staff role, panel channel, logs, categories (Gold+), and requirements prompt (Enterprise).</p>
-        <p><strong>In-ticket controls:</strong> Close Ticket (all tiers), Priority Queue + Show Queue (Premium+), Claim Ticket (Gold+).</p>
+        <h2>6) Ticketing & Server Configuration</h2>
+        <p><strong>Bot chat scope:</strong> <code>/configure server</code> enables all channels, while <code>/configure channels</code> limits replies to selected channels.</p>
+        <p><strong>Ticketing wizard:</strong> <code>/ticketing-setup</code> configures staff role access, panel channel, log channel, optional categories, and optional enterprise requirements prompts.</p>
+        <p><strong>In-ticket actions:</strong> close ticket (all tiers), priority queue/show queue (Premium+), and claim ticket (Gold+).</p>
       </article>
 
       <article class="card section" id="tiers">
-        <h2>Monetization, Tiers & Limits</h2>
+        <h2>7) Tier Comparison & Limits</h2>
         <p>Higher tiers include lower-tier features: Gold includes Premium, Enterprise includes Gold.</p>
         <table class="table">
-          <thead><tr><th>Feature</th><th>Free</th><th>Premium</th><th>Gold</th><th>Enterprise</th></tr></thead>
+          <thead><tr><th>Feature</th><th>Basic (Free)</th><th>Premium</th><th>Gold</th><th>Enterprise</th></tr></thead>
           <tbody>
             <tr><td>Daily AI Chat</td><td>50/day</td><td>Unlimited</td><td>Unlimited</td><td>Unlimited</td></tr>
-            <tr><td>Daily Attachments</td><td>7/day</td><td>25/day</td><td>Unlimited</td><td>Unlimited</td></tr>
-            <tr><td>Total Attachments (2 months)</td><td>30</td><td>75</td><td>120</td><td>Unlimited</td></tr>
+            <tr><td>Daily AI Attachments</td><td>7/day</td><td>25/day</td><td>Unlimited</td><td>Unlimited</td></tr>
+            <tr><td>Total Attachments / 2 Months</td><td>30</td><td>75</td><td>120</td><td>Unlimited</td></tr>
             <tr><td>Music Audio Quality</td><td>64 kbps</td><td>90 kbps</td><td>112 kbps</td><td>160 kbps</td></tr>
-            <tr><td>Saved Playlists</td><td>5</td><td>20</td><td>50</td><td>100</td></tr>
+            <tr><td>Saved Playlists per Server</td><td>5</td><td>20</td><td>50</td><td>100</td></tr>
             <tr><td>Tracks per Playlist</td><td>20</td><td>35</td><td>60</td><td>Unlimited</td></tr>
-            <tr><td>Ticketing</td><td>Standard</td><td>+ Priority Queue</td><td>+ Claim + Categories</td><td>+ Custom Requirements</td></tr>
-            <tr><td>Shadowban</td><td>Not included</td><td>Up to 5 users</td><td>Up to 20 users</td><td>Unlimited</td></tr>
-            <tr><td>Sticky Messages</td><td>Not included</td><td>1 channel</td><td>5 channels</td><td>Unlimited</td></tr>
+            <tr><td>Ticketing System</td><td>Standard</td><td>+ Priority Queue</td><td>+ Claim + Categories</td><td>+ Custom Requirements</td></tr>
+            <tr><td>Shadowban</td><td>Not included</td><td>Up to 5 users</td><td>Up to 20 users</td><td>Unlimited users</td></tr>
+            <tr><td>Sticky Messages</td><td>Not included</td><td>1 channel</td><td>5 channels</td><td>Unlimited channels</td></tr>
           </tbody>
         </table>
       </article>
 
       <article class="card section" id="voting">
-        <h2>Top.gg Voting System</h2>
-        <p>When you use locked commands, Codunot shows a Vote button. One vote unlocks media features for 12 hours.</p>
-        <p>Unlocked command set includes: <code>/generate_image</code>, <code>/edit_image</code>, <code>/merge_image</code>, <code>/analyse_image</code>, <code>/generate_video</code>, <code>/generate_tts</code>, <code>/transcribe</code>, <code>/play</code>, and all music filters.</p>
+        <h2>8) Top.gg Voting Unlocks</h2>
+        <p>When a locked command is used, the vote flow unlocks media features for 12 hours after a successful vote.</p>
+        <p>Unlocked set includes <code>/generate_image</code>, <code>/edit_image</code>, <code>/merge_image</code>, <code>/analyse_image</code>, <code>/generate_video</code>, <code>/generate_tts</code>, <code>/transcribe</code>, <code>/play</code>, and music filters.</p>
       </article>
 
       <article class="card section">
-        <h2>Related Guides</h2>
-        <p>Want step-by-step setup walkthroughs? Open the tutorials hub.</p>
+        <h2>Continue with Step-by-Step Guides</h2>
+        <p>Open tutorials for onboarding, moderation rollout, media workflows, and growth setup examples.</p>
         <a class="btn secondary" href="../tutorials/">Open Tutorials</a>
       </article>
     </section>
@@ -175,5 +180,7 @@
       <div class="footer-bottom">&copy; <span id="year"></span> Codunot &mdash; All rights reserved.</div>
     </div>
   </footer>
+
+  <script src="../script.js"></script>
 </body>
 </html>

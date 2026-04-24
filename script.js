@@ -1087,6 +1087,8 @@ function initGlowCursor() {
   if (window.matchMedia('(pointer: coarse)').matches) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
+  document.documentElement.classList.add('cursor-glow-enabled');
+
   const cursor = document.createElement('div');
   cursor.className = 'cursor-glow';
   document.body.appendChild(cursor);

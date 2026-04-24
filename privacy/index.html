@@ -35,7 +35,7 @@
     <h1>Codunot Privacy Policy</h1>
     <section class="card section">
       <p class="muted"><strong>How we handle and protect your information when using our Discord bot and app.</strong></p>
-      <p class="muted"><strong>Last Updated:</strong> March 5, 2026</p>
+      <p class="muted"><strong>Last Updated:</strong> April 24, 2026</p>
     </section>
 
     <section class="card section">
@@ -96,7 +96,7 @@
         The bot retrieves recent messages from the active channel solely to provide conversational context.
       </p>
       <p>
-        We store a limited rolling window of recent channel/DM context (encrypted at rest) to improve reply continuity, and overwrite older context as new messages arrive.
+        We store a runtime context window capped at 10 messages and persisted encrypted memory capped at 15 entries per channel/DM to improve reply continuity. Older entries are overwritten or pruned as new messages arrive.
       </p>
       <p>
         Codunot does not use user messages to train AI models.
@@ -118,15 +118,20 @@
     </section>
 
     <section class="card section">
-      <h2>5. Code Execution Environment</h2>
+      <h2>5. Privileged Discord Intents</h2>
+      <p>Codunot uses Discord privileged intents including <code>message_content</code> and <code>members</code> for core chat behavior and moderation flows.</p>
+    </section>
+
+    <section class="card section">
+      <h2>6. Code Execution Environment</h2>
       <p>
-        The /test_code feature executes user-submitted code with time limits and blocked patterns.
+        The /test_code feature executes user-submitted code with a blocked-pattern filter and a 10-second timeout.
       </p>
       <p>
         It only runs the submitted code and returns error reports (no AI fix calls).
       </p>
       <p>
-        We do not guarantee complete runtime isolation for every submission.
+        This feature has guardrails, but it is not a full sandbox/isolation guarantee for every possible payload.
       </p>
       <p>
         No submitted code persists beyond its execution session.
@@ -134,7 +139,7 @@
     </section>
 
     <section class="card section">
-      <h2>6. Music Playback</h2>
+      <h2>7. Music Playback</h2>
       <p>
         Codunot streams audio temporarily for playback within Discord voice channels.
         Music sources include YouTube, SoundCloud, and Spotify via Lavalink.
@@ -145,7 +150,7 @@
     </section>
 
     <section class="card section">
-      <h2>7. Why We Use This Information</h2>
+      <h2>8. Why We Use This Information</h2>
       <p>We process information to:</p>
       <ul>
         <li>Provide bot replies and requested outputs.</li>
@@ -166,7 +171,7 @@
     </section>
 
     <section class="card section">
-      <h2>8. OAuth and App Authorization</h2>
+      <h2>9. OAuth and App Authorization</h2>
       <p>
         When you authorize Codunot through Discord OAuth, Discord returns authorization data to the configured redirect page.
         Codunot uses this flow only to complete app authorization and update the website UI state.
@@ -177,7 +182,7 @@
     </section>
 
     <section class="card section">
-      <h2>9. Third-Party Processors and APIs</h2>
+      <h2>10. Third-Party Processors and APIs</h2>
       <p>
         Codunot relies on third-party infrastructure and model providers to deliver features.
         Depending on your request, relevant prompt/media data may be sent to those processors.
@@ -198,7 +203,7 @@
     </section>
 
     <section class="card section">
-      <h2>10. Information Sharing</h2>
+      <h2>11. Information Sharing</h2>
       <p>We do not sell personal information. We may share limited information only when necessary:</p>
       <ul>
         <li>With processors required to run requested bot features.</li>
@@ -209,7 +214,24 @@
     </section>
 
     <section class="card section">
-      <h2>11. Data Retention</h2>
+      <h2>12. Encryption Scope by Datastore</h2>
+      <p>The table below describes what is encrypted by app logic versus not encrypted by app logic.</p>
+      <table class="table">
+        <thead><tr><th>Datastore</th><th>Encrypted by app logic?</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Memory data</td><td>Yes (Fernet helpers)</td><td>Encrypted in code.</td></tr>
+          <tr><td>Moderation data</td><td>Yes (Fernet helpers)</td><td>Encrypted in code.</td></tr>
+          <tr><td>Playlists</td><td>Yes (Fernet helpers)</td><td>Encrypted in code.</td></tr>
+          <tr><td>Vote unlock file</td><td>Yes (Fernet helpers)</td><td>Encrypted in code.</td></tr>
+          <tr><td>top.gg votes datastore</td><td>No</td><td>Not encrypted by app logic.</td></tr>
+          <tr><td>chat configuration datastore</td><td>No</td><td>Not encrypted by app logic.</td></tr>
+          <tr><td>usage database</td><td>No</td><td>Not encrypted by app logic unless disk-level encryption is applied externally.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card section">
+      <h2>13. Data Retention</h2>
       <p>
         Retention depends on data type and operational need. Some data is short-lived, while some configuration or usage records
         may persist until removed, reset, or no longer required.
@@ -220,7 +242,7 @@
         </thead>
         <tbody>
           <tr><td>Conversation context (messages/timestamps/mode/model)</td><td>Limited rolling window per channel/DM; older entries overwritten</td><td>Reply continuity</td></tr>
-          <tr><td>Usage counters, attachment history, and tier data</td><td>Daily + rolling windows / operational duration</td><td>Limit enforcement and abuse prevention</td></tr>
+          <tr><td>Usage counters, attachment history, and tier data</td><td>Daily counters are separate; attachment rolling-window logic is 60 days and pruned by timestamp</td><td>Limit enforcement and abuse prevention</td></tr>
           <tr><td>Vote unlock timestamps</td><td>Short-term, tied to unlock duration windows</td><td>Feature access gating</td></tr>
           <tr><td>Guild/channel configuration and chat scope settings</td><td>Until changed or removed</td><td>Server setup behavior</td></tr>
           <tr><td>Operational logs and errors</td><td>Limited operational period</td><td>Monitoring, debugging, security</td></tr>
@@ -232,14 +254,14 @@
           <tr><td>Chess game state</td><td>Session duration only</td><td>Real-time game tracking</td></tr>
           <tr><td>Moderation records (warnings, cases, notes)</td><td>Until cleared or server removed</td><td>Moderation history and accountability</td></tr>
           <tr><td>Bot profile customization inputs (nickname/avatar)</td><td>Until changed or removed by authorized admins</td><td>Apply <code>/customise_bot_profile</code> settings</td></tr>
-          <tr><td>Transcription routing metadata</td><td>Temporary, removed after delivery</td><td>Deliver transcript to the intended channel or DM</td></tr>
+          <tr><td>Transcription routing metadata</td><td>Temporary in-memory routing metadata, removed with pop after delivery attempt</td><td>Deliver transcript to the intended channel or DM</td></tr>
           <tr><td>Music playback history</td><td>Session duration only</td><td>Queue management and playback</td></tr>
         </tbody>
       </table>
     </section>
 
     <section class="card section">
-      <h2>12. Security</h2>
+      <h2>14. Security</h2>
       <p>
         We use reasonable technical and organizational safeguards to protect information.
         However, no internet system is fully risk-free, and no transmission/storage method is 100% secure.
@@ -254,7 +276,7 @@
     </section>
 
     <section class="card section">
-      <h2>13. Children's Privacy</h2>
+      <h2>15. Children's Privacy</h2>
       <p>
         Codunot is not intended for users below the minimum digital age required by applicable law and platform policies.
         If you believe personal data from a child was provided improperly, contact us so we can review and handle the request.
@@ -262,7 +284,7 @@
     </section>
 
     <section class="card section">
-      <h2>14. International Data Processing</h2>
+      <h2>16. International Data Processing</h2>
       <p>
         Because Codunot uses global cloud infrastructure and API processors, data may be processed in multiple jurisdictions.
         By using Codunot, you acknowledge this cross-border processing where legally permitted.
@@ -270,7 +292,7 @@
     </section>
 
     <section class="card section">
-      <h2>15. Your Rights</h2>
+      <h2>17. Your Rights</h2>
       <p>Depending on your region, you may have rights to:</p>
       <ul>
         <li>Request access to information associated with your use.</li>
@@ -288,7 +310,7 @@
     </section>
 
     <section class="card section">
-      <h2>16. Data Deletion Requests</h2>
+      <h2>18. Data Deletion Requests</h2>
       <p>
         You may request deletion of eligible data through our support contact channels.
         Some records may be retained where required for legal, security, anti-abuse, or accounting obligations.
@@ -296,7 +318,7 @@
     </section>
 
     <section class="card section">
-      <h2>17. Premium and Payments</h2>
+      <h2>19. Premium and Payments</h2>
       <p>
         If premium access is provided, limited transaction and entitlement records may be processed for support,
         fraud prevention, and account/tier management.
@@ -307,7 +329,7 @@
     </section>
 
     <section class="card section">
-      <h2>18. Changes to This Policy</h2>
+      <h2>20. Changes to This Policy</h2>
       <p>
         We may update this Privacy Policy at any time. Updates become effective when posted on this page.
         Continued use of Codunot after updates means you accept the revised policy.
@@ -315,14 +337,14 @@
     </section>
 
     <section class="card section">
-      <h2>19. Operator</h2>
+      <h2>21. Operator</h2>
       <p>
         Codunot is developed and operated by the independent developer known as MaggiCoder.
       </p>
     </section>
 
     <section class="card section">
-      <h2>20. Contact Us</h2>
+      <h2>22. Contact Us</h2>
       <p>
         For privacy questions, legal concerns, or data requests, contact us through the Support page.
       </p>

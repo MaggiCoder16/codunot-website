@@ -4,18 +4,91 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Codunot - Tutorials</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="../assets/icons/favicon-192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/icons/apple-touch-icon.png" />
+  <link rel="manifest" href="../site.webmanifest" />
   <link rel="stylesheet" href="../styles.css" />
 </head>
-<body>
+<body data-page="tutorials">
+  <header class="nav-wrap">
+    <nav class="nav container">
+      <a class="brand" href="../"><img src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot logo" />Codunot</a>
+      <div class="links">
+        <a href="../">Home</a>
+        <a href="../features/">Features</a>
+        <a href="../commands/">Docs</a>
+        <a class="active" href="../tutorials/">Tutorials</a>
+        <a href="../stats/">Stats</a>
+        <a href="../reviews/">Reviews</a>
+        <a href="../faq/">FAQ</a>
+        <a href="../premium/">Premium</a>
+        <a href="../support/">Support</a>
+        <a href="../terms/">ToS</a>
+        <a href="../privacy/">Privacy Policy</a>
+        <a class="login-btn" href="https://discord.com/oauth2/authorize?client_id=1435987186502733878&integration_type=1&scope=applications.commands" target="_blank" rel="noopener">Authorize App</a>
+      </div>
+    </nav>
+  </header>
+
   <main class="container section">
     <a class="btn ghost" href="../">← Back to Home</a>
     <h1>Codunot Tutorials</h1>
-    <p class="muted">Step-by-step guides for setup, moderation, AI features, and growth workflows.</p>
-    <div class="docs-command-grid">
-      <article class="docs-command-card"><h3>How to get started with Codunot</h3><p>Invite, configure channels, choose your mode, and run first commands.</p><a class="btn secondary" href="./get-started/">Read guide</a></article>
-      <article class="docs-command-card"><h3>How to start using moderation tools</h3><p>Configure AutoMod, warnings, timeout flow, and anti-raid in minutes.</p><a class="btn secondary" href="./moderation/">Read guide</a></article>
-      <article class="docs-command-card"><h3>How voting unlocks premium media</h3><p>Learn vote-gated commands, unlock windows, and quota behavior.</p><a class="btn secondary" href="./voting/">Read guide</a></article>
-    </div>
+    <p class="muted">Step-by-step walkthroughs for setup, moderation, media unlocks, ticketing, and scaling a community with Codunot.</p>
+
+    <section class="docs-command-grid">
+      <article class="docs-command-card">
+        <h3>How to get started with Codunot</h3>
+        <p>Invite setup, channel scope, mode selection, and your first command checklist.</p>
+        <a class="btn secondary" href="./get-started/">Read guide</a>
+      </article>
+      <article class="docs-command-card">
+        <h3>How to launch moderation tools</h3>
+        <p>AutoMod wizard, warns, anti-spam, anti-raid, and team workflows.</p>
+        <a class="btn secondary" href="./moderation/">Read guide</a>
+      </article>
+      <article class="docs-command-card">
+        <h3>How voting unlocks media features</h3>
+        <p>Top.gg unlock windows, vote-gated commands, and attachment quota behavior.</p>
+        <a class="btn secondary" href="./voting/">Read guide</a>
+      </article>
+      <article class="docs-command-card">
+        <h3>How to run music sessions smoothly</h3>
+        <p>Queue hygiene, filters, loop/autoplay strategy, and playlist management.</p>
+        <a class="btn secondary" href="./music-workflow/">Read guide</a>
+      </article>
+      <article class="docs-command-card">
+        <h3>How to launch ticketing in one day</h3>
+        <p>Panel setup, staff assignment, logging channels, and resolution flow.</p>
+        <a class="btn secondary" href="./ticketing-setup/">Read guide</a>
+      </article>
+      <article class="docs-command-card">
+        <h3>How to pick the right paid tier</h3>
+        <p>Match Premium, Gold, or Enterprise to your traffic, media usage, and moderation needs.</p>
+        <a class="btn secondary" href="./tier-planning/">Read guide</a>
+      </article>
+    </section>
   </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-col">
+          <a class="footer-brand" href="../">
+            <img src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot logo" />
+            Codunot
+          </a>
+          <p class="muted" style="font-size:.85rem;margin:.35rem 0 0;">AI that lives inside Discord.</p>
+        </div>
+        <div class="footer-col"><h4>Product</h4><a href="../features/">Features</a><a href="../commands/">Docs</a><a href="../tutorials/">Tutorials</a><a href="../premium/">Premium</a></div>
+        <div class="footer-col"><h4>Resources</h4><a href="../faq/">FAQ</a><a href="../reviews/">Reviews</a><a href="../support/">Support</a></div>
+        <div class="footer-col"><h4>Legal</h4><a href="../terms/">Terms of Service</a><a href="../privacy/">Privacy Policy</a></div>
+      </div>
+      <div class="footer-bottom">&copy; <span id="year"></span> Codunot &mdash; All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
 </body>
 </html>

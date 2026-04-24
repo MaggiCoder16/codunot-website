@@ -64,17 +64,17 @@ summary {
   cursor: pointer;
 }
 @media (pointer:fine) {
-  html,
-  body,
-  a,
-  button,
-  .btn,
-  .tile,
-  .card,
-  .hero-card,
-  .feature-row,
-  .community-card,
-  summary {
+  html.cursor-glow-enabled,
+  html.cursor-glow-enabled body,
+  html.cursor-glow-enabled a,
+  html.cursor-glow-enabled button,
+  html.cursor-glow-enabled .btn,
+  html.cursor-glow-enabled .tile,
+  html.cursor-glow-enabled .card,
+  html.cursor-glow-enabled .hero-card,
+  html.cursor-glow-enabled .feature-row,
+  html.cursor-glow-enabled .community-card,
+  html.cursor-glow-enabled summary {
     cursor: none;
   }
 }

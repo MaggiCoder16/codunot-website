@@ -2,14 +2,14 @@
   {
     "id": "1263574235599867946",
     "name": "Phantom Hub +",
-    "members": 1786,
+    "members": 1788,
     "icon": "https://cdn.discordapp.com/icons/1263574235599867946/a9c8264b05a5c2a7b4a7d0d2ce469fd7.png?size=1024",
     "invite": "https://discord.gg/3NWvgveBCD"
   },
   {
     "id": "1267799660307939369",
     "name": "SassGuard Support",
-    "members": 553,
+    "members": 555,
     "icon": "https://cdn.discordapp.com/icons/1267799660307939369/a_50678ed8a1a38a40c91785220e8bda9d.gif?size=1024",
     "invite": "https://discord.gg/NS6CVq6wNs"
   },
@@ -23,7 +23,7 @@
   {
     "id": "1367769710074134548",
     "name": "BE | Elite",
-    "members": 293,
+    "members": 295,
     "icon": "https://cdn.discordapp.com/icons/1367769710074134548/3983e677d24e39e54170a94b81f01585.png?size=1024",
     "invite": "https://discord.gg/j4Am2Am5Dz"
   },
@@ -102,7 +102,7 @@
     "name": "The Rift ⚡",
     "members": 59,
     "icon": "https://cdn.discordapp.com/icons/1417189378006188197/91c57751218435d0027c020cff9607d8.png?size=1024",
-    "invite": "https://discord.gg/N25AAJGVv5"
+    "invite": "https://discord.gg/dUSseKq2VA"
   },
   {
     "id": "1477612335345701049",
@@ -161,6 +161,13 @@
     "invite": "https://discord.gg/ttvF846rVT"
   },
   {
+    "id": "1377108708290728016",
+    "name": "Bot Testing Tournament(BTT)",
+    "members": 39,
+    "icon": "https://cdn.discordapp.com/icons/1377108708290728016/73268d6d4e8a511e0ba9c1820660f3f1.png?size=1024",
+    "invite": "https://discord.gg/Eh3BT7d2Ax"
+  },
+  {
     "id": "1368573339542622288",
     "name": "World Fronts Server",
     "members": 38,
@@ -170,16 +177,9 @@
   {
     "id": "1498404077196021921",
     "name": "V.I.P ONLY",
-    "members": 36,
+    "members": 35,
     "icon": "https://cdn.discordapp.com/icons/1498404077196021921/405eb19e5b5fe9e1ac444a3d2085e6b5.png?size=1024",
     "invite": "https://discord.gg/2WW8ZNnQzW"
-  },
-  {
-    "id": "1377108708290728016",
-    "name": "Bot Testing Tournament(BTT)",
-    "members": 35,
-    "icon": "https://cdn.discordapp.com/icons/1377108708290728016/73268d6d4e8a511e0ba9c1820660f3f1.png?size=1024",
-    "invite": "https://discord.gg/Eh3BT7d2Ax"
   },
   {
     "id": "1295858882337439764",
@@ -238,6 +238,13 @@
     "invite": "https://discord.gg/qAZYqx2kJm"
   },
   {
+    "id": "1387291163203076168",
+    "name": "Malas Decisiones",
+    "members": 26,
+    "icon": "https://cdn.discordapp.com/icons/1387291163203076168/3b940e9c001570ed270a61df4e5464bd.png?size=1024",
+    "invite": "https://discord.gg/NRqXxQtqbZ"
+  },
+  {
     "id": "1465062825624863005",
     "name": "Ian's Tiktok Fam",
     "members": 25,
@@ -257,12 +264,5 @@
     "members": 25,
     "icon": "https://cdn.discordapp.com/icons/1472907825943679050/56bef0e66aa59504bab08a334b7d730b.png?size=1024",
     "invite": "https://discord.gg/CMdxUgUfnS"
-  },
-  {
-    "id": "1387291163203076168",
-    "name": "Malas Decisiones",
-    "members": 25,
-    "icon": "https://cdn.discordapp.com/icons/1387291163203076168/3b940e9c001570ed270a61df4e5464bd.png?size=1024",
-    "invite": "https://discord.gg/NRqXxQtqbZ"
   }
 ]

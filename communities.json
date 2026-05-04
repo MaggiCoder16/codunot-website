@@ -2,7 +2,7 @@
   {
     "id": "1263574235599867946",
     "name": "Phantom Hub +",
-    "members": 1806,
+    "members": 1805,
     "icon": "https://cdn.discordapp.com/icons/1263574235599867946/a9c8264b05a5c2a7b4a7d0d2ce469fd7.png?size=1024",
     "invite": "https://discord.gg/3NWvgveBCD"
   },
@@ -23,9 +23,16 @@
   {
     "id": "1367769710074134548",
     "name": "BE | Elite",
-    "members": 299,
+    "members": 304,
     "icon": "https://cdn.discordapp.com/icons/1367769710074134548/3983e677d24e39e54170a94b81f01585.png?size=1024",
     "invite": "https://discord.gg/j4Am2Am5Dz"
+  },
+  {
+    "id": "1129433598253084826",
+    "name": "Aegis Global Defense | AGD©",
+    "members": 144,
+    "icon": "https://cdn.discordapp.com/icons/1129433598253084826/a_a9f6947b6419d92b33ac01364fed2edd.gif?size=1024",
+    "invite": "https://discord.gg/2ftcc9NaXn"
   },
   {
     "id": "1412059339551805480",
@@ -33,13 +40,6 @@
     "members": 143,
     "icon": "https://cdn.discordapp.com/icons/1412059339551805480/bf059472ed91ac17fca0495bde7ec2c2.png?size=1024",
     "invite": "https://discord.gg/26HgBqcWuK"
-  },
-  {
-    "id": "1129433598253084826",
-    "name": "Aegis Global Defense | AGD©",
-    "members": 143,
-    "icon": "https://cdn.discordapp.com/icons/1129433598253084826/a_a9f6947b6419d92b33ac01364fed2edd.gif?size=1024",
-    "invite": "https://discord.gg/2ftcc9NaXn"
   },
   {
     "id": "1450594591345475840",
@@ -58,7 +58,7 @@
   {
     "id": "1491363612034334738",
     "name": "!şækurä¡",
-    "members": 84,
+    "members": 85,
     "icon": "https://cdn.discordapp.com/icons/1491363612034334738/9386f46f062424fdb58124c40459dbf4.png?size=1024",
     "invite": "https://discord.gg/f6uQkNtqVb"
   },
@@ -91,18 +91,18 @@
     "invite": "https://discord.gg/6m8gR9j7Yj"
   },
   {
+    "id": "1417189378006188197",
+    "name": "The Rift ⚡",
+    "members": 60,
+    "icon": "https://cdn.discordapp.com/icons/1417189378006188197/91c57751218435d0027c020cff9607d8.png?size=1024",
+    "invite": "https://discord.gg/dUSseKq2VA"
+  },
+  {
     "id": "1466822035249299629",
     "name": "Girls And Femboys",
     "members": 59,
     "icon": "https://cdn.discordapp.com/icons/1466822035249299629/02b2f08eca58ca1d678fbc183a1c6a23.png?size=1024",
     "invite": "https://discord.gg/n5pw9UGgA2"
-  },
-  {
-    "id": "1417189378006188197",
-    "name": "The Rift ⚡",
-    "members": 59,
-    "icon": "https://cdn.discordapp.com/icons/1417189378006188197/91c57751218435d0027c020cff9607d8.png?size=1024",
-    "invite": "https://discord.gg/dUSseKq2VA"
   },
   {
     "id": "1477612335345701049",
@@ -126,6 +126,13 @@
     "invite": "https://discord.gg/gpdCAYmDbp"
   },
   {
+    "id": "1470038794274209815",
+    "name": "Codunot Support",
+    "members": 46,
+    "icon": "https://cdn.discordapp.com/icons/1470038794274209815/b868f1849bb2994b625c7c56a4441738.png?size=1024",
+    "invite": "https://discord.gg/aR4J6Da7V2"
+  },
+  {
     "id": "1458016515394764862",
     "name": "Honey Bee",
     "members": 45,
@@ -138,13 +145,6 @@
     "members": 45,
     "icon": "https://cdn.discordapp.com/icons/1445523892138410152/e0e65740c952ad623b18b8e54f866655.png?size=1024",
     "invite": "https://discord.gg/RxJpsPCMXS"
-  },
-  {
-    "id": "1470038794274209815",
-    "name": "Codunot Support",
-    "members": 45,
-    "icon": "https://cdn.discordapp.com/icons/1470038794274209815/b868f1849bb2994b625c7c56a4441738.png?size=1024",
-    "invite": "https://discord.gg/aR4J6Da7V2"
   },
   {
     "id": "1251701994448490547",

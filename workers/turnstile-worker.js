@@ -259,8 +259,9 @@ export default {
         const topic = (params.get('topic') || '').trim();
         const serverId = (params.get('server_id') || '').trim();
         const discordUsername = (params.get('discord_username') || '').trim();
+        const discordUserId = (params.get('discord_user_id') || '').trim();
         const message = (params.get('message') || '').trim();
-        if (!name || !email || !message) {
+        if (!name || !email || !discordUserId || !message) {
           return jsonResponse({ ok: false, error: 'Please complete all required fields.' }, 400, {
             'Access-Control-Allow-Origin': allowOrigin
           });
@@ -280,7 +281,7 @@ export default {
           { name: 'Topic', value: truncate(topic || '-'), inline: true },
           { name: 'Server ID', value: truncate(serverId || '-'), inline: true },
           { name: 'Discord Username', value: truncate(discordUsername || '-'), inline: true },
-          { name: 'Discord User ID', value: truncate(discordUserId || 'N/A'), inline: true }, 
+          { name: 'Discord User ID', value: truncate(discordUserId), inline: true },
           { name: 'Message', value: truncate(message, 1800), inline: false }
         ];
 

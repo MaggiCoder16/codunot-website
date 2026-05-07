@@ -76,9 +76,10 @@ async function handleSupportSubmission(req, res) {
 
     const name = params.get('name') || '';
     const email = params.get('email') || '';
+    const discordUserId = params.get('discord_user_id') || '';
     const message = params.get('message') || '';
 
-    if (!name.trim() || !email.trim() || !message.trim()) {
+    if (!name.trim() || !email.trim() || !discordUserId.trim() || !message.trim()) {
       sendJson(res, 400, { ok: false, error: 'Please complete all required fields.' });
       return;
     }

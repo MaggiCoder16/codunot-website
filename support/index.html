@@ -71,6 +71,10 @@
               <input type="text" name="discord_username" placeholder="Username or @handle" />
             </label>
             <label class="field field--full">
+              <span>Discord User ID</span>
+              <input type="text" name="discord_user_id" inputmode="numeric" required placeholder="123456789012345678" />
+            </label>
+            <label class="field field--full">
               <span>Message</span>
               <textarea name="message" rows="5" required placeholder="Tell us what is happening and how we can help."></textarea>
             </label>
@@ -78,7 +82,7 @@
 
           <div class="turnstile-wrap">
             <div class="cf-turnstile" data-sitekey="0x4AAAAAACrej254Ib5zTeox"></div>
-            <p class="muted form-note">Protected by Cloudflare Turnstile to keep the queue clean.</p>
+            <p class="muted form-note">Protected by Cloudflare Turnstile.</p>
           </div>
 
           <div class="form-actions">
@@ -155,7 +159,6 @@
   <script src="../script.js"></script>
 </body>
 </html>
-
 
 
 

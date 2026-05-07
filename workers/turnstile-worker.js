@@ -280,6 +280,7 @@ export default {
           { name: 'Topic', value: truncate(topic || '-'), inline: true },
           { name: 'Server ID', value: truncate(serverId || '-'), inline: true },
           { name: 'Discord Username', value: truncate(discordUsername || '-'), inline: true },
+          { name: 'Discord User ID', value: truncate(discordUserId || 'N/A'), inline: true }, 
           { name: 'Message', value: truncate(message, 1800), inline: false }
         ];
 

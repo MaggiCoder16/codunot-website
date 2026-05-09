@@ -19,8 +19,6 @@
         <a href="../">Home</a>
         <a class="active" href="../features/">Features</a>
         <a href="../commands/">Docs</a><a href="../tutorials/">Tutorials</a>
-        <a href="../stats/">Stats</a>
-        <a href="../reviews/">Reviews</a>
         <a href="../faq/">FAQ</a>
         <a href="../premium/">Premium</a>
         <a href="../support/">Support</a>
@@ -34,53 +32,7 @@
   <main class="container section">
     <section class="card section">
       <h1>Everything You Can Do With Codunot</h1>
-      <p class="muted">Explore what your members and staff can use, organized by feature category, tier access, and usage limits.</p>
-      <div class="feature-badges">
-        <span class="badge free">All tiers include core chat + commands</span>
-        <span class="badge vote">Some media features require Top.gg vote</span>
-        <span class="badge premium">Premium / Gold / Enterprise unlock extra moderation tools</span>
-      </div>
-    </section>
-
-    <section class="card section">
-      <h2>Plans &amp; Limits</h2>
-      <p class="muted">Attachment actions count toward both your daily attachment allowance and your 2-month attachment allowance.</p>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Tier</th>
-            <th>Daily messages</th>
-            <th>Daily attachments</th>
-            <th>Rolling 2-month attachment cap</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Basic</strong></td>
-            <td>50</td>
-            <td>7</td>
-            <td>30</td>
-          </tr>
-          <tr>
-            <td><strong>Premium</strong></td>
-            <td>Unlimited</td>
-            <td>25</td>
-            <td>75</td>
-          </tr>
-          <tr>
-            <td><strong>Gold</strong></td>
-            <td>Unlimited</td>
-            <td>Unlimited</td>
-            <td>120</td>
-          </tr>
-          <tr>
-            <td><strong>Enterprise</strong></td>
-            <td>Unlimited</td>
-            <td>Unlimited</td>
-            <td>Unlimited</td>
-          </tr>
-        </tbody>
-      </table>
+      <p class="muted">Real, user-facing command and feature breakdown for chat, moderation, ticketing, media, and music.</p>
     </section>
 
     <section class="card section">
@@ -98,17 +50,14 @@
         <li><code>openai/gpt-oss-120b</code></li>
         <li>CoduChat V1</li>
         <li>CoduChat V2</li>
-        <li><code>allam-2-7b</code></li>
         <li><code>qwen/qwen3-32b</code></li>
         <li><code>llama-3.3-70b-versatile</code></li>
         <li><code>meta-llama/llama-4-scout-17b-16e-instruct</code> (default)</li>
-        <li><code>llama-3.1-8b-instant</code></li>
       </ul>
     </section>
 
     <section class="card section">
       <h2>Generation &amp; Media Tools</h2>
-      <p class="muted">These commands are available to all tiers, but generation/media features may require a Top.gg vote first.</p>
       <table class="table">
         <thead><tr><th>Command</th><th>What you can do</th><th>Availability</th></tr></thead>
         <tbody>
@@ -126,7 +75,6 @@
 
     <section class="card section">
       <h2>Music, Queue, and Playlists</h2>
-      <p class="muted">All music commands require being in a voice channel. <code>/play</code> and audio filters require a Top.gg vote.</p>
       <table class="table">
         <thead><tr><th>Command</th><th>What you can do</th><th>Availability</th></tr></thead>
         <tbody>
@@ -155,16 +103,15 @@
 
       <h3>Music quality by tier</h3>
       <ul>
-        <li><strong>Basic:</strong> Normal Quality Audio</li>
-        <li><strong>Premium:</strong> Good Quality Audio</li>
-        <li><strong>Gold:</strong> Great Quality Audio</li>
-        <li><strong>Enterprise:</strong> Best Quality Audio</li>
+        <li><strong>Basic:</strong> 64 kbps</li>
+        <li><strong>Premium:</strong> 90 kbps</li>
+        <li><strong>Gold:</strong> 160 kbps</li>
+        <li><strong>Enterprise:</strong> 320 kbps</li>
       </ul>
     </section>
 
     <section class="card section">
       <h2>Moderation &amp; Safety</h2>
-      <p class="muted">Protect your server with moderation tools that scale from starter communities to large teams.</p>
 
       <h3>Core moderation (all tiers)</h3>
       <ul>
@@ -196,14 +143,16 @@
 
     <section class="card section">
       <h2>Ticketing</h2>
-      <p class="muted">Set up structured support channels with private ticket threads and staff workflows.</p>
-      <ul>
-        <li><code>/ticketing-setup</code> launches the guided setup for staff role, panel channel, and logging channel.</li>
-        <li>All tiers: open ticket button, private ticket channel, and close-ticket controls.</li>
-        <li>Premium, Gold, and Enterprise: priority queue and queue visibility buttons.</li>
-        <li>Gold and Enterprise: claim ticket button and custom ticket categories.</li>
-        <li>Enterprise: custom requirements prompt before opening a ticket.</li>
-      </ul>
+      <table class="table">
+        <thead><tr><th>Feature</th><th>Details</th><th>Availability</th></tr></thead>
+        <tbody>
+          <tr><td><code>/ticketing-setup</code></td><td>Guided setup for staff role, panel channel, and logs channel.</td><td>All tiers</td></tr>
+          <tr><td>Open / close flow</td><td>Open ticket button, private ticket channels, and close controls.</td><td>All tiers</td></tr>
+          <tr><td>Queue controls</td><td>Priority queue and queue visibility actions.</td><td>Premium / Gold / Enterprise</td></tr>
+          <tr><td>Claim + categories</td><td>Claim ticket button and custom ticket categories.</td><td>Gold / Enterprise</td></tr>
+          <tr><td>Requirements prompt</td><td>Custom pre-ticket requirements before opening.</td><td>Enterprise</td></tr>
+        </tbody>
+      </table>
     </section>
 
     <section class="card section">
@@ -235,19 +184,16 @@
       <h2>Prefix Commands Also Available</h2>
       <p class="muted">You can also use these classic prefix commands:</p>
       <ul>
-        <li><code>!codunot_help</code></li>
-        <li><code>!helpC</code></li>
         <li><code>!funmode</code></li>
         <li><code>!seriousmode</code></li>
         <li><code>!roastmode</code></li>
-        <li><code>!teachmerizz</code></li>
+        <li><code>!teachmerizz [online/irl]</code></li>
         <li><code>!chessmode</code></li>
       </ul>
     </section>
 
     <section class="card section">
       <h2>Complete Slash Command Index</h2>
-      <p class="muted">Everything currently exposed to users in slash command format:</p>
       <p><code>/configure server</code>, <code>/configure channels</code>, <code>/shard</code>, <code>/models</code>, <code>/model</code>, <code>/funmode</code>, <code>/seriousmode</code>, <code>/roastmode</code>, <code>/teachmerizz</code>, <code>/chessmode</code>, <code>/helpc</code>, <code>/play</code>, <code>/queue</code>, <code>/skip</code>, <code>/stop</code>, <code>/nowplaying</code>, <code>/shuffle</code>, <code>/loop</code>, <code>/volume</code>, <code>/remove</code>, <code>/autoplay</code>, <code>/lyrics</code>, <code>/history</code>, <code>/bassboost</code>, <code>/nightcore</code>, <code>/slow</code>, <code>/eightd</code>, <code>/treble</code>, <code>/lofi</code>, <code>/vaporwave</code>, <code>/resetfilters</code>, <code>/playlistcreate</code>, <code>/playlist</code>, <code>/generate_image</code>, <code>/edit_image</code>, <code>/analyse_image</code>, <code>/merge_image</code>, <code>/generate_video</code>, <code>/generate_tts</code>, <code>/transcribe</code>, <code>/browse</code>, <code>/image_search</code>, <code>/test_code</code>, <code>/setup-moderation</code>, <code>/automod</code>, <code>/warn</code>, <code>/warns</code>, <code>/clearwarns</code>, <code>/ban</code>, <code>/unban</code>, <code>/modkick</code>, <code>/mute</code>, <code>/unmute</code>, <code>/clear</code>, <code>/clear_all</code>, <code>/slowmode</code>, <code>/lock</code>, <code>/unlock</code>, <code>/userinfo</code>, <code>/case</code>, <code>/ticketing-setup</code>, <code>/tempban</code>, <code>/massban</code>, <code>/modstats</code>, <code>/note add</code>, <code>/note view</code>, <code>/note clear</code>, <code>/shadowban add</code>, <code>/shadowban remove</code>, <code>/shadowban list</code>, <code>/sticky set</code>, <code>/sticky clear</code>, <code>/sticky list</code>, <code>/adaptive-slowmode</code>, <code>/customise_bot_profile</code>.</p>
       <p class="muted">For the full command-by-command breakdown, open the <a href="../commands/">Docs</a> or <a href="../tutorials/">Tutorials</a> pages.</p>
     </section>
@@ -268,12 +214,10 @@
           <a href="../features/">Features</a>
           <a href="../commands/">Commands</a>
           <a href="../premium/">Premium</a>
-          <a href="../stats/">Stats</a>
         </div>
         <div class="footer-col">
           <h4>Resources</h4>
           <a href="../faq/">FAQ</a>
-          <a href="../reviews/">Reviews</a>
           <a href="../roadmap/">Roadmap</a>
           <a href="../support/">Support</a>
         </div>

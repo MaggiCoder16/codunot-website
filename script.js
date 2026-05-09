@@ -22,8 +22,6 @@ const SECONDARY_NAV_LINKS = [
   'faq/',
   'premium/',
   'support/',
-  'stats/',
-  'reviews/',
   'terms/',
   'privacy/'
 ];
@@ -269,6 +267,12 @@ function initNavLayout() {
   links.appendChild(utilityGroup);
 }
 
+function removeDeprecatedLinks() {
+  document.querySelectorAll('a[href*="stats/"], a[href*="reviews/"]').forEach((link) => {
+    link.remove();
+  });
+}
+
 function initRevealAnimations() {
   const targets = document.querySelectorAll('main > .section, .section > .tile, .feature-row, .hero-card, .community-card');
   if (!targets.length) return;
@@ -278,7 +282,13 @@ function initRevealAnimations() {
     return;
   }
 
-  targets.forEach((el) => el.classList.add('reveal'));
+  targets.forEach((el, index) => {
+    el.classList.add('reveal');
+    if (el instanceof HTMLElement) {
+      // Staggered entrance keeps motion smooth and modern.
+      el.style.transitionDelay = `${Math.min(index * 25, 240)}ms`;
+    }
+  });
 
   const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach((entry) => {
@@ -289,6 +299,51 @@ function initRevealAnimations() {
   }, { threshold: 0.12 });
 
   targets.forEach((el) => observer.observe(el));
+}
+
+function initScrollProgress() {
+  if (!document.body) return;
+  const progress = document.createElement('div');
+  progress.className = 'scroll-progress';
+  document.body.appendChild(progress);
+
+  function updateProgress() {
+    const maxScroll = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
+    const value = Math.min(window.scrollY / maxScroll, 1);
+    progress.style.transform = `scaleX(${value})`;
+  }
+
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  window.addEventListener('resize', updateProgress);
+  updateProgress();
+}
+
+function initDepthMotion() {
+  if (window.matchMedia('(pointer: coarse)').matches) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const depthTargets = document.querySelectorAll('.hero-main-content, .hero-card--clicker');
+  if (!depthTargets.length) return;
+
+  depthTargets.forEach((target) => {
+    function resetTilt() {
+      target.style.setProperty('--tilt-x', '0deg');
+      target.style.setProperty('--tilt-y', '0deg');
+    }
+
+    target.addEventListener('mousemove', (event) => {
+      const rect = target.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width;
+      const y = (event.clientY - rect.top) / rect.height;
+      const tiltY = (x - 0.5) * 4;
+      const tiltX = (0.5 - y) * 3;
+      target.style.setProperty('--tilt-x', `${tiltX.toFixed(2)}deg`);
+      target.style.setProperty('--tilt-y', `${tiltY.toFixed(2)}deg`);
+    });
+
+    target.addEventListener('mouseleave', resetTilt);
+    resetTilt();
+  });
 }
 
 function formatCommunityMembers(value) {
@@ -1263,6 +1318,7 @@ setPageData();
 initGenerationNav();
 initSecondaryNav();
 initNavLayout();
+removeDeprecatedLinks();
 initHamburgerMenu();
 initAutoHideHeader();
 initAuthButtons();
@@ -1275,4 +1331,6 @@ initPreferencesCenter();
 initGateSessionCleanup();
 initGlowCursor();
 initRevealAnimations();
+initScrollProgress();
+initDepthMotion();
 initSupportForm();

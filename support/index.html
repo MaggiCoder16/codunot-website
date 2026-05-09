@@ -20,8 +20,6 @@
         <a href="../">Home</a>
         <a href="../features/">Features</a>
         <a href="../commands/">Docs</a><a href="../tutorials/">Tutorials</a>
-        <a href="../stats/">Stats</a>
-        <a href="../reviews/">Reviews</a>
         <a href="../faq/">FAQ</a>
         <a href="../premium/">Premium</a>
         <a class="active" href="../support/">Support</a>
@@ -71,6 +69,10 @@
               <input type="text" name="discord_username" placeholder="Username or @handle" />
             </label>
             <label class="field field--full">
+              <span>Discord User ID</span>
+              <input type="text" name="discord_user_id" inputmode="numeric" required placeholder="123456789012345678" />
+            </label>
+            <label class="field field--full">
               <span>Message</span>
               <textarea name="message" rows="5" required placeholder="Tell us what is happening and how we can help."></textarea>
             </label>
@@ -78,7 +80,6 @@
 
           <div class="turnstile-wrap">
             <div class="cf-turnstile" data-sitekey="0x4AAAAAACrej254Ib5zTeox"></div>
-            <p class="muted form-note">Protected by Cloudflare Turnstile to keep the queue clean.</p>
           </div>
 
           <div class="form-actions">
@@ -129,12 +130,10 @@
           <a href="../features/">Features</a>
           <a href="../commands/">Commands</a>
           <a href="../premium/">Premium</a>
-          <a href="../stats/">Stats</a>
         </div>
         <div class="footer-col">
           <h4>Resources</h4>
           <a href="../faq/">FAQ</a>
-          <a href="../reviews/">Reviews</a>
           <a href="../roadmap/">Roadmap</a>
           <a href="../support/">Support</a>
         </div>

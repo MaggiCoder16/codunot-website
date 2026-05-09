@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Codunot - Documentation</title>
+  <title>Codunot - Commands</title>
   <link rel="icon" type="image/x-icon" href="../favicon.ico" />
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="../assets/icons/favicon-192.png" />
@@ -20,8 +20,6 @@
         <a href="../features/">Features</a>
         <a class="active" href="../commands/">Docs</a>
         <a href="../tutorials/">Tutorials</a>
-        <a href="../stats/">Stats</a>
-        <a href="../reviews/">Reviews</a>
         <a href="../faq/">FAQ</a>
         <a href="../premium/">Premium</a>
         <a href="../support/">Support</a>
@@ -32,135 +30,36 @@
     </nav>
   </header>
 
-  <main class="container section docs-layout">
-    <aside class="docs-sidebar card">
-      <a class="btn ghost" href="../">← Back to Home</a>
-      <h3>Codunot Documentation</h3>
-      <p class="muted">Navigate sections</p>
-      <a href="#overview">Overview</a>
-      <a href="#official-links">Official Links</a>
-      <a href="#personas">AI Personas & Models</a>
-      <a href="#chat-tools">Chat, Utility & Roleplay</a>
-      <a href="#media">AI Media & Vision</a>
-      <a href="#music">Music System</a>
-      <a href="#moderation">Moderation & AutoMod</a>
-      <a href="#ticketing">Ticketing & Config</a>
-      <a href="#tiers">Tiers & Limits</a>
-      <a href="#voting">Voting Unlocks</a>
-      <div class="docs-quick-actions">
-        <h4>Quick Actions</h4>
-        <a class="btn primary" href="https://discord.com/oauth2/authorize?client_id=1435987186502733878&permissions=1101671820438&integration_type=0&scope=bot+applications.commands" target="_blank" rel="noopener">Invite Bot</a>
-        <a class="btn secondary" href="../premium/">Premium</a>
-        <a class="btn ghost" href="../tutorials/">Browse Tutorials</a>
+  <main class="container section">
+    <section class="card section">
+      <h1>Command Documentation</h1>
+      <p class="muted">All slash and prefix commands, with what they do and their parameters.</p>
+      <p class="muted">Use <code>/helpc</code> inside Discord to quickly check your server tier and upgrade links.</p>
+      <table class="table" style="margin-bottom:1rem;">
+        <thead>
+          <tr><th>Feature</th><th>Basic</th><th>Premium+</th><th>Gold+</th><th>Enterprise</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Daily AI messages</td><td>50</td><td>Unlimited</td><td>Unlimited</td><td>Unlimited</td></tr>
+          <tr><td>Daily attachments</td><td>7</td><td>25</td><td>Unlimited</td><td>Unlimited</td></tr>
+          <tr><td>2-month media total</td><td>30</td><td>75</td><td>120</td><td>Unlimited</td></tr>
+          <tr><td>Music bitrate</td><td>64 kbps</td><td>90 kbps</td><td>160 kbps</td><td>320 kbps</td></tr>
+          <tr><td>Max tracks per playlist</td><td>20</td><td>35</td><td>60</td><td>Unlimited</td></tr>
+          <tr><td>Max playlists per user in that guild</td><td>5</td><td>20</td><td>50</td><td>100</td></tr>
+        </tbody>
+      </table>
+      <p class="muted">Premium+ means Premium and above. Gold+ means Gold and above.</p>
+      <p class="muted">Free users can unlock media and music extras for 12 hours after voting on Top.gg.</p>
+      <div class="field field--full" style="max-width: 520px;">
+        <span>Search commands</span>
+        <input id="command-search" type="text" placeholder="Search by command, purpose, or parameter..." />
       </div>
-    </aside>
+      <p class="muted" id="commands-count" style="margin-top:.7rem;">Showing 0 commands</p>
+    </section>
 
-    <section class="docs-main">
-      <h1 id="overview">Codunot Documentation</h1>
-      <p class="muted">Explore every major Codunot command system, setup flow, and feature category from one place.</p>
-
-      <article class="card section" id="official-links">
-        <h2>Official Links & Resources</h2>
-        <ul>
-          <li><strong>Website:</strong> <a href="https://codunot.app" target="_blank" rel="noopener">https://codunot.app</a></li>
-          <li><strong>Support Server:</strong> <a href="https://discord.gg/GVuFk5gxtW" target="_blank" rel="noopener">https://discord.gg/GVuFk5gxtW</a></li>
-          <li><strong>Top.gg Vote:</strong> <a href="https://top.gg/bot/1435987186502733878/vote" target="_blank" rel="noopener">https://top.gg/bot/1435987186502733878/vote</a></li>
-          <li><strong>Premium:</strong> <a href="https://codunot.app/premium/" target="_blank" rel="noopener">https://codunot.app/premium/</a></li>
-          <li><strong>Terms:</strong> <a href="https://codunot.app/terms" target="_blank" rel="noopener">https://codunot.app/terms</a></li>
-          <li><strong>Privacy:</strong> <a href="https://codunot.app/privacy/" target="_blank" rel="noopener">https://codunot.app/privacy/</a></li>
-        </ul>
-      </article>
-
-      <article class="card section" id="personas">
-        <h2>1) AI Personas, Modes & Models</h2>
-        <div class="docs-command-grid">
-          <div class="docs-command-card"><h4><code>/funmode</code></h4><p>Default personality with playful tone, emojis, and energetic replies.</p></div>
-          <div class="docs-command-card"><h4><code>/seriousmode</code></h4><p>Direct and professional voice for coding, school, and research.</p></div>
-          <div class="docs-command-card"><h4><code>/roastmode</code></h4><p>High-energy roast personality for joking banter.</p></div>
-          <div class="docs-command-card"><h4><code>/teachmerizz online</code></h4><p>Social coaching for DMs and texting scenarios.</p></div>
-          <div class="docs-command-card"><h4><code>/teachmerizz irl</code></h4><p>IRL social coaching for Premium, Gold, and Enterprise tiers.</p></div>
-          <div class="docs-command-card"><h4><code>/chessmode</code></h4><p>Play a live chess match with algebraic notation.</p></div>
-          <div class="docs-command-card"><h4><code>/models</code></h4><p>View currently available AI model options.</p></div>
-          <div class="docs-command-card"><h4><code>/model model:&lt;choice&gt;</code></h4><p>Switch active model per channel/DM and refresh short-term memory context.</p></div>
-        </div>
-        <p><strong>Model choices:</strong> Llama 4 Scout 17B (default/vision), GPT-OSS-120B, CoduChat V1, CoduChat V2, Allam 2 7B, Qwen3 32B, Llama 3.3 70B, and Llama 3.1 8B.</p>
-      </article>
-
-      <article class="card section" id="chat-tools">
-        <h2>2) General Chat, Utility & Roleplay</h2>
-        <p><strong>Core usage:</strong> mention <code>@Codunot AI</code> in server chat, use DMs directly, reply to a message to include additional context, or upload <code>.txt</code>, <code>.pdf</code>, and <code>.docx</code> files for AI reading.</p>
-        <p><strong>Utility commands:</strong> <code>/helpc</code>, <code>/shard</code>, <code>/browse url:&lt;required&gt;</code>, <code>/test_code</code>, <code>/image_search query:&lt;required&gt;</code>, and <code>/customise_bot_profile</code> (Gold/Enterprise).</p>
-        <p><strong>Action commands:</strong> <code>/hug</code>, <code>/kiss</code>, <code>/kick</code>, <code>/slap</code>, <code>/wish_goodmorning</code>, <code>/bet side:&lt;heads|tails&gt;</code>, and <code>/meme</code>.</p>
-      </article>
-
-      <article class="card section" id="media">
-        <h2>3) AI Media & Vision (Vote Required)</h2>
-        <p><strong>Attachment quotas:</strong> Free 7/day, Premium 25/day, Gold/Enterprise unlimited.</p>
-        <ul>
-          <li><code>/generate_image prompt:&lt;required&gt;</code> — boosted prompt flow for cinematic 1:1 generation.</li>
-          <li><code>/edit_image image:&lt;required&gt; prompt:&lt;required&gt;</code> — transform uploaded images with text instructions.</li>
-          <li><code>/analyse_image image:&lt;required&gt; prompt:&lt;optional&gt;</code> — image Q&amp;A using the default vision-compatible model.</li>
-          <li><code>/merge_image image1 image2 image3? image4? prompt?</code> — blend 2-4 images into one output.</li>
-          <li><code>/generate_video prompt:&lt;required&gt;</code> — AI video generation pipeline.</li>
-          <li><code>/transcribe video_url:&lt;required&gt;</code> — text transcript from supported video sources (up to 30 minutes).</li>
-          <li><code>/generate_tts text language voice</code> — MP3 TTS generation across 70+ languages.</li>
-        </ul>
-      </article>
-
-      <article class="card section" id="music">
-        <h2>4) Advanced Music System</h2>
-        <p>Audio playback runs on redundant Lavalink infrastructure with tier-based audio quality optimized for each plan.</p>
-        <p><strong>Playback controls:</strong> <code>/play</code>, <code>/stop</code>, <code>/skip</code>, <code>/queue</code>, <code>/history</code>, <code>/nowplaying</code>, <code>/volume</code>, <code>/remove</code>, <code>/shuffle</code>, <code>/loop</code>, <code>/autoplay</code>, <code>/lyrics</code>.</p>
-        <p><strong>Filters:</strong> <code>/bassboost</code>, <code>/nightcore</code>, <code>/slow</code>, <code>/eightd</code>, <code>/treble</code>, <code>/lofi</code>, <code>/vaporwave</code>, and <code>/resetfilters</code>.</p>
-        <p><strong>Server playlists:</strong> <code>/playlistcreate</code> and <code>/playlist</code> for persistent queue workflows.</p>
-      <p><strong>Music quality by tier:</strong> Basic: Normal Quality Audio · Premium: Good Quality Audio · Gold: Great Quality Audio · Enterprise: Best Quality Audio.</p>
-      </article>
-
-      <article class="card section" id="moderation">
-        <h2>5) Moderation, AutoMod & Security</h2>
-        <p><strong>Natural moderation:</strong> plain-language moderation requests can be issued by mentioning Codunot (for example, timeout/ban/warn flows).</p>
-        <p><strong>Core moderation commands:</strong> <code>/warn</code>, <code>/warns</code>, <code>/clearwarns</code>, <code>/modkick</code>, <code>/ban</code>, <code>/unban</code>, <code>/mute</code>, <code>/unmute</code>, <code>/clear</code>, <code>/clear_all</code>, <code>/lock</code>, <code>/unlock</code>, <code>/slowmode</code>, <code>/userinfo</code>, and <code>/case</code>.</p>
-        <p><strong>Advanced moderation:</strong> <code>/tempban</code>, <code>/massban</code>, <code>/modstats</code>, <code>/note add|view|clear</code>, <code>/shadowban add|remove|list</code>, <code>/sticky set|clear|list</code>, and <code>/adaptive-slowmode</code>.</p>
-        <p><strong>Setup wizard:</strong> <code>/setup-moderation</code> guides bad words, mod logs, mod roles, link policy, anti-spam, anti-raid, and exemption setup.</p>
-      </article>
-
-      <article class="card section" id="ticketing">
-        <h2>6) Ticketing & Server Configuration</h2>
-        <p><strong>Bot chat scope:</strong> <code>/configure server</code> enables all channels, while <code>/configure channels</code> limits replies to selected channels.</p>
-        <p><strong>Ticketing wizard:</strong> <code>/ticketing-setup</code> configures staff role access, panel channel, log channel, optional categories, and optional enterprise requirements prompts.</p>
-        <p><strong>In-ticket actions:</strong> close ticket (all tiers), priority queue/show queue (Premium+), and claim ticket (Gold+).</p>
-      </article>
-
-      <article class="card section" id="tiers">
-        <h2>7) Tier Comparison & Limits</h2>
-        <p>Higher tiers include lower-tier features: Gold includes Premium, Enterprise includes Gold.</p>
-        <table class="table">
-          <thead><tr><th>Feature</th><th>Basic (Free)</th><th>Premium</th><th>Gold</th><th>Enterprise</th></tr></thead>
-          <tbody>
-            <tr><td>Daily AI Chat</td><td>50/day</td><td>Unlimited</td><td>Unlimited</td><td>Unlimited</td></tr>
-            <tr><td>Daily AI Attachments</td><td>7/day</td><td>25/day</td><td>Unlimited</td><td>Unlimited</td></tr>
-            <tr><td>Total Attachments / 2 Months</td><td>30</td><td>75</td><td>120</td><td>Unlimited</td></tr>
-            <tr><td>Music Audio Quality</td><td>Normal Quality Audio</td><td>Good Quality Audio</td><td>Great Quality Audio</td><td>Best Quality Audio</td></tr>
-            <tr><td>Saved Playlists per Server</td><td>5</td><td>20</td><td>50</td><td>100</td></tr>
-            <tr><td>Tracks per Playlist</td><td>20</td><td>35</td><td>60</td><td>Unlimited</td></tr>
-            <tr><td>Ticketing System</td><td>Standard</td><td>+ Priority Queue</td><td>+ Claim + Categories</td><td>+ Custom Requirements</td></tr>
-            <tr><td>Shadowban</td><td>Not included</td><td>Up to 5 users</td><td>Up to 20 users</td><td>Unlimited users</td></tr>
-            <tr><td>Sticky Messages</td><td>Not included</td><td>1 channel</td><td>5 channels</td><td>Unlimited channels</td></tr>
-          </tbody>
-        </table>
-      </article>
-
-      <article class="card section" id="voting">
-        <h2>8) Top.gg Voting Unlocks</h2>
-        <p>When a locked command is used, the vote flow unlocks media features for 12 hours after a successful vote.</p>
-        <p>Unlocked set includes <code>/generate_image</code>, <code>/edit_image</code>, <code>/merge_image</code>, <code>/analyse_image</code>, <code>/generate_video</code>, <code>/generate_tts</code>, <code>/transcribe</code>, <code>/play</code>, and music filters.</p>
-      </article>
-
-      <article class="card section">
-        <h2>Continue with Step-by-Step Guides</h2>
-        <p>Open tutorials for onboarding, moderation rollout, media workflows, and growth setup examples.</p>
-        <a class="btn secondary" href="../tutorials/">Open Tutorials</a>
-      </article>
+    <section class="section">
+      <div id="commands-grid" class="grid-3"></div>
+      <div class="cta-row" id="commands-pagination"></div>
     </section>
   </main>
 
@@ -175,13 +74,158 @@
           <p class="muted" style="font-size:.85rem;margin:.35rem 0 0;">AI that lives inside Discord.</p>
         </div>
         <div class="footer-col"><h4>Product</h4><a href="../features/">Features</a><a href="../commands/">Docs</a><a href="../tutorials/">Tutorials</a><a href="../premium/">Premium</a></div>
-        <div class="footer-col"><h4>Resources</h4><a href="../faq/">FAQ</a><a href="../reviews/">Reviews</a><a href="../support/">Support</a></div>
+        <div class="footer-col"><h4>Resources</h4><a href="../faq/">FAQ</a><a href="../support/">Support</a></div>
         <div class="footer-col"><h4>Legal</h4><a href="../terms/">Terms of Service</a><a href="../privacy/">Privacy Policy</a></div>
       </div>
       <div class="footer-bottom">&copy; <span id="year"></span> Codunot &mdash; All rights reserved.</div>
     </div>
   </footer>
 
+  <script>
+    const COMMANDS = [
+      { cmd: "/configure server", type: "slash", what: "Allow bot chat in all channels.", params: "none" },
+      { cmd: "/configure channels", type: "slash", what: "Restrict bot chat to selected channels.", params: "none" },
+      { cmd: "/shard", type: "slash", what: "View shard and bot connection info.", params: "none" },
+      { cmd: "/models", type: "slash", what: "Show available AI models.", params: "none" },
+      { cmd: "/model", type: "slash", what: "Switch AI model for current channel/DM.", params: "model (required)" },
+      { cmd: "/funmode", type: "slash", what: "Switch to fun personality.", params: "none" },
+      { cmd: "/seriousmode", type: "slash", what: "Switch to serious personality.", params: "none" },
+      { cmd: "/roastmode", type: "slash", what: "Switch to roast personality.", params: "none" },
+      { cmd: "/teachmerizz", type: "slash", what: "Get social coaching guidance.", params: "mode: online|irl (required)" },
+      { cmd: "/chessmode", type: "slash", what: "Play chess with Codunot.", params: "none" },
+      { cmd: "/helpc", type: "slash", what: "Open help and command info.", params: "none" },
+      { cmd: "/play", type: "slash", what: "Play a track or playlist in voice.", params: "query/url (required)" },
+      { cmd: "/queue", type: "slash", what: "Show music queue.", params: "none" },
+      { cmd: "/skip", type: "slash", what: "Skip current track.", params: "none" },
+      { cmd: "/stop", type: "slash", what: "Stop playback and clear queue.", params: "none" },
+      { cmd: "/nowplaying", type: "slash", what: "Show current track details.", params: "none" },
+      { cmd: "/shuffle", type: "slash", what: "Shuffle current queue.", params: "none" },
+      { cmd: "/loop", type: "slash", what: "Set loop mode.", params: "mode (required)" },
+      { cmd: "/volume", type: "slash", what: "Set playback volume.", params: "level 0-200 (required)" },
+      { cmd: "/remove", type: "slash", what: "Remove a queue item by position.", params: "position (required)" },
+      { cmd: "/autoplay", type: "slash", what: "Toggle autoplay behavior.", params: "none" },
+      { cmd: "/lyrics", type: "slash", what: "Fetch lyrics for current track.", params: "none" },
+      { cmd: "/history", type: "slash", what: "Show recently played tracks.", params: "none" },
+      { cmd: "/bassboost", type: "slash", what: "Enable bassboost filter.", params: "none" },
+      { cmd: "/nightcore", type: "slash", what: "Enable nightcore filter.", params: "none" },
+      { cmd: "/slow", type: "slash", what: "Enable slow filter.", params: "none" },
+      { cmd: "/eightd", type: "slash", what: "Enable 8D filter.", params: "none" },
+      { cmd: "/treble", type: "slash", what: "Enable treble filter.", params: "none" },
+      { cmd: "/lofi", type: "slash", what: "Enable lofi filter.", params: "none" },
+      { cmd: "/vaporwave", type: "slash", what: "Enable vaporwave filter.", params: "none" },
+      { cmd: "/resetfilters", type: "slash", what: "Reset all audio filters.", params: "none" },
+      { cmd: "/playlistcreate", type: "slash", what: "Create a playlist.", params: "name (required)" },
+      { cmd: "/playlist", type: "slash", what: "Manage and play playlists.", params: "action/name (varies)" },
+      { cmd: "/generate_image", type: "slash", what: "Generate image from prompt.", params: "prompt (required)" },
+      { cmd: "/edit_image", type: "slash", what: "Edit uploaded image using prompt.", params: "image, prompt (required)" },
+      { cmd: "/analyse_image", type: "slash", what: "Analyze uploaded image.", params: "image (required), prompt (optional)" },
+      { cmd: "/merge_image", type: "slash", what: "Merge multiple uploaded images.", params: "image1, image2 (required), image3/4 (optional), prompt (optional)" },
+      { cmd: "/generate_video", type: "slash", what: "Generate short video from prompt.", params: "prompt (required)" },
+      { cmd: "/generate_tts", type: "slash", what: "Convert text to speech.", params: "text (required), language/voice (optional)" },
+      { cmd: "/transcribe", type: "slash", what: "Transcribe supported video links.", params: "video_url (required)" },
+      { cmd: "/browse", type: "slash", what: "Read content from a URL.", params: "url (required)" },
+      { cmd: "/image_search", type: "slash", what: "Search for images.", params: "query (required)" },
+      { cmd: "/test_code", type: "slash", what: "Test code snippets safely.", params: "code/language (required)" },
+      { cmd: "/hug", type: "slash", what: "Send a hug interaction.", params: "user (optional)" },
+      { cmd: "/kiss", type: "slash", what: "Send a kiss interaction.", params: "user (optional)" },
+      { cmd: "/kick", type: "slash", what: "Send a playful kick interaction.", params: "user (optional)" },
+      { cmd: "/slap", type: "slash", what: "Send a playful slap interaction.", params: "user (optional)" },
+      { cmd: "/wish_goodmorning", type: "slash", what: "Send a good morning wish.", params: "user (optional)" },
+      { cmd: "/bet", type: "slash", what: "Run a coin flip bet.", params: "side: heads|tails (required)" },
+      { cmd: "/meme", type: "slash", what: "Get a random meme.", params: "none" },
+      { cmd: "/setup-moderation", type: "slash", what: "Launch moderation setup wizard.", params: "none" },
+      { cmd: "/automod", type: "slash", what: "Configure automod behavior.", params: "subcommand/options" },
+      { cmd: "/warn", type: "slash", what: "Warn a member.", params: "user (required), reason (optional)" },
+      { cmd: "/warns", type: "slash", what: "View warning history.", params: "user (required)" },
+      { cmd: "/clearwarns", type: "slash", what: "Clear warnings for a user.", params: "user (required)" },
+      { cmd: "/ban", type: "slash", what: "Ban a member.", params: "user (required), reason (optional)" },
+      { cmd: "/unban", type: "slash", what: "Unban a member.", params: "user_id (required)" },
+      { cmd: "/modkick", type: "slash", what: "Kick a member.", params: "user (required), reason (optional)" },
+      { cmd: "/mute", type: "slash", what: "Mute a member.", params: "user (required), duration (optional)" },
+      { cmd: "/unmute", type: "slash", what: "Unmute a member.", params: "user (required)" },
+      { cmd: "/clear", type: "slash", what: "Bulk-delete messages.", params: "count (required)" },
+      { cmd: "/clear_all", type: "slash", what: "Clear all messages in scope.", params: "confirmation (required)" },
+      { cmd: "/slowmode", type: "slash", what: "Set channel slowmode.", params: "seconds (required)" },
+      { cmd: "/lock", type: "slash", what: "Lock a channel.", params: "none" },
+      { cmd: "/unlock", type: "slash", what: "Unlock a channel.", params: "none" },
+      { cmd: "/userinfo", type: "slash", what: "View user moderation profile.", params: "user (required)" },
+      { cmd: "/case", type: "slash", what: "View moderation case details.", params: "case_id (required)" },
+      { cmd: "/ticketing-setup", type: "slash", what: "Configure ticketing system.", params: "none" },
+      { cmd: "/tempban", type: "slash", what: "Temporarily ban a user.", params: "user, duration (required)" },
+      { cmd: "/massban", type: "slash", what: "Ban multiple users.", params: "user list/options (required)" },
+      { cmd: "/modstats", type: "slash", what: "View moderator action stats.", params: "user/time range (optional)" },
+      { cmd: "/note add", type: "slash", what: "Add a staff note.", params: "user, note (required)" },
+      { cmd: "/note view", type: "slash", what: "View staff notes.", params: "user (required)" },
+      { cmd: "/note clear", type: "slash", what: "Clear staff notes.", params: "user (required)" },
+      { cmd: "/shadowban add", type: "slash", what: "Silently hide messages from a user (Premium+).", params: "user (required)" },
+      { cmd: "/shadowban remove", type: "slash", what: "Remove shadowbanned user.", params: "user (required)" },
+      { cmd: "/shadowban list", type: "slash", what: "List shadowbanned users.", params: "none" },
+      { cmd: "/sticky set", type: "slash", what: "Set sticky message in channel.", params: "message (required)" },
+      { cmd: "/sticky clear", type: "slash", what: "Remove sticky message.", params: "none" },
+      { cmd: "/sticky list", type: "slash", what: "List sticky channels.", params: "none" },
+      { cmd: "/adaptive-slowmode", type: "slash", what: "Enable adaptive slowmode.", params: "state/options (required)" },
+      { cmd: "/customise_bot_profile", type: "slash", what: "Customize bot nickname/profile.", params: "nickname (optional), image (optional)" },
+      { cmd: "!funmode", type: "prefix", what: "Switch to fun personality.", params: "none" },
+      { cmd: "!seriousmode", type: "prefix", what: "Switch to serious personality.", params: "none" },
+      { cmd: "!roastmode", type: "prefix", what: "Switch to roast personality.", params: "none" },
+      { cmd: "!teachmerizz", type: "prefix", what: "Get social coaching guidance.", params: "[online/irl] (required)" },
+      { cmd: "!chessmode", type: "prefix", what: "Play chess with Codunot.", params: "none" }
+    ];
+
+    const PAGE_SIZE = 16;
+    let currentPage = 1;
+    let currentQuery = "";
+
+    function getFilteredCommands() {
+      const q = currentQuery.trim().toLowerCase();
+      if (!q) return COMMANDS;
+      return COMMANDS.filter((item) => `${item.cmd} ${item.type} ${item.what} ${item.params}`.toLowerCase().includes(q));
+    }
+
+    function renderCommands() {
+      const grid = document.getElementById("commands-grid");
+      const pager = document.getElementById("commands-pagination");
+      const count = document.getElementById("commands-count");
+      const filtered = getFilteredCommands();
+      const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+      if (currentPage > totalPages) currentPage = totalPages;
+      const start = (currentPage - 1) * PAGE_SIZE;
+      const pageItems = filtered.slice(start, start + PAGE_SIZE);
+
+      count.textContent = `Showing ${pageItems.length ? start + 1 : 0}-${start + pageItems.length} of ${filtered.length} commands`;
+      grid.innerHTML = pageItems.map((item) => `
+        <article class="tile">
+          <div style="display:flex;justify-content:space-between;gap:.6rem;align-items:center;">
+            <h3 style="margin:0;"><code>${item.cmd}</code></h3>
+            <span class="badge ${item.type === "prefix" ? "premium" : "free"}">${item.type}</span>
+          </div>
+          <p class="muted" style="margin-top:.6rem;">${item.what}</p>
+          <p style="margin-top:.5rem;"><strong>Parameters:</strong> ${item.params}</p>
+        </article>
+      `).join("");
+
+      const buttons = [];
+      for (let i = 1; i <= totalPages; i += 1) {
+        buttons.push(`<button class="btn ${i === currentPage ? "primary" : "ghost"}" type="button" data-page="${i}">${i}</button>`);
+      }
+      pager.innerHTML = buttons.join("");
+      pager.querySelectorAll("button[data-page]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          currentPage = Number(btn.dataset.page);
+          renderCommands();
+        });
+      });
+    }
+
+    const search = document.getElementById("command-search");
+    search.addEventListener("input", () => {
+      currentQuery = search.value;
+      currentPage = 1;
+      renderCommands();
+    });
+
+    renderCommands();
+  </script>
   <script src="../script.js"></script>
 </body>
 </html>

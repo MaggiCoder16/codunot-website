@@ -3425,3 +3425,113 @@ html[data-motion="reduced"] * {
     position: static;
   }
 }
+
+/* Modern interaction polish */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  transform-origin: left center;
+  transform: scaleX(0);
+  background: linear-gradient(90deg, #ff8a1f, #ffd2a1 60%, #7ec8ff);
+  box-shadow: 0 0 14px rgba(255, 138, 31, 0.45);
+  z-index: 400;
+  pointer-events: none;
+}
+
+.nav-wrap {
+  backdrop-filter: blur(18px) saturate(1.15);
+}
+
+.hero-main-content,
+.hero-card,
+.card,
+.tile,
+.feature-highlight,
+.community-card {
+  position: relative;
+}
+
+.hero-main-content::after,
+.hero-card::after,
+.card::after,
+.tile::after,
+.feature-highlight::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 20%,
+    rgba(255, 255, 255, 0.05) 42%,
+    rgba(255, 255, 255, 0) 62%
+  );
+  transform: translateX(-130%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hero-main-content:hover::after,
+.hero-card:hover::after,
+.card:hover::after,
+.tile:hover::after,
+.feature-highlight:hover::after {
+  opacity: 1;
+  animation: sheenSweep 900ms ease;
+}
+
+.hero-main-content,
+.hero-card--clicker {
+  transform-style: preserve-3d;
+  transform: perspective(1100px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+  transition: transform .35s ease;
+}
+
+.btn.primary {
+  box-shadow: 0 10px 26px rgba(255, 122, 24, 0.28);
+}
+
+.btn.primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 32px rgba(255, 122, 24, 0.36);
+}
+
+.section h2 {
+  letter-spacing: -0.025em;
+}
+
+.hero-mini-card,
+.feature-highlight,
+.community-card,
+.tile {
+  transition: transform .24s ease, box-shadow .24s ease, border-color .24s ease, background .24s ease;
+}
+
+.hero-mini-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 146, 64, 0.58);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.28);
+}
+
+@keyframes sheenSweep {
+  to { transform: translateX(120%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-progress,
+  .hero-main-content,
+  .hero-card--clicker,
+  .hero-mini-card,
+  .feature-highlight,
+  .community-card,
+  .tile,
+  .card,
+  .btn.primary {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}

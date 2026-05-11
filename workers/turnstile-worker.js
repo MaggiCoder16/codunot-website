@@ -133,8 +133,11 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
-    // 1. VERIFIED BOT BYPASS (SEO Improvement)
-    if (request.cf?.verifiedBot) {
+    // 1. BYPASS LOGIC (SEO & Sitemaps)
+    const isVerifiedBot = request.cf?.verifiedBot;
+    const isSitemap = url.pathname === '/sitemap.xml';
+    
+    if (isVerifiedBot || isSitemap) {
       return fetch(request);
     }
 
@@ -213,13 +216,12 @@ export default {
         const verification = await verifyTurnstileToken(env, token, request.headers.get('CF-Connecting-IP'));
         if (!verification.success) return jsonResponse({ ok: false, error: 'Turnstile verification failed.' }, 403, { 'Access-Control-Allow-Origin': allowOrigin });
 
-        // Fields extraction
         const name = (params.get('name') || '').trim();
         const email = (params.get('email') || '').trim();
         const topic = (params.get('topic') || '').trim();
         const serverId = (params.get('server_id') || '').trim();
         const discordUsername = (params.get('discord_username') || '').trim();
-        const discordUserId = (params.get('discord_user_id') || '').trim(); // FIXED: Added this extraction
+        const discordUserId = (params.get('discord_user_id') || '').trim();
         const message = (params.get('message') || '').trim();
 
         if (!name || !email || !message) {
@@ -251,7 +253,6 @@ export default {
     }
 
     // 5. THE GATEKEEPER
-    // If no session cookie exists, show the gate page.
     if (!cookies[GATE_COOKIE]) {
       const redirectTo = `${url.pathname}${url.search}`;
       return new Response(buildGatePage(siteKey, redirectTo), {
@@ -260,7 +261,6 @@ export default {
       });
     }
 
-    // If verified, proceed to the origin content
     return fetch(request);
   }
 };

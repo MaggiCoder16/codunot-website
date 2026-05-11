@@ -54,19 +54,9 @@ function buildGatePage(siteKey, redirectTo, errorMessage = '') {
       box-shadow: 0 18px 36px rgba(0, 0, 0, 0.28);
       text-align: center;
     }
-    h1 {
-      margin: 0 0 0.4rem;
-      font-size: 1.6rem;
-    }
-    p {
-      margin: 0 0 1.2rem;
-      color: #a9b7cc;
-    }
-    .error {
-      color: #ffb3b8;
-      margin-bottom: 1rem;
-      font-weight: 600;
-    }
+    h1 { margin: 0 0 0.4rem; font-size: 1.6rem; }
+    p { margin: 0 0 1.2rem; color: #a9b7cc; }
+    .error { color: #ffb3b8; margin-bottom: 1rem; font-weight: 600; }
     .btn {
       margin-top: 1rem;
       background: linear-gradient(135deg, #ff8a1f, #ff6200);
@@ -112,72 +102,59 @@ function truncate(value, maxLength = DISCORD_FIELD_LIMIT) {
 }
 
 async function sendDiscordWebhook(env, payload) {
-  if (!env.DISCORD_WEBHOOK_URL) {
-    throw new Error('DISCORD_WEBHOOK_URL is not set.');
-  }
-
+  if (!env.DISCORD_WEBHOOK_URL) throw new Error('DISCORD_WEBHOOK_URL is not set.');
   const response = await fetch(env.DISCORD_WEBHOOK_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
   });
-
   if (!response.ok) {
     const text = await response.text();
-    throw new Error(`Discord webhook failed with status ${response.status}. ${text.slice(0, 200)}`);
+    throw new Error(`Discord webhook failed: ${response.status}. ${text.slice(0, 200)}`);
   }
 }
 
 async function verifyTurnstileToken(env, token, remoteIp) {
-  if (!env.TURNSTILE_SECRET_KEY) {
-    throw new Error('TURNSTILE_SECRET_KEY is not set.');
-  }
-
+  if (!env.TURNSTILE_SECRET_KEY) throw new Error('TURNSTILE_SECRET_KEY is not set.');
   const verifyBody = new URLSearchParams({
     secret: env.TURNSTILE_SECRET_KEY,
     response: token
   });
-
   if (remoteIp) verifyBody.set('remoteip', remoteIp);
-
   const verifyResponse = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: verifyBody
   });
-
-  if (!verifyResponse.ok) {
-    throw new Error(`Turnstile verification failed with status ${verifyResponse.status}.`);
-  }
-
   return verifyResponse.json();
 }
 
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+
+    // 1. VERIFIED BOT BYPASS (SEO Improvement)
+    if (request.cf?.verifiedBot) {
+      return fetch(request);
+    }
+
     const cookies = parseCookies(request.headers.get('Cookie') || '');
     const siteKey = env.TURNSTILE_SITE_KEY || '0x4AAAAAACrej254Ib5zTeox';
     const origin = request.headers.get('Origin') || '';
-    const allowedOrigins = (env.ALLOWED_ORIGINS || '').split(',').map((value) => value.trim()).filter(Boolean);
+    const allowedOrigins = (env.ALLOWED_ORIGINS || '').split(',').map(v => v.trim()).filter(Boolean);
     const allowOrigin = allowedOrigins.length ? (allowedOrigins.includes(origin) ? origin : '') : '*';
 
+    // 2. LOGOUT HANDLER
     if (url.pathname === LOGOUT_PATH) {
       return new Response(null, {
         status: 204,
-        headers: {
-          'Set-Cookie': `${GATE_COOKIE}=; Max-Age=0; Path=/; Secure; HttpOnly; SameSite=Lax`
-        }
+        headers: { 'Set-Cookie': `${GATE_COOKIE}=; Max-Age=0; Path=/; Secure; HttpOnly; SameSite=Lax` }
       });
     }
 
+    // 3. TURNSTILE VERIFICATION HANDLER (GATE)
     if (url.pathname === VERIFY_PATH && request.method === 'POST') {
       try {
-        const contentType = request.headers.get('content-type') || '';
-        if (!contentType.includes('application/x-www-form-urlencoded')) {
-          return new Response('Invalid submission.', { status: 400 });
-        }
-
         const bodyText = await request.text();
         const params = new URLSearchParams(bodyText);
         const token = params.get('cf-turnstile-response');
@@ -185,17 +162,14 @@ export default {
 
         if (!token) {
           return new Response(buildGatePage(siteKey, redirectTo, 'Please complete the challenge.'), {
-            status: 400,
-            headers: { 'Content-Type': 'text/html; charset=utf-8' }
+            status: 400, headers: { 'Content-Type': 'text/html' }
           });
         }
 
-        const remoteIp = request.headers.get('CF-Connecting-IP');
-        const verification = await verifyTurnstileToken(env, token, remoteIp);
+        const verification = await verifyTurnstileToken(env, token, request.headers.get('CF-Connecting-IP'));
         if (!verification.success) {
           return new Response(buildGatePage(siteKey, redirectTo, 'Verification failed. Try again.'), {
-            status: 403,
-            headers: { 'Content-Type': 'text/html; charset=utf-8' }
+            status: 403, headers: { 'Content-Type': 'text/html' }
           });
         }
 
@@ -203,20 +177,16 @@ export default {
         return new Response(null, {
           status: 302,
           headers: {
-            Location: safeRedirect,
-            // Session cookie: expires when the browser is closed.
+            'Location': safeRedirect,
             'Set-Cookie': `${GATE_COOKIE}=1; ${GATE_COOKIE_OPTIONS}`
           }
         });
-      } catch (error) {
-        const message = error instanceof Error ? error.message : 'Unexpected error.';
-        return new Response(buildGatePage(siteKey, '/', message), {
-          status: 500,
-          headers: { 'Content-Type': 'text/html; charset=utf-8' }
-        });
+      } catch (e) {
+        return new Response(buildGatePage(siteKey, '/', e.message), { status: 500, headers: { 'Content-Type': 'text/html' } });
       }
     }
 
+    // 4. SUPPORT API HANDLER
     if (url.pathname === SUPPORT_PATH) {
       if (request.method === 'OPTIONS') {
         return new Response(null, {
@@ -224,87 +194,64 @@ export default {
           headers: {
             'Access-Control-Allow-Origin': allowOrigin,
             'Access-Control-Allow-Methods': 'POST, OPTIONS',
-            'Access-Control-Allow-Headers': 'Content-Type',
-            'Access-Control-Max-Age': '86400'
+            'Access-Control-Allow-Headers': 'Content-Type'
           }
         });
       }
 
       if (request.method !== 'POST') {
-        return jsonResponse({ ok: false, error: 'Method not allowed.' }, 405, {
-          'Access-Control-Allow-Origin': allowOrigin
-        });
+        return jsonResponse({ ok: false, error: 'Method not allowed.' }, 405, { 'Access-Control-Allow-Origin': allowOrigin });
       }
 
       try {
-        const contentType = request.headers.get('content-type') || '';
-        if (!contentType.includes('application/x-www-form-urlencoded')) {
-          return jsonResponse({ ok: false, error: 'Invalid form submission.' }, 400, {
-            'Access-Control-Allow-Origin': allowOrigin
-          });
-        }
-
         const bodyText = await request.text();
         const params = new URLSearchParams(bodyText);
         const token = params.get('cf-turnstile-response');
 
-        if (!token) {
-          return jsonResponse({ ok: false, error: 'Missing Turnstile token.' }, 400, {
-            'Access-Control-Allow-Origin': allowOrigin
-          });
-        }
+        if (!token) return jsonResponse({ ok: false, error: 'Missing Turnstile token.' }, 400, { 'Access-Control-Allow-Origin': allowOrigin });
 
+        const verification = await verifyTurnstileToken(env, token, request.headers.get('CF-Connecting-IP'));
+        if (!verification.success) return jsonResponse({ ok: false, error: 'Turnstile verification failed.' }, 403, { 'Access-Control-Allow-Origin': allowOrigin });
+
+        // Fields extraction
         const name = (params.get('name') || '').trim();
         const email = (params.get('email') || '').trim();
         const topic = (params.get('topic') || '').trim();
         const serverId = (params.get('server_id') || '').trim();
         const discordUsername = (params.get('discord_username') || '').trim();
+        const discordUserId = (params.get('discord_user_id') || '').trim(); // FIXED: Added this extraction
         const message = (params.get('message') || '').trim();
+
         if (!name || !email || !message) {
-          return jsonResponse({ ok: false, error: 'Please complete all required fields.' }, 400, {
-            'Access-Control-Allow-Origin': allowOrigin
-          });
+          return jsonResponse({ ok: false, error: 'Please complete all required fields.' }, 400, { 'Access-Control-Allow-Origin': allowOrigin });
         }
-
-        const remoteIp = request.headers.get('CF-Connecting-IP');
-        const verification = await verifyTurnstileToken(env, token, remoteIp);
-        if (!verification.success) {
-          return jsonResponse({ ok: false, error: 'Turnstile verification failed.' }, 403, {
-            'Access-Control-Allow-Origin': allowOrigin
-          });
-        }
-
-        const embedFields = [
-          { name: 'Name', value: truncate(name), inline: true },
-          { name: 'Email', value: truncate(email), inline: true },
-          { name: 'Topic', value: truncate(topic || '-'), inline: true },
-          { name: 'Server ID', value: truncate(serverId || '-'), inline: true },
-          { name: 'Discord Username', value: truncate(discordUsername || '-'), inline: true },
-          { name: 'Discord User ID', value: truncate(discordUserId || 'N/A'), inline: true }, 
-          { name: 'Message', value: truncate(message, 1800), inline: false }
-        ];
 
         await sendDiscordWebhook(env, {
           username: 'Codunot Support',
           embeds: [{
             title: 'New Support Request',
             color: 0xff8a1f,
-            fields: embedFields,
+            fields: [
+              { name: 'Name', value: truncate(name), inline: true },
+              { name: 'Email', value: truncate(email), inline: true },
+              { name: 'Topic', value: truncate(topic || '-'), inline: true },
+              { name: 'Server ID', value: truncate(serverId || '-'), inline: true },
+              { name: 'Discord Username', value: truncate(discordUsername || '-'), inline: true },
+              { name: 'Discord User ID', value: truncate(discordUserId || 'N/A'), inline: true },
+              { name: 'Message', value: truncate(message, 1800), inline: false }
+            ],
             timestamp: new Date().toISOString()
           }]
         });
 
-        return jsonResponse({ ok: true }, 200, {
-          'Access-Control-Allow-Origin': allowOrigin
-        });
-      } catch (error) {
-        const message = error instanceof Error ? error.message : 'Unexpected error.';
-        return jsonResponse({ ok: false, error: message }, 500, {
-          'Access-Control-Allow-Origin': allowOrigin
-        });
+        return jsonResponse({ ok: true }, 200, { 'Access-Control-Allow-Origin': allowOrigin });
+      } catch (e) {
+        return jsonResponse({ ok: false, error: e.message }, 500, { 'Access-Control-Allow-Origin': allowOrigin });
       }
     }
 
+    // 5. THE GATEKEEPER
+    // If no session cookie exists, show the gate page.
     if (!cookies[GATE_COOKIE]) {
       const redirectTo = `${url.pathname}${url.search}`;
       return new Response(buildGatePage(siteKey, redirectTo), {
@@ -313,6 +260,7 @@ export default {
       });
     }
 
+    // If verified, proceed to the origin content
     return fetch(request);
   }
 };

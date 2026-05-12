@@ -46,6 +46,8 @@
           <tr><td>Music bitrate</td><td>64 kbps</td><td>90 kbps</td><td>160 kbps</td><td>320 kbps</td></tr>
           <tr><td>Max tracks per playlist</td><td>20</td><td>35</td><td>60</td><td>Unlimited</td></tr>
           <tr><td>Max playlists per user in that guild</td><td>5</td><td>20</td><td>50</td><td>100</td></tr>
+          <tr><td>Image generation models</td><td><code>codu-imagen-basic</code></td><td><code>codu-imagen-basic</code>, <code>codu-imagen-pro</code></td><td><code>codu-imagen-basic</code>, <code>codu-imagen-pro</code>, <code>codu-imagen-strongest</code></td><td><code>codu-imagen-basic</code>, <code>codu-imagen-pro</code>, <code>codu-imagen-strongest</code></td></tr>
+          <tr><td>Video generation models</td><td><code>codu-vidgen-basic</code></td><td><code>codu-vidgen-basic</code>, <code>codu-vidgen-pro</code></td><td><code>codu-vidgen-basic</code>, <code>codu-vidgen-pro</code>, <code>codu-vidgen-strongest</code></td><td><code>codu-vidgen-basic</code>, <code>codu-vidgen-pro</code>, <code>codu-vidgen-strongest</code></td></tr>
         </tbody>
       </table>
       <p class="muted">Premium+ means Premium and above. Gold+ means Gold and above.</p>
@@ -116,11 +118,11 @@
       { cmd: "/resetfilters", type: "slash", what: "Reset all audio filters.", params: "none" },
       { cmd: "/playlistcreate", type: "slash", what: "Create a playlist.", params: "name (required)" },
       { cmd: "/playlist", type: "slash", what: "Manage and play playlists.", params: "action/name (varies)" },
-      { cmd: "/generate_image", type: "slash", what: "Generate image from prompt.", params: "prompt (required)" },
+      { cmd: "/generate_image", type: "slash", what: "Generate image from prompt.", params: "prompt (required), model (required)" },
       { cmd: "/edit_image", type: "slash", what: "Edit uploaded image using prompt.", params: "image, prompt (required)" },
       { cmd: "/analyse_image", type: "slash", what: "Analyze uploaded image.", params: "image (required), prompt (optional)" },
       { cmd: "/merge_image", type: "slash", what: "Merge multiple uploaded images.", params: "image1, image2 (required), image3/4 (optional), prompt (optional)" },
-      { cmd: "/generate_video", type: "slash", what: "Generate short video from prompt.", params: "prompt (required)" },
+      { cmd: "/generate_video", type: "slash", what: "Generate short video from prompt.", params: "prompt (required), model (required)" },
       { cmd: "/generate_tts", type: "slash", what: "Convert text to speech.", params: "text (required), language/voice (optional)" },
       { cmd: "/transcribe", type: "slash", what: "Transcribe supported video links.", params: "video_url (required)" },
       { cmd: "/browse", type: "slash", what: "Read content from a URL.", params: "url (required)" },

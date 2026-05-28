@@ -23,16 +23,9 @@
   {
     "id": "1452839553256919202",
     "name": "[TNIS] KOMANDO PASUKAN KHUSUS",
-    "members": 432,
+    "members": 431,
     "icon": "https://cdn.discordapp.com/icons/1452839553256919202/fb2c1691f3a879e3bd31186d0d2bdfe7.png?size=1024",
     "invite": "https://discord.gg/eJPKCsDSm6"
-  },
-  {
-    "id": "1491363612034334738",
-    "name": "!şækurä¡ 🪽",
-    "members": 339,
-    "icon": "https://cdn.discordapp.com/icons/1491363612034334738/b8745d950d27748f10dac8991f19e319.png?size=1024",
-    "invite": "https://discord.gg/JPrYTxV7nC"
   },
   {
     "id": "1367769710074134548",
@@ -40,6 +33,13 @@
     "members": 335,
     "icon": "https://cdn.discordapp.com/icons/1367769710074134548/3983e677d24e39e54170a94b81f01585.png?size=1024",
     "invite": "https://discord.gg/j4Am2Am5Dz"
+  },
+  {
+    "id": "1491363612034334738",
+    "name": "!şækurä¡ 🪽",
+    "members": 333,
+    "icon": "https://cdn.discordapp.com/icons/1491363612034334738/b8745d950d27748f10dac8991f19e319.png?size=1024",
+    "invite": "https://discord.gg/JPrYTxV7nC"
   },
   {
     "id": "1448445328549351607",

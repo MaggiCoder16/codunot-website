@@ -1,263 +1,851 @@
-﻿<!doctype html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Codunot - Discord AI Bot</title>
+  <title>Codunot AI - Intro</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/favicon-192.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png" />
-  <link rel="manifest" href="site.webmanifest" />
-<meta name="description" content="Codunot is a Discord-first ops bot for moderation, creator media, and community workflows." />
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="An interactive introduction to Codunot AI, the best Discord bot." />
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #020202;
+      --text: #ffffff;
+      --muted: rgba(255, 255, 255, .72);
+      --glass: rgba(255, 255, 255, .08);
+      --glass-strong: rgba(255, 255, 255, .16);
+      --line: rgba(255, 255, 255, .22);
+      --glow: 0 0 14px rgba(255,255,255,.5), 0 0 36px rgba(255,255,255,.32), 0 0 72px rgba(255,255,255,.18);
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body { height: 100%; }
+
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      cursor: none;
+    }
+
+    .intro-app {
+      position: relative;
+      min-height: 100dvh;
+      isolation: isolate;
+      background:
+        radial-gradient(circle at 50% 100%, rgba(255,255,255,.07), transparent 42%),
+        linear-gradient(180deg, #050505 0%, #000 100%);
+    }
+
+    .orb {
+      position: fixed;
+      width: clamp(150px, 22vw, 340px);
+      aspect-ratio: 1;
+      border-radius: 999px;
+      background: radial-gradient(circle at 35% 35%, rgba(255,255,255,.84), rgba(255,255,255,.22) 34%, transparent 68%);
+      filter: blur(14px);
+      opacity: .34;
+      pointer-events: none;
+      animation: floatOrb 16s ease-in-out infinite alternate;
+      z-index: -1;
+    }
+
+    .orb.one { left: 7vw; top: 12vh; }
+    .orb.two { right: 10vw; bottom: 8vh; width: clamp(100px, 15vw, 240px); animation-delay: -7s; opacity: .24; }
+
+    @keyframes floatOrb {
+      from { transform: translate3d(-2vw, 4vh, 0) scale(.9); }
+      to { transform: translate3d(8vw, -7vh, 0) scale(1.16); }
+    }
+
+    .cursor-glow {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 20;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, rgba(255,255,255,.88), rgba(255,255,255,.24) 32%, transparent 72%);
+      mix-blend-mode: screen;
+      filter: blur(2px);
+      opacity: .9;
+    }
+
+    .back-button {
+      position: fixed;
+      top: clamp(18px, 4vw, 34px);
+      left: clamp(18px, 4vw, 34px);
+      z-index: 10;
+      border: 1px solid var(--line);
+      color: var(--text);
+      background: rgba(255,255,255,.06);
+      backdrop-filter: blur(18px);
+      border-radius: 999px;
+      padding: .75rem 1rem;
+      font-weight: 800;
+      letter-spacing: .02em;
+      cursor: none;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity .35s ease, transform .35s ease, background .2s ease;
+    }
+
+    .back-button.visible { opacity: 1; transform: translateY(0); }
+    .back-button:hover { background: rgba(255,255,255,.14); }
+
+    .page {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: clamp(24px, 6vw, 72px);
+      opacity: 0;
+      transform: scale(1.02);
+      filter: blur(18px);
+      pointer-events: none;
+      transition: opacity .9s ease, transform .9s ease, filter .9s ease;
+    }
+
+    .page.active {
+      opacity: 1;
+      transform: scale(1);
+      filter: blur(0);
+      pointer-events: auto;
+    }
+
+    .center,
+    .above-center,
+    .core-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .above-center { align-self: start; margin-top: 15vh; }
+
+    h1, h2, p { margin: 0; }
+
+    h1, h2, .hero-title, .feature-title, .core-center h2 {
+      text-shadow: var(--glow);
+    }
+
+    .hero-title {
+      font-size: clamp(3.5rem, 11vw, 10rem);
+      line-height: .92;
+      font-weight: 950;
+      letter-spacing: -.08em;
+    }
+
+    .subtitle {
+      margin-top: 1rem;
+      font-size: clamp(1.3rem, 3vw, 2.8rem);
+      color: var(--muted);
+      font-weight: 800;
+      letter-spacing: .03em;
+    }
+
+    .logo {
+      display: block;
+      width: clamp(120px, 20vw, 230px);
+      height: clamp(120px, 20vw, 230px);
+      margin-bottom: 1.25rem;
+      border-radius: 36px;
+      object-fit: cover;
+      box-shadow: 0 0 70px rgba(255,255,255,.3), 0 24px 80px rgba(0,0,0,.9);
+      animation: logoFloat 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes logoFloat { to { transform: translateY(-16px) rotate(1deg); } }
+
+    .typed, .statement {
+      max-width: 980px;
+      margin-top: .5rem;
+      font-size: clamp(1.6rem, 4vw, 4.2rem);
+      line-height: 1.1;
+      font-weight: 900;
+      letter-spacing: -.045em;
+    }
+
+    .typed::after {
+      content: "";
+      display: inline-block;
+      width: .08em;
+      height: .9em;
+      margin-left: .08em;
+      background: white;
+      vertical-align: -.08em;
+      animation: blink .75s steps(1) infinite;
+    }
+
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .roll-text {
+      display: inline-block;
+      white-space: pre-line;
+    }
+
+    .roll-word {
+      display: inline-block;
+      overflow: hidden;
+      vertical-align: top;
+      margin-right: .18em;
+    }
+
+    .roll-word > span {
+      display: inline-block;
+      transform: translateY(112%) rotateX(-78deg);
+      transform-origin: 50% 100%;
+      opacity: 0;
+    }
+
+    .page.active .roll-word > span,
+    .features-map.visible .roll-word > span,
+    .feature-box.selected .roll-word > span {
+      animation: rollIn .72s cubic-bezier(.16, 1, .3, 1) forwards;
+      animation-delay: var(--delay, 0ms);
+    }
+
+    @keyframes rollIn {
+      0% { transform: translateY(112%) rotateX(-78deg); opacity: 0; filter: blur(10px); }
+      70% { transform: translateY(-8%) rotateX(8deg); opacity: 1; filter: blur(0); }
+      100% { transform: translateY(0) rotateX(0); opacity: 1; filter: blur(0); }
+    }
+
+    .core-trigger {
+      position: absolute;
+      left: 50%;
+      top: 58%;
+      transform: translate(-50%, -50%);
+      border: 1px solid rgba(255,255,255,.34);
+      border-radius: 26px;
+      padding: 2rem 4rem;
+      background: linear-gradient(135deg, rgba(255,255,255,.2), rgba(255,255,255,.045));
+      color: white;
+      font-size: clamp(1.5rem, 3vw, 3rem);
+      font-weight: 950;
+      text-shadow: var(--glow);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.35), 0 0 80px rgba(255,255,255,.18);
+      backdrop-filter: blur(22px);
+      cursor: none;
+      transition: transform .2s ease, filter .2s ease;
+    }
+
+    .core-trigger:hover { transform: translate(-50%, -50%) scale(1.04); filter: brightness(1.12); }
+    .core-trigger::before,
+    .core-trigger::after {
+      content: "";
+      position: absolute;
+      inset: -18px;
+      border-radius: inherit;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .core-trigger::before {
+      background: conic-gradient(from 0deg, transparent, rgba(255,255,255,.95), transparent, rgba(255,255,255,.55), transparent);
+      filter: blur(14px);
+    }
+
+    .core-trigger::after {
+      border: 1px solid rgba(255,255,255,.55);
+      box-shadow: 0 0 38px rgba(255,255,255,.75), inset 0 0 28px rgba(255,255,255,.35);
+    }
+
+    .core-trigger.charging {
+      animation: energyCharge 1.05s cubic-bezier(.16, 1, .3, 1) forwards;
+    }
+
+    .core-trigger.charging::before {
+      opacity: 1;
+      animation: energySpin .34s linear infinite, energyPulse .36s ease-in-out infinite alternate;
+    }
+
+    .core-trigger.charging::after {
+      opacity: 1;
+      animation: ringTighten 1.05s cubic-bezier(.16, 1, .3, 1) forwards;
+    }
+
+    .core-trigger.shattered { opacity: 0; pointer-events: none; }
+
+    .core-question.gone { opacity: 0; transform: translateY(-28px) scale(.96); filter: blur(16px); transition: opacity .55s ease, transform .55s ease, filter .55s ease; }
+
+    .energy-burst {
+      position: fixed;
+      left: 50%;
+      top: 58%;
+      transform: translate(-50%, -50%);
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      pointer-events: none;
+      z-index: 7;
+      background: radial-gradient(circle, rgba(255,255,255,1), rgba(255,255,255,.35) 38%, transparent 70%);
+      animation: energyBurst .62s cubic-bezier(.12,.88,.22,1) forwards;
+    }
+
+    @keyframes energyCharge {
+      0% { transform: translate(-50%, -50%) scale(1); filter: brightness(1); }
+      65% { transform: translate(-50%, -50%) scale(.92); filter: brightness(1.55); }
+      100% { transform: translate(-50%, -50%) scale(1.08); filter: brightness(2.2); }
+    }
+
+    @keyframes energySpin { to { transform: rotate(360deg); } }
+    @keyframes energyPulse { to { filter: blur(6px); opacity: 1; } }
+    @keyframes ringTighten { from { inset: -54px; transform: scale(1.24); } to { inset: -4px; transform: scale(.9); } }
+    @keyframes energyBurst { to { transform: translate(-50%, -50%) scale(34); opacity: 0; filter: blur(8px); } }
+
+    .shard {
+      position: fixed;
+      width: 34px;
+      height: 28px;
+      background: linear-gradient(135deg, rgba(255,255,255,.85), rgba(255,255,255,.05));
+      border: 1px solid rgba(255,255,255,.28);
+      clip-path: polygon(8% 0, 100% 18%, 72% 100%, 0 78%);
+      z-index: 8;
+      animation: shardFly .95s cubic-bezier(.17,.84,.44,1) forwards;
+    }
+
+    @keyframes shardFly {
+      to { transform: translate(var(--tx), var(--ty)) rotate(var(--rot)) scale(.2); opacity: 0; filter: blur(3px); }
+    }
+
+    .features-map {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .8s ease .25s;
+    }
+
+    .features-map.visible { opacity: 1; pointer-events: auto; }
+
+    .core-center {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .core-center .logo { width: 110px; height: 110px; border-radius: 26px; margin-bottom: 1rem; }
+    .core-center h2 { margin-top: 0; font-size: clamp(1.7rem, 3vw, 3.4rem); }
+
+    .branch {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: min(32vw, 420px);
+      height: 1px;
+      background: linear-gradient(90deg, rgba(255,255,255,.75), transparent);
+      transform-origin: 0 50%;
+      opacity: .55;
+    }
+
+    .branch.tl { transform: rotate(225deg); }
+    .branch.tr { transform: rotate(315deg); }
+    .branch.bl { transform: rotate(135deg); }
+    .branch.br { transform: rotate(45deg); }
+    .branch.l { transform: rotate(180deg); width: min(22vw, 280px); }
+    .branch.r { transform: rotate(0deg); width: min(22vw, 280px); }
+
+    .feature-box {
+      position: absolute;
+      width: min(38vw, 260px);
+      min-height: 150px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 28px;
+      background: rgba(255,255,255,.075);
+      box-shadow: 0 24px 90px rgba(0,0,0,.75), inset 0 1px 0 rgba(255,255,255,.24);
+      backdrop-filter: blur(22px);
+      font-size: clamp(1.1rem, 2vw, 1.8rem);
+      font-weight: 950;
+      cursor: none;
+      transition: transform .6s cubic-bezier(.2,.9,.15,1), opacity .5s ease, width .6s ease, min-height .6s ease, border-radius .6s ease;
+    }
+
+    .feature-box:hover { transform: scale(1.06); }
+    .feature-box.one { left: clamp(24px, 9vw, 120px); top: clamp(92px, 14vh, 150px); }
+    .feature-box.two { right: clamp(24px, 9vw, 120px); top: clamp(92px, 14vh, 150px); }
+    .feature-box.three { left: clamp(24px, 9vw, 120px); bottom: clamp(32px, 12vh, 120px); }
+    .feature-box.four { right: clamp(24px, 9vw, 120px); bottom: clamp(32px, 12vh, 120px); }
+
+    .features-map.six-map .feature-box {
+      width: min(28vw, 220px);
+      min-height: 118px;
+      font-size: clamp(.95rem, 1.6vw, 1.35rem);
+    }
+
+    .features-map.six-map .feature-box.one { left: clamp(16px, 5vw, 72px); top: clamp(88px, 13vh, 130px); right: auto; bottom: auto; }
+    .features-map.six-map .feature-box.two { left: 50%; top: clamp(72px, 10vh, 110px); right: auto; bottom: auto; transform: translateX(-50%); }
+    .features-map.six-map .feature-box.three { right: clamp(16px, 5vw, 72px); top: clamp(88px, 13vh, 130px); left: auto; bottom: auto; }
+    .features-map.six-map .feature-box.four { left: clamp(16px, 5vw, 72px); bottom: clamp(28px, 10vh, 100px); top: auto; right: auto; }
+    .features-map.six-map .feature-box.five { left: 50%; bottom: clamp(20px, 8vh, 88px); top: auto; right: auto; transform: translateX(-50%); }
+    .features-map.six-map .feature-box.six { right: clamp(16px, 5vw, 72px); bottom: clamp(28px, 10vh, 100px); top: auto; left: auto; }
+    .features-map.six-map .feature-box.two:hover,
+    .features-map.six-map .feature-box.five:hover { transform: translateX(-50%) scale(1.06); }
+
+    .features-map.detail .feature-box:not(.selected), .features-map.detail .core-center, .features-map.detail .branch { opacity: 0; pointer-events: none; }
+
+    .feature-box.selected {
+      left: 50%;
+      top: 50%;
+      right: auto;
+      bottom: auto;
+      transform: translate(-50%, -50%);
+      width: min(92vw, 980px);
+      min-height: min(70vh, 560px);
+      padding: clamp(24px, 5vw, 52px);
+      place-items: stretch;
+      text-align: left;
+      border-radius: 34px;
+      cursor: default;
+      z-index: 6;
+    }
+
+    .feature-detail { display: none; color: var(--muted); font-weight: 650; }
+    .feature-box.selected .feature-detail { display: block; }
+    .feature-box.selected .feature-title { display: block; font-size: clamp(2rem, 4vw, 3.5rem); color: white; margin-bottom: 1rem; letter-spacing: -.05em; }
+    .detail-copy { font-size: clamp(.95rem, 1.35vw, 1.08rem); line-height: 1.58; max-width: 760px; font-weight: 500; font-family: ui-rounded, "SF Pro Rounded", Inter, ui-sans-serif, system-ui, sans-serif; letter-spacing: -.01em; }
+    .detail-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .85rem; margin-top: 1.55rem; }
+    .detail-card { border: 1px solid rgba(255,255,255,.14); border-radius: 20px; padding: 1rem; background: rgba(0,0,0,.24); font-family: ui-rounded, "SF Pro Rounded", Inter, ui-sans-serif, system-ui, sans-serif; }
+    .detail-card h3 { margin: 0 0 .7rem; color: white; font-size: .92rem; letter-spacing: .08em; text-transform: uppercase; text-shadow: var(--glow); }
+    .chips { display: flex; flex-wrap: wrap; gap: .45rem; }
+    .chip { border: 1px solid rgba(255,255,255,.16); border-radius: 999px; padding: .42rem .64rem; color: rgba(255,255,255,.9); background: rgba(255,255,255,.07); font-size: clamp(.74rem, 1.1vw, .88rem); font-weight: 650; }
+    .mode-list { display: grid; gap: .55rem; }
+    .mode-description { margin: .15rem 0 0; color: rgba(255,255,255,.64); font-size: clamp(.72rem, 1vw, .84rem); line-height: 1.35; font-weight: 500; }
+    .mod-copy { display: grid; gap: .95rem; }
+
+    .finale-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+      justify-content: center;
+      margin-top: 2rem;
+      max-width: 720px;
+    }
+
+    .finale-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      padding: .7rem 1.15rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.28);
+      background: rgba(255,255,255,.1);
+      color: white;
+      font-weight: 800;
+      font-size: .92rem;
+      text-decoration: none;
+      transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+      cursor: none;
+      box-shadow: 0 8px 28px rgba(0,0,0,.45);
+    }
+
+    .finale-btn:hover {
+      transform: scale(1.07) rotate(-1deg);
+      background: rgba(255,255,255,.18);
+      box-shadow: 0 0 28px rgba(255,255,255,.28);
+    }
+
+    .click-hint {
+      position: fixed;
+      bottom: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,.5);
+      font-size: .9rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      z-index: 9;
+    }
+
+    .click-hint.hidden { opacity: 0; pointer-events: none; }
+
+    @media (max-width: 760px) {
+      body { cursor: auto; }
+      .cursor-glow { display: none; }
+      .back-button, .core-trigger, .feature-box, .finale-btn { cursor: pointer; }
+      .detail-grid { grid-template-columns: 1fr; }
+      .branch { width: 35vw; }
+      .feature-box { min-height: 118px; }
+      .feature-box.selected { min-height: 78vh; overflow: auto; }
+      .features-map.six-map .feature-box { width: min(42vw, 160px); min-height: 96px; font-size: .82rem; }
+    }
+  </style>
 </head>
-<body data-page="home">
-  <header class="nav-wrap">
-    <nav class="nav container">
-      <a class="brand" href="./">
-        <img src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot logo" />
-        Codunot
-      </a>
-      <div class="links">
-        <a class="active" href="./">Home</a>
-        <a href="features/">Features</a>
-        <a href="commands/">Docs</a>
-        <a href="tutorials/">Tutorials</a>
-        <a href="faq/">FAQ</a>
-        <a href="premium/">Premium</a>
-        <a href="support/">Support</a>
-        <a href="terms/">ToS</a>
-        <a href="privacy/">Privacy Policy</a>
-        <a class="login-btn" href="https://discord.com/oauth2/authorize?client_id=1435987186502733878&integration_type=1&scope=applications.commands" target="_blank" rel="noopener">Authorize App</a>
-      </div>
-    </nav>
-  </header>
+<body>
+  <main class="intro-app" aria-live="polite">
+    <div class="orb one"></div>
+    <div class="orb two"></div>
+    <div class="cursor-glow" aria-hidden="true"></div>
+    <button class="back-button" type="button" aria-label="Go back one intro page">← Back</button>
 
-  <main>
-    <section class="hero container">
-      <div class="hero-main">
-        <span class="pill">Bot online</span>
-        <div class="hero-main-content">
-          <h1>Codunot</h1>
-          <p class="subhead">AI that lives inside Discord for chat, moderation, music, ticketing, and content creation.</p>
-          <p class="typewriter-line"><span id="hero-typed"></span><span class="type-cursor" aria-hidden="true"></span></p>
-          <div class="hero-mini-grid" aria-label="Top Codunot features">
-            <article class="hero-mini-card">
-              <span class="hero-mini-icon">🧠</span>
-              <strong>Model control</strong>
-              <p>Use <code>/model</code> per channel or DM across 6 available AI models to match your preferred speed and style.</p>
-            </article>
-            <article class="hero-mini-card">
-              <span class="hero-mini-icon">💬</span>
-              <strong>Natural AI chat</strong>
-              <p>Mention Codunot in servers or DM directly for fast replies, context-aware conversations, and smart follow-ups.</p>
-            </article>
-            <article class="hero-mini-card">
-              <span class="hero-mini-icon">🎵</span>
-              <strong>Music controls</strong>
-              <p>Use <code>/play</code>, <code>/volume</code>, <code>/autoplay</code>, <code>/loop</code>, and <code>/lyrics</code> with inline controls.</p>
-            </article>
-            <article class="hero-mini-card">
-              <span class="hero-mini-icon">🌍</span>
-              <strong>Text-to-speech voices</strong>
-              <p>Generate speech with 300+ voices across 60+ languages using readable voice names and cleaner language labels.</p>
-            </article>
-            <article class="hero-mini-card">
-              <span class="hero-mini-icon">🎨</span>
-              <strong>Media generation</strong>
-              <p>Create images, videos, edits, and merged compositions directly from prompts or uploaded media.</p>
-            </article>
-            <article class="hero-mini-card">
-              <span class="hero-mini-icon">🛡️</span>
-              <strong>Moderation tools</strong>
-              <p>Run automod, warnings, cases, locks, bans, and advanced staff workflows from one Discord-native system.</p>
-            </article>
-          </div>
-          <div class="cta-row">
-            <a class="btn primary" href="https://discord.com/oauth2/authorize?client_id=1435987186502733878&permissions=1101671820438&integration_type=0&scope=bot+applications.commands" target="_blank" rel="noopener">Add to Discord</a>
-            <a class="btn secondary" href="https://discord.com/oauth2/authorize?client_id=1435987186502733878&integration_type=1&scope=applications.commands" target="_blank" rel="noopener">Authorize App Login</a>
-            <a class="btn ghost" href="https://top.gg/bot/1435987186502733878/vote" target="_blank" rel="noopener">Vote on top.gg</a>
-          </div>
+    <section class="page active" data-page="0">
+      <div class="center">
+        <img class="logo" src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot logo" />
+        <h1 class="hero-title roll-text">Codunot AI</h1>
+        <p class="subtitle roll-text">Best Discord Bot</p>
+      </div>
+    </section>
+
+    <section class="page" data-page="1">
+      <div class="center">
+        <img class="logo" src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot logo" />
+        <p class="typed" data-text="Hi, I'm Codunot!"></p>
+      </div>
+    </section>
+
+    <section class="page" data-page="2">
+      <div class="center">
+        <img class="logo" src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot logo" />
+        <p class="statement roll-text">I'm a feature rich, all-in-one discord bot, built for all kinds of communities to make them more engaging.</p>
+      </div>
+    </section>
+
+    <section class="page" data-page="3">
+      <div class="above-center core-question">
+        <img class="logo" src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot logo" />
+        <p class="statement roll-text">I have a lot of features. Wanna know my core features? :&gt;</p>
+      </div>
+      <button class="core-trigger roll-text" type="button">Core features</button>
+      <div class="features-map" aria-label="Codunot core features">
+        <span class="branch tl"></span><span class="branch tr"></span><span class="branch bl"></span><span class="branch br"></span>
+        <div class="core-center">
+          <img class="logo" src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot logo" />
+          <h2 class="roll-text">Core Features</h2>
+        </div>
+        <button class="feature-box one" type="button">
+          <span class="feature-title roll-text">🤖 AI Chatbot</span>
+          <span class="feature-detail">
+            <span class="detail-copy roll-text">💬 You can chat with me! I have many personality modes, and many chatting models!</span>
+            <span class="detail-grid">
+              <span class="detail-card">
+                <h3>✨ Personality modes</h3>
+                <span class="mode-list">
+                  <span><span class="chip">🎉 Fun</span><span class="mode-description">Playful, silly replies for casual server chats.</span></span>
+                  <span><span class="chip">🧠 Serious</span><span class="mode-description">Focused answers when you need direct help.</span></span>
+                  <span><span class="chip">🔥 Roast</span><span class="mode-description">Spicy jokes and dramatic comebacks.</span></span>
+                  <span><span class="chip">😎 Rizz mode - IRL</span><span class="mode-description">Confidence tips for real-life conversations.</span></span>
+                  <span><span class="chip">💻 Rizz Mode - Online</span><span class="mode-description">Smooth lines for texts, DMs, and online chats.</span></span>
+                  <span><span class="chip">♟️ Chess</span><span class="mode-description">Think through moves and play chess with me.</span></span>
+                </span>
+              </span>
+              <span class="detail-card"><h3>🧬 Chatting models</h3><span class="chips"><span class="chip">GPT-OSS-120B</span><span class="chip">CoduChat V1</span><span class="chip">CoduChat V2</span><span class="chip">Qwen3 32B</span><span class="chip">Llama 3.3 70B Versatile</span><span class="chip">Llama 4 Scout 17B 16E</span></span></span>
+            </span>
+          </span>
+        </button>
+        <button class="feature-box two" type="button">
+          <span class="feature-title roll-text">🛡️ Moderation</span>
+          <span class="feature-detail">
+            <span class="detail-copy mod-copy">
+              <span class="roll-text">🧹 I can moderate your server as well!</span>
+              <span class="roll-text">⚒️ Core mod actions like mute/unmute, ban/unban, kick and more are available without moderation setup</span>
+              <span class="roll-text">🚨 However, you might wanna run /setup-moderation in your server once to completely protect it, and unlock actions like AutoMod, NLP Moderation, AntiRaid, AntiSpam, and more!</span>
+            </span>
+          </span>
+        </button>
+        <button class="feature-box three" type="button">
+          <span class="feature-title roll-text">🎫 Ticketing</span>
+          <span class="feature-detail">
+            <span class="detail-copy mod-copy">
+              <span class="roll-text">📨 I also support ticketing! If your users wanna contact you, for support, they can, through the amazing me!</span>
+              <span class="roll-text">⭐ All servers get basic ticketing actions. But, you might wanna upgrade your server, for premium perks like claiming, priority queue, categories, etc!</span>
+            </span>
+          </span>
+        </button>
+        <button class="feature-box four" type="button">
+          <span class="feature-title roll-text">🎵 Music</span>
+          <span class="feature-detail">
+            <span class="detail-copy mod-copy">
+              <span class="roll-text">🔊 I can play music in your voice channels as well!</span>
+              <span class="roll-text">🎶 I support playlists, loops, lyrics, proper queuing, and more!</span>
+              <span class="roll-text">💎 You might wanna upgrade for higher bitrate, more tracks per playlists, more playlists per user in the server, and more!</span>
+            </span>
+          </span>
+        </button>
+      </div>
+    </section>
+
+    <section class="page" data-page="4">
+      <div class="above-center core-question">
+        <img class="logo" src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot logo" />
+        <p class="statement roll-text">You saw my MAIN features. Check out my other features!</p>
+      </div>
+      <button class="core-trigger roll-text" type="button">Other goated utility features</button>
+      <div class="features-map six-map" aria-label="Codunot utility features">
+        <span class="branch tl"></span><span class="branch tr"></span><span class="branch bl"></span><span class="branch br"></span><span class="branch l"></span><span class="branch r"></span>
+        <div class="core-center">
+          <img class="logo" src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot logo" />
+          <h2 class="roll-text">Other goated utility features</h2>
+        </div>
+        <button class="feature-box one" type="button">
+          <span class="feature-title roll-text">🖼️ Image generation, editing, and merging</span>
+          <span class="feature-detail">
+            <span class="detail-copy mod-copy">
+              <span class="roll-text">I can generate images for you! I can also edit an image, and merge up to 4 of them!</span>
+              <span class="roll-text">I have different image models, you get better ones if you upgrade!</span>
+            </span>
+            <span class="detail-card" style="display:block;margin-top:1.25rem;">
+              <h3>🎨 Image models</h3>
+              <span class="chips"><span class="chip">codu-imagen-basic</span><span class="chip">codu-imagen-pro</span><span class="chip">codu-imagen-strongest</span></span>
+            </span>
+          </span>
+        </button>
+        <button class="feature-box two" type="button">
+          <span class="feature-title roll-text">🎬 Video generation</span>
+          <span class="feature-detail">
+            <span class="detail-copy mod-copy">
+              <span class="roll-text">I can also generate videos for you in epic quality! I have many video models! Upgrade = Better!</span>
+            </span>
+            <span class="detail-card" style="display:block;margin-top:1.25rem;">
+              <h3>🎥 Video models</h3>
+              <span class="chips"><span class="chip">codu-vidgen-basic</span><span class="chip">codu-vidgen-pro</span><span class="chip">codu-vidgen-strongest</span></span>
+            </span>
+          </span>
+        </button>
+        <button class="feature-box three" type="button">
+          <span class="feature-title roll-text">🗣️ Text-to-Speech</span>
+          <span class="feature-detail">
+            <span class="detail-copy roll-text">I can also convert your text into lifelike speech! I support around 40 languages, and 200+ voices! CRAZY, RIGHT?</span>
+          </span>
+        </button>
+        <button class="feature-box four" type="button">
+          <span class="feature-title roll-text">😜 Fun commands</span>
+          <span class="feature-detail">
+            <span class="detail-copy roll-text">I also have commands to annoy (or show love to) your friends by sending GIFs! Kick 'em, slap 'em, or.... HUG, AND KISS THEM!</span>
+          </span>
+        </button>
+        <button class="feature-box five" type="button">
+          <span class="feature-title roll-text">🔧 Utility Commands</span>
+          <span class="feature-detail">
+            <span class="detail-copy roll-text">I am a utility bot too! Search your links on the web, search for images on the web, and more!</span>
+          </span>
+        </button>
+        <button class="feature-box six" type="button">
+          <span class="feature-title roll-text">🚀 Yet to come!</span>
+          <span class="feature-detail">
+            <span class="detail-copy roll-text">Join the support server, and suggest your awesome ideas for the awesome me!</span>
+          </span>
+        </button>
+      </div>
+    </section>
+
+    <section class="page" data-page="5">
+      <div class="center">
+        <img class="logo" src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot logo" />
+        <p class="statement roll-text">That was just the intro. Hope you liked it! Join the support server, add me to your server, and visit the website to know all of my capabilities!</p>
+        <div class="finale-actions">
+          <a class="finale-btn" href="https://discord.gg/b8Cv7eC3En" target="_blank" rel="noopener">💬 Support server</a>
+          <a class="finale-btn" href="https://discord.com/oauth2/authorize?client_id=1435987186502733878&permissions=1101671820438&integration_type=0&scope=bot+applications.commands" target="_blank" rel="noopener">🤖 Add to server</a>
+          <a class="finale-btn" href="/home/">🌐 Visit website</a>
         </div>
       </div>
-      <div class="hero-side">
-        <article class="hero-card hero-card--uptime">
-          <h3>Uptime</h3>
-          <div class="uptime">99.94%</div>
-          <p class="muted">30 day rolling target and status.</p>
-        </article>
-        <article class="hero-card bot-image-wrap hero-card--clicker">
-          <button id="bot-clicker" class="bot-clicker" type="button" aria-label="Click Codunot">
-            <img src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot bot icon" />
-          </button>
-          <p class="clicks-line">Clicks: <span id="click-count">0</span></p>
-          <p class="muted" id="click-message">i'm a bot, not a button, but okay!</p>
-          <section class="clicker-achievements" aria-labelledby="clicker-achievements-title">
-            <div class="clicker-achievements-head">
-              <span class="achievement-logo" aria-hidden="true">🏆</span>
-              <h4 id="clicker-achievements-title">Achievements</h4>
-            </div>
-            <div class="achievement-list" id="achievement-list"></div>
-          </section>
-        </article>
-      </div>
     </section>
 
-    <section class="container section ops-deck">
-      <div class="section-title">
-        <h2>Built for real Discord servers</h2>
-        <p class="muted">Codunot gives your community useful tools: AI chat, moderation, ticketing, media generation, and music, all inside Discord.</p>
-      </div>
-      <div class="grid-3 ops-grid">
-        <article class="tile ops-tile">
-          <h3>Moderation</h3>
-          <p class="muted">Use commands like <code>/ban</code>, <code>/unban</code>, <code>/mute</code>, <code>/unmute</code>, <code>/slowmode</code>, <code>/lock</code>, and more to keep your server safe.</p>
-        </article>
-        <article class="tile ops-tile">
-          <h3>AI + Media</h3>
-          <p class="muted">Chat naturally, switch models, generate images and videos, transcribe content, and create text-to-speech without leaving Discord.</p>
-        </article>
-        <article class="tile ops-tile">
-          <h3>Ticketing + Music</h3>
-          <p class="muted">Run support ticket workflows for staff and members, and manage music playback with queue, filters, playlists, and voice controls.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="container section">
-      <h2>Communities using Codunot</h2>
-      <div class="community-showcase">
-        <div class="community-wrap">
-          <div class="community-track" id="community-track"></div>
-        </div>
-        <aside class="community-note" aria-label="More communities note">
-          <span>and many more...</span>
-        </aside>
-      </div>
-    </section>
-
-    <section class="container section gen-features" id="generation-features">
-      <div class="section-title">
-        <h2 class="mega">Generation Features</h2>
-        <p class="muted">Core generation and media tools available in Codunot.</p>
-      </div>
-      <div class="feature-highlight-grid generation-grid">
-        <a class="feature-highlight page-link-card" href="generation/image-generation">
-          <span class="fh-icon">🖼️</span>
-          <h4>Image Generation</h4>
-          <p>Create original images from simple text prompts.</p>
-        </a>
-        <a class="feature-highlight page-link-card" href="generation/video-generation">
-          <span class="fh-icon">🎬</span>
-          <h4>Video Generation</h4>
-          <p>Generate short cinematic clips from text prompts.</p>
-        </a>
-        <a class="feature-highlight page-link-card" href="generation/text-to-speech">
-          <span class="fh-icon">🗣️</span>
-          <h4>Text-to-speech</h4>
-          <p>Speech creation with 300+ voices across 60+ languages.</p>
-        </a>
-        <a class="feature-highlight page-link-card" href="generation/video-transcription">
-          <span class="fh-icon">📝</span>
-          <h4>Video Transcription</h4>
-          <p>Turn supported videos into readable text and searchable notes.</p>
-        </a>
-        <a class="feature-highlight page-link-card" href="generation/image-editing">
-          <span class="fh-icon">✨</span>
-          <h4>Image Editing</h4>
-          <p>Edit uploads with prompt-driven lighting, tone, and style changes.</p>
-        </a>
-        <a class="feature-highlight page-link-card" href="generation/image-merging">
-          <span class="fh-icon">🧩</span>
-          <h4>Image Merging</h4>
-          <p>Blend multiple sources into a single coherent composition.</p>
-        </a>
-        <a class="feature-highlight page-link-card" href="generation/music-playback">
-          <span class="fh-icon">🎵</span>
-          <h4>Music Playback</h4>
-          <p>Use queueing, filters, and inline controls for smoother playback.</p>
-        </a>
-      </div>
-
-      <div class="card gen-overview">
-        <div>
-          <h3>Open the full generation hub</h3>
-        </div>
-        <a class="btn primary" href="generation/">Browse generation pages</a>
-      </div>
-    </section>
-
-
-    <section class="container section">
-      <h2>🧠 Available AI Models</h2>
-      <p class="muted">Use <code>/model</code> to switch between the AI models available in Codunot.</p>
-      <div class="card">
-        <ul class="model-list">
-          <li>GPT-OSS-120B</li>
-          <li>CoduChat V1</li>
-          <li>CoduChat V2</li>
-          <li>Qwen3 32B</li>
-          <li>Llama 3.3 70B Versatile</li>
-          <li><strong>Llama 4 Scout 17B 16E</strong><span>Default</span></li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="container section">
-      <h2>🛡️ Moderation Command Center</h2>
-      <p class="muted">Codunot offers core moderation for every Discord server. You get essential commands like <code>/ban</code>, <code>/kick</code>, <code>/mute</code>, <code>/unmute</code>, <code>/slowmode</code>, and more for daily moderation.</p>
-      <div class="cta-row"><a class="btn secondary" href="commands/">See Moderation Commands</a><a class="btn ghost" href="premium/">View Premium Plans</a></div>
-    </section>
-
-    <section class="container section">
-      <h2>🎫 Ticketing</h2>
-      <div class="grid-3">
-        <article class="tile"><h3>Fast Setup Wizard</h3><p class="muted">Launch <code>/ticketing-setup</code> to configure staff role, panel channel, and logging channel in minutes.</p></article>
-        <article class="tile"><h3>Queue And Claim Workflow</h3><p class="muted">Priority queue is available on Premium, Gold, and Enterprise, while claim buttons and ticket categories unlock on Gold and Enterprise.</p></article>
-        <article class="tile"><h3>Enterprise Controls</h3><p class="muted">Enterprise adds custom requirements prompts, deeper ticket routing, and fully expanded support workflows.</p></article>
-      </div>
-      <div class="cta-row"><a class="btn secondary" href="commands/">Explore Ticketing Commands</a><a class="btn ghost" href="premium/">Compare Ticketing Tiers</a></div>
-    </section>
-
+    <div class="click-hint">Click to continue</div>
   </main>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-inner">
-        <div class="footer-col">
-          <a class="footer-brand" href="./">
-            <img src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot logo" />
-            Codunot
-          </a>
-          <p class="muted" style="font-size:.85rem;margin:.35rem 0 0;">AI that lives inside Discord.</p>
-        </div>
-        <div class="footer-col">
-          <h4>Product</h4>
-          <a href="features/">Features</a>
-          <a href="commands/">Commands</a>
-          <a href="premium/">Premium</a>
-        </div>
-        <div class="footer-col">
-          <h4>Resources</h4>
-          <a href="faq/">FAQ</a>
-          <a href="roadmap/">Roadmap</a>
-          <a href="support/">Support</a>
-        </div>
-        <div class="footer-col">
-          <h4>Legal</h4>
-          <a href="terms/">Terms of Service</a>
-          <a href="privacy/">Privacy Policy</a>
-        </div>
-        <div class="footer-col">
-          <h4>Connect</h4>
-          <a href="https://discord.gg/b8Cv7eC3En" target="_blank" rel="noopener">Discord Server</a>
-          <a href="https://top.gg/bot/1435987186502733878" target="_blank" rel="noopener">Top.gg</a>
-        </div>
-      </div>
-      <div class="footer-bottom">&copy; <span id="year"></span> Codunot &mdash; All rights reserved.</div>
-    </div>
-  </footer>
-  <script src="script.js"></script>
+  <script>
+    const pages = [...document.querySelectorAll('.page')];
+    const backButton = document.querySelector('.back-button');
+    const cursorGlow = document.querySelector('.cursor-glow');
+    const clickHint = document.querySelector('.click-hint');
+    const typedLine = document.querySelector('.typed');
+    let selectedFeature = null;
+    let selectedMap = null;
+    let currentPage = 0;
+    let typingTimer;
+
+    function getMapContext(page = pages[currentPage]) {
+      if (!page) return null;
+      const map = page.querySelector('.features-map');
+      if (!map) return null;
+      return {
+        page,
+        map,
+        trigger: page.querySelector('.core-trigger'),
+        question: page.querySelector('.core-question'),
+        buttons: [...page.querySelectorAll('.feature-box[type="button"]')]
+      };
+    }
+
+    function prepareRollingText(root = document) {
+      root.querySelectorAll('h3, .chip, .mode-description').forEach((element) => element.classList.add('roll-text'));
+      root.querySelectorAll('.roll-text').forEach((element) => {
+        if (element.dataset.rolled === 'true') return;
+        const text = element.textContent.trim();
+        element.textContent = '';
+        text.split(/(\s+)/).forEach((part, index) => {
+          if (!part.trim()) {
+            element.append(part);
+            return;
+          }
+          const word = document.createElement('span');
+          word.className = 'roll-word';
+          const inner = document.createElement('span');
+          inner.textContent = part;
+          inner.style.setProperty('--delay', `${index * 38}ms`);
+          word.append(inner);
+          element.append(word);
+        });
+        element.dataset.rolled = 'true';
+      });
+    }
+
+    function replayRollingText(root) {
+      root.querySelectorAll('.roll-word > span').forEach((word) => {
+        word.style.animation = 'none';
+        word.offsetHeight;
+        word.style.animation = '';
+      });
+    }
+
+    function resetMapPage(page) {
+      const trigger = page.querySelector('.core-trigger');
+      const question = page.querySelector('.core-question');
+      const map = page.querySelector('.features-map');
+      if (trigger) trigger.classList.remove('charging', 'shattered');
+      if (question) question.classList.remove('gone');
+      if (map) map.classList.remove('visible', 'detail');
+      page.querySelectorAll('.feature-box').forEach((button) => button.classList.remove('selected'));
+    }
+
+    function updateClickHint() {
+      if (currentPage >= pages.length - 1) {
+        clickHint.classList.add('hidden');
+        clickHint.textContent = '';
+        return;
+      }
+      clickHint.classList.remove('hidden');
+      clickHint.textContent = selectedFeature ? 'Click outside the box to go back' : 'Click to continue';
+    }
+
+    function showPage(index) {
+      if (selectedFeature) closeFeatureDetail();
+
+      pages.forEach((page, pageIndex) => {
+        if (pageIndex !== index && page.querySelector('.features-map')) resetMapPage(page);
+      });
+
+      currentPage = Math.max(0, Math.min(index, pages.length - 1));
+      pages.forEach((page, pageIndex) => page.classList.toggle('active', pageIndex === currentPage));
+      backButton.classList.toggle('visible', currentPage > 0);
+      replayRollingText(pages[currentPage]);
+      if (currentPage === 1) typeText();
+      updateClickHint();
+    }
+
+    function typeText() {
+      clearInterval(typingTimer);
+      const text = typedLine.dataset.text;
+      let index = 0;
+      typedLine.dataset.rolled = 'false';
+      typedLine.classList.remove('roll-text');
+      typedLine.textContent = '';
+      typingTimer = setInterval(() => {
+        typedLine.textContent = text.slice(0, index++);
+        if (index > text.length) {
+          clearInterval(typingTimer);
+          typedLine.classList.add('roll-text');
+          prepareRollingText(typedLine.parentElement);
+          replayRollingText(typedLine);
+        }
+      }, 72);
+    }
+
+    function makeShards(trigger) {
+      const rect = trigger.getBoundingClientRect();
+      for (let i = 0; i < 46; i++) {
+        const shard = document.createElement('span');
+        shard.className = 'shard';
+        shard.style.left = `${rect.left + Math.random() * rect.width}px`;
+        shard.style.top = `${rect.top + Math.random() * rect.height}px`;
+        shard.style.setProperty('--tx', `${(Math.random() - .5) * window.innerWidth * 1.4}px`);
+        shard.style.setProperty('--ty', `${(Math.random() - .5) * window.innerHeight * 1.2}px`);
+        shard.style.setProperty('--rot', `${(Math.random() - .5) * 900}deg`);
+        document.body.appendChild(shard);
+        shard.addEventListener('animationend', () => shard.remove());
+      }
+    }
+
+    function openCoreMap(event) {
+      event.stopPropagation();
+      const context = getMapContext(event.currentTarget.closest('.page'));
+      if (!context || !context.trigger) return;
+      const { trigger, question, map } = context;
+      if (trigger.classList.contains('charging') || trigger.classList.contains('shattered')) return;
+      trigger.classList.add('charging');
+      if (question) question.classList.add('gone');
+      setTimeout(() => {
+        const burst = document.createElement('span');
+        burst.className = 'energy-burst';
+        document.body.appendChild(burst);
+        burst.addEventListener('animationend', () => burst.remove());
+        trigger.classList.add('shattered');
+        makeShards(trigger);
+        setTimeout(() => {
+          map.classList.add('visible');
+          replayRollingText(map);
+        }, 250);
+      }, 1050);
+    }
+
+    function openFeatureDetail(event) {
+      event.stopPropagation();
+      const context = getMapContext(event.currentTarget.closest('.page'));
+      if (!context) return;
+      selectedFeature = event.currentTarget;
+      selectedMap = context.map;
+      context.map.classList.add('detail');
+      context.buttons.forEach((button) => button.classList.toggle('selected', button === selectedFeature));
+      replayRollingText(selectedFeature);
+      updateClickHint();
+    }
+
+    function closeFeatureDetail() {
+      if (!selectedMap) return;
+      selectedMap.classList.remove('detail');
+      selectedMap.querySelectorAll('.feature-box').forEach((button) => button.classList.remove('selected'));
+      selectedFeature = null;
+      selectedMap = null;
+      updateClickHint();
+    }
+
+    window.addEventListener('mousemove', (event) => {
+      cursorGlow.style.left = `${event.clientX}px`;
+      cursorGlow.style.top = `${event.clientY}px`;
+    });
+
+    document.addEventListener('click', (event) => {
+      if (event.target.closest('.back-button, .core-trigger, .feature-box, .finale-btn, .finale-actions')) return;
+      if (selectedFeature) return closeFeatureDetail();
+      if (currentPage >= pages.length - 1) return;
+      showPage(currentPage + 1);
+    });
+
+    backButton.addEventListener('click', (event) => {
+      event.stopPropagation();
+      if (selectedFeature) return closeFeatureDetail();
+      if (currentPage > 0) showPage(currentPage - 1);
+    });
+
+    document.querySelectorAll('.core-trigger').forEach((trigger) => trigger.addEventListener('click', openCoreMap));
+    document.querySelectorAll('.feature-box[type="button"]').forEach((button) => button.addEventListener('click', openFeatureDetail));
+
+    prepareRollingText();
+    replayRollingText(pages[0]);
+  </script>
 </body>
 </html>

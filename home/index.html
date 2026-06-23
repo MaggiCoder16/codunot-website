@@ -1,0 +1,263 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Codunot - Discord AI Bot</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="../assets/icons/favicon-192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/icons/apple-touch-icon.png" />
+  <link rel="manifest" href="../site.webmanifest" />
+<meta name="description" content="Codunot is a Discord-first ops bot for moderation, creator media, and community workflows." />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body data-page="home">
+  <header class="nav-wrap">
+    <nav class="nav container">
+      <a class="brand" href="./">
+        <img src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot logo" />
+        Codunot
+      </a>
+      <div class="links">
+        <a class="active" href="./">Home</a>
+        <a href="../features/">Features</a>
+        <a href="../commands/">Docs</a>
+        <a href="../tutorials/">Tutorials</a>
+        <a href="../faq/">FAQ</a>
+        <a href="../premium/">Premium</a>
+        <a href="../support/">Support</a>
+        <a href="../terms/">ToS</a>
+        <a href="../privacy/">Privacy Policy</a>
+        <a class="login-btn" href="https://discord.com/oauth2/authorize?client_id=1435987186502733878&integration_type=1&scope=applications.commands" target="_blank" rel="noopener">Authorize App</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <div class="hero-main">
+        <span class="pill">Bot online</span>
+        <div class="hero-main-content">
+          <h1>Codunot</h1>
+          <p class="subhead">AI that lives inside Discord for chat, moderation, music, ticketing, and content creation.</p>
+          <p class="typewriter-line"><span id="hero-typed"></span><span class="type-cursor" aria-hidden="true"></span></p>
+          <div class="hero-mini-grid" aria-label="Top Codunot features">
+            <article class="hero-mini-card">
+              <span class="hero-mini-icon">🧠</span>
+              <strong>Model control</strong>
+              <p>Use <code>/model</code> per channel or DM across 6 available AI models to match your preferred speed and style.</p>
+            </article>
+            <article class="hero-mini-card">
+              <span class="hero-mini-icon">💬</span>
+              <strong>Natural AI chat</strong>
+              <p>Mention Codunot in servers or DM directly for fast replies, context-aware conversations, and smart follow-ups.</p>
+            </article>
+            <article class="hero-mini-card">
+              <span class="hero-mini-icon">🎵</span>
+              <strong>Music controls</strong>
+              <p>Use <code>/play</code>, <code>/volume</code>, <code>/autoplay</code>, <code>/loop</code>, and <code>/lyrics</code> with inline controls.</p>
+            </article>
+            <article class="hero-mini-card">
+              <span class="hero-mini-icon">🌍</span>
+              <strong>Text-to-speech voices</strong>
+              <p>Generate speech with 300+ voices across 60+ languages using readable voice names and cleaner language labels.</p>
+            </article>
+            <article class="hero-mini-card">
+              <span class="hero-mini-icon">🎨</span>
+              <strong>Media generation</strong>
+              <p>Create images, videos, edits, and merged compositions directly from prompts or uploaded media.</p>
+            </article>
+            <article class="hero-mini-card">
+              <span class="hero-mini-icon">🛡️</span>
+              <strong>Moderation tools</strong>
+              <p>Run automod, warnings, cases, locks, bans, and advanced staff workflows from one Discord-native system.</p>
+            </article>
+          </div>
+          <div class="cta-row">
+            <a class="btn primary" href="https://discord.com/oauth2/authorize?client_id=1435987186502733878&permissions=1101671820438&integration_type=0&scope=bot+applications.commands" target="_blank" rel="noopener">Add to Discord</a>
+            <a class="btn secondary" href="https://discord.com/oauth2/authorize?client_id=1435987186502733878&integration_type=1&scope=applications.commands" target="_blank" rel="noopener">Authorize App Login</a>
+            <a class="btn ghost" href="https://top.gg/bot/1435987186502733878/vote" target="_blank" rel="noopener">Vote on top.gg</a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-side">
+        <article class="hero-card hero-card--uptime">
+          <h3>Uptime</h3>
+          <div class="uptime">99.94%</div>
+          <p class="muted">30 day rolling target and status.</p>
+        </article>
+        <article class="hero-card bot-image-wrap hero-card--clicker">
+          <button id="bot-clicker" class="bot-clicker" type="button" aria-label="Click Codunot">
+            <img src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot bot icon" />
+          </button>
+          <p class="clicks-line">Clicks: <span id="click-count">0</span></p>
+          <p class="muted" id="click-message">i'm a bot, not a button, but okay!</p>
+          <section class="clicker-achievements" aria-labelledby="clicker-achievements-title">
+            <div class="clicker-achievements-head">
+              <span class="achievement-logo" aria-hidden="true">🏆</span>
+              <h4 id="clicker-achievements-title">Achievements</h4>
+            </div>
+            <div class="achievement-list" id="achievement-list"></div>
+          </section>
+        </article>
+      </div>
+    </section>
+
+    <section class="container section ops-deck">
+      <div class="section-title">
+        <h2>Built for real Discord servers</h2>
+        <p class="muted">Codunot gives your community useful tools: AI chat, moderation, ticketing, media generation, and music, all inside Discord.</p>
+      </div>
+      <div class="grid-3 ops-grid">
+        <article class="tile ops-tile">
+          <h3>Moderation</h3>
+          <p class="muted">Use commands like <code>/ban</code>, <code>/unban</code>, <code>/mute</code>, <code>/unmute</code>, <code>/slowmode</code>, <code>/lock</code>, and more to keep your server safe.</p>
+        </article>
+        <article class="tile ops-tile">
+          <h3>AI + Media</h3>
+          <p class="muted">Chat naturally, switch models, generate images and videos, transcribe content, and create text-to-speech without leaving Discord.</p>
+        </article>
+        <article class="tile ops-tile">
+          <h3>Ticketing + Music</h3>
+          <p class="muted">Run support ticket workflows for staff and members, and manage music playback with queue, filters, playlists, and voice controls.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="container section">
+      <h2>Communities using Codunot</h2>
+      <div class="community-showcase">
+        <div class="community-wrap">
+          <div class="community-track" id="community-track"></div>
+        </div>
+        <aside class="community-note" aria-label="More communities note">
+          <span>and many more...</span>
+        </aside>
+      </div>
+    </section>
+
+    <section class="container section gen-features" id="generation-features">
+      <div class="section-title">
+        <h2 class="mega">Generation Features</h2>
+        <p class="muted">Core generation and media tools available in Codunot.</p>
+      </div>
+      <div class="feature-highlight-grid generation-grid">
+        <a class="feature-highlight page-link-card" href="../generation/image-generation">
+          <span class="fh-icon">🖼️</span>
+          <h4>Image Generation</h4>
+          <p>Create original images from simple text prompts.</p>
+        </a>
+        <a class="feature-highlight page-link-card" href="../generation/video-generation">
+          <span class="fh-icon">🎬</span>
+          <h4>Video Generation</h4>
+          <p>Generate short cinematic clips from text prompts.</p>
+        </a>
+        <a class="feature-highlight page-link-card" href="../generation/text-to-speech">
+          <span class="fh-icon">🗣️</span>
+          <h4>Text-to-speech</h4>
+          <p>Speech creation with 300+ voices across 60+ languages.</p>
+        </a>
+        <a class="feature-highlight page-link-card" href="../generation/video-transcription">
+          <span class="fh-icon">📝</span>
+          <h4>Video Transcription</h4>
+          <p>Turn supported videos into readable text and searchable notes.</p>
+        </a>
+        <a class="feature-highlight page-link-card" href="../generation/image-editing">
+          <span class="fh-icon">✨</span>
+          <h4>Image Editing</h4>
+          <p>Edit uploads with prompt-driven lighting, tone, and style changes.</p>
+        </a>
+        <a class="feature-highlight page-link-card" href="../generation/image-merging">
+          <span class="fh-icon">🧩</span>
+          <h4>Image Merging</h4>
+          <p>Blend multiple sources into a single coherent composition.</p>
+        </a>
+        <a class="feature-highlight page-link-card" href="../generation/music-playback">
+          <span class="fh-icon">🎵</span>
+          <h4>Music Playback</h4>
+          <p>Use queueing, filters, and inline controls for smoother playback.</p>
+        </a>
+      </div>
+
+      <div class="card gen-overview">
+        <div>
+          <h3>Open the full generation hub</h3>
+        </div>
+        <a class="btn primary" href="../generation/">Browse generation pages</a>
+      </div>
+    </section>
+
+
+    <section class="container section">
+      <h2>🧠 Available AI Models</h2>
+      <p class="muted">Use <code>/model</code> to switch between the AI models available in Codunot.</p>
+      <div class="card">
+        <ul class="model-list">
+          <li>GPT-OSS-120B</li>
+          <li>CoduChat V1</li>
+          <li>CoduChat V2</li>
+          <li>Qwen3 32B</li>
+          <li>Llama 3.3 70B Versatile</li>
+          <li><strong>Llama 4 Scout 17B 16E</strong><span>Default</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="container section">
+      <h2>🛡️ Moderation Command Center</h2>
+      <p class="muted">Codunot offers core moderation for every Discord server. You get essential commands like <code>/ban</code>, <code>/kick</code>, <code>/mute</code>, <code>/unmute</code>, <code>/slowmode</code>, and more for daily moderation.</p>
+      <div class="cta-row"><a class="btn secondary" href="../commands/">See Moderation Commands</a><a class="btn ghost" href="../premium/">View Premium Plans</a></div>
+    </section>
+
+    <section class="container section">
+      <h2>🎫 Ticketing</h2>
+      <div class="grid-3">
+        <article class="tile"><h3>Fast Setup Wizard</h3><p class="muted">Launch <code>/ticketing-setup</code> to configure staff role, panel channel, and logging channel in minutes.</p></article>
+        <article class="tile"><h3>Queue And Claim Workflow</h3><p class="muted">Priority queue is available on Premium, Gold, and Enterprise, while claim buttons and ticket categories unlock on Gold and Enterprise.</p></article>
+        <article class="tile"><h3>Enterprise Controls</h3><p class="muted">Enterprise adds custom requirements prompts, deeper ticket routing, and fully expanded support workflows.</p></article>
+      </div>
+      <div class="cta-row"><a class="btn secondary" href="../commands/">Explore Ticketing Commands</a><a class="btn ghost" href="../premium/">Compare Ticketing Tiers</a></div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-col">
+          <a class="footer-brand" href="./">
+            <img src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot logo" />
+            Codunot
+          </a>
+          <p class="muted" style="font-size:.85rem;margin:.35rem 0 0;">AI that lives inside Discord.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="../features/">Features</a>
+          <a href="../commands/">Commands</a>
+          <a href="../premium/">Premium</a>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <a href="../faq/">FAQ</a>
+          <a href="../roadmap/">Roadmap</a>
+          <a href="../support/">Support</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="../terms/">Terms of Service</a>
+          <a href="../privacy/">Privacy Policy</a>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <a href="https://discord.gg/b8Cv7eC3En" target="_blank" rel="noopener">Discord Server</a>
+          <a href="https://top.gg/bot/1435987186502733878" target="_blank" rel="noopener">Top.gg</a>
+        </div>
+      </div>
+      <div class="footer-bottom">&copy; <span id="year"></span> Codunot &mdash; All rights reserved.</div>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>

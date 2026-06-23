@@ -134,7 +134,7 @@ function setPageData() {
 }
 
 function buildDiscordAuthorizeUrl() {
-  const redirectUrl = new URL(SITE_BASE);
+  const redirectUrl = new URL('home/', SITE_BASE);
   const url = new URL('https://discord.com/oauth2/authorize');
   url.searchParams.set('client_id', DISCORD_CLIENT_ID);
   url.searchParams.set('integration_type', '1');
@@ -372,7 +372,7 @@ function loadCommunities() {
   const track = document.getElementById('community-track');
   if (!track) return;
 
-  fetch('communities.json')
+  fetch(buildSiteUrl('communities.json'))
     .then((res) => {
       if (!res.ok) throw new Error('Failed to load communities.json');
       return res.json();

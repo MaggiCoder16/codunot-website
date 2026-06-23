@@ -385,7 +385,7 @@
       font-size: clamp(1.1rem, 2vw, 1.8rem);
       font-weight: 950;
       cursor: none;
-      transition: transform .6s cubic-bezier(.2,.9,.15,1), opacity .5s ease, width .6s ease, min-height .6s ease, border-radius .6s ease;
+      transition: transform .6s cubic-bezier(.2,.9,.15,1), opacity .5s ease, width .6s ease, min-height .6s ease, border-radius .6s ease, left .6s ease, top .6s ease, right .6s ease, bottom .6s ease;
     }
 
     .feature-box:hover { transform: scale(1.06); }
@@ -425,6 +425,25 @@
       border-radius: 34px;
       cursor: default;
       z-index: 6;
+    }
+
+    .features-map.six-map .feature-box.selected {
+      left: 50%;
+      top: 50%;
+      right: auto;
+      bottom: auto;
+      transform: translate(-50%, -50%);
+      width: min(92vw, 980px);
+      min-height: min(70vh, 560px);
+      padding: clamp(24px, 5vw, 52px);
+      place-items: stretch;
+      text-align: left;
+      border-radius: 34px;
+      z-index: 6;
+    }
+
+    .features-map.six-map .feature-box.selected:hover {
+      transform: translate(-50%, -50%);
     }
 
     .feature-detail { display: none; color: var(--muted); font-weight: 650; }

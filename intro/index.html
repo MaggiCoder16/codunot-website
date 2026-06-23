@@ -176,6 +176,38 @@
 
     @keyframes blink { 50% { opacity: 0; } }
 
+    .roll-text {
+      display: inline-block;
+      white-space: pre-line;
+    }
+
+    .roll-word {
+      display: inline-block;
+      overflow: hidden;
+      vertical-align: top;
+      margin-right: .18em;
+    }
+
+    .roll-word > span {
+      display: inline-block;
+      transform: translateY(112%) rotateX(-78deg);
+      transform-origin: 50% 100%;
+      opacity: 0;
+    }
+
+    .page.active .roll-word > span,
+    .features-map.visible .roll-word > span,
+    .feature-box.selected .roll-word > span {
+      animation: rollIn .72s cubic-bezier(.16, 1, .3, 1) forwards;
+      animation-delay: var(--delay, 0ms);
+    }
+
+    @keyframes rollIn {
+      0% { transform: translateY(112%) rotateX(-78deg); opacity: 0; filter: blur(10px); }
+      70% { transform: translateY(-8%) rotateX(8deg); opacity: 1; filter: blur(0); }
+      100% { transform: translateY(0) rotateX(0); opacity: 1; filter: blur(0); }
+    }
+
     .core-trigger {
       position: absolute;
       left: 50%;
@@ -195,7 +227,68 @@
     }
 
     .core-trigger:hover { transform: translate(-50%, -50%) scale(1.04); filter: brightness(1.12); }
+    .core-trigger::before,
+    .core-trigger::after {
+      content: "";
+      position: absolute;
+      inset: -18px;
+      border-radius: inherit;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .core-trigger::before {
+      background: conic-gradient(from 0deg, transparent, rgba(255,255,255,.95), transparent, rgba(255,255,255,.55), transparent);
+      filter: blur(14px);
+    }
+
+    .core-trigger::after {
+      border: 1px solid rgba(255,255,255,.55);
+      box-shadow: 0 0 38px rgba(255,255,255,.75), inset 0 0 28px rgba(255,255,255,.35);
+    }
+
+    .core-trigger.charging {
+      animation: energyCharge 1.05s cubic-bezier(.16, 1, .3, 1) forwards;
+    }
+
+    .core-trigger.charging::before {
+      opacity: 1;
+      animation: energySpin .34s linear infinite, energyPulse .36s ease-in-out infinite alternate;
+    }
+
+    .core-trigger.charging::after {
+      opacity: 1;
+      animation: ringTighten 1.05s cubic-bezier(.16, 1, .3, 1) forwards;
+    }
+
     .core-trigger.shattered { opacity: 0; pointer-events: none; }
+
+    .core-question.gone { opacity: 0; transform: translateY(-28px) scale(.96); filter: blur(16px); transition: opacity .55s ease, transform .55s ease, filter .55s ease; }
+
+    .energy-burst {
+      position: fixed;
+      left: 50%;
+      top: 52%;
+      transform: translate(-50%, -50%);
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      pointer-events: none;
+      z-index: 7;
+      background: radial-gradient(circle, rgba(255,255,255,1), rgba(255,255,255,.35) 38%, transparent 70%);
+      animation: energyBurst .62s cubic-bezier(.12,.88,.22,1) forwards;
+    }
+
+    @keyframes energyCharge {
+      0% { transform: translate(-50%, -50%) scale(1); filter: brightness(1); }
+      65% { transform: translate(-50%, -50%) scale(.92); filter: brightness(1.55); }
+      100% { transform: translate(-50%, -50%) scale(1.08); filter: brightness(2.2); }
+    }
+
+    @keyframes energySpin { to { transform: rotate(360deg); } }
+    @keyframes energyPulse { to { filter: blur(6px); opacity: 1; } }
+    @keyframes ringTighten { from { inset: -54px; transform: scale(1.24); } to { inset: -4px; transform: scale(.9); } }
+    @keyframes energyBurst { to { transform: translate(-50%, -50%) scale(34); opacity: 0; filter: blur(8px); } }
 
     .shard {
       position: fixed;
@@ -269,9 +362,9 @@
 
     .feature-box:hover { transform: scale(1.06); }
     .feature-box.one { left: clamp(24px, 9vw, 120px); top: clamp(92px, 14vh, 150px); }
-    .feature-box.two { right: clamp(24px, 9vw, 120px); top: clamp(92px, 14vh, 150px); opacity: .52; }
-    .feature-box.three { left: clamp(24px, 9vw, 120px); bottom: clamp(32px, 12vh, 120px); opacity: .52; }
-    .feature-box.four { right: clamp(24px, 9vw, 120px); bottom: clamp(32px, 12vh, 120px); opacity: .52; }
+    .feature-box.two { right: clamp(24px, 9vw, 120px); top: clamp(92px, 14vh, 150px); }
+    .feature-box.three { left: clamp(24px, 9vw, 120px); bottom: clamp(32px, 12vh, 120px); }
+    .feature-box.four { right: clamp(24px, 9vw, 120px); bottom: clamp(32px, 12vh, 120px); }
 
     .features-map.detail .feature-box:not(.selected), .features-map.detail .core-center, .features-map.detail .branch { opacity: 0; pointer-events: none; }
 
@@ -293,13 +386,16 @@
 
     .feature-detail { display: none; color: var(--muted); font-weight: 650; }
     .feature-box.selected .feature-detail { display: block; }
-    .feature-box.selected .feature-title { display: block; font-size: clamp(2.2rem, 5vw, 4.6rem); color: white; margin-bottom: 1rem; }
-    .detail-copy { font-size: clamp(1rem, 2vw, 1.35rem); line-height: 1.55; max-width: 780px; }
-    .detail-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 2rem; }
-    .detail-card { border: 1px solid rgba(255,255,255,.16); border-radius: 22px; padding: 1.2rem; background: rgba(0,0,0,.24); }
-    .detail-card h3 { margin: 0 0 .8rem; color: white; }
-    .chips { display: flex; flex-wrap: wrap; gap: .6rem; }
-    .chip { border: 1px solid rgba(255,255,255,.18); border-radius: 999px; padding: .55rem .8rem; color: white; background: rgba(255,255,255,.08); }
+    .feature-box.selected .feature-title { display: block; font-size: clamp(2rem, 4vw, 3.5rem); color: white; margin-bottom: 1rem; letter-spacing: -.05em; }
+    .detail-copy { font-size: clamp(.95rem, 1.35vw, 1.08rem); line-height: 1.58; max-width: 760px; font-weight: 500; font-family: ui-rounded, "SF Pro Rounded", Inter, ui-sans-serif, system-ui, sans-serif; letter-spacing: -.01em; }
+    .detail-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .85rem; margin-top: 1.55rem; }
+    .detail-card { border: 1px solid rgba(255,255,255,.14); border-radius: 20px; padding: 1rem; background: rgba(0,0,0,.24); font-family: ui-rounded, "SF Pro Rounded", Inter, ui-sans-serif, system-ui, sans-serif; }
+    .detail-card h3 { margin: 0 0 .7rem; color: white; font-size: .92rem; letter-spacing: .08em; text-transform: uppercase; }
+    .chips { display: flex; flex-wrap: wrap; gap: .45rem; }
+    .chip { border: 1px solid rgba(255,255,255,.16); border-radius: 999px; padding: .42rem .64rem; color: rgba(255,255,255,.9); background: rgba(255,255,255,.07); font-size: clamp(.74rem, 1.1vw, .88rem); font-weight: 650; }
+    .mode-list { display: grid; gap: .55rem; }
+    .mode-description { margin: .15rem 0 0; color: rgba(255,255,255,.64); font-size: clamp(.72rem, 1vw, .84rem); line-height: 1.35; font-weight: 500; }
+    .mod-copy { display: grid; gap: .95rem; }
 
     .click-hint {
       position: fixed;
@@ -333,8 +429,8 @@
 
     <section class="page active" data-page="0">
       <div class="center">
-        <h1 class="hero-title">Codunot AI</h1>
-        <p class="subtitle">Best Discord Bot</p>
+        <h1 class="hero-title roll-text">Codunot AI</h1>
+        <p class="subtitle roll-text">Best Discord Bot</p>
       </div>
     </section>
 
@@ -348,34 +444,70 @@
     <section class="page" data-page="2">
       <div class="center">
         <img class="logo" src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot logo" />
-        <p class="statement">I'm a feature rich, all-in-one discord bot, built for all kinds of communities to make them more engaging.</p>
+        <p class="statement roll-text">I'm a feature rich, all-in-one discord bot, built for all kinds of communities to make them more engaging.</p>
       </div>
     </section>
 
     <section class="page" data-page="3">
-      <div class="above-center">
-        <p class="statement">I have a lot of features. Wanna know my core features? :&gt;</p>
+      <div class="above-center core-question">
+        <p class="statement roll-text">I have a lot of features. Wanna know my core features? :&gt;</p>
       </div>
-      <button class="core-trigger" type="button">Core features</button>
+      <button class="core-trigger roll-text" type="button">Core features</button>
       <div class="features-map" aria-label="Codunot core features">
         <span class="branch tl"></span><span class="branch tr"></span><span class="branch bl"></span><span class="branch br"></span>
         <div class="core-center">
           <img class="logo" src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot logo" />
-          <h2>Core Features</h2>
+          <h2 class="roll-text">Core Features</h2>
         </div>
         <button class="feature-box one" type="button">
-          <span class="feature-title">AI Chatbot</span>
+          <span class="feature-title roll-text">🤖 AI Chatbot</span>
           <span class="feature-detail">
-            <span class="detail-copy">You can chat with me! I have many personality modes, and many chatting models!</span>
+            <span class="detail-copy roll-text">💬 You can chat with me! I have many personality modes, and many chatting models!</span>
             <span class="detail-grid">
-              <span class="detail-card"><h3>Personality modes</h3><span class="chips"><span class="chip">Fun</span><span class="chip">Serious</span><span class="chip">Roast</span><span class="chip">Teach Me Rizz</span><span class="chip">Chess</span></span></span>
-              <span class="detail-card"><h3>Chatting models</h3><span class="chips"><span class="chip">GPT-OSS-120B</span><span class="chip">CoduChat V1</span><span class="chip">CoduChat V2</span><span class="chip">Qwen3 32B</span><span class="chip">Llama 3.3 70B Versatile</span><span class="chip">Llama 4 Scout 17B 16E</span></span></span>
+              <span class="detail-card">
+                <h3>✨ Personality modes</h3>
+                <span class="mode-list">
+                  <span><span class="chip">🎉 Fun</span><span class="mode-description">Playful, silly replies for casual server chats.</span></span>
+                  <span><span class="chip">🧠 Serious</span><span class="mode-description">Focused answers when you need direct help.</span></span>
+                  <span><span class="chip">🔥 Roast</span><span class="mode-description">Spicy jokes and dramatic comebacks.</span></span>
+                  <span><span class="chip">😎 Rizz mode - IRL</span><span class="mode-description">Confidence tips for real-life conversations.</span></span>
+                  <span><span class="chip">💻 Rizz Mode - Online</span><span class="mode-description">Smooth lines for texts, DMs, and online chats.</span></span>
+                  <span><span class="chip">♟️ Chess</span><span class="mode-description">Think through moves and play chess with me.</span></span>
+                </span>
+              </span>
+              <span class="detail-card"><h3>🧬 Chatting models</h3><span class="chips"><span class="chip">GPT-OSS-120B</span><span class="chip">CoduChat V1</span><span class="chip">CoduChat V2</span><span class="chip">Qwen3 32B</span><span class="chip">Llama 3.3 70B Versatile</span><span class="chip">Llama 4 Scout 17B 16E</span></span></span>
             </span>
           </span>
         </button>
-        <div class="feature-box two">Music</div>
-        <div class="feature-box three">Moderation</div>
-        <div class="feature-box four">Media Tools</div>
+        <button class="feature-box two" type="button">
+          <span class="feature-title roll-text">🛡️ Moderation</span>
+          <span class="feature-detail">
+            <span class="detail-copy mod-copy">
+              <span class="roll-text">🧹 I can moderate your server as well!</span>
+              <span class="roll-text">⚒️ Core mod actions like mute/unmute, ban/unban, kick and more are available without moderation setup</span>
+              <span class="roll-text">🚨 However, you might wanna run /setup-moderation in your server once to completely protect it, and unlock actions like AutoMod, NLP Moderation, AntiRaid, AntiSpam, and more!</span>
+            </span>
+          </span>
+        </button>
+        <button class="feature-box three" type="button">
+          <span class="feature-title roll-text">🎫 Ticketing</span>
+          <span class="feature-detail">
+            <span class="detail-copy mod-copy">
+              <span class="roll-text">📨 I also support ticketing! If your users wanna contact you, for support, they can, through the amazing me!</span>
+              <span class="roll-text">⭐ All servers get basic ticketing actions. But, you might wanna upgrade your server, for premium perks like claiming, priority queue, categories, etc!</span>
+            </span>
+          </span>
+        </button>
+        <button class="feature-box four" type="button">
+          <span class="feature-title roll-text">🎵 Music</span>
+          <span class="feature-detail">
+            <span class="detail-copy mod-copy">
+              <span class="roll-text">🔊 I can play music in your voice channels as well!</span>
+              <span class="roll-text">🎶 I support playlists, loops, lyrics, proper queuing, and more!</span>
+              <span class="roll-text">💎 You might wanna upgrade for higher bitrate, more tracks per playlists, more playlists per user in the server, and more!</span>
+            </span>
+          </span>
+        </button>
       </div>
     </section>
     <div class="click-hint">Click to continue</div>
@@ -388,16 +520,49 @@
     const typedLine = document.querySelector('.typed');
     const coreTrigger = document.querySelector('.core-trigger');
     const featuresMap = document.querySelector('.features-map');
-    const aiBox = document.querySelector('.feature-box.one');
+    const featureButtons = [...document.querySelectorAll('.feature-box[type="button"]')];
+    let selectedFeature = null;
     let currentPage = 0;
     let typingTimer;
     let locked = true;
+
+    function prepareRollingText(root = document) {
+      root.querySelectorAll('h3, .chip, .mode-description').forEach((element) => element.classList.add('roll-text'));
+      root.querySelectorAll('.roll-text').forEach((element) => {
+        if (element.dataset.rolled === 'true') return;
+        const text = element.textContent.trim();
+        element.textContent = '';
+        text.split(/(\s+)/).forEach((part, index) => {
+          if (!part.trim()) {
+            element.append(part);
+            return;
+          }
+          const word = document.createElement('span');
+          word.className = 'roll-word';
+          const inner = document.createElement('span');
+          inner.textContent = part;
+          inner.style.setProperty('--delay', `${index * 38}ms`);
+          word.append(inner);
+          element.append(word);
+        });
+        element.dataset.rolled = 'true';
+      });
+    }
+
+    function replayRollingText(root) {
+      root.querySelectorAll('.roll-word > span').forEach((word) => {
+        word.style.animation = 'none';
+        word.offsetHeight;
+        word.style.animation = '';
+      });
+    }
 
     function showPage(index) {
       currentPage = Math.max(0, Math.min(index, pages.length - 1));
       pages.forEach((page, pageIndex) => page.classList.toggle('active', pageIndex === currentPage));
       backButton.classList.toggle('visible', currentPage > 0);
       document.querySelector('.click-hint').textContent = currentPage === 0 ? 'Starting...' : 'Click to continue';
+      replayRollingText(pages[currentPage]);
       if (currentPage === 1) typeText();
       locked = currentPage === 0;
     }
@@ -406,10 +571,17 @@
       clearInterval(typingTimer);
       const text = typedLine.dataset.text;
       let index = 0;
+      typedLine.dataset.rolled = 'false';
+      typedLine.classList.remove('roll-text');
       typedLine.textContent = '';
       typingTimer = setInterval(() => {
         typedLine.textContent = text.slice(0, index++);
-        if (index > text.length) clearInterval(typingTimer);
+        if (index > text.length) {
+          clearInterval(typingTimer);
+          typedLine.classList.add('roll-text');
+          prepareRollingText(typedLine.parentElement);
+          replayRollingText(typedLine);
+        }
       }, 72);
     }
 
@@ -430,21 +602,36 @@
 
     function openCoreMap(event) {
       event.stopPropagation();
-      coreTrigger.classList.add('shattered');
-      makeShards();
-      setTimeout(() => featuresMap.classList.add('visible'), 360);
+      if (coreTrigger.classList.contains('charging') || coreTrigger.classList.contains('shattered')) return;
+      coreTrigger.classList.add('charging');
+      document.querySelector('.core-question').classList.add('gone');
+      setTimeout(() => {
+        const burst = document.createElement('span');
+        burst.className = 'energy-burst';
+        document.body.appendChild(burst);
+        burst.addEventListener('animationend', () => burst.remove());
+        coreTrigger.classList.add('shattered');
+        makeShards();
+        setTimeout(() => {
+          featuresMap.classList.add('visible');
+          replayRollingText(featuresMap);
+        }, 250);
+      }, 1050);
     }
 
-    function openAiDetail(event) {
+    function openFeatureDetail(event) {
       event.stopPropagation();
+      selectedFeature = event.currentTarget;
       featuresMap.classList.add('detail');
-      aiBox.classList.add('selected');
+      featureButtons.forEach((button) => button.classList.toggle('selected', button === selectedFeature));
+      replayRollingText(selectedFeature);
       document.querySelector('.click-hint').textContent = 'Click outside the box to go back';
     }
 
-    function closeAiDetail() {
+    function closeFeatureDetail() {
       featuresMap.classList.remove('detail');
-      aiBox.classList.remove('selected');
+      featureButtons.forEach((button) => button.classList.remove('selected'));
+      selectedFeature = null;
       document.querySelector('.click-hint').textContent = 'Click to continue';
     }
 
@@ -454,21 +641,23 @@
     });
 
     document.addEventListener('click', (event) => {
-      if (event.target.closest('.back-button, .core-trigger, .feature-box.selected, .feature-box.one')) return;
-      if (aiBox.classList.contains('selected')) return closeAiDetail();
+      if (event.target.closest('.back-button, .core-trigger, .feature-box.selected, .feature-box[type="button"]')) return;
+      if (selectedFeature) return closeFeatureDetail();
       if (locked || currentPage >= pages.length - 1) return;
       showPage(currentPage + 1);
     });
 
     backButton.addEventListener('click', (event) => {
       event.stopPropagation();
-      if (aiBox.classList.contains('selected')) return closeAiDetail();
+      if (selectedFeature) return closeFeatureDetail();
       if (currentPage > 0) showPage(currentPage - 1);
     });
 
     coreTrigger.addEventListener('click', openCoreMap);
-    aiBox.addEventListener('click', openAiDetail);
+    featureButtons.forEach((button) => button.addEventListener('click', openFeatureDetail));
 
+    prepareRollingText();
+    replayRollingText(pages[0]);
     setTimeout(() => showPage(1), 3000);
   </script>
 </body>

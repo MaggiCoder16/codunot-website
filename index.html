@@ -123,7 +123,8 @@
     }
 
     .center,
-    .above-center,
+    .core-question,
+    .map-intro,
     .core-center {
       display: flex;
       flex-direction: column;
@@ -131,7 +132,19 @@
       text-align: center;
     }
 
-    .above-center { align-self: start; margin-top: 15vh; }
+    .map-intro {
+      position: relative;
+      z-index: 5;
+      gap: clamp(2rem, 5vh, 3.5rem);
+      max-width: min(92vw, 980px);
+      transition: opacity .55s ease, transform .55s ease, filter .55s ease;
+    }
+
+    .page:has(.features-map.visible) .map-intro {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
 
     h1, h2, p { margin: 0; }
 
@@ -222,13 +235,11 @@
     }
 
     .core-trigger {
-      position: absolute;
-      left: 50%;
-      top: 58%;
-      transform: translate(-50%, -50%);
+      position: relative;
+      flex-shrink: 0;
       border: 1px solid rgba(255,255,255,.34);
       border-radius: 26px;
-      padding: 2rem 4rem;
+      padding: clamp(1.25rem, 3vw, 2rem) clamp(2rem, 5vw, 4rem);
       background: linear-gradient(135deg, rgba(255,255,255,.2), rgba(255,255,255,.045));
       color: white;
       font-size: clamp(1.5rem, 3vw, 3rem);
@@ -240,7 +251,7 @@
       transition: transform .2s ease, filter .2s ease;
     }
 
-    .core-trigger:hover { transform: translate(-50%, -50%) scale(1.04); filter: brightness(1.12); }
+    .core-trigger:hover { transform: scale(1.04); filter: brightness(1.12); }
     .core-trigger::before,
     .core-trigger::after {
       content: "";
@@ -277,13 +288,13 @@
 
     .core-trigger.shattered { opacity: 0; pointer-events: none; }
 
-    .core-question.gone { opacity: 0; transform: translateY(-28px) scale(.96); filter: blur(16px); transition: opacity .55s ease, transform .55s ease, filter .55s ease; }
+    .core-question.gone { opacity: 0; transform: translateY(-28px) scale(.96); filter: blur(16px); pointer-events: none; transition: opacity .55s ease, transform .55s ease, filter .55s ease; }
 
     .energy-burst {
       position: fixed;
-      left: 50%;
-      top: 58%;
-      transform: translate(-50%, -50%);
+      left: 0;
+      top: 0;
+      transform: translate(-50%, -50%) scale(1);
       width: 24px;
       height: 24px;
       border-radius: 999px;
@@ -294,15 +305,17 @@
     }
 
     @keyframes energyCharge {
-      0% { transform: translate(-50%, -50%) scale(1); filter: brightness(1); }
-      65% { transform: translate(-50%, -50%) scale(.92); filter: brightness(1.55); }
-      100% { transform: translate(-50%, -50%) scale(1.08); filter: brightness(2.2); }
+      0% { transform: scale(1); filter: brightness(1); }
+      65% { transform: scale(.92); filter: brightness(1.55); }
+      100% { transform: scale(1.08); filter: brightness(2.2); }
     }
 
     @keyframes energySpin { to { transform: rotate(360deg); } }
     @keyframes energyPulse { to { filter: blur(6px); opacity: 1; } }
     @keyframes ringTighten { from { inset: -54px; transform: scale(1.24); } to { inset: -4px; transform: scale(.9); } }
     @keyframes energyBurst { to { transform: translate(-50%, -50%) scale(34); opacity: 0; filter: blur(8px); } }
+
+    .map-intro .statement { margin-top: 0; }
 
     .shard {
       position: fixed;
@@ -515,11 +528,13 @@
     </section>
 
     <section class="page" data-page="3">
-      <div class="above-center core-question">
-        <img class="logo" src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot logo" />
-        <p class="statement roll-text">I have a lot of features. Wanna know my core features? :&gt;</p>
+      <div class="map-intro">
+        <div class="core-question">
+          <img class="logo" src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot logo" />
+          <p class="statement roll-text">I have a lot of features. Wanna know my core features? :&gt;</p>
+        </div>
+        <button class="core-trigger roll-text" type="button">Core features</button>
       </div>
-      <button class="core-trigger roll-text" type="button">Core features</button>
       <div class="features-map" aria-label="Codunot core features">
         <span class="branch tl"></span><span class="branch tr"></span><span class="branch bl"></span><span class="branch br"></span>
         <div class="core-center">
@@ -579,11 +594,13 @@
     </section>
 
     <section class="page" data-page="4">
-      <div class="above-center core-question">
-        <img class="logo" src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot logo" />
-        <p class="statement roll-text">You saw my MAIN features. Check out my other features!</p>
+      <div class="map-intro">
+        <div class="core-question">
+          <img class="logo" src="https://cdn.top.gg/icons/799571124189618176/041c2d0d7f2919cb19e56f2e1f8a0d79e7dc9940f870adf07feab99dd3ce0a04.webp" alt="Codunot logo" />
+          <p class="statement roll-text">You saw my MAIN features. Check out my other features!</p>
+        </div>
+        <button class="core-trigger roll-text" type="button">Other goated utility features</button>
       </div>
-      <button class="core-trigger roll-text" type="button">Other goated utility features</button>
       <div class="features-map six-map" aria-label="Codunot utility features">
         <span class="branch tl"></span><span class="branch tr"></span><span class="branch bl"></span><span class="branch br"></span><span class="branch l"></span><span class="branch r"></span>
         <div class="core-center">
@@ -789,8 +806,11 @@
       trigger.classList.add('charging');
       if (question) question.classList.add('gone');
       setTimeout(() => {
+        const rect = trigger.getBoundingClientRect();
         const burst = document.createElement('span');
         burst.className = 'energy-burst';
+        burst.style.left = `${rect.left + rect.width / 2}px`;
+        burst.style.top = `${rect.top + rect.height / 2}px`;
         document.body.appendChild(burst);
         burst.addEventListener('animationend', () => burst.remove());
         trigger.classList.add('shattered');

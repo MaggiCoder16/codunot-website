@@ -2,28 +2,28 @@
   {
     "id": "1263574235599867946",
     "name": "Phantom Hub +",
-    "members": 1823,
+    "members": 1822,
     "icon": "https://cdn.discordapp.com/icons/1263574235599867946/10e4eba746a59688c9054ba5b9d1d298.png?size=1024",
     "invite": "https://discord.gg/3NWvgveBCD"
   },
   {
     "id": "1267799660307939369",
     "name": "SassGuard Support",
-    "members": 659,
+    "members": 660,
     "icon": "https://cdn.discordapp.com/icons/1267799660307939369/a_50678ed8a1a38a40c91785220e8bda9d.gif?size=1024",
     "invite": "https://discord.gg/NS6CVq6wNs"
   },
   {
     "id": "1452839553256919202",
     "name": "[TNIS] KOMANDO PASUKAN KHUSUS",
-    "members": 650,
+    "members": 651,
     "icon": "https://cdn.discordapp.com/icons/1452839553256919202/fb2c1691f3a879e3bd31186d0d2bdfe7.png?size=1024",
     "invite": "https://discord.gg/eJPKCsDSm6"
   },
   {
     "id": "1317491882502131793",
     "name": "Volaris Solutions Group",
-    "members": 380,
+    "members": 382,
     "icon": "https://cdn.discordapp.com/icons/1317491882502131793/f36546305bcb3ee475a995240831f68f.png?size=1024",
     "invite": "https://discord.gg/yr3UwgKyt2"
   },
@@ -37,7 +37,7 @@
   {
     "id": "1530286431266799697",
     "name": "ׅ𝐦𝐢𝐬𝐞𝐫𝐲 ݁      ♡",
-    "members": 335,
+    "members": 283,
     "icon": "https://cdn.discordapp.com/icons/1530286431266799697/a_7a0a484bb5b91ec1783a7c99043f8aab.gif?size=1024",
     "invite": "https://discord.gg/7w2aBkvgZ5"
   },
@@ -51,9 +51,16 @@
   {
     "id": "1325614448592818237",
     "name": "A New Era",
-    "members": 171,
+    "members": 170,
     "icon": "https://cdn.discordapp.com/icons/1325614448592818237/5bf82fd61e6299be68fb97d293a38c0d.png?size=1024",
     "invite": "https://discord.gg/j82KUtDG3U"
+  },
+  {
+    "id": "1471983397223006469",
+    "name": "Grau  da Leste",
+    "members": 151,
+    "icon": "https://cdn.discordapp.com/icons/1471983397223006469/3735572dc5138a6d8df2c7a66236b2be.png?size=1024",
+    "invite": "https://discord.gg/YbYVcf3sh3"
   },
   {
     "id": "1525225071503867944",
@@ -63,16 +70,9 @@
     "invite": "https://discord.gg/BQmcShZZXN"
   },
   {
-    "id": "1471983397223006469",
-    "name": "Grau  da Leste",
-    "members": 149,
-    "icon": "https://cdn.discordapp.com/icons/1471983397223006469/3735572dc5138a6d8df2c7a66236b2be.png?size=1024",
-    "invite": "https://discord.gg/YbYVcf3sh3"
-  },
-  {
     "id": "1500868330112684142",
     "name": "Smash Gordon",
-    "members": 142,
+    "members": 140,
     "icon": "https://cdn.discordapp.com/icons/1500868330112684142/43d193db4d7bfc181feb6fc0e9e59502.png?size=1024",
     "invite": "https://discord.gg/KuMacNzf4D"
   },
@@ -93,7 +93,7 @@
   {
     "id": "1525925449388003490",
     "name": "Yuno's Basement [Yuno]",
-    "members": 113,
+    "members": 112,
     "icon": "https://cdn.discordapp.com/icons/1525925449388003490/2957846c19da58ed4c72e973b95af7fc.png?size=1024",
     "invite": "https://discord.gg/uKDKFmnUqj"
   },
@@ -163,7 +163,7 @@
   {
     "id": "1470038794274209815",
     "name": "Codunot Support",
-    "members": 60,
+    "members": 61,
     "icon": "https://cdn.discordapp.com/icons/1470038794274209815/b868f1849bb2994b625c7c56a4441738.png?size=1024",
     "invite": "https://discord.gg/aR4J6Da7V2"
   },

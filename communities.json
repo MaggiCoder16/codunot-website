@@ -9,7 +9,7 @@
   {
     "id": "1267799660307939369",
     "name": "SassGuard Support",
-    "members": 678,
+    "members": 677,
     "icon": "https://cdn.discordapp.com/icons/1267799660307939369/a_50678ed8a1a38a40c91785220e8bda9d.gif?size=1024",
     "invite": "https://discord.gg/NS6CVq6wNs"
   },
@@ -23,14 +23,14 @@
   {
     "id": "1317491882502131793",
     "name": "Volaris Solutions Group",
-    "members": 392,
+    "members": 393,
     "icon": "https://cdn.discordapp.com/icons/1317491882502131793/f36546305bcb3ee475a995240831f68f.png?size=1024",
     "invite": "https://discord.gg/yr3UwgKyt2"
   },
   {
     "id": "1367769710074134548",
     "name": "BE | Elite",
-    "members": 333,
+    "members": 331,
     "icon": "https://cdn.discordapp.com/icons/1367769710074134548/3983e677d24e39e54170a94b81f01585.png?size=1024",
     "invite": "https://discord.gg/m7vG6pGA6E"
   },
@@ -58,7 +58,7 @@
   {
     "id": "1483311921015951474",
     "name": "༒ HẮC LONG TEAM ༒",
-    "members": 198,
+    "members": 197,
     "icon": "https://cdn.discordapp.com/icons/1483311921015951474/44bc4e79ef57322fe48b57ba8caa1985.png?size=1024",
     "invite": "https://discord.gg/Wxt5SKgfNx"
   },
@@ -72,7 +72,7 @@
   {
     "id": "1325614448592818237",
     "name": "A New Era",
-    "members": 175,
+    "members": 176,
     "icon": "https://cdn.discordapp.com/icons/1325614448592818237/5bf82fd61e6299be68fb97d293a38c0d.png?size=1024",
     "invite": "https://discord.gg/j82KUtDG3U"
   },
@@ -121,7 +121,7 @@
   {
     "id": "1401190513528541264",
     "name": "King Star's backyard",
-    "members": 79,
+    "members": 80,
     "icon": "https://cdn.discordapp.com/icons/1401190513528541264/d4005c979584ab9a3031325d9f2d8ec3.png?size=1024",
     "invite": "https://discord.gg/MHnyFBgsDK"
   },
@@ -301,11 +301,11 @@
     "invite": "https://discord.gg/bDj66222ya"
   },
   {
-    "id": "1445756921679450164",
-    "name": "MULTIVERSE ‧₊˚🌈✩ ₊˚🫧⊹",
-    "members": 26,
-    "icon": "https://cdn.discordapp.com/icons/1445756921679450164/e63341b75698982e8324569dd860fbf6.png?size=1024",
-    "invite": "https://discord.gg/7Avn5D4P7u"
+    "id": "1394707222772060281",
+    "name": "Real Humans",
+    "members": 25,
+    "icon": "https://cdn.discordapp.com/icons/1394707222772060281/95e69d47c55ae98972dcfeeb8ca1354d.png?size=1024",
+    "invite": "https://discord.gg/DFgvyn2K26"
   },
   {
     "id": "734928199083098190",
@@ -320,5 +320,12 @@
     "members": 25,
     "icon": "https://cdn.discordapp.com/icons/1474939300364816397/9bb8aa259a5b1814add965cf20694055.png?size=1024",
     "invite": "https://discord.gg/qAZYqx2kJm"
+  },
+  {
+    "id": "1445756921679450164",
+    "name": "MULTIVERSE ‧₊˚🌈✩ ₊˚🫧⊹",
+    "members": 25,
+    "icon": "https://cdn.discordapp.com/icons/1445756921679450164/e63341b75698982e8324569dd860fbf6.png?size=1024",
+    "invite": "https://discord.gg/7Avn5D4P7u"
   }
 ]

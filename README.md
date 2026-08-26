@@ -33,15 +33,19 @@ If you cannot keep a PC running, use a Cloudflare Worker to validate Turnstile 2
 The support form will use the Worker endpoint automatically when `data-endpoint` is set.
 
 ## Gate the whole site with Turnstile (required challenge on every page)
-If you want every page to require a Turnstile challenge, use the same Worker as an edge gate.
+The full-site gate is disabled by default so search crawlers and visitors can access the public website without a cookie. Turnstile still protects the support form through `/api/support`.
+
+If you intentionally want every page to require a Turnstile challenge, use the same Worker as an edge gate:
 
 1. In Cloudflare Workers, add a **Route** that covers the whole site:
    - `codunot.app/*`
    - (optional) `www.codunot.app/*`
 2. Keep `TURNSTILE_SECRET_KEY` set in Worker secrets.
-3. Optional: set `TURNSTILE_SITE_KEY` as a text variable (defaults to `0x4AAAAAACrej254Ib5zTeox`).
-4. The Worker will show a gate page until the user completes Turnstile, then it sets a cookie.
+3. Set `ENABLE_SITE_GATE` to the text value `true`. Do not enable this on a public site that needs to be indexed.
+4. Optional: set `TURNSTILE_SITE_KEY` as a text variable (defaults to `0x4AAAAAACrej254Ib5zTeox`).
+5. The Worker will show a gate page until the user completes Turnstile, then it sets a cookie.
 
 Notes:
-- This blocks bots but also blocks crawlers/SEO unless you add exceptions.
+- The gate blocks requests without its cookie and can prevent search indexing. Leave `ENABLE_SITE_GATE` unset (or set it to `false`) for SEO.
+- Verified bots plus `/robots.txt` and `/sitemap.xml` bypass the gate, but a public, cookie-free response is still the most reliable indexing setup.
 - The gate cookie lasts 7 days by default (see `GATE_TTL_SECONDS` in the Worker).

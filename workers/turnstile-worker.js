@@ -132,12 +132,15 @@ async function verifyTurnstileToken(env, token, remoteIp) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    // Keep the public website crawlable by default. Turnstile still protects the
+    // support endpoint below; the full-site gate must be explicitly enabled.
+    const siteGateEnabled = env.ENABLE_SITE_GATE === 'true';
 
     // 1. BYPASS LOGIC (SEO & Sitemaps)
     const isVerifiedBot = request.cf?.verifiedBot;
-    const isSitemap = url.pathname === '/sitemap.xml';
+    const isCrawlerFile = url.pathname === '/robots.txt' || url.pathname === '/sitemap.xml';
     
-    if (isVerifiedBot || isSitemap) {
+    if (isVerifiedBot || isCrawlerFile) {
       return fetch(request);
     }
 
@@ -156,7 +159,7 @@ export default {
     }
 
     // 3. TURNSTILE VERIFICATION HANDLER (GATE)
-    if (url.pathname === VERIFY_PATH && request.method === 'POST') {
+    if (siteGateEnabled && url.pathname === VERIFY_PATH && request.method === 'POST') {
       try {
         const bodyText = await request.text();
         const params = new URLSearchParams(bodyText);
@@ -253,7 +256,7 @@ export default {
     }
 
     // 5. THE GATEKEEPER
-    if (!cookies[GATE_COOKIE]) {
+    if (siteGateEnabled && !cookies[GATE_COOKIE]) {
       const redirectTo = `${url.pathname}${url.search}`;
       return new Response(buildGatePage(siteKey, redirectTo), {
         status: 401,

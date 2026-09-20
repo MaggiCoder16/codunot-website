@@ -2,7 +2,7 @@
   {
     "id": "1263574235599867946",
     "name": "Phantom Hub +",
-    "members": 1832,
+    "members": 1830,
     "icon": "https://cdn.discordapp.com/icons/1263574235599867946/10e4eba746a59688c9054ba5b9d1d298.png?size=1024",
     "invite": "https://discord.gg/3NWvgveBCD"
   },
@@ -16,14 +16,14 @@
   {
     "id": "1452839553256919202",
     "name": "[TNIS] KOMANDO PASUKAN KHUSUS",
-    "members": 690,
+    "members": 689,
     "icon": "https://cdn.discordapp.com/icons/1452839553256919202/a_55f62cfd3fe936d763b15af08a981a1f.gif?size=1024",
     "invite": "https://discord.gg/QVqKWsC2sX"
   },
   {
     "id": "1317491882502131793",
-    "name": "Volaris Solutions Group",
-    "members": 413,
+    "name": "Volaris Solutions Group HQ",
+    "members": 414,
     "icon": "https://cdn.discordapp.com/icons/1317491882502131793/f36546305bcb3ee475a995240831f68f.png?size=1024",
     "invite": "https://discord.gg/yr3UwgKyt2"
   },
@@ -58,7 +58,7 @@
   {
     "id": "1483311921015951474",
     "name": "༒ HẮC LONG TEAM ༒",
-    "members": 207,
+    "members": 209,
     "icon": "https://cdn.discordapp.com/icons/1483311921015951474/44bc4e79ef57322fe48b57ba8caa1985.png?size=1024",
     "invite": "https://discord.gg/Wxt5SKgfNx"
   },
@@ -93,7 +93,7 @@
   {
     "id": "1534242155390828595",
     "name": "VexNode",
-    "members": 101,
+    "members": 103,
     "icon": "https://cdn.discordapp.com/icons/1534242155390828595/8e8a0eba1a8d6ba3934b2cadef176aac.png?size=1024",
     "invite": "https://discord.gg/Wxg5rUa2Rr"
   },
@@ -168,18 +168,18 @@
     "invite": "https://discord.gg/n5pw9UGgA2"
   },
   {
-    "id": "1470964092805058767",
-    "name": "𝕾𝖍𝖎𝖓𝖔𝖇𝖎",
-    "members": 56,
-    "icon": "https://cdn.discordapp.com/icons/1470964092805058767/dd687d21e3be4d07d84e1d46f2b8c500.png?size=1024",
-    "invite": "https://discord.gg/yhkeDWXYje"
-  },
-  {
     "id": "1387291163203076168",
     "name": "Malas Decisiones",
     "members": 52,
     "icon": "https://cdn.discordapp.com/icons/1387291163203076168/3b940e9c001570ed270a61df4e5464bd.png?size=1024",
     "invite": "https://discord.gg/Zc9WaumgnY"
+  },
+  {
+    "id": "1470964092805058767",
+    "name": "𝕾𝖍𝖎𝖓𝖔𝖇𝖎",
+    "members": 50,
+    "icon": "https://cdn.discordapp.com/icons/1470964092805058767/dd687d21e3be4d07d84e1d46f2b8c500.png?size=1024",
+    "invite": "https://discord.gg/yhkeDWXYje"
   },
   {
     "id": "1368573339542622288",
